@@ -27,57 +27,57 @@ int randomInt = randomGenerator.nextInt(1000);
 			
 			if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[1]")).size()!=0) {
 				//Entering first-name
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_first_name"))).sendKeys("Demo"+randomInt);
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_first_name"))).sendKeys("Demo"+randomInt);
 				//Clicking on sign-up button to register
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			}
 			
 			if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[2]")).size()!=0) {
 				//Entering last-name
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_last_name"))).sendKeys("L"+randomInt);
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_last_name"))).sendKeys("L"+randomInt);
 				//Clicking on sign-up button to register
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();			
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();			
 			}
 			
 			 if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[3]")).size()!=0) {
 				//Entering email
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("username"+randomInt+"@mailinator.com");
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("demo"+randomInt+"@mailinator.com");
 				boolean emailalt = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]")).size()!=0;
 				if(emailalt==true) {
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();	
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("username1"+randomInt+1+"@mailinator.com");	
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();	
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("demo1"+randomInt+1+"@mailinator.com");	
 				}
 				
 				
 				//Clicking on sign-up button to register
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+//				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			}
 			
 			 if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[4]")).size()!=0) {
 				//Entering phone number
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_contacts_attributes_0_data"))).sendKeys("1234567890");	
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_contacts_attributes_0_data"))).sendKeys("1234567890");	
 				//Clicking on sign-up button to register
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+//				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			}
 			
 			 if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[5]")).size()!=0) {
 				//Entering password
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("123456");
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("123456");
 				//Clicking on sign-up button to register
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+//				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			}
 			
 			 if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[6]")).size()!=0) {
 				//Entering confirm password
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).sendKeys("12345");
+				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).sendKeys("12345");
 				Thread.sleep(2000);
 				if(driver.findElements(By.xpath("//*[@id=\"new_user\"]/small[6]")).size()!=0) {
 					//Entering confirm password
-					wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).clear();
+					wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).clear();
 					//Entering confirm password
-					wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).sendKeys("123456");
+					wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).sendKeys("123456");
 					//Clicking on sign-up button to register
-					wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+					wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 					
 					//Storing urls
 					String nextpageurl = "https://stg.autobrain.com/users/sign_up/instructions?from=signup_steps";
@@ -91,9 +91,9 @@ int randomInt = randomGenerator.nextInt(1000);
 						driver.navigate().to(url);
 						ValidSignup();
 					}
-					driver.navigate().back();
+					driver.navigate().to(url);
 					Thread.holdsLock(2000);
-					driver.findElement(By.xpath("//a[contains(text(),'Log In')]")).click();
+//					driver.findElement(By.xpath("//a[contains(text(),'Log In')]")).click();
 			}				
 		}		
 	}
@@ -147,7 +147,7 @@ int randomInt = randomGenerator.nextInt(1000);
 				//Validating Privacy policy title
 				softassert.assertEquals(ActHeading, "Privacy Policy");
 				//Navigating back user to login page
-				driver.navigate().to(url);
+				driver.navigate().back();
 				
 				
 				softassert.assertAll();
@@ -158,7 +158,7 @@ int randomInt = randomGenerator.nextInt(1000);
 		//4. Validating chat
 			public void ChatButton() throws Exception {
 				//Clicking on sign-up button
-				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'SIGN UP')]"))).click();	
+//				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'SIGN UP')]"))).click();	
 			
 				//Click on chat icon
 				driver.switchTo().frame("fc_widget");
