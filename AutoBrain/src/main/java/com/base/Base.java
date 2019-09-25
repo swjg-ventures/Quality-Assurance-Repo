@@ -1,6 +1,8 @@
 package com.base;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -68,4 +70,14 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			driver.quit();
 		
 		}
+		
+		//DATE FORMATE CHANGE METHOD
+		public static String date_format(String sdate) throws Exception {
+			SimpleDateFormat formatter2=new SimpleDateFormat("dd MMM yyyy");  
+		    SimpleDateFormat formatter3=new SimpleDateFormat("MMM dd, yyyy");  
+		    Date date2=formatter2.parse(sdate);  
+		    String d = formatter3.format(date2);
+		    return d;
+		}
+		
 		}
