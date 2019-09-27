@@ -19,7 +19,7 @@ public class AlertSettings extends Login {
 	public void alert_settings() throws Exception {
 		
 		// Login
-//		login();
+		login();
 		Thread.sleep(2000);
 		// Sliding to next page
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
@@ -28,24 +28,18 @@ public class AlertSettings extends Login {
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[4]/div[3]/a/div[2]"))).click();
 		Thread.sleep(2000);
 
-		
-		
 		// Storing all status
 		List<WebElement> status = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']")));
 		
 
 		// Storing all status ON / OFF name
 		List<WebElement> on_off = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
-
-		
+	
 		
 		for(i=0; i<status.size(); i++) {
 			Thread.sleep(2000);
 			
 			status.get(i).click();	
-			
-			
-			
 			
 			try {
 			 car_ins_form= wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'Add Your Car Insurance Info')]"))).size()==1;
@@ -91,17 +85,23 @@ public class AlertSettings extends Login {
 		} catch (Exception e) {
 			driver.navigate().refresh();
 		}
-		
-		
+	
 		// Validating all status as per last click
-		status();
-		
-		
-		
-		
+		status();	
 		Thread.sleep(2000);
+		
+		// Validating Other Modes Settings button
+		other_modes_settings_btn();
+		
+		
+		
 		softassert.assertAll();
 	}
+	
+	
+	
+	
+	
 	
 	// ADD CAR INSURANCE INFO METHOD
 	public void car_ins() throws Exception {
@@ -150,13 +150,11 @@ public class AlertSettings extends Login {
 		ele.click();
 		//Finish car insurance form
 
-
 	}
 	
 	// ADD CAR REGISTRATION INFO METHOD
 	public void car_regis() throws Exception {
-		//NEW FORM CAR REGISTRATION (Click on Edit button) 
-			
+		//NEW FORM CAR REGISTRATION (Click on Edit button) 		
 				// License Plate No
 				Thread.sleep(3000);
 				wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
@@ -187,58 +185,79 @@ public class AlertSettings extends Login {
 	
 	// VALIDATE ALL STATUS (ON / OFF) METHOD
 	public void status() throws Exception {
+		String err_msg ="Status not matching before refreshing the page. Status should be same before or after update the page.";
 		Thread.sleep(2000);
 		List<WebElement> On_Off_Status = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
 		
 		// CAR HEALTH ALERTS
 		String Exp1_Car_Health_Alerts = On_Off_Status.get(0).getText();
-		softassert.assertEquals(arr.get(0),Exp1_Car_Health_Alerts);		
+		softassert.assertEquals(arr.get(0),Exp1_Car_Health_Alerts, err_msg);		
 		System.out.println("CAR HEALTH ALERTS"+"-->"+Exp1_Car_Health_Alerts + "=" + arr.get(0) );
 		
 		// LOW BATTERY ALERTS
 		String  Exp2_Car_Health_Alerts = On_Off_Status.get(1).getText();
-		softassert.assertEquals(Exp2_Car_Health_Alerts, arr.get(1));
-		softassert.assertEquals(arr.get(1), Exp2_Car_Health_Alerts);	
+		softassert.assertEquals(arr.get(1), Exp2_Car_Health_Alerts, err_msg);
+		
 		System.out.println("LOW BATTERY ALERTS"+"-->"+Exp2_Car_Health_Alerts + "=" + arr.get(1) );
 		
 		// TOW ALERTS
 		String  Exp3_Car_Health_Alerts = On_Off_Status.get(2).getText();
-		softassert.assertEquals( arr.get(2), Exp3_Car_Health_Alerts);	
+		softassert.assertEquals( arr.get(2), Exp3_Car_Health_Alerts, err_msg);
+		
 		System.out.println("TOW ALERTS"+"-->"+Exp3_Car_Health_Alerts + "=" + arr.get(2) );
 		
 		// CAR "LEFT ON" ALERTS
 		String  Exp4_Car_Health_Alerts = On_Off_Status.get(3).getText();
-		softassert.assertEquals(arr.get(3), Exp4_Car_Health_Alerts);	
+		softassert.assertEquals(arr.get(3), Exp4_Car_Health_Alerts, err_msg);	
+		
 		System.out.println("CAR \"LEFT ON\" ALERTS"+"-->"+Exp4_Car_Health_Alerts + "=" + arr.get(3) );
 		
 		// DEVICE DISCONNECTED ALERTS
 		String  Exp5_Car_Health_Alerts = On_Off_Status.get(4).getText();
-		softassert.assertEquals( arr.get(4),Exp5_Car_Health_Alerts);	
+		softassert.assertEquals( arr.get(4),Exp5_Car_Health_Alerts, err_msg);
+		
 		System.out.println("DEVICE DISCONNECTED ALERTS"+"-->"+Exp5_Car_Health_Alerts + "=" + arr.get(4) );
 		
 		// MOTION DETECTION
 		String  Exp6_Car_Health_Alerts = On_Off_Status.get(5).getText();
-		softassert.assertEquals(arr.get(5), Exp6_Car_Health_Alerts);
+		softassert.assertEquals(arr.get(5), Exp6_Car_Health_Alerts, err_msg);
+		
 		System.out.println("MOTION DETECTION"+"-->"+Exp6_Car_Health_Alerts + "=" + arr.get(5) );
 		
 		// MOBILE PHONE NOTIFICATIONS
 		String  Exp7_Car_Health_Alerts = On_Off_Status.get(6).getText();
-		softassert.assertEquals(arr.get(6), Exp7_Car_Health_Alerts);
+		softassert.assertEquals(arr.get(6), Exp7_Car_Health_Alerts, err_msg);
+		
 		System.out.println("MOBILE PHONE NOTIFICATIONS"+"-->"+Exp7_Car_Health_Alerts + "=" + arr.get(6) );
 		
-		// INSURANCE RENEWAL
-		Thread.sleep(5000);
-		String  Exp8_Car_Health_Alerts = On_Off_Status.get(7).getText();
-		softassert.assertEquals(arr.get(7), Exp8_Car_Health_Alerts);	
+		// INSURANCE RENEWAL (Storing elements for insurance and registration renewal)
+		Thread.sleep(2000);
+		
+		List<WebElement> advance = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='advanced']//span")));
+		
+		String  Exp8_Car_Health_Alerts = advance.get(0).getText();
+		softassert.assertEquals(arr.get(7), Exp8_Car_Health_Alerts, err_msg);
+		
 		System.out.println("INSURANCE RENEWAL"+"-->"+Exp8_Car_Health_Alerts + "=" + arr.get(7) );
 		
 		// VEHICLE REGISTATION RENEWAL
-		Thread.sleep(5000);
-		String  Exp9_Car_Health_Alerts = On_Off_Status.get(8).getText();
-		softassert.assertEquals( arr.get(8), Exp9_Car_Health_Alerts);
-		System.out.println("VEHICLE REGISTATION RENEWAL"+"-->"+Exp9_Car_Health_Alerts + "=" + arr.get(8) );
+		Thread.sleep(2000);
+		String  Exp9_Car_Health_Alerts = advance.get(1).getText();
+		softassert.assertEquals( arr.get(8), Exp9_Car_Health_Alerts, err_msg);
 		
-		
+		System.out.println("VEHICLE REGISTATION RENEWAL"+"-->"+Exp9_Car_Health_Alerts + "=" + arr.get(8) );	
 	}
+	
+		// 	ALERT SETTINS- OTHER MODESS SETTINGS
+		public void other_modes_settings_btn() {
+			// Click on other mode settings button
+			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Other Modes Settings')]"))).click();
+			
+			// Storing page status (Opened / Not Opened)
+			boolean mode_page  = driver.findElements(By.xpath("//h4[contains(text(),'Mode Settings')]")).size()!=0;
+			
+			// Validate other modes setting page opened or not
+			softassert.assertEquals(mode_page, true);
+		}
 	
 }
