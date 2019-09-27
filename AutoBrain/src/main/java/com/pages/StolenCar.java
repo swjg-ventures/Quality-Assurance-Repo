@@ -18,7 +18,7 @@ public class StolenCar extends Login {
 			if (i == 1) {
 				Thread.sleep(2000);
 				Car_Finder.get(i).click();
-				Thread.sleep(3000);
+				Thread.sleep(5000);
 			}
 		}
 			
@@ -58,7 +58,8 @@ public class StolenCar extends Login {
 	
 	//Click on Home bottom menu button
 	wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Home')]"))).click();
-		
+	driver.navigate().refresh();
+	Thread.sleep(4000);
 		softassert.assertAll();
 	}
 	

@@ -93,12 +93,7 @@ public class VehicleProfile extends ForgotPassword {
 			// Click on Vehicle Profile from Menu
 			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Vehicle Profile')]"))).click();
 			Thread.sleep(2000);
-			
-	
-			
-			
-			
-			
+
 			// Car Name
 			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input"))).clear();
 
@@ -324,9 +319,6 @@ public class VehicleProfile extends ForgotPassword {
 		// Validate Vehicle Registration Info (Expire Date)
 		String act11=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-registration-info']//div[1]//li[2]"))).getText();
 		softassert.assertEquals(act11, date_format(car_Reg_exp) );	
-		
-		
-		
 		
 		
 		softassert.assertAll();

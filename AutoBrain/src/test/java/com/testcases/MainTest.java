@@ -2,6 +2,7 @@ package com.testcases;
 
 import org.testng.annotations.Test;
 
+import com.pages.AlertSettings;
 import com.pages.CallEmergency;
 import com.pages.CarFinder;
 import com.pages.CustomerService;
@@ -152,6 +153,13 @@ public class MainTest extends VehicleProfile {
 	public void VerifyStolenCar() throws Exception {
 		StolenCar c = new StolenCar();
 		c.stolen_car();
+	}
+	
+	// ALERT SETTINGS MAIN MENU
+	@Test(priority = 23)
+	public void VerifyAlertSettings() throws Exception {
+		AlertSettings a = new AlertSettings();
+		a.alert_settings();
 	}
 
 }
