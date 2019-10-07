@@ -44,7 +44,7 @@ public class CustomerService extends Login {
 		
 		//Closing the opened chat box
 		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("minimize"))).click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		
 	}
 }

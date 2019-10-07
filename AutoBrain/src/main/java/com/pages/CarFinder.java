@@ -55,12 +55,13 @@ public class CarFinder extends Login {
 		//Closing the spotlight description by clicking on the cross button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class='fa fa-times _3N4180tmOGF0PjzMAODtFh_0']"))).click();
 		
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		//Turning status ON
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='spotlight-car'][1]/div[1]/div[2]"))).click();
+		wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='spotlight-car'][1]/div[1]/div[2]"))).click();
 		
 		//Checking the status is ON or not
-		List <WebElement> status = wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'ON')]")));
+		List <WebElement> status = wait(driver, 30).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'ON')]")));
+		Thread.sleep(2000);
 		
 		for(int i=0; i<status.size(); i++) {
 			if(i==1) {

@@ -19,14 +19,14 @@ public class AlertSettings extends Login {
 	public void alert_settings() throws Exception {
 		
 		// Login
-		login();
+//		login();
 		Thread.sleep(2000);
 		// Sliding to next page
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
 		
 		// Click on alert settings button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[4]/div[3]/a/div[2]"))).click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 		// Storing all status
 		List<WebElement> status = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']")));
@@ -36,8 +36,7 @@ public class AlertSettings extends Login {
 		List<WebElement> on_off = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
 	
 		
-		for(i=0; i<status.size(); i++) {
-			Thread.sleep(2000);
+		for(i=0; i<status.size(); i++) {		
 			
 			status.get(i).click();	
 			
@@ -66,12 +65,11 @@ public class AlertSettings extends Login {
 			
 			
 			for(j=i; j==i; j++ ) {	
-				if(j==7 || j==8) {
-				Thread.sleep(5000);
-			String ck = on_off.get(j).getText();
-			System.out.println(ck);
-				}
-			arr.add(on_off.get(i).getText());			
+			if(j==7 || j==8 ) {
+				Thread.sleep(4000);
+			}
+			arr.add(on_off.get(j).getText());
+			
 			}
 			
 			
@@ -87,6 +85,7 @@ public class AlertSettings extends Login {
 		}
 	
 		// Validating all status as per last click
+		Thread.sleep(3000);
 		status();	
 		Thread.sleep(2000);
 		
@@ -94,14 +93,10 @@ public class AlertSettings extends Login {
 		other_modes_settings_btn();
 		
 		
-		
 		softassert.assertAll();
 	}
 	
-	
-	
-	
-	
+
 	
 	// ADD CAR INSURANCE INFO METHOD
 	public void car_ins() throws Exception {
@@ -231,8 +226,8 @@ public class AlertSettings extends Login {
 		System.out.println("MOBILE PHONE NOTIFICATIONS"+"-->"+Exp7_Car_Health_Alerts + "=" + arr.get(6) );
 		
 		// INSURANCE RENEWAL (Storing elements for insurance and registration renewal)
-		Thread.sleep(2000);
 		
+		Thread.sleep(4000);
 		List<WebElement> advance = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='advanced']//span")));
 		
 		String  Exp8_Car_Health_Alerts = advance.get(0).getText();
@@ -241,7 +236,7 @@ public class AlertSettings extends Login {
 		System.out.println("INSURANCE RENEWAL"+"-->"+Exp8_Car_Health_Alerts + "=" + arr.get(7) );
 		
 		// VEHICLE REGISTATION RENEWAL
-		Thread.sleep(2000);
+		
 		String  Exp9_Car_Health_Alerts = advance.get(1).getText();
 		softassert.assertEquals( arr.get(8), Exp9_Car_Health_Alerts, err_msg);
 		

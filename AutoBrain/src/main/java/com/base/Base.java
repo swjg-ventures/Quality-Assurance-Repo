@@ -1,6 +1,8 @@
 package com.base;
 
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -45,7 +47,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
-//			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			driver.manage().deleteAllCookies();
 			
 			try {
@@ -79,5 +81,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		    String d = formatter3.format(date2);
 		    return d;
 		}
+		
+		
+		//Open new tab in browser
+		public void new_tab() throws Exception {
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_T);
+			robot.keyRelease(KeyEvent.VK_T);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			Thread.sleep(4000);
+				}
 		
 		}
