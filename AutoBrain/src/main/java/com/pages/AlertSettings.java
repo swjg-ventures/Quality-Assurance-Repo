@@ -33,8 +33,8 @@ public class AlertSettings extends Login {
 		
 
 		// Storing all status ON / OFF name
-		List<WebElement> on_off = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
-	
+//		List<WebElement> on_off = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
+		List<WebElement> on_off = wait(driver, 10).until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span"))));
 		
 		for(i=0; i<status.size(); i++) {		
 			
@@ -76,6 +76,7 @@ public class AlertSettings extends Login {
 		}
 		
 		// Refreshing the page
+		Thread.sleep(4000);
 		driver.navigate().refresh();
 		try {
 		boolean page_refresh=	wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Alert Settings')]"))).size()!=0;
@@ -94,6 +95,7 @@ public class AlertSettings extends Login {
 		
 		
 		softassert.assertAll();
+		driver.navigate().to(url);
 	}
 	
 

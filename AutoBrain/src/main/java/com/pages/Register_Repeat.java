@@ -10,13 +10,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class Register extends Login {
+public class Register_Repeat extends Login {
 	int z = 1, x =1 ;
+	boolean add_credit_error, reg_success;
 	//Generating random email
 	Random randomGenerator = new Random();  
 	int randomInt = randomGenerator.nextInt(1000);
 	String entered_email, code, Device_Num;
-	boolean p_load, add_creadit_card_page, credit_card, new_device, safty_modes, alert_setting,roadside, home, reg_success;
+	boolean p_load, add_creadit_card_page, credit_card, new_device, safty_modes, alert_setting,roadside, home;
 	
 	String carname1 = "Demo_Car_Test", caricon1 = "//div[@class='grid']/div[1]", status1 = "//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']/parent::div", 
 			year1 = "2015", make1 = "SKODA", VIN1 = "DHSJ879373J738H"; int model1 = 2;	
@@ -55,7 +56,6 @@ public class Register extends Login {
 	int model = Smodel[new Random().nextInt(Smodel.length)];
 	
 	
-	
 	String licenceno1 = "TY78", effectivedate1 = "//div[@class='text-input'][2]/div/div[2]/div/span[contains(text(),'25')]", expiredate1 = "//div[@class='text-input'][3]/div/div[2]/div/span[contains(text(),'28')]", insurancecmpy1 = "Demo", policyno1 = "55512";
 	String licenceno2 = "TY89", effectivedate2 = "//div[@class='text-input'][2]/div/div[2]/div/span[contains(text(),'26')]", expiredate2 = "//div[@class='text-input'][3]/div/div[2]/div/span[contains(text(),'27')]", insurancecmpy2 = "Test", policyno2 = "44125";
 	
@@ -84,7 +84,7 @@ public class Register extends Login {
 	
 	
 	 // REGISTER METHOD
-		public void register() throws Exception {
+		public void Verify_Register() throws Exception {
 			
 			//Calling Create Device Method
 			 Device_Num = create_device_number();
@@ -142,11 +142,21 @@ public class Register extends Login {
 						
 						//Email already exist
 						if(email_alert==true) {
-							driver.navigate().to("https://stg.autobrain.com");
-							register();	
-							
+							wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
+							wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("demonew"+randomInt+"@mailinator.com");
 						}
-				
+						
+						//Entering password
+						wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).clear();
+						wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("welcome");
+						
+						//Entering confirm password
+						wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).clear();
+						wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password_confirmation"))).sendKeys("welcome");
+									
+						
+						//Clicking on sign-up button to register
+						wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'SIGN UP')]"))).click();		
 					}
 					
 					
@@ -160,7 +170,7 @@ public class Register extends Login {
 					}
 					
 					else {					
-						register();
+						Verify_Register();
 					}
 					
 					//MAILINATOR.COM
@@ -217,10 +227,7 @@ public class Register extends Login {
 					}
 					
 					//STEP 1
-					step_1();		
-					
-					//ADD CREDIT CARD
-					add_credit_card();
+					step_1(Device_Num);		
 					
 					//STEP 2
 					step_2();
@@ -233,7 +240,7 @@ public class Register extends Login {
 					
 					//Done
 					done();
-				
+					
 					while(reg_success==false) {
 						Thread.sleep(3000);
 					driver.findElement(By.xpath("//div[4]/div[3]/div/div[2]/button ")).click();
@@ -263,7 +270,6 @@ public class Register extends Login {
 					}
 					}
 					
-					
 					softassert.assertAll();
 		}
 		
@@ -272,7 +278,7 @@ public class Register extends Login {
 		
 		
 // FORM 1		//STEP 1 (ADD CAR INFO)
-		public void step_1() throws Exception {
+		public void step_1(String de) throws Exception {
 			
 			//Create a Name for Your Car
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[1]/input"))).
@@ -281,11 +287,11 @@ public class Register extends Login {
 			
 			//Enter device number
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[2]/input"))).
-			sendKeys(Device_Num);
+			sendKeys(de);
 			
 			//Re-enter device number
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[3]/input"))).
-			sendKeys(Device_Num);
+			sendKeys(de);
 			
 			//Enter Your VIN
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[4]/input"))).
@@ -329,13 +335,16 @@ public class Register extends Login {
 			Thread.sleep(2000);
 			
 			//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
-			while(add_creadit_card_page==false) {
+			if(add_creadit_card_page==false) {
 			try {
-			add_creadit_card_page= wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+			add_creadit_card_page= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+			if(add_creadit_card_page ==true) {
+				add_credit_card();
+			}
+			
 			} catch(Exception e) {
-				System.out.println("Add credit card page not found.");
-				softassert.assertEquals(add_creadit_card_page, true,"Add credit card page not found after completion of STEP 1!");
-				break;
+				
+				
 			}
 			}
 			
@@ -344,10 +353,14 @@ public class Register extends Login {
 			if(add_creadit_card_page==false) {
 				driver.navigate().refresh();
 				try {
-					add_creadit_card_page= wait(driver, 120).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
-					} catch(Exception e) {
-						System.out.println("After refresh, Add credit card page not found again!");
-						softassert.assertEquals(add_creadit_card_page, true,"After refresh, Add credit card page not found again!");
+					add_creadit_card_page= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+					softassert.assertEquals(add_creadit_card_page, false,"After Step 1, Add credit card page not found. It appear only after refresh the page.");
+					add_credit_card();
+					
+				} catch(Exception e) {
+				//		System.out.println("After refresh, Add credit card page not found again!");
+				//		softassert.assertEquals(add_creadit_card_page, true,"After refresh, Add credit card page not found again!");
+						
 					}		
 			}
 		
@@ -418,6 +431,12 @@ public class Register extends Login {
 			wait(driver, 15)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 					.click();
+			
+			
+		//	add_credit_error= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center success']"))).size()==1;		
+		//	Assert.assertEquals(add_credit_error, false, "User not redirected to Step 2 after filled up all valid Add credit card details!");
+			
+		
 			
 			
 			// Validate Step 2 page opened

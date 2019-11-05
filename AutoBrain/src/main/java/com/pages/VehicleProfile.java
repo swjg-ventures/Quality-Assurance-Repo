@@ -23,7 +23,7 @@ public class VehicleProfile extends ForgotPassword {
 	String Scarname[]  = {carname1, carname2};
 	String carname = Scarname[new Random().nextInt(Scarname.length)];
 
-	//Car name
+	//Car VIN
 	String Svin[]  = {VIN1, VIN2};
 	String VIN = Svin[new Random().nextInt(Scarname.length)];
 	
@@ -139,96 +139,8 @@ public class VehicleProfile extends ForgotPassword {
 			model_selected=mo.getFirstSelectedOption().getText().trim();
 			Thread.sleep(1000);
 
-//NEW FORM CAR INSURANCE	(Click on Edit button)
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-insurance-header']/div[2]/span")))
-			.click();
-			Thread.sleep(2000);
-
-			// License Plate No
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
-			.clear();
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
-			.sendKeys(licenceno);
-			Thread.sleep(2000);
-
-			// Effective Date (Clicking to open date calendar)
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][2]/div/div[1]/input")))
-			.click();
-			Thread.sleep(1000);
-			
-			// Selecting date from opened calendar
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(effectivedate))).click();
-			Thread.sleep(2000);
-			Insurance_Eff_Date = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][2]/label/following-sibling::div//input")))
-			.getAttribute("value");
-			
-			
-			// Expiration Date (Clicking to open date calendar)
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][3]/div/div[1]/input")))
-			.click();
-			Thread.sleep(1000);
-
-			// Selecting expire date from opened calendar
-			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiredate))).click();
-			Thread.sleep(2000);
-			Insurance_Exp_Date = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][3]/label/following-sibling::div//input")))
-			.getAttribute("value");
-			
-			// Enter insurance company name
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']")))
-			.clear();
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']")))
-			.sendKeys(insurancecmpy);
-			Thread.sleep(2000);
-
-			// Enter policy number
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='X00 0000-000-000']")))
-			.clear();
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='X00 0000-000-000']")))
-			.sendKeys(policyno);
-			Thread.sleep(4000);
-
-			// Clicking on Save button
-			WebElement ele = driver.findElement(By.xpath("//button[contains(text(),'Save')]"));
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("arguments[0].scrollIntoView(true);", ele);
-			Thread.sleep(2000);
-			ele.click();
-			Thread.sleep(3000);
-			//Finish car insurance form
-
-//NEW FORM CAR REGISTRATION (Click on Edit button) 
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-registration-header']/div[2]/span")))
-			.click();
-			Thread.sleep(2000);
-
-			// License Plate No
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
-			.clear();
-			Thread.sleep(2000);
-
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
-			.sendKeys(licenceno);
-			Thread.sleep(2000);
-
-			// Expiration Date (Clicking to open date calendar)
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Pick A Date']")))
-			.click();
-			Thread.sleep(1000);
-
-			// Selecting expire date from opened calendar
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='vdp-datepicker__calendar'][1]/div/span[contains(text(),'25')]")))
-			.click();
-			Thread.sleep(1000);
-			car_Reg_exp = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Expiration Date')]/following-sibling::div//input")))
-					.getAttribute("value");
-			
-			
-			// Save button
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
-			.click();
-			Thread.sleep(2000);
-			//Finish Register Form
+			//Fill Up Insurance and Registration Forms
+			Ins_Reg_Forms(); 
 			
 
 			// Submit button
@@ -245,6 +157,103 @@ public class VehicleProfile extends ForgotPassword {
 			//VALIDATING ALL DATA
 			validate_data();
 	}
+	
+	
+	//Insurance and Registration forms
+	public void Ins_Reg_Forms() throws Exception {
+		//NEW FORM CAR INSURANCE	(Click on Edit button)
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-insurance-header']/div[2]/span")))
+		.click();
+		Thread.sleep(2000);
+
+		// License Plate No
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
+		.clear();
+		wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
+		.sendKeys(licenceno);
+		Thread.sleep(2000);
+
+		// Effective Date (Clicking to open date calendar)
+		wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][2]/div/div[1]/input")))
+		.click();
+		Thread.sleep(1000);
+		
+		// Selecting date from opened calendar
+		wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(effectivedate))).click();
+		Thread.sleep(2000);
+		Insurance_Eff_Date = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][2]/label/following-sibling::div//input")))
+		.getAttribute("value");
+		
+		
+		// Expiration Date (Clicking to open date calendar)
+		wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][3]/div/div[1]/input")))
+		.click();
+		Thread.sleep(1000);
+
+		// Selecting expire date from opened calendar
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(expiredate))).click();
+		Thread.sleep(2000);
+		Insurance_Exp_Date = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='text-input'][3]/label/following-sibling::div//input")))
+		.getAttribute("value");
+		
+		// Enter insurance company name
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']")))
+		.clear();
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Name']")))
+		.sendKeys(insurancecmpy);
+		Thread.sleep(2000);
+
+		// Enter policy number
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='X00 0000-000-000']")))
+		.clear();
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='X00 0000-000-000']")))
+		.sendKeys(policyno);
+		Thread.sleep(4000);
+
+		// Clicking on Save button
+		WebElement ele = driver.findElement(By.xpath("//button[contains(text(),'Save')]"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", ele);
+		Thread.sleep(2000);
+		ele.click();
+		Thread.sleep(3000);
+		//Finish car insurance form
+
+//NEW FORM CAR REGISTRATION (Click on Edit button) 
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-registration-header']/div[2]/span")))
+		.click();
+		Thread.sleep(2000);
+
+		// License Plate No
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
+		.clear();
+		Thread.sleep(2000);
+
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='TYP013']")))
+		.sendKeys(licenceno);
+		Thread.sleep(2000);
+
+		// Expiration Date (Clicking to open date calendar)
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Pick A Date']")))
+		.click();
+		Thread.sleep(1000);
+
+		// Selecting expire date from opened calendar
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='vdp-datepicker__calendar'][1]/div/span[contains(text(),'25')]")))
+		.click();
+		Thread.sleep(1000);
+		car_Reg_exp = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Expiration Date')]/following-sibling::div//input")))
+				.getAttribute("value");
+		
+		
+		// Save button
+		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
+		.click();
+		Thread.sleep(2000);
+		//Finish Register Form
+	}
+	
+	
 	
 	
 	

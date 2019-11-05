@@ -6,15 +6,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.asserts.SoftAssert;
 
 public class GetAnotherDevice extends Login {
-
+boolean order_placed;
 	public void BuyDevice() throws Exception {
 		String F_name = "Test", L_name = "Demo", Emai = "Demo@gmail.com", Street = "Demo 123 street",
 				City = "Califonia", State = "Texas", Zip = "55525", Phone = "1236547895", Card_Name = "Demo card",
 				Card_CVV = "555", Card_No = "4242424242424242";
-		SoftAssert softassert = new SoftAssert();
+	
 
 		// Calling login method
 	//	ValidLogin();
@@ -194,11 +193,39 @@ public class GetAnotherDevice extends Login {
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit My Order')]")))
 				.click();
 
-		// Verify order placed or not
-		boolean order_placed = wait(driver, 30).until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//h2[contains(text(),'Thank You For Your Order')]")))
-				.size() == 1;
-		softassert.assertEquals(order_placed, true);
+		
+		
+		
+
+		while(order_placed==false) {
+			try {
+				order_placed=	wait(driver, 30).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h2[contains(text(),'Thank You For Your Order')]"))).size() == 1;
+			} 
+			catch(Exception e) {
+				//Closing current window
+				driver.switchTo().window(tabs.get(1)).close();
+				Thread.sleep(1000);
+				
+				//Switching to main window
+				driver.switchTo().window(tabs.get(0));	
+				Thread.sleep(1000);	
+			}
+			
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		if(order_placed==true) {
+		
+	
 		
 		String order_des = wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='confirm-row'][2]"))).getText();
 		String exp_des ="Your package will include 2 Autobrain device as well as a 5 step quick start guide.";
@@ -276,7 +303,7 @@ public class GetAnotherDevice extends Login {
 		driver.switchTo().window(tabs.get(0));	
 		Thread.sleep(1000);
 		
-		
+		}
 		softassert.assertAll();
 
 	}

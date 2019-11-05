@@ -7,8 +7,8 @@ import com.base.Base;
 
 // 1.
 public class Login extends Base {
-
-
+boolean home_page_loaded;
+int n=1;
 
 
 
@@ -27,6 +27,15 @@ public class Login extends Base {
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 		
 		//Validation login
+		while(home_page_loaded==false) {
+			try {
+			home_page_loaded =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).isDisplayed();	
+			} catch(Exception e) {
+				System.out.println("Home page not loaded properly.");
+				break;
+			}
+		}
+				
 		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
 		Thread.sleep(2000);
 		softassert.assertAll();

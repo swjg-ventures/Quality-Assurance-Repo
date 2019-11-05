@@ -10,7 +10,7 @@ public class StolenCar extends Login {
 	boolean car_stolen_page;
 	
 	public void stolen_car() throws Exception {
-		
+		driver.navigate().refresh();
 		//Click on stolen car from main menu
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).click();
 		
