@@ -5,9 +5,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import com.base.Base;
 
-// 1.
+
 public class Login extends Base {
-boolean home_page_loaded;
+boolean home_page_loaded, desktop_notification;
 int n=1;
 
 
@@ -26,6 +26,9 @@ int n=1;
 		//Click on login button
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 		
+		//Print console errors
+		extractJSLogsInfo();
+		
 		//Validation login
 		while(home_page_loaded==false) {
 			try {
@@ -35,12 +38,30 @@ int n=1;
 				break;
 			}
 		}
-				
+			
 		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
+		desktop_notification_alert();
+	
+		
+		
+		
 		Thread.sleep(2000);
 		softassert.assertAll();
 	}
 		
+	
+	//Desktop notification alert
+	public void desktop_notification_alert() {
+		try {
+			desktop_notification = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Desktop Notifications')]"))).size()==1;
+			if(desktop_notification==true) {
+				driver.findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
+			}
+			} catch(Exception e) {
+				
+			}	
+	}
+	
 	
 	
 //Case 2. Logout Method

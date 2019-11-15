@@ -227,19 +227,19 @@ public class Register_Repeat extends Login {
 					}
 					
 					//STEP 1
-					step_1(Device_Num);		
+					step_1(Device_Num);	extractJSLogsInfo();	
 					
 					//STEP 2
-					step_2();
+					step_2(); extractJSLogsInfo();	
 					
 					//STEP 3
-					step_3();
+					step_3(); extractJSLogsInfo();	
 					
 					//STEP 4
-					step_4();
+					step_4(); extractJSLogsInfo();	
 					
 					//Done
-					done();
+					done(); extractJSLogsInfo();	
 					
 					while(reg_success==false) {
 						Thread.sleep(3000);
@@ -460,7 +460,7 @@ public class Register_Repeat extends Login {
 		
 // Form 3 		Monitor and Driver setup
 				public void step_2() throws Exception {
-					
+				
 				//Click on Add new monitor button
 				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add New Monitor')]"))).click();
 				

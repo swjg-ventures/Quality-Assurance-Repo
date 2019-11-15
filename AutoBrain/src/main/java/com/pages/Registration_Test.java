@@ -24,7 +24,8 @@ public class Registration_Test extends Register_Repeat {
 		// Calling login method
 		Login l = new Login();
 		l.login();
-
+		extractJSLogsInfo();
+		
 		// Click on Menu button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
 				.click();
@@ -49,7 +50,6 @@ public class Registration_Test extends Register_Repeat {
 		wait(driver, 20).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add To Cart')]")))
 				.click();
-
 
 		
 
@@ -192,9 +192,12 @@ public class Registration_Test extends Register_Repeat {
 		wait(driver, 20).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit My Order')]")))
 				.click();
-
+		
+		//Caught console error
+		extractJSLogsInfo();
+		
 		// Verify order placed or not
-		boolean order_placed = wait(driver, 30).until(ExpectedConditions
+		boolean order_placed = wait(driver, 15).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//h2[contains(text(),'Thank You For Your Order')]")))
 				.size() == 1;
 		softassert.assertEquals(order_placed, true);
@@ -207,9 +210,7 @@ public class Registration_Test extends Register_Repeat {
 		//Switching to main window
 		driver.switchTo().window(tabs.get(0));	
 		Thread.sleep(1000);
-		
-		
-		
+
 		
 		ar.add(Email);
 		
@@ -287,8 +288,7 @@ public class Registration_Test extends Register_Repeat {
 			//Email already exist
 			if(email_alert==true) {
 				driver.navigate().to("https://stg.autobrain.com");
-				signup();	
-				
+				signup();		
 			}
 	
 		}
@@ -304,7 +304,7 @@ public class Registration_Test extends Register_Repeat {
 		}
 		
 		else {					
-			Verify_Register();
+			System.out.println("Not Registered Successfully!");
 		}
 		
 		//MAILINATOR.COM
@@ -321,13 +321,14 @@ public class Registration_Test extends Register_Repeat {
 		//Click on Email button
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'EMAIL')]"))).click();
 		Thread.sleep(4000);
-		//Enter registered email id 
-		if(email_2!=null) {
-			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='inbox_field']"))).sendKeys(email_2);
-		}
-		else {
+		
+		//Enter registered email id
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='inbox_field']"))).sendKeys(entered_email);
-		}
+		
+		
+		
+		
+		
 		//Click on Go button
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("go_inbox"))).click(); Thread.sleep(2000);
 		
@@ -412,8 +413,6 @@ public class Registration_Test extends Register_Repeat {
 		}
 		
 		Thread.sleep(5000);
-	
-		
 		softassert.assertAll();
 		
 	}

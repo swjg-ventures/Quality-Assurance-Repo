@@ -12,16 +12,11 @@ public class CarFinder extends Login {
 
 		
 		//Refreshing the home page
-		driver.navigate().to("https://stg.autobrain.com/");
-		
+		driver.navigate().to(url);
+		desktop_notification_alert();
+		Thread.sleep(2000);
 		//Click on car finder
-		List<WebElement> Car_Finder=wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'CAR FINDER')]")));
-		for(int i=0; i<Car_Finder.size(); i++) {
-			if(i==1) {
-				Thread.sleep(2000);
-				Car_Finder.get(i).click();			
-			}
-		}
+		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[1]/a/div[2]"))).click();
 		
 		//Validating correct page opened or not
 		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/cars/1604/car_finder");
@@ -87,7 +82,7 @@ public class CarFinder extends Login {
 		
 		//Click on the Home bottom menu button
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Home')]"))).click();
-		
+		desktop_notification_alert();
 		softassert.assertAll();
 	}
 }

@@ -10,7 +10,7 @@ public class ListOfCars extends Login {
 		SoftAssert softassert = new SoftAssert();
 		
 		//Calling login method
-//		ValidLogin();
+//		login();
 	
 		for (int i=0; i<2; i++) {
 			String xpath=null;
@@ -22,6 +22,7 @@ public class ListOfCars extends Login {
 			xpath ="//span[contains(text(),'Steven')]";	
 			}
 			
+			Thread.sleep(2000);
 		//Expanding the drop-down list
 		wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='active-car-title']"))).click();
 		
@@ -33,13 +34,16 @@ public class ListOfCars extends Login {
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
 		Thread.sleep(4000);
 		
+		//Check if desktop alert open 
+		desktop_notification_alert();
+		
 		//Get selected car name
 		String exp_carname= wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='active-car-title']"))).getText();
 		
 		//Validating both car name
 		softassert.assertEquals(act_carname, exp_carname);
 		}
-		
+		Thread.sleep(3000);
 		softassert.assertAll();
 	}
 }

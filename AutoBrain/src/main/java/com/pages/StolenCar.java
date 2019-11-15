@@ -10,7 +10,8 @@ public class StolenCar extends Login {
 	boolean car_stolen_page;
 	
 	public void stolen_car() throws Exception {
-		driver.navigate().refresh();
+		
+		desktop_notification_alert();
 		//Click on stolen car from main menu
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).click();
 		
@@ -53,9 +54,7 @@ public class StolenCar extends Login {
 	
 	//Click on Home bottom menu button
 	wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Home')]"))).click();
-	driver.navigate().refresh();
-	Thread.sleep(4000);
-		softassert.assertAll();
+	softassert.assertAll();
 	}
 
 }

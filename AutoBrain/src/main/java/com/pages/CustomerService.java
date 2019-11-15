@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class CustomerService extends Login {
 
 	public void customer_service() throws Exception {
-
+//		login();
 
 		// Click on customer service
 		List<WebElement> Car_Finder = wait(driver, 20).until(
@@ -44,6 +44,7 @@ public class CustomerService extends Login {
 		
 		//Closing the opened chat box
 		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("minimize"))).click();
+		driver.switchTo().parentFrame();
 		Thread.sleep(4000);
 		
 	}

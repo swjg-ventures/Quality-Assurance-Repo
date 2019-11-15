@@ -9,8 +9,8 @@ public class CallEmergency extends Login {
 	boolean error_msg;
 	
 	public void call_emergency() throws Exception {
+//		login();
 		
-		driver.navigate().refresh();
 		// Click on call emergency button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[3]/div[5]/div/div[2]"))).click();
 		
@@ -29,18 +29,18 @@ public class CallEmergency extends Login {
 	
 		//Get error message
 		try {
-		 error_msg = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'There was an error')]"))).size()==0;
+		 error_msg = wait(driver, 7).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'There was an error')]"))).size()==0;
 		
 		//Click the opened message box
-		 wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'There was an error')]/following-sibling::div/button"))).click();
+		 wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'There was an error')]/following-sibling::div/button"))).click();
 		
 		//Validating error message exist or not
 		 softassert.assertEquals(error_msg, true, "There was an error while attempting to request emergency services.");
 		} 
 		catch(Exception e) {
-			softassert.assertEquals(error_msg, false, "Success message not found!");
+			driver.findElement(By.xpath("//div[contains(text(),'Emergency Services have been')]/following-sibling::div/button")).click();
 		}
-		
+		softassert.assertEquals(error_msg, false, "Success message not found!");
 		
 		
 		softassert.assertAll();

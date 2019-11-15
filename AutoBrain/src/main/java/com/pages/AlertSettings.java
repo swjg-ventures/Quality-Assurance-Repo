@@ -20,9 +20,10 @@ public class AlertSettings extends Login {
 		
 		// Login
 //		login();
+		desktop_notification_alert();
 		Thread.sleep(2000);
 		// Sliding to next page
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
+		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
 		
 		// Click on alert settings button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[4]/div[3]/a/div[2]"))).click();
