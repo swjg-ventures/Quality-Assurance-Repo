@@ -5,16 +5,28 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.logging.Level;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
+import Library.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 	public class Base {
@@ -35,14 +47,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			
 			else if (bro.equalsIgnoreCase("chrome"))
 			{
-				//Open window incognito mode
-			/*
-			 * ChromeOptions c = new ChromeOptions(); c.addArguments("incognito");
-			 */			
+				DesiredCapabilities capabilities = new DesiredCapabilities().chrome();
+				LoggingPreferences logginpre = new LoggingPreferences();
+				logginpre.enable(LogType.BROWSER, Level.ALL);
+				capabilities.setCapability(CapabilityType.LOGGING_PREFS, logginpre);
+				
 				
 				//Driver to launch chrome browser
 				WebDriverManager.chromedriver().setup();			
-			    driver = new ChromeDriver();
+			    driver = new ChromeDriver(capabilities);
 			}
 			
 			driver.manage().deleteAllCookies();
@@ -60,6 +73,16 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 				}
 			} 
 		
+		
+		public void extractJSLogsInfo() throws Exception{
+			LogEntries logEntries= driver.manage().logs().get(LogType.BROWSER);
+			for(LogEntry entry : logEntries) {
+				System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " "+ entry.getMessage());
+			}
+		}
+		
+		
+		
 		//Wait method until the element not found for given time-frame
 		public WebDriverWait wait(WebDriver driver, int time) {
 			WebDriverWait wait = new WebDriverWait(driver, time);
@@ -72,6 +95,19 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			driver.quit();
 		
 		}
+		
+		
+		
+		@AfterMethod
+		public void tearDown(ITestResult result) {
+			
+			if(ITestResult.FAILURE==result.getStatus()) {
+				Utility u = new Utility();
+				u.capscreenshot(result.getName());
+			}
+		}
+		
+
 		
 		//DATE FORMATE CHANGE METHOD
 		public static String date_format(String sdate) throws Exception {
@@ -92,5 +128,27 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 			Thread.sleep(4000);
 				}
+		
+		
+		//Hard refresh page
+		public void hard_refresh_page() throws Exception {
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_F5);
+			robot.keyRelease(KeyEvent.VK_F5);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+		}
+		
+		//Scroll until the element not found
+		public void scroll_until_ele_not_found(List<WebElement> Element) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;			
+			int i = Element.size();
+			WebElement ele = Element.get(i-1);
+		    js.executeScript("arguments[0].scrollIntoView();", ele);
+		    
+		}
+		
+		
+		
 		
 		}

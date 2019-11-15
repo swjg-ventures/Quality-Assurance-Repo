@@ -114,8 +114,24 @@
     <artifactId>thewaiter</artifactId>
     <version>1.0</version>
 </dependency>
-    
-        
+  
+  
+
+<!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
+<dependency>
+    <groupId>ru.yandex.qatools.ashot</groupId>
+    <artifactId>ashot</artifactId>
+    <version>1.5.3</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.assertthat/selenium-shutterbug -->
+<dependency>
+    <groupId>com.assertthat</groupId>
+    <artifactId>selenium-shutterbug</artifactId>
+    <version>0.9.3</version>
+</dependency>
+
+
     
   </dependencies>
 </project>
