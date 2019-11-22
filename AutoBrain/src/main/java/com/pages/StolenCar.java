@@ -13,7 +13,8 @@ public class StolenCar extends Login {
 		
 		desktop_notification_alert();
 		//Click on stolen car from main menu
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).click();
+		List<WebElement> stolen_car=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'STOLEN CAR')]")));
+		stolen_car.get(1).click();
 		
 		
 		//Verify car stolen page open

@@ -22,19 +22,33 @@ public class AlertSettings extends Login {
 //		login();
 		desktop_notification_alert();
 		Thread.sleep(2000);
-		// Sliding to next page
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
 		
-		// Click on alert settings button
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[4]/div[3]/a/div[2]"))).click();
-		Thread.sleep(4000);
+		try 
+		{
+			// Click on alert settings button
+			List<WebElement> alert_sett=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'ALERT SETTINGS')]")));
+			alert_sett.get(1).click();
+			Thread.sleep(4000);	
+		}
+		
+		catch(Exception e)
+		{
+			// Sliding to next page
+			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
+			
+			// Click on alert settings button
+			List<WebElement> alert_sett=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'ALERT SETTINGS')]")));
+			alert_sett.get(1).click();
+			Thread.sleep(4000);	
+		}
+		
+		
 
 		// Storing all status
 		List<WebElement> status = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']")));
 		
 
 		// Storing all status ON / OFF name
-//		List<WebElement> on_off = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
 		List<WebElement> on_off = wait(driver, 10).until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span"))));
 		
 		for(i=0; i<status.size(); i++) {		
@@ -67,15 +81,23 @@ public class AlertSettings extends Login {
 			
 			for(j=i; j==i; j++ ) {	
 			if(j==7 || j==8 ) {
-				Thread.sleep(4000);
+				Thread.sleep(5000);
 			}
 			arr.add(on_off.get(j).getText());
+			
+			for(int s=j; s==j; s++)
+			{
+				System.out.println(j+"."+" "+arr.get(s));
+			}
+			
+			
 			
 			}
 			
 			
 		}
 		
+		System.out.println("----------------------------------------------------");
 		// Refreshing the page
 		Thread.sleep(4000);
 		driver.navigate().refresh();
@@ -186,6 +208,20 @@ public class AlertSettings extends Login {
 		String err_msg ="Status not matching before refreshing the page. Status should be same before or after update the page.";
 		Thread.sleep(2000);
 		List<WebElement> On_Off_Status = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']//span")));
+		
+		//////
+		for(int f=0; f<On_Off_Status.size(); f++) {
+			
+			System.out.println(f+"."+" "+On_Off_Status.get(f).getText());
+		}
+		System.out.println("----------------------------------------------------");
+		
+		///////////////
+		
+		
+		
+		
+		
 		
 		// CAR HEALTH ALERTS
 		String Exp1_Car_Health_Alerts = On_Off_Status.get(0).getText();

@@ -16,7 +16,8 @@ boolean order_placed;
 	
 
 		// Calling login method
-	//	ValidLogin();
+//		login();
+	
 
 		// Click on Menu button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
@@ -197,21 +198,32 @@ boolean order_placed;
 		
 		
 
-		while(order_placed==false) {
-			try {
-				order_placed=	wait(driver, 30).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h2[contains(text(),'Thank You For Your Order')]"))).size() == 1;
+		if(order_placed==false) 
+		{
+			try 
+			{
+				order_placed=	wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h2[contains(text(),'Thank You For Your Order')]"))).size() == 1;
 			} 
-			catch(Exception e) {
-				//Closing current window
-				driver.switchTo().window(tabs.get(1)).close();
-				Thread.sleep(1000);
-				
-				//Switching to main window
-				driver.switchTo().window(tabs.get(0));	
-				Thread.sleep(1000);	
+			catch(Exception e) 
+			{
+					
 			}
 			
-			}
+		}
+		
+			//Validate card processed or not
+			softassert.assertEquals(order_placed, true, "There was an error processing card!");
+			
+			//Switching to main window
+			driver.switchTo().window(tabs.get(0));	
+			Thread.sleep(1000);
+		
+			//Closing last opened window		
+			driver.switchTo().window(tabs.get(1)).close();
+			driver.switchTo().window(tabs.get(0));	
+			Thread.sleep(1000);
+		
+			
 		
 		
 		
@@ -219,13 +231,8 @@ boolean order_placed;
 		
 		
 		
-		
-		
-		
-		
-		if(order_placed==true) {
-		
-	
+		if(order_placed==true)
+		{
 		
 		String order_des = wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='confirm-row'][2]"))).getText();
 		String exp_des ="Your package will include 2 Autobrain device as well as a 5 step quick start guide.";

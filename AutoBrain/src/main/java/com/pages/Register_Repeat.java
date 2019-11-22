@@ -321,8 +321,8 @@ public class Register_Repeat extends Login {
 			Thread.sleep(1000);
 			
 			//Fill Up Insurance and Registration Forms
-			VehicleProfile v = new VehicleProfile();
-			v.Ins_Reg_Forms(); 
+//			VehicleProfile v = new VehicleProfile();
+//			v.Ins_Reg_Forms(); 
 			
 			//Check terms and conditions
 			List<WebElement> el = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='esf']/div[1]")));
@@ -337,31 +337,32 @@ public class Register_Repeat extends Login {
 			//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 			if(add_creadit_card_page==false) {
 			try {
-			add_creadit_card_page= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+			add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
 			if(add_creadit_card_page ==true) {
 				add_credit_card();
 			}
 			
 			} catch(Exception e) {
-				
-				
-			}
-			}
-			
-			
-			//If credit card page not found then try with refresh the page
-			if(add_creadit_card_page==false) {
-				driver.navigate().refresh();
-				try {
-					add_creadit_card_page= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
-					softassert.assertEquals(add_creadit_card_page, false,"After Step 1, Add credit card page not found. It appear only after refresh the page.");
-					add_credit_card();
-					
-				} catch(Exception e) {
-				//		System.out.println("After refresh, Add credit card page not found again!");
-				//		softassert.assertEquals(add_creadit_card_page, true,"After refresh, Add credit card page not found again!");
 						
-					}		
+			}
+			}
+			
+			
+			//If credit card page not found then try with refreshing the page
+			if(add_creadit_card_page==false) 
+			{
+				driver.navigate().refresh();
+				try 
+				{
+					add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+					softassert.assertEquals(add_creadit_card_page, false,"After Step 1, Add credit card page not found. It appear only after refresh the page.");
+					add_credit_card();					
+				} 
+				
+				catch(Exception e) 
+				{
+					
+				}		
 			}
 		
 			Thread.sleep(2000);
@@ -559,6 +560,7 @@ public class Register_Repeat extends Login {
 				softassert.assertEquals(list_mon2, true,"Added Driver not found in List Of All Monitors And Drivers!");
 				
 				//Finally click on Save and Go To Next Step button
+				Thread.sleep(2000);
 				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]"))).click();
 				
 				// Validate Step 3 page opened
@@ -577,7 +579,8 @@ public class Register_Repeat extends Login {
 		
 		
 // Form 4				Introduction to Safety Modes
-						public void step_3() {
+						public void step_3() throws Exception {
+							Thread.sleep(2000);
 						wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Skip')]"))).click();	
 						
 						// Validate Step 4 page opened
@@ -594,7 +597,8 @@ public class Register_Repeat extends Login {
 	
 
 //Form 5			Roadside Emergency Card
-						public void step_4() {
+						public void step_4() throws Exception {
+							Thread.sleep(2000);
 							wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To')]"))).click();	
 							
 							// Validate Step 5 page opened
@@ -612,8 +616,8 @@ public class Register_Repeat extends Login {
 		
 		
 //Form 6			Done
-					public void done() {
-						
+					public void done() throws Exception {
+						Thread.sleep(2000);
 						//Click on Finish button
 						wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Finish')]"))).click();
 						

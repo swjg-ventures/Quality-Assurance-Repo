@@ -1,12 +1,11 @@
 package com.base;
-
-
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +17,7 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -25,19 +25,21 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import Library.Utility;
+import atu.testrecorder.ATUTestRecorder;
+import atu.testrecorder.exceptions.ATUTestRecorderException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 	public class Base {
+	boolean page_load;	
 	public static WebDriver driver;
 	public String url ="https://stg.autobrain.com/";	
 	public SoftAssert softassert = new SoftAssert();
-	
+	ATUTestRecorder recorder;
 		@BeforeClass
 		@Parameters("Browsers")
-		public void CheckBrowsers(String bro)
-		{
+		public void CheckBrowsers(String bro) throws Exception
+		{			
 			if(bro.equalsIgnoreCase("firefox")) 
 			{
 			//Driver to launch firefox browser
@@ -56,6 +58,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 				//Driver to launch chrome browser
 				WebDriverManager.chromedriver().setup();			
 			    driver = new ChromeDriver(capabilities);
+//			    recorder= new ATUTestRecorder("Images", "mhyvid", false);
+//			    recorder.start();
 			}
 			
 			driver.manage().deleteAllCookies();
@@ -74,6 +78,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			} 
 		
 		
+		//CAPTURE CONSOLE ERROR
 		public void extractJSLogsInfo() throws Exception{
 			LogEntries logEntries= driver.manage().logs().get(LogType.BROWSER);
 			for(LogEntry entry : logEntries) {
@@ -83,22 +88,47 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		
 		
 		
-		//Wait method until the element not found for given time-frame
+		//MAIN PAGE RELOAD
+		public void main_page() 
+		{
+			driver.get(url);
+			while(page_load==false) 
+			{
+				try 
+				{
+				page_load =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).isDisplayed();	
+				} 
+				
+				catch(Exception e) 
+				{
+					System.out.println("Home page not loaded properly.");
+					break;
+				}
+			}
+		}
+		
+		
+		
+		//WAIT METHOD
 		public WebDriverWait wait(WebDriver driver, int time) {
 			WebDriverWait wait = new WebDriverWait(driver, time);
 			return wait;
 		}
 
+		
+		//QUIT BROWSER
 		@AfterClass
 		public void quit() throws Exception{
 			Thread.sleep(5000);
 			driver.quit();
+//			recorder.stop();
 		
 		}
 		
 		
 		
-		@AfterMethod
+		//CAPTURE SCREENSHOT IF THE TEST GOT FAILED
+//		@AfterMethod
 		public void tearDown(ITestResult result) {
 			
 			if(ITestResult.FAILURE==result.getStatus()) {
@@ -119,7 +149,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		}
 		
 		
-		//Open new tab in browser
+		//OPEN NEW TAB IN BROWSER
 		public void new_tab() throws Exception {
 			Robot robot = new Robot();
 			robot.keyPress(KeyEvent.VK_CONTROL);
@@ -130,7 +160,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 				}
 		
 		
-		//Hard refresh page
+		//HARD REFRESH PAGE
 		public void hard_refresh_page() throws Exception {
 			Robot robot = new Robot();
 			robot.keyPress(KeyEvent.VK_CONTROL);
@@ -139,7 +169,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			robot.keyRelease(KeyEvent.VK_CONTROL);
 		}
 		
-		//Scroll until the element not found
+		//SCROLL UNITL THE ELEMENT NOT FOUND
 		public void scroll_until_ele_not_found(List<WebElement> Element) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;			
 			int i = Element.size();

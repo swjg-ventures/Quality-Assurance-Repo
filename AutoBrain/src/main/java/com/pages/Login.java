@@ -41,10 +41,6 @@ int n=1;
 			
 		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
 		desktop_notification_alert();
-	
-		
-		
-		
 		Thread.sleep(2000);
 		softassert.assertAll();
 	}

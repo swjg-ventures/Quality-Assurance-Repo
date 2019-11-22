@@ -7,11 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+
 public class Registration_Test extends Register_Repeat {
 	boolean reg_success;
 	String email_2;
 	 Random randomGenerator = new Random();  
-	 int randomInt = randomGenerator.nextInt(1000);
+//	 int randomInt = randomGenerator.nextInt(1000);
 	 ArrayList<String> ar = new ArrayList<String>();
 
 	
@@ -19,8 +20,9 @@ public class Registration_Test extends Register_Repeat {
 		String F_name = "Test", L_name = "Demo", Street = "Demo 123 street",
 				City = "Califonia", State = "Texas", Zip = "55525", Phone = "1236547895", Card_Name = "Demo card",
 				Card_CVV = "555", Card_No = "4242424242424242";
+		int randomInt = randomGenerator.nextInt(1000);
 		String Email = "demouser"+randomInt+"@mailinator.com";
-
+		
 		// Calling login method
 		Login l = new Login();
 		l.login();
@@ -191,7 +193,9 @@ public class Registration_Test extends Register_Repeat {
 		// Click on submit my order button
 		wait(driver, 20).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit My Order')]")))
-				.click();
+				.click(); 
+		
+		Thread.sleep(2000);
 		
 		//Caught console error
 		extractJSLogsInfo();
@@ -320,7 +324,7 @@ public class Registration_Test extends Register_Repeat {
 		
 		//Click on Email button
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'EMAIL')]"))).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		
 		//Enter registered email id
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='inbox_field']"))).sendKeys(entered_email);
@@ -364,6 +368,7 @@ public class Registration_Test extends Register_Repeat {
 			break;
 		}	
 		}
+		
 		
 		//STEP 1
 		step_1(ar.get(1));		

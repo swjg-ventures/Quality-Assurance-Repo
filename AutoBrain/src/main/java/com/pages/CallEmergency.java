@@ -1,18 +1,23 @@
 package com.pages;
 
 
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class CallEmergency extends Login {
 	boolean error_msg;
 	
-	public void call_emergency() throws Exception {
+		public void call_emergency() throws Exception {
 //		login();
 		
 		// Click on call emergency button
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[3]/div[5]/div/div[2]"))).click();
+		List<WebElement> call_emer=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'CALL EMERGENCY')]")));
+		call_emer.get(1).click();
+		
 		
 		Thread.sleep(2000);
 		//Select number of people involved in accident

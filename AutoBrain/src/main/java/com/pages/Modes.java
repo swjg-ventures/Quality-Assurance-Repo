@@ -9,23 +9,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Modes extends Login {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
-	
+	String last_geofence, enter_geofence="Test_Demo", dlt_geofence;
 	public void mode() throws Exception {
-		login();
+//		login();
 		
-		//Click on Mode from main menu
-				List<WebElement> mode = wait(driver, 20).until(ExpectedConditions
-						.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
-				for (int i = 0; i < mode.size(); i++) {
-					if (i == 1) {
-						Thread.sleep(2000);
-						mode.get(i).click();
-						Thread.sleep(3000);
-					}
-				}
+		main_page();
+		
+			//Click on Mode from main menu
+			List<WebElement> mode = wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
+			mode.get(1).click();
+						
 				
 			//Scrolling page to the bottom
-				WebElement Element = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[contains(text(),'Add A New Address')]")));
+			WebElement Element = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[contains(text(),'Add A New Address')]")));
 			js.executeScript("arguments[0].scrollIntoView();",Element );
 			Thread.sleep(1000);
 			
@@ -33,7 +29,7 @@ public class Modes extends Login {
 			Element.click();
 			
 			//Enter Title of geo location
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Title']"))).sendKeys("Test");
+			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Title']"))).sendKeys(enter_geofence);
 			
 			//Enter Geo Location Address
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Address or Location']"))).sendKeys("1250");
@@ -44,23 +40,62 @@ public class Modes extends Login {
 			
 			//Selecting address which is on first index
 			WebElement first_location=	wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_12V4dTH1KHShAbyaEfEsMl_0'][1]")));
-			String Exp_Location_Name=	first_location.getText();
 			first_location.click();
 			Thread.sleep(2000);
 			
 			//Click on the Submit button
 			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]"))).click();
+			Thread.sleep(2000);
 			
-			//Getting total number of added locations
-			List<WebElement> Total_Geo_Places = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']/text()")));
+			//Created geo-fence name		
+			List<WebElement> el = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']")));	
+			last_geofence = el.get(el.size()-1).getText();
 			
-			//Getting last added location name 
-			for(int i=1; i<Total_Geo_Places.size(); i++) {
+			//Validating geo-fence created 
+			softassert.assertEquals(last_geofence, enter_geofence, "Geo-fence not created!");
+			
+			//Delete last added geo-fence
+			delete_geo_fence();
+			
+	}
+	
+	
+	
+			//Delete geo-fence		
+			public void delete_geo_fence() throws Exception 
+			{
+				Thread.sleep(2500);
 				
-				String Act_Location_Name = Total_Geo_Places.get(i).getText();
-				Thread.sleep(1000);
+				//Created geo-fence name	
+				try 
+				{
+				List<WebElement> el = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@class='fa fa-trash _2XkqKinBcWdxg7eyNtIeUK_0']")));		
 				
+				Thread.sleep(2000);
+				el.get(el.size()-1).click();
+				Thread.sleep(2000);
+				} 
+				
+				catch(Exception e) 
+				{
+				e.printStackTrace();
+				}
+				
+				//Validate geo fence deleted
+				List<WebElement> ell = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']")));	
+				
+				for(int i=0; i<ell.size(); i++) 
+				{
+				dlt_geofence = ell.get(i).getText();
+				if(dlt_geofence.contains(enter_geofence)) {
+					System.out.println("Not Deleted successfully!");
+				}
+				
+				}
 			}
 	
-	}
+	
+	
+	
+	
 }
