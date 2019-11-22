@@ -417,7 +417,7 @@ public class Registration_Test extends Register_Repeat {
 		}
 		}
 		
-		Thread.sleep(5000);
+		Thread.sleep(5000); 
 		softassert.assertAll();
 		
 	}

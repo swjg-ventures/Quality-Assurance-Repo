@@ -372,6 +372,16 @@ public class Register_Repeat extends Login {
 		
 //FORM 2		// ADD CREDIT CARD
 		public void add_credit_card() throws Exception {
+			
+			//Choose Plan
+			WebElement money_save= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")));
+			money_save.click();
+			
+			//Choose Billing Interval
+			WebElement monthly= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Monthly')]/following-sibling::button")));
+			monthly.click();	
+			
+			
 			// Enter First name
 			wait(driver, 15)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']")))
@@ -564,14 +574,42 @@ public class Register_Repeat extends Login {
 				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]"))).click();
 				
 				// Validate Step 3 page opened
-				while(safty_modes==false) {
-					try {
-						safty_modes= wait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Introduction to Safety Modes')]"))).size()==1;
-					} catch(Exception e) {
-						System.out.println("Safty Modes page not found.");
-						break;
+				if(safty_modes==false) 
+				{
+					try 
+					{
+						safty_modes= wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Introduction to Safety Modes')]"))).size()==1;
+					} 
+					
+					catch(Exception e) 
+					
+					{	
+						
 					}
-						}
+					
+				}
+				
+				
+				//Validating Step 2 form submitted
+				softassert.assertEquals(safty_modes, true, "Step 2 form not submitted first time! User needs to submit the form twice!");
+				
+				if(safty_modes==false)
+				{
+					//Submit Step 2 again
+					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]"))).click();	
+					
+					try 
+					{
+						safty_modes= wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Introduction to Safety Modes')]"))).size()==1;
+					} 
+					
+					catch(Exception e) 
+					
+					{
+						System.out.println("Safty Modes page not found. Clicked submit button twice!");			
+					}
+					
+				}
 				
 				}
 	
