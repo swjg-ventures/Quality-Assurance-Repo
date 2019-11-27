@@ -52,10 +52,13 @@ int n=1;
 			desktop_notification = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Desktop Notifications')]"))).size()==1;
 			if(desktop_notification==true) {
 				driver.findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
+				Thread.sleep(2000);
 			}
 			} catch(Exception e) {
 				
-			}	
+			}
+	
+		
 	}
 	
 	

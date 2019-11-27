@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class Register_Repeat extends Login {
+public class Register_by_panel_device extends Login {
 	int z = 1, x =1 ;
 	boolean add_credit_error, reg_success;
 	//Generating random email
@@ -87,7 +87,7 @@ public class Register_Repeat extends Login {
 		public void Verify_Register() throws Exception {
 			
 			//Calling Create Device Method
-			 Device_Num = create_device_number();
+			 Device_Num = create_device_by_panel();
 					//Clicking on sign-up button
 					wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'SIGN UP')]"))).click();	
 			
@@ -332,12 +332,10 @@ public class Register_Repeat extends Login {
 			//Submit
 			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]"))).click();
 			
-			Thread.sleep(2000);
-			
 			//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 			if(add_creadit_card_page==false) {
 			try {
-			add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+			add_creadit_card_page= wait(driver, 25).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
 			if(add_creadit_card_page ==true) {
 				add_credit_card();
 			}
@@ -619,7 +617,7 @@ public class Register_Repeat extends Login {
 // Form 4				Introduction to Safety Modes
 						public void step_3() throws Exception {
 							Thread.sleep(2000);
-						wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Skip')]"))).click();	
+						wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Skip')]"))).click();	
 						
 						// Validate Step 4 page opened
 						while(alert_setting==false) {
@@ -672,15 +670,12 @@ public class Register_Repeat extends Login {
 						
 						
 						
-						
-						
-						
-						
+					
 						
 		
 		
 		//CREATE DEVICE NUMBER FROM WORKER PANEL
-		public String create_device_number() throws Exception {
+		public String create_device_by_panel() throws Exception {
 			String device_num=null;	
 			//Login
 			login();

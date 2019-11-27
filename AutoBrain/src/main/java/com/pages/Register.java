@@ -87,7 +87,7 @@ public class Register extends Login {
 		public void register() throws Exception {
 			
 			//Calling Create Device Method
-			 Device_Num = create_device_number();
+					Device_Num = create_device_number();
 					//Clicking on sign-up button
 					wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'SIGN UP')]"))).click();	
 			

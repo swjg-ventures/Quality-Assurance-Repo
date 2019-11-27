@@ -1,5 +1,7 @@
 package com.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -9,21 +11,35 @@ import org.testng.Assert;
 
 
 public class BeepCarpool extends Login {
-boolean beep_page, form_page, member_created;
+boolean beep_page, form_page, member_created, beep_carpool_btn=true, beep_friends_btn=true;
 	
 	
 	
 	public void beep_carpool() throws Exception {
-		driver.navigate().to(url);
-		desktop_notification_alert();
+		
 //		login();
 		
+		driver.navigate().to(url);
+		desktop_notification_alert();
 		// Sliding to next page
 		Thread.sleep(2000);
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
 		
+		try
+		{
 		// Click on beep carpool button
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[4]/div[5]/a/div[2]"))).click();
+		List<WebElement> beep_btn= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'BEEP CARPOOL')]")));
+		beep_btn.get(1).click();
+		}
+		
+		catch(Exception e)
+		{
+			beep_carpool_btn=false;
+			e.printStackTrace();
+		}
+		
+		
+		Assert.assertEquals(beep_carpool_btn, true, "Beep carpool button is disabled!");
 		
 		//Validate beep carpool page opened
 		beep_page = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Add a New Carpool Member')]"))).size()==1;
@@ -82,14 +98,28 @@ boolean beep_page, form_page, member_created;
 	}
 	
 	
+	
+	
 	public void add_frnd_from_beep_frnd() throws Exception {
 		
 		Thread.sleep(2000);
 		// Sliding to next page
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();
-				
+		
+		try
+		{
 		// Click on beep carpool button
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul/li[4]/div[4]/a/div[2]"))).click();
+		List<WebElement> beep_frnd_btn= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'BEEP FRIENDS')]")));
+		beep_frnd_btn.get(1).click();
+		}
+		
+		catch(Exception e)
+		{
+			beep_friends_btn=false;
+			e.getStackTrace();
+		}
+		
+		Assert.assertEquals(beep_friends_btn, true, "Beep friends button is disabled!");
 		
 		
 		//Click on Add a New Carpool Member button

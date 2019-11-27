@@ -2,24 +2,25 @@ package com.pages;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 
-public class Registration_Test extends Register_Repeat {
-	boolean reg_success;
-	String email_2;
-	 Random randomGenerator = new Random();  
-//	 int randomInt = randomGenerator.nextInt(1000);
-	 ArrayList<String> ar = new ArrayList<String>();
+public class Registration extends Register_by_panel_device {
+	String F_name = "Test", L_name = "Demo", Street = "Demo 123 street", City = "Califonia", State = "Texas", Zip = "55525", 
+			Phone = "1236547895", Card_Name = "Demo card",
+			Card_CVV = "555", Card_No = "4242424242424242";	
+	 
+	ArrayList<String> ar = new ArrayList<String>();
 
 	
 	 public ArrayList<String> BuyDevice() throws Exception {
-		String F_name = "Test", L_name = "Demo", Street = "Demo 123 street",
-				City = "Califonia", State = "Texas", Zip = "55525", Phone = "1236547895", Card_Name = "Demo card",
-				Card_CVV = "555", Card_No = "4242424242424242";
+		
+		Random randomGenerator = new Random(); 
 		int randomInt = randomGenerator.nextInt(1000);
 		String Email = "demouser"+randomInt+"@mailinator.com";
 		
@@ -215,7 +216,7 @@ public class Registration_Test extends Register_Repeat {
 		driver.switchTo().window(tabs.get(0));	
 		Thread.sleep(1000);
 
-		
+		ar.clear();
 		ar.add(Email);
 		
 		
@@ -234,7 +235,7 @@ public class Registration_Test extends Register_Repeat {
 	
 	
 	
-	public void signup() throws Exception {
+	public void register() throws Exception {
 		BuyDevice();
 		
 		//Clicking on sign-up button
@@ -292,7 +293,7 @@ public class Registration_Test extends Register_Repeat {
 			//Email already exist
 			if(email_alert==true) {
 				driver.navigate().to("https://stg.autobrain.com");
-				signup();		
+				register();		
 			}
 	
 		}
@@ -323,7 +324,8 @@ public class Registration_Test extends Register_Repeat {
 		driver.get("https://www.mailinator.com");
 		
 		//Click on Email button
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'EMAIL')]"))).click();
+		List<WebElement> email_btn = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[contains(text(),'Email')]")));
+		email_btn.get(1).click();
 		Thread.sleep(2000);
 		
 		//Enter registered email id

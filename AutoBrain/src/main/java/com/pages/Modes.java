@@ -6,19 +6,31 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class Modes extends Login {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	String last_geofence, enter_geofence="Test_Demo", dlt_geofence;
+	boolean mode_status=true;
 	public void mode() throws Exception {
 //		login();
 		
-		main_page();
+			main_page(); 
+			desktop_notification_alert();
 		
+			try
+			{
 			//Click on Mode from main menu
 			List<WebElement> mode = wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
 			mode.get(1).click();
-						
+			}
+			catch(Exception e)
+			{
+				mode_status=false;
+				e.printStackTrace();
+			}
+			
+			Assert.assertEquals(mode_status, true, "Mode button is disabled!");
 				
 			//Scrolling page to the bottom
 			WebElement Element = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[contains(text(),'Add A New Address')]")));
