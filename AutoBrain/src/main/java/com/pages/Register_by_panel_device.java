@@ -227,19 +227,19 @@ public class Register_by_panel_device extends Login {
 					}
 					
 					//STEP 1
-					step_1(Device_Num);	extractJSLogsInfo();	
+					step_1(Device_Num);	
 					
 					//STEP 2
-					step_2(); extractJSLogsInfo();	
+					step_2(); 	
 					
 					//STEP 3
-					step_3(); extractJSLogsInfo();	
+					step_3(); 
 					
 					//STEP 4
-					step_4(); extractJSLogsInfo();	
+					step_4(); 
 					
 					//Done
-					done(); extractJSLogsInfo();	
+					done(); 
 					
 					while(reg_success==false) {
 						Thread.sleep(3000);

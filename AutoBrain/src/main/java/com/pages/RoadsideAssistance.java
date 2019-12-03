@@ -40,7 +40,7 @@ boolean form_open, active_request, check_assistance_complete;
 		
 				//Click on Roadside button
 				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Request Roadside')]"))).click();
-				extractJSLogsInfo();
+//				extractJSLogsInfo();
 				
 				wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Assistance Complete?')]"))).click();
 				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Yes')]"))).click();	

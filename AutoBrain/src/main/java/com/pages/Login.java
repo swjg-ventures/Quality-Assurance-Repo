@@ -27,7 +27,7 @@ int n=1;
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 		
 		//Print console errors
-		extractJSLogsInfo();
+//		extractJSLogsInfo();
 		
 		//Validation login
 		while(home_page_loaded==false) {

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
-// 3.
+
 public class ManageAccount extends Terms_Privay_Chat {
 	SoftAssert softassert = new SoftAssert();
 
@@ -410,36 +410,36 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 	// 7. METHOD- CUSTOMER INFORMATION
 	public void CustomerInfo() throws Exception {
-//		ValidLogin();
-		Thread.sleep(4000);
+		String fname, lname;	
 		// Click on corner dots to expand the menu
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
 
 		// Click on update contact info from expanded drop-down
-		wait(driver, 5)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Customer Info')]")))
-				.click();
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Update Contact Info')]"))).click();
+		
+		Thread.sleep(2000);	
+		fname=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='firstName']"))).getAttribute("value");
+		
+		lname=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='lastName']"))).getAttribute("value");
+
+		Thread.sleep(1000);	
+		// Click on corner dots to expand the menu
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click(); Thread.sleep(1500);	
+		
+		// Click on update contact info from expanded drop-down
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Customer Info')]"))).click();
 		Thread.sleep(4000);
-
-		String fname = wait(driver, 10).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name:')]/following-sibling::span")))
-				.getText();
+		
+		String get_fname = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name:')]/following-sibling::span"))).getText();
+		
 		// Validating First name
-		softassert.assertEquals(fname, "John");
+		softassert.assertEquals(fname, get_fname, "FirstName not mathicng with customer info details.");
 
-		String lname = wait(driver, 10).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name:')]/following-sibling::span")))
-				.getText();
+		String get_lname = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name:')]/following-sibling::span"))).getText();
 
 		// Validating Last name
-		softassert.assertEquals(lname, "Example");
-
-		String Cid = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("//span[contains(text(),'Customer Id:')]/following-sibling::span"))).getText();
-
-		// Validating Customer ID
-		softassert.assertEquals(Cid, "9rN6YKG");
+		softassert.assertEquals(lname, get_lname, "LastName not mathicng with customer info details.");
 		softassert.assertAll();
 	}
 

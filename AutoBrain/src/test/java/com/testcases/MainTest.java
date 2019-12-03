@@ -1,14 +1,17 @@
 package com.testcases;
 
 import org.testng.annotations.Test;
-
 import com.pages.AlertSettings;
+import com.pages.BeepCarpool;
 import com.pages.CallEmergency;
 import com.pages.CarFinder;
+import com.pages.CarGroups;
 import com.pages.CustomerService;
 import com.pages.DownloadApp;
 import com.pages.GetAnotherDevice;
 import com.pages.ListOfCars;
+import com.pages.Modes;
+import com.pages.RoadsideAssistance;
 import com.pages.StolenCar;
 import com.pages.Timeline;
 import com.pages.VehicleProfile;
@@ -27,139 +30,161 @@ public class MainTest extends VehicleProfile {
 		LogoutUser();
 	}
 
-	// SIGNUP
-//	@Test(priority = 3)
-	public void VerifyValidSignup() throws Exception {
-		ValidSignup();
-	}
-
 	// FORGOT PASSWORD
-	@Test(priority = 4)
+	@Test(priority = 3)
 	public void VerifyEnteringRegisteredEmailInForgotPasswordField() throws Exception {
 		RegisteredEmail();
 	}
 
 	// SIGNUP- TERMS AND CONDITIONS LINK
-	@Test(priority = 5)
+	@Test(priority = 4)
 	public void VerifyTermsAndConditionsLinkOnSignupPage() throws Exception {
 		TermsandConditions();
 	}
 
 	// SIGNUP- PRIVACY POLICY LINK
-	@Test(priority = 6)
+	@Test(priority = 5)
 	public void VerifyPrivacyPolicyLinkOnSignupPage() throws Exception {
 		PrivayPolicy();
 	}
 
 	// SINGUP- CHAT BUTTON FUNCTIONALITY
-	@Test(priority = 7)
+	@Test(priority = 6)
 	public void VerifyChatButtonFunctionality() throws Exception {
 		ChatButton();
 	}
 
 	// MANAGE ACCOUNT- UPDATE CONTACT INFO
-	@Test(priority = 8)
+	@Test(priority = 7)
 	public void VerifyUpdatingContactInfo() throws Exception {
 		UpdatingContactInfo();
 	}
 
 	// MANAGE ACCOUNT- CHANGE PASSWORD
-	@Test(priority = 9)
+	@Test(priority = 8)
 	public void VerifyChangePassword() throws Exception {
 		ChangePasswordWIthCorrectDetails();
 	}
 
 	// MANAGE ACCOUNT- ADD CREDIT CARD
-	@Test(priority = 10)
+	@Test(priority = 9)
 	public void VerifyAddNewCreditCard() throws Exception {
 		AddNewCreditCard();
 	}
 
 	// MANAGE ACCOUNT- UPDATE CREDIT CARD
-	@Test(priority = 11)
+	@Test(priority = 10)
 	public void VerifyUpdateCreditCard() throws Exception {
 		UpdateCreditCard();
 	}
 
 	// MANAGE ACCOUNT- CUSTOMER INFO
-	@Test(priority = 12)
+	@Test(priority = 11)
 	public void VerifyCustomerInfo() throws Exception {
 		CustomerInfo();
 	}
 
 	// MANAGE ACCOUNT- PRINT ROADSIDE CARD
-	@Test(priority = 13)
+	@Test(priority = 12)
 	public void VerifyPrintRoadsideCard() throws Exception {
 		PrintRoadsideCard();
 	}
 
 	// MENU- VEHICLE PROFILE
-	@Test(priority = 14)
+	@Test(priority = 13)
 	public void VerifyVehicleProfile() throws Exception {
 		VehicleProfileInfo();
 	}
 
 	// DOWNLOAD APP
-	@Test(priority = 15)
+	@Test(priority = 14)
 	public void VerifyDownloadApp() throws Exception {
 		DownloadApp dapp = new DownloadApp();
 		dapp.DownloadAppLinks();
 	}
 
 	// GET ANOTHER DEVICE
-	@Test(priority = 16)
+	@Test(priority = 15)
 	public void VerifyBuyDevice() throws Exception {
 		GetAnotherDevice buy = new GetAnotherDevice();
 		buy.BuyDevice();
 	}
 
 	// TIMELINE BY DATE
-	@Test(priority = 17)
+	@Test(priority = 16)
 	public void VerifyTimeline() throws Exception {
 		Timeline t = new Timeline();
 		t.Timeline_By_Date();
 	}
 
 	// LIST OF CARS IN HEADER
-	@Test(priority = 18)
+	@Test(priority = 17)
 	public void VerifyChangingCarFromDropdownList() throws Exception {
 		ListOfCars cars = new ListOfCars();
 		cars.ChangeCar();
 	}
 
 	// CAR FINDER MAIN MENU
-	@Test(priority = 19)
+	@Test(priority = 18)
 	public void VerifyCarFinder() throws Exception {
 		CarFinder car = new CarFinder();
 		car.car_finder();
 	}
 
 	// CUSTOMER SERVICE MAIN MENU
-	@Test(priority = 20)
+	@Test(priority = 19)
 	public void VerifyCustomerService() throws Exception {
 		CustomerService cst = new CustomerService();
 		cst.customer_service();
 	}
 
 	// CALL EMERGENCY MAIN MENU
-	@Test(priority = 21)
+	@Test(priority = 20)
 	public void VerifyCallEmergency() throws Exception {
 		CallEmergency c = new CallEmergency();
 		c.call_emergency();
 	}
 
 	// STOLEN CAR MAIN MENU
-	@Test(priority = 22)
+	@Test(priority = 21)
 	public void VerifyStolenCar() throws Exception {
 		StolenCar c = new StolenCar();
 		c.stolen_car();
 	}
-	
+
 	// ALERT SETTINGS MAIN MENU
-	@Test(priority = 23)
+	@Test(priority = 22)
 	public void VerifyAlertSettings() throws Exception {
 		AlertSettings a = new AlertSettings();
 		a.alert_settings();
+	}
+
+	// CAR GROUPS
+	@Test(priority = 23)
+	public void VerifyCarGroups() throws Exception {
+		CarGroups a = new CarGroups();
+		a.cargroups();
+	}
+
+	// BEEP CARPOOL
+	@Test(priority = 24)
+	public void VerifyBeepCarPool() throws Exception {
+		BeepCarpool a = new BeepCarpool();
+		a.beep_carpool();
+	}
+
+	// MODES
+	@Test(priority = 25)
+	public void VerifyModes() throws Exception {
+		Modes a = new Modes();
+		a.mode();
+	}
+
+	// ROADSIDE ASSISTANCE
+	@Test(priority = 26)
+	public void VerifyRoadsideAssistance() throws Exception {
+		RoadsideAssistance a = new RoadsideAssistance();
+		a.roadside_assistance();
 	}
 
 }

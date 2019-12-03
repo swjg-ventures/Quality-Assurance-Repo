@@ -27,7 +27,7 @@ public class Registration extends Register_by_panel_device {
 		// Calling login method
 		Login l = new Login();
 		l.login();
-		extractJSLogsInfo();
+	
 		
 		// Click on Menu button
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
@@ -199,7 +199,7 @@ public class Registration extends Register_by_panel_device {
 		Thread.sleep(2000);
 		
 		//Caught console error
-		extractJSLogsInfo();
+		
 		
 		// Verify order placed or not
 		boolean order_placed = wait(driver, 15).until(ExpectedConditions
@@ -394,7 +394,7 @@ public class Registration extends Register_by_panel_device {
 			Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[4]/div[3]/div/div[2]/button ")).click();
 		try {
-			reg_success=	wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h1[contains(text(),'Searching')]"))).size()==1;
+			reg_success= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h1[contains(text(),'Searching')]"))).size()==1;
 			if(reg_success==true) {
 				break;
 			}

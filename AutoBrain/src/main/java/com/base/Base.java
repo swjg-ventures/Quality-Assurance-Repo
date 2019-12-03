@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -62,9 +63,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 //			    recorder.start();
 			}
 			
-			driver.manage().deleteAllCookies();
+			
 			driver.manage().window().maximize();
 //			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			
+			driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 			driver.manage().deleteAllCookies();
 			
 			try {
@@ -79,12 +82,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		
 		
 		//CAPTURE CONSOLE ERROR
-		public void extractJSLogsInfo() throws Exception{
-			LogEntries logEntries= driver.manage().logs().get(LogType.BROWSER);
-			for(LogEntry entry : logEntries) {
-				System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " "+ entry.getMessage());
-			}
-		}
+//		public void extractJSLogsInfo() throws Exception{
+//			LogEntries logEntries= driver.manage().logs().get(LogType.BROWSER);
+//			for(LogEntry entry : logEntries) {
+//				System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " "+ entry.getMessage());
+//			}
+//		}
 		
 		
 		

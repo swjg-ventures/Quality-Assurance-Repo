@@ -2,23 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests">
 
-	<test thread-count="5" name="Chrome" group-by-instances="true">
-		<parameter name="Browsers" value="chrome" />
+	<test thread-count="5" name="Chrome" >
+		<parameter name="Browsers" value="firefox" />
 		<classes>
 
 			<class name="com.testcases.DemoTest" />
-
+			
 
 		</classes>
 	</test>
 
 
-
-
-
-
-
-
-
-
-</suite> <!-- Suite -->
+</suite> 

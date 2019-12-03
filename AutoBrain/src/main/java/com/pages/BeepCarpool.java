@@ -84,7 +84,7 @@ boolean beep_page, form_page, member_created, beep_carpool_btn=true, beep_friend
 		try {
 		member_created = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool')]"))).size()==1;
 		} catch(Exception e) {
-			extractJSLogsInfo();
+//			extractJSLogsInfo();
 		}
 		Assert.assertEquals(member_created, true, "Member not created!");
 		driver.navigate().back();

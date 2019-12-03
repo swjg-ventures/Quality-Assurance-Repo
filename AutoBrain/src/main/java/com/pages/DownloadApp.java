@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 public class DownloadApp extends Login {
 	
 	public void DownloadAppLinks() throws Exception {
-		SoftAssert softassert = new SoftAssert();
+	
 		
 		
 		//Click on Menu button
@@ -61,8 +61,13 @@ public class DownloadApp extends Login {
 			
 			//Get all opened windows again
 			tabs.addAll(driver.getWindowHandles());
-		
-			driver.switchTo().window(tabs.get(3));
+			
+			if(driver.toString().contains("ChromeDriver")) {
+				driver.switchTo().window(tabs.get(3));
+			}
+			else {
+			driver.switchTo().window(tabs.get(2));
+			}
 			Thread.sleep(4000);
 			
 			//Verify iTunes store title
