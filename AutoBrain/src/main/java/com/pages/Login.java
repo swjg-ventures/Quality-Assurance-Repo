@@ -66,7 +66,7 @@ int n=1;
 //Case 2. Logout Method
 	public void LogoutUser() throws Exception {
 		Thread.sleep(2000);
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container"))).click();
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container"))).click();
 		Thread.sleep(2000);
 		
 		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'LOG OUT')]"))).click();

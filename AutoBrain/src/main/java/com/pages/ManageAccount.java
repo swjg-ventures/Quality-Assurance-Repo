@@ -15,7 +15,7 @@ public class ManageAccount extends Terms_Privay_Chat {
 	// 1. METHOD- UDPATE CONTACT INFO METHOD
 	public void UpdatingContactInfo() throws Exception {
 		// Calling Login Method to get user login
-		login();
+//		login();
 
 		// Click on corner dots to expand the menu
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
@@ -91,123 +91,6 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 
 
-	// 2. METHOD- CHANGE PASSWORD (With correct details)
-	public void ChangePasswordWIthCorrectDetails() throws Exception {
-		// Click on corner dots to expand the menu
-		Thread.sleep(2000);
-		wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
-		
-		Thread.sleep(1000);
-		
-		// Select Change Password from expanded drop-down
-		wait(driver, 20).until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Change Password')]")))
-				.click();
-
-		for (int i = 0; i < 2; i++) {
-			String currentpass = null, newpass = null, confirmnewpass = null;
-			if (i == 0) {
-				currentpass = "welcome";
-				newpass = "welcome1";
-				confirmnewpass = "welcome1";
-			}
-
-			if (i == 1) {
-				currentpass = "welcome1";
-				newpass = "welcome";
-				confirmnewpass = "welcome";
-			}
-
-			// Current password
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][1]/div[2]/input")))
-					.clear();
-
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][1]/div[2]/input")))
-					.sendKeys(currentpass);
-
-			Thread.sleep(1000);
-			// New password
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][2]/div[2]/input")))
-					.clear();
-
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][2]/div[2]/input")))
-					.sendKeys(newpass);
-
-			Thread.sleep(1000);
-			// Confirm new password
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][3]/div[2]/input")))
-					.clear();
-
-			wait(driver, 20)
-					.until(ExpectedConditions
-							.visibilityOfElementLocated(By.xpath("//div[@class='input-container'][3]/div[2]/input")))
-					.sendKeys(confirmnewpass);
-
-			Thread.sleep(1000);
-			// Click on update button
-			wait(driver, 20).until(
-					ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'UPDATE')]")))
-					.click();
-			Thread.sleep(3000);
-			// Storing actual result
-			boolean actresult = driver.findElements(By.xpath("//div[@class='flash-message text-center success']"))
-					.size() != 0;
-
-			// Comparing actual result
-			Assert.assertEquals(actresult, true);
-			driver.navigate().refresh();
-			Thread.sleep(5000);
-			if (driver.getCurrentUrl().equals("https://stg.autobrain.com/users/sign_in")) {
-
-				// Entering email
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email")))
-						.sendKeys("john@example.com");
-
-				// Entering password
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).clear();
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password")))
-						.sendKeys(newpass);
-
-				// Click on login button
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
-
-				// Validation login
-				softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
-				Thread.sleep(2000);
-
-				// Click on corner dots to expand the menu
-				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener")))
-						.click();
-				Thread.sleep(2000);
-
-				// Select Change Password from expanded drop-down
-				wait(driver, 20)
-						.until(ExpectedConditions
-								.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Change Password')]")))
-						.click();
-
-				Thread.sleep(1000);
-
-				softassert.assertAll();
-
-			}
-
-			Thread.sleep(5000);
-
-		}
-
-	}
 
 	// 5. METHOD- PAYMENTS METHODS (Add New Credit Card)
 	public void AddNewCreditCard() throws Exception {
