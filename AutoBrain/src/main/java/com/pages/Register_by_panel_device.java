@@ -370,7 +370,9 @@ public class Register_by_panel_device extends Login {
 		
 //FORM 2		// ADD CREDIT CARD
 		public void add_credit_card() throws Exception {
-			
+			try
+			{
+		
 			//Choose Plan
 			WebElement money_save= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")));
 			money_save.click();
@@ -378,7 +380,12 @@ public class Register_by_panel_device extends Login {
 			//Choose Billing Interval
 			WebElement monthly= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Monthly')]/following-sibling::button")));
 			monthly.click();	
+			}
 			
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			
 			// Enter First name
 			wait(driver, 15)

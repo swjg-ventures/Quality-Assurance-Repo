@@ -14,8 +14,7 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 	// 1. METHOD- UDPATE CONTACT INFO METHOD
 	public void UpdatingContactInfo() throws Exception {
-		// Calling Login Method to get user login
-//		login();
+
 
 		// Click on corner dots to expand the menu
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
@@ -92,7 +91,7 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 
 
-	// 5. METHOD- PAYMENTS METHODS (Add New Credit Card)
+	// 2. METHOD- PAYMENTS METHODS (Add New Credit Card)
 	public void AddNewCreditCard() throws Exception {
 		// Calling Login Method to get user login
 		// ValidLogin();
@@ -177,7 +176,7 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 	}
 
-	// 6. METHOD- PAYMENTS METHODS (Update Credit Card)
+	// 3. METHOD- PAYMENTS METHODS (Update Credit Card)
 	public void UpdateCreditCard() throws Exception {
 		String Fname1 = "Jordan", Lname1 = "J", Billingadd1 = "New billing 12", City1 = "Demo city", State1 = "Texas";
 		int mnth1 = 10, yr1 = 7;
@@ -291,42 +290,8 @@ public class ManageAccount extends Terms_Privay_Chat {
 
 	}
 
-	// 7. METHOD- CUSTOMER INFORMATION
-	public void CustomerInfo() throws Exception {
-		String fname, lname;	
-		// Click on corner dots to expand the menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
-		Thread.sleep(2000);
-
-		// Click on update contact info from expanded drop-down
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Update Contact Info')]"))).click();
-		
-		Thread.sleep(2000);	
-		fname=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='firstName']"))).getAttribute("value");
-		
-		lname=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='lastName']"))).getAttribute("value");
-
-		Thread.sleep(1000);	
-		// Click on corner dots to expand the menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click(); Thread.sleep(1500);	
-		
-		// Click on update contact info from expanded drop-down
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Customer Info')]"))).click();
-		Thread.sleep(4000);
-		
-		String get_fname = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'First Name:')]/following-sibling::span"))).getText();
-		
-		// Validating First name
-		softassert.assertEquals(fname, get_fname, "FirstName not mathicng with customer info details.");
-
-		String get_lname = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Last Name:')]/following-sibling::span"))).getText();
-
-		// Validating Last name
-		softassert.assertEquals(lname, get_lname, "LastName not mathicng with customer info details.");
-		softassert.assertAll();
-	}
-
-	// 8. METHOD- PRINT ROADSIDE CARD
+	
+	// 7. METHOD- PRINT ROADSIDE CARD
 	public void PrintRoadsideCard() throws Exception {
 //		ValidLogin();
 		Thread.sleep(4000);
