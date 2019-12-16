@@ -104,8 +104,19 @@ public class ManageAccount extends Terms_Privay_Chat {
 		wait(driver, 15).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Payment Methods')]")))
 				.click();
-		Thread.sleep(2000);
-
+		
+		
+		while(driver.findElements(By.xpath("//button[contains(text(),'Add A New Credit Card')]")).size()!=1)
+		{
+			System.out.println("Waiting for the visibility of Add A New Credit Card Button");
+			Thread.sleep(1500);
+		}
+		
+		
+		
+		
+		
+		
 		// Clicking on Add new credit card button
 		wait(driver, 15)
 				.until(ExpectedConditions
@@ -172,7 +183,12 @@ public class ManageAccount extends Terms_Privay_Chat {
 		wait(driver, 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 				.click();
-		Thread.sleep(8000);
+		
+		//Store result message
+		String msg = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Success')]"))).getText();
+		
+		//Validate result
+		Assert.assertEquals(msg, "Success", "Success message not found!");
 
 	}
 
