@@ -17,8 +17,8 @@ import org.testng.Assert;
 
 public class Register extends Login {
 	String F_name = "Test", L_name = "Demo", Street = "935 Gravier Place, Suite 1160, New Orleans, LA.", City = "Boca", State = "Florida", Zip = "70112", 
-			Phone = "1236547890", Card_Name = "Demo card",
-			Card_CVV = "555", Card_No = "4242424242424242", expected_product_price;	
+	Phone = "1236547890", Card_Name = "Demo card",
+	Card_CVV = "555", Card_No = "4242424242424242", expected_product_price;	
 	
 	//Store email which we used during buy the product on https//stg.autobrain.com/buy
 	ArrayList<String> ar = new ArrayList<String>();
