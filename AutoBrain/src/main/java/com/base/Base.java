@@ -1,64 +1,55 @@
 package com.base;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
+import javax.imageio.ImageIO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogEntry;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-import Library.Utility;
+import Library.Custom_Listner;
 import atu.testrecorder.ATUTestRecorder;
-import atu.testrecorder.exceptions.ATUTestRecorderException;
 import io.github.bonigarcia.wdm.WebDriverManager;
-
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+@Listeners(Custom_Listner.class)
 	public class Base {
 	boolean page_load;	
 	public static WebDriver driver;
 	public String url ="https://stg.autobrain.com/";	
 	public SoftAssert softassert = new SoftAssert();
 	ATUTestRecorder recorder;
-		@BeforeClass
+	
+		@BeforeClass		
 		@Parameters("Browsers")
 		public void CheckBrowsers(String bro) throws Exception
 		{			
 			if(bro.equalsIgnoreCase("firefox")) 
 			{
-			//Driver to launch firefox browser
+			
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			}
 			
 			else if (bro.equalsIgnoreCase("chrome"))
-			{
-				DesiredCapabilities capabilities = new DesiredCapabilities().chrome();
-				LoggingPreferences logginpre = new LoggingPreferences();
-				logginpre.enable(LogType.BROWSER, Level.ALL);
-				capabilities.setCapability(CapabilityType.LOGGING_PREFS, logginpre);
-				
-				
-				//Driver to launch chrome browser
+			{							
 				WebDriverManager.chromedriver().setup();			
-			    driver = new ChromeDriver(capabilities);
+			    driver = new ChromeDriver();
 //			    recorder= new ATUTestRecorder("Images", "mhyvid", false);
 //			    recorder.start();
 			}
@@ -67,7 +58,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 			driver.manage().window().maximize();
 //			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			
-			driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			driver.manage().deleteAllCookies();
 			
 			try {
@@ -130,15 +121,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		
 		
 		
-		//CAPTURE SCREENSHOT IF THE TEST GOT FAILED
-//		@AfterMethod
-		public void tearDown(ITestResult result) {
-			
-			if(ITestResult.FAILURE==result.getStatus()) {
-				Utility u = new Utility();
-				u.capscreenshot(result.getName());
-			}
+		//CAPTURE SCREENSHOT IF THE TEST GOT FAILED	
+		public void FullPageScreenshot(String screenshotName) throws Exception {
+			 Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+			 ImageIO.write(fpScreenshot.getImage(),"PNG",new File("./Images/"+screenshotName+".png"));
+	
 		}
+		
 		
 
 		
@@ -181,7 +170,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 		    
 		}
 		
-		
+		//TYPE IN INPUT FIELD SLOWLY (SENDKEYS)
+		public void TypeInFieldSlowly(WebElement ele, String value) throws Exception{
+		    String val = value; 
+		   
+		    for (int i = 0; i < val.length(); i++){
+		        char c = val.charAt(i);
+		        String s = new StringBuilder().append(c).toString();
+		        ele.sendKeys(s);
+		        Thread.sleep(120);
+		    }       
+		}
 		
 		
 		}

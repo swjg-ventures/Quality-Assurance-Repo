@@ -42,6 +42,7 @@ public class Register extends Login {
 			year2 = "2018", make2 = "VOLVO", VIN2 = "MCSJ879373J736G"; int model2 = 6;
 
 	String model_selected, Insurance_Eff_Date, Insurance_Exp_Date, car_Reg_exp;
+	String DeviceName;
 	
 	//Shuffling variables		
 	
@@ -415,7 +416,7 @@ public class Register extends Login {
 	
 	
 	
-	
+	//Main Method
 	public void register() throws Exception {
 		BuyDevice();
 		
@@ -559,7 +560,7 @@ public class Register extends Login {
 		System.out.println(entered_email);
 
 		
-		while(p_load==false) {
+		if(p_load==false) {
 		try 
 		{	
 		 p_load= wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Is Your')]/following-sibling::div//span"))).isDisplayed();
@@ -568,7 +569,6 @@ public class Register extends Login {
 		catch(Exception e) 
 		{
 			System.out.println("Step 1 page not found after confirmation code.");
-			break;
 		}	
 		}
 		
@@ -591,14 +591,14 @@ public class Register extends Login {
 		
 		
 		
-		while(reg_success==false) 
+		if(reg_success==false) 
 		{
 			Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[4]/div[3]/div/div[2]/button ")).click();
 		try {
 			reg_success= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h1[contains(text(),'Searching')]"))).size()==1;
 			if(reg_success==true) {
-				break;
+				
 			}
 			
 		} catch(Exception e) {
@@ -630,12 +630,12 @@ public class Register extends Login {
 	
 	
 	
-	// FORM 1		//STEP 1 (ADD CAR INFO)
+	// STEP 1		//STEP 1 (ADD CAR INFO)
 			public void step_1(String device_no) throws Exception {
 				
 				//Create a Name for Your Car
 				wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[1]/input"))).
-				sendKeys(carname);
+				sendKeys(DeviceName);
 				
 				
 				//Enter device number
@@ -686,60 +686,49 @@ public class Register extends Login {
 				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]"))).click();
 				
 				//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
-				if(add_creadit_card_page==false) {
-				try {
+				if(add_creadit_card_page==false) {				
 				add_creadit_card_page= wait(driver, 25).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
-				if(add_creadit_card_page ==true) {
+				if(add_creadit_card_page ==true) 
+				{
 					add_credit_card();
 				}
-				
-				} catch(Exception e) {
-							
-				}
-				}
-				
-				
-				//If credit card page not found then try with refreshing the page
-				if(add_creadit_card_page==false) 
-				{
-					driver.navigate().refresh();
-					try 
-					{
-						add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
-						softassert.assertEquals(add_creadit_card_page, false,"After Step 1, Add credit card page not found. It appear only after refresh the page.");
-						add_credit_card();					
-					} 
-					
-					catch(Exception e) 
-					{
-						
-					}		
-				}
 			
-				Thread.sleep(2000);
+				
+				}
+				
+				
 			}
 			
 			
 			
-	//FORM 2		// ADD CREDIT CARD
+			// ADD CREDIT CARD
 			public void add_credit_card() throws Exception {
-				try
+				
+				//BUSINESS PLAN 
+				if(prop().get("account_type").equals("Autobrain Business"))
 				{
-			
-				//Choose Plan
-				WebElement money_save= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")));
-				money_save.click();
 				
 				//Choose Billing Interval
-				WebElement monthly= wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Monthly')]/following-sibling::button")));
-				monthly.click();	
+				WebElement billing_interval = wait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop().getProperty("business_plan_interval"))));
+				billing_interval.click();	
+				Thread.sleep(2000);	
+					
+				
 				}
 				
-				catch(Exception e)
+				
+				//FAMILY PLAN
+				if(prop().get("account_type").equals("Autobrain Family"))
 				{
-					e.printStackTrace();
-				}
+				//Choose Plan
+				WebElement choose_plan = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop().getProperty("choose_plan"))));
+				choose_plan.click();
 				
+				//Choose Billing Interval
+				WebElement duration = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(prop().getProperty("choose_billing_interval"))));
+				duration.click();	Thread.sleep(4000);
+				}
+						
 				// Enter First name
 				wait(driver, 15)
 						.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']")))
@@ -801,10 +790,9 @@ public class Register extends Login {
 						.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 						.click();
 				
-				
-			//	add_credit_error= wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center success']"))).size()==1;		
-			//	Assert.assertEquals(add_credit_error, false, "User not redirected to Step 2 after filled up all valid Add credit card details!");
-				
+			//Validate enter card details accepted or not	
+			boolean card_error_msg = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center error']"))).size()==1;
+			Assert.assertEquals(card_error_msg, false, "Found error while trying to submit the card details!");	
 			
 				
 				
@@ -824,7 +812,7 @@ public class Register extends Login {
 			
 					
 			
-	// Form 3 		Monitor and Driver setup
+	// STEP 2 		Monitor and Driver setup
 					public void step_2() throws Exception {
 					
 									
@@ -944,13 +932,13 @@ public class Register extends Login {
 						try 
 						{
 							safty_modes= wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Introduction to Safety Modes')]"))).size()==1;
-							wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]"))).click();
+			//				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Skip')]"))).click();
 						} 
 						
 						catch(Exception e) 
 						
 						{	
-							System.out.println("Failed to submit STEP 2 on First Attempt");
+				
 						}
 						
 					}
@@ -959,64 +947,47 @@ public class Register extends Login {
 					//Validating Step 2 form submitted
 					softassert.assertEquals(safty_modes, true, "Step 2 form not submitted first time!");
 					
-					if(safty_modes==false)
-					{
-						//Submit Step 2 again
-						
-						try 
-						{
-							wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]"))).click();
-							safty_modes= wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Modes')]"))).size()==1;
-							
-						} 
-						
-						catch(Exception e) 
-						
-						{
-							System.out.println("Failed to submit STEP 2 on SECOND Attempt");		
-						}
-						
-					}
-					softassert.assertEquals(safty_modes, true, "Step 2 form not submitted second time also!");
+					
+					
 					}
 		
 					
 			
 			
-	// Form 4				Introduction to Safety Modes
+	// STEP 3				Introduction to Safety Modes
 							public void step_3() throws Exception 
 							{
 								Thread.sleep(2000);
 							wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Skip')]"))).click();	
 							
 							// Validate Step 4 page opened
-							while(alert_setting==false) 
+							if(alert_setting==false) 
 							{
 								try {
 									alert_setting= wait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Alert Settings')]"))).size()==1;
 								} catch(Exception e) {
 									System.out.println("Alert Settings page not found.");
-									break;
+									
 								}
 							}
 							
 							}
 		
 
-	//Form 5			Roadside Emergency Card
+	//STEP 4			Roadside Emergency Card
 							public void step_4() throws Exception 
 							{
 								Thread.sleep(2000);
 								wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To')]"))).click();	
 								
 								// Validate Step 5 page opened
-								while(roadside==false) 
+								if(roadside==false) 
 								{
 									try {
 										roadside= wait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Roadside Emergency Card')]"))).size()==1;
 									} catch(Exception e) {
 										System.out.println("Roadside Emergency Card page not found.");
-										break;
+										
 									}
 								}	
 		
@@ -1024,7 +995,7 @@ public class Register extends Login {
 			
 			
 			
-	//Form 6			Done
+	//STEP 5			Done
 						public void done() throws Exception 
 						{
 							Thread.sleep(2000);
@@ -1032,13 +1003,13 @@ public class Register extends Login {
 							wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Finish')]"))).click();
 							
 							//Verify user redirected to home page or not
-							while(home==false) 
+							if(home==false) 
 							{
 								try {
 									home= wait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[contains(text(),'You are now ready to drive!')]"))).size()==1;
 								} catch(Exception e) {
 									System.out.println("Home page not found.");
-									break;
+									
 								}
 							}
 						}
@@ -1250,7 +1221,8 @@ public class Register extends Login {
 				//Generating random email
 				Random randomGenerator = new Random(); 
 				int randomInt = randomGenerator.nextInt(1000);
-				String Email = "demouser"+randomInt+"@mailinator.com";
+				String Email = "testing"+randomInt+"@mailinator.com";
+				DeviceName = "testing"+randomInt;
 				return Email;
 			}
 			

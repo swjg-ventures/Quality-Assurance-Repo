@@ -24,22 +24,18 @@ int n=1;
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("welcome");
 		
 		//Click on login button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
-		
-		//Print console errors
-//		extractJSLogsInfo();
+		wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 		
 		//Validation login
-		while(home_page_loaded==false) {
+		if(home_page_loaded==false) {
 			try {
-			home_page_loaded =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).isDisplayed();	
+			home_page_loaded =wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).isDisplayed();	
 			} catch(Exception e) {
-				System.out.println("Home page not loaded properly.");
-				break;
+				home_page_loaded=false;
 			}
 		}
-			
-		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
+		
+		Assert.assertEquals(home_page_loaded, true, "Home page is not loading!" );
 		desktop_notification_alert();
 		Thread.sleep(2000);
 		softassert.assertAll();
