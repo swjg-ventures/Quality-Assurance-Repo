@@ -218,6 +218,9 @@ public class Edit_Cancel_Change_Order_From_Panel extends Register {
 				//Reload the page
 				driver.navigate().refresh();
 				
+				//Cancel order
+//				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[7]"))).click();
+				
 				//Check plan changed or not
 				Assert.assertEquals(act_plan_ele.getText(), exp_plan_name, "Plan should not changed after found error!");
 			}	
@@ -225,55 +228,6 @@ public class Edit_Cancel_Change_Order_From_Panel extends Register {
 		 
 	}
 	
-	public void aj() throws Exception {
-		// Calling login method
-				Login l = new Login();
-				l.login();
-		
-				 //Initializing elements 
-				PageFactory.initElements(driver, this);
-				
-		//Navigate to Edit Cancel Change Order Information
-		driver.navigate().to("https://stg.autobrain.com/worker/online_fulfillment/invoices_to_change#");
-				
-		act_plan_name =act_plan_ele.getText();
-		Assert.assertEquals(act_plan_name, exp_plan_name);
 
-		
-		//Update plan with new one
-		Select s = new Select(wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[1]/td[4]/select"))));
-		s.selectByVisibleText("Cost: $19.97, Monthly: $9.97, Free Days: 30");
-		
-		//Wait for few seconds until the change plan confirmation page not found
-		while(driver.findElements(By.xpath("//h4[contains(text(),'Are you sure about the following changes?')]")).size()!=1) {
-			Thread.sleep(1000);
-			System.out.println("Waiting for the change plan confirmation page alert...");
-		}
-		
-		//Validate the price difference
-		String exp_price_diff = "$-10.02";
-		String act_price_diff = wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'Difference')]/following-sibling::td"))).getText();
-		Assert.assertEquals(act_price_diff, exp_price_diff, "There is an issue in between price difference!");
-			
-		
-		//Click on save changes button
-		List<WebElement> save_changes_btn = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//button[contains(text(),'Save changes')]")));
-		save_changes_btn.get(0).click();
-		
-		//Check if error found
-		error = wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class='ajax-alert alert alert-danger']"))).size()==1;
-		
-		//Check if error found then plan should not changed
-		if(error=true)
-		{
-			//Reload the page
-			driver.navigate().refresh();
-			
-			//Check plan changed or not
-			Assert.assertEquals(act_plan_ele.getText(), exp_plan_name);
-		}
-		
-		
-	}
 	
 }
