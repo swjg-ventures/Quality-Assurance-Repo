@@ -400,25 +400,6 @@ ArrayList<String> All_Devices_No = new ArrayList<String>();
 			}
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 
 
 	
