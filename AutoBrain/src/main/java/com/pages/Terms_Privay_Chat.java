@@ -55,8 +55,9 @@ public class Terms_Privay_Chat extends Login{
 				
 				//Validating Privacy policy title
 				softassert.assertEquals(ActHeading, "Privacy Policy");
+				
 				//Navigating back user to login page
-				driver.navigate().back();
+				driver.navigate().to(url);
 				
 				
 				softassert.assertAll();

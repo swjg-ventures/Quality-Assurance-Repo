@@ -17,7 +17,7 @@ import org.testng.Assert;
 
 public class Register extends Login {
 	
-	int randomInt;
+	int randomInt; boolean email_added;
 	
 	String F_name = "Test", L_name = "Demo", Street = "935 Gravier Place, Suite 1160, New Orleans, LA.", City = "Boca", State = "Florida", Zip = "70112", 
 	Phone = "1236547890", Card_Name = "Demo card",
@@ -41,7 +41,7 @@ public class Register extends Login {
 			year2 = "2018", make2 = "VOLVO", VIN2 = "MCSJ879373J736G"; int model2 = 6;
 
 	String model_selected, Insurance_Eff_Date, Insurance_Exp_Date, car_Reg_exp;
-	String DeviceName;
+	String DeviceName, Signup_New_Email;
 	
 	//Shuffling variables		
 	
@@ -105,7 +105,8 @@ public class Register extends Login {
 	@FindBy(xpath = "//input[@placeholder='Enter device number']")
 	List<WebElement> no_of_input_devices;
 	
-	public Properties prop() throws Exception {
+	public Properties prop() throws Exception 
+	{
 		 Properties prop = new Properties();
 		 FileInputStream fis = new FileInputStream("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\src\\main\\java\\Library\\register.properties");
 		 prop.load(fis);
@@ -116,7 +117,8 @@ public class Register extends Login {
 	
 	
 	
-	 public ArrayList<String> BuyDevice() throws Exception {
+	 public ArrayList<String> BuyDevice() throws Exception 
+	 {
 		
 		 
 		 //Initializing elements 
@@ -147,7 +149,7 @@ public class Register extends Login {
 	
 		
 		// Open drop-down to select number of devices
-		Select s = new Select(wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='quanities-container']/select"))));
+		Select s = new Select(wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='quanities-container']/select"))));
 		s.selectByVisibleText(prop().getProperty("no_of_devices")); //Coming from "register.properties"
 		
 		// Select Account Type BUSINESS OR PERSONAL
@@ -177,7 +179,7 @@ public class Register extends Login {
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Last Name']"))).sendKeys(L_name);
 
 		// Enter email address
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email Address']"))).sendKeys(Email); System.out.println(Email);
+		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Email Address']"))).sendKeys(Email); System.out.println("Entered Email During Bought The Product "+"--> "+Email);
 
 		// Enter street address
 		wait(driver, 20).until(ExpectedConditions	.visibilityOfElementLocated(By.xpath("//input[@placeholder='Street Address']"))).sendKeys(Street);
@@ -349,7 +351,7 @@ public class Register extends Login {
 		//Validate device added
 		try 
 		{
-		Device_Added = wait(driver, 30).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//a[contains(text(),'Device #')]"))).size()==1;
+		Device_Added = wait(driver, 60).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//a[contains(text(),'Device #')]"))).size()==1;
 		}
 		catch (Exception e)
 		{
@@ -417,7 +419,7 @@ public class Register extends Login {
 	
 	
 	
-	//Main Method
+	//MAIN METHOD
 	public void register() throws Exception {
 		BuyDevice();
 		
@@ -434,7 +436,24 @@ public class Register extends Login {
 		
 		//Entering email
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(ar.get(0));
+		
+		//Change sign-up email which will different from bought product email
+		if(prop().getProperty("Want_To_Change_Signup_Email").contains("true"))
+		{
+			 String new_email = Get_Random_Email();
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(new_email);	
+			System.out.println("Signup Email Has Been Changed --> "+new_email);
+			
+			//Update last name
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_last_name"))).clear();
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_last_name"))).sendKeys(""+randomInt);
+		}
+		else 
+		{
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(ar.get(0));
+		}
+		
+		
 		
 		//Store entered email in variable
 		entered_email = driver.findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
@@ -455,6 +474,7 @@ public class Register extends Login {
 		
 		//Clicking on sign-up button to register
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'SIGN UP')]"))).click();
+		Thread.sleep(2500);
 		
 		for(int i=0; i<driver.findElements(By.xpath("//span[@class='help-block']")).size(); i++) 
 		{
@@ -477,8 +497,8 @@ public class Register extends Login {
 			//Email already exist
 			if(email_alert==true) {
 				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
-				new_entered_email=  Get_Random_Email(); 
-				System.out.println("New Entered Email-->"+" "+new_entered_email);
+				new_entered_email=  Get_Random_Email(); System.out.println();
+				System.out.println("Email Already exist! New Entered Email-->"+" "+new_entered_email);
 				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(new_entered_email);
 				
 				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("welcome");
@@ -490,7 +510,9 @@ public class Register extends Login {
 	
 		}
 		
-		
+	
+		if(!prop().getProperty("Bypass_Confirmation_Page").equals("true"))
+		{
 		
 		//Validating confirmation key page found
 		String expected_next_page = "Resend Confirmation Email";
@@ -538,7 +560,7 @@ public class Register extends Login {
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.id("go_inbox"))).click(); Thread.sleep(2000);
 		
 		// Click on the first email
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Autobrain account')]"))).click();
+		wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Autobrain account')]"))).click();
 		
 		// Switch to frame
 		driver.switchTo().frame(driver.findElement(By.id("msg_body")));
@@ -560,6 +582,8 @@ public class Register extends Login {
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click(); Thread.sleep(2000);
 //		System.out.println(entered_email);
 
+		}
+		
 		
 		if(p_load==false) 
 		{
@@ -613,10 +637,20 @@ public class Register extends Login {
 		
 		if(reg_success==false) 
 		{
+			
+		try
+		{
 			Thread.sleep(3000);
 			List<WebElement> el = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Welcome')]/following-sibling::div/button")));
 			el.get(1).click();
-	
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println("Welcome to autobrain popup not found");
+			desktop_notification_alert();
+		}
+		
 		try 
 		{
 			reg_success= wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h1[contains(text(),'Searching')]"))).size()==1;
@@ -718,22 +752,49 @@ public class Register extends Login {
 				catch(Exception e)
 				{
 					
-					System.out.println("Excemption not found!");
+					System.out.println("Excemption not found! Because the check-box is hidden for this customer.");
 				}
 				
 				Thread.sleep(4000);
-				//Submit
-				wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]"))).click();
+				
+				
+				try
+				{
+					//Submit
+					wait(driver, 4).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]"))).click();
+					
+				}
+				
+				catch (Exception e)
+				{
+					//Submit
+					wait(driver, 2).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]"))).click();	
+				}
+				
+				
 				
 				//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
-				if(add_creadit_card_page==false) {				
+				if(add_creadit_card_page==false) 
+				{
+					
+				try
+				{
 				add_creadit_card_page= wait(driver, 25).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1;
+				}
+				
+				catch (Exception e)
+				{
+					add_creadit_card_page = false;
+				}
+				
+				Assert.assertEquals(add_creadit_card_page, true, "Add credit card page not found!");
+				
+				
 				if(add_creadit_card_page ==true) 
 				{
 					add_credit_card();
 				}
-			
-				
+					
 				}
 				
 				
@@ -1225,7 +1286,6 @@ public class Register extends Login {
 			
 			// ESF_Exemptions Method
 			public boolean ESF_Exemptions() throws Exception {
-				boolean email_added, logout;
 				
 				if(prop().getProperty("ESF_Exemptions").contains("true"))
 				{	 	
@@ -1236,9 +1296,7 @@ public class Register extends Login {
 				
 				//Login main user
 				login();
-				
-				
-				
+							
 				
 				//Navigate to ESF_Exemptions page
 				driver.navigate().to("https://stg.autobrain.com/worker/esf_exemptions");
@@ -1263,7 +1321,7 @@ public class Register extends Login {
 				
 				  try 
 				   {
-				     email_added = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//td[contains(text(),'"+entered_email+"')]"))).size()==1;
+				     email_added = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//td[contains(text(),'"+entered_email+"')]"))).size()==1;
 				   }
 				  catch(Exception e)
 				  	{
@@ -1276,7 +1334,7 @@ public class Register extends Login {
 				{
 					try 
 					{
-					 email_added = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//td[contains(text(),'"+new_entered_email+"')]"))).size()==1;
+					 email_added = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//td[contains(text(),'"+new_entered_email+"')]"))).size()==1;
 					}
 					catch(Exception e)
 					{
@@ -1286,6 +1344,7 @@ public class Register extends Login {
 				
 				//Logout panel user
 				wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Log Out')]"))).click();
+				Thread.sleep(2000);
 				
 				//Navigate user to login url
 				driver.navigate().to(url);
@@ -1331,9 +1390,7 @@ public class Register extends Login {
 			}
 			
 			
-			
-			
-			
+		
 			
 			
 			
@@ -1389,8 +1446,8 @@ public class Register extends Login {
 			{
 				//Generating random email
 				Random randomGenerator = new Random(); 
-				randomInt = randomGenerator.nextInt(1000);
-				String Email = "test"+randomInt+"@mailinator.com";
+				randomInt = randomGenerator.nextInt(10000);
+				String Email = "temp"+randomInt+"@mailinator.com";
 				DeviceName = "test"+randomInt;
 				return Email;
 			}

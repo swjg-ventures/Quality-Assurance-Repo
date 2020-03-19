@@ -1,9 +1,7 @@
 package com.pages;
 
-import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import com.base.Base;
@@ -32,7 +30,7 @@ int n=1;
 		//Validation login
 		if(home_page_loaded==false) {
 			try {
-			home_page_loaded =wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[4]//div[contains(text(),'CAR FINDER')]"))).isDisplayed();	
+			home_page_loaded =wait(driver, 60).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]"))).isDisplayed();	
 			} catch(Exception e) {
 				home_page_loaded=false;
 			}
@@ -48,7 +46,7 @@ int n=1;
 	//Desktop notification alert
 	public void desktop_notification_alert() {
 		try {
-			desktop_notification = wait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Desktop Notifications')]"))).size()==1;
+			desktop_notification = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Desktop Notifications')]"))).size()==1;
 			if(desktop_notification==true) {
 				driver.findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
 				Thread.sleep(2000);

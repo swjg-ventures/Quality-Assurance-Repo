@@ -46,7 +46,7 @@ public class DownloadApp extends Login {
 			Thread.sleep(2000);
 			
 			//Verify google play store title
-			softassert.assertEquals(driver.getCurrentUrl(), "https://play.google.com/store/apps/details?id=com.autobrain.android&hl=en");
+			softassert.assertEquals(driver.getTitle(), "Autobrain - Apps on Google Play");
 			
 			driver.switchTo().window(tabs.get(1));	
 			Thread.sleep(2000);

@@ -135,7 +135,7 @@ List<WebElement> success_msg;
 		//Validation login
 		while(home_page_loaded==false) {
 			try {
-			home_page_loaded =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[9]/a/div[2]"))).isDisplayed();	
+			home_page_loaded =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]"))).isDisplayed();	
 			} catch(Exception e) {
 				System.out.println("Home page not loaded properly.");
 				break;
