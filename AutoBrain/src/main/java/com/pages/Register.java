@@ -1060,7 +1060,7 @@ public class Register extends Login {
 							
 			try 
 			{
-				reg_success= VisibilityOfAllElementsByXpath("//h1[contains(text(),'Searching')]").size()==1;			
+				reg_success= VisibilityOfAllElementsByXpath("//span[contains(text(),'Searching')]").size()==1;			
 			} 
 							
 			catch(Exception e) 
