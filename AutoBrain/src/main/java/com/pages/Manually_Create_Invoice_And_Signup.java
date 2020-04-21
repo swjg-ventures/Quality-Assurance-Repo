@@ -340,7 +340,7 @@ ArrayList<String> All_Devices_No = new ArrayList<String>();
 				
 				try 
 				{
-					reg_success= PresenceOfAllElementsByXpath("//h1[contains(text(),'Searching')]").size()==1;					
+					reg_success= PresenceOfAllElementsByXpath("//span[contains(text(),'Searching')]").size()==1;					
 					
 				} 
 				
