@@ -17,15 +17,15 @@ int n=1;
 	public void login() throws Exception {
 		Thread.sleep(2000);
 		//Entering email
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("john@example.com");
-		
+		VisibilityOfElementByXpath("//input[@id='user_email']").clear();
+		VisibilityOfElementByXpath("//input[@id='user_email']").sendKeys("john@example.com");
+	
 		//Entering password
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).clear();
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("welcome");
+		VisibilityOfElementByXpath("//input[@id='user_password']").clear();
+		VisibilityOfElementByXpath("//input[@id='user_password']").sendKeys("welcome");
 		
 		//Click on login button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		VisibilityOfElementByXpath("//input[@name='commit']").click();
 		
 		//Validation login
 		if(home_page_loaded==false) {
