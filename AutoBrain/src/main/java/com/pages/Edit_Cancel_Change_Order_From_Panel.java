@@ -23,7 +23,7 @@ public class Edit_Cancel_Change_Order_From_Panel extends Register {
 	
 	public void Buy_Product() throws Exception {
 		//Generating random email
-		String Email = Get_Random_Email();
+		String Email = GenerateRandomEmail();
 	
 		// Calling login method
 		Login l = new Login();

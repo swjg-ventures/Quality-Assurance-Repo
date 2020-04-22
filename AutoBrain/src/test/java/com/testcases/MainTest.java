@@ -6,6 +6,8 @@ import com.pages.BeepCarpool;
 import com.pages.CallEmergency;
 import com.pages.CarFinder;
 import com.pages.CarGroups;
+import com.pages.ChangePassword;
+import com.pages.CustomerInfo;
 import com.pages.CustomerService;
 import com.pages.DownloadApp;
 import com.pages.GetAnotherDevice;
@@ -15,6 +17,7 @@ import com.pages.RoadsideAssistance;
 import com.pages.StolenCar;
 import com.pages.Timeline;
 import com.pages.VehicleProfile;
+
 
 public class MainTest extends VehicleProfile {
 
@@ -54,16 +57,17 @@ public class MainTest extends VehicleProfile {
 		ChatButton();
 	}
 
-	// MANAGE ACCOUNT- UPDATE CONTACT INFO
+	// MANAGE ACCOUNT- CHANGE PASSWORD
 	@Test(priority = 7)
-	public void VerifyUpdatingContactInfo() throws Exception {
-		UpdatingContactInfo();
+	public void VerifyChangePassword() throws Exception {
+		ChangePassword c = new ChangePassword();
+		c.change_password();		
 	}
 
-	// MANAGE ACCOUNT- CHANGE PASSWORD
+	// MANAGE ACCOUNT- UPDATE CONTACT INFO
 	@Test(priority = 8)
-	public void VerifyChangePassword() throws Exception {
-		ChangePasswordWIthCorrectDetails();
+	public void VerifyUpdatingContactInfo() throws Exception {
+		UpdatingContactInfo();
 	}
 
 	// MANAGE ACCOUNT- ADD CREDIT CARD
@@ -81,7 +85,8 @@ public class MainTest extends VehicleProfile {
 	// MANAGE ACCOUNT- CUSTOMER INFO
 	@Test(priority = 11)
 	public void VerifyCustomerInfo() throws Exception {
-		CustomerInfo();
+		CustomerInfo c= new CustomerInfo();
+		c.Customer_Info();
 	}
 
 	// MANAGE ACCOUNT- PRINT ROADSIDE CARD

@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="tests">
 
 	<test thread-count="5" name="Chrome" >
-		<parameter name="Browsers" value="firefox" />
+		<parameter name="Browsers" value="chrome" />
 		<classes>
 
 			<class name="com.testcases.DemoTest" />

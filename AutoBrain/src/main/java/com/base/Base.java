@@ -2,7 +2,6 @@ package com.base;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,7 +33,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 	public static WebDriver driver;
 	public String url ="https://stg.autobrain.com/";	
 	public SoftAssert softassert = new SoftAssert();
-	ATUTestRecorder recorder;
+	
 	
 		@BeforeClass		
 		@Parameters("Browsers")
@@ -47,9 +47,14 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 			}
 			
 			else if (bro.equalsIgnoreCase("chrome"))
-			{							
+			{	
+				//This will disable default browser notifications
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--disable-notifications");
+						
+	//			System.setProperty("webdriver.chrome.driver", "WebDriver\\chromedriver.exe");
 				WebDriverManager.chromedriver().setup();			
-			    driver = new ChromeDriver();
+			    driver = new ChromeDriver(options);
 //			    recorder= new ATUTestRecorder("Images", "mhyvid", false);
 //			    recorder.start();
 			}
@@ -58,7 +63,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 			driver.manage().window().maximize();
 //			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
 			driver.manage().deleteAllCookies();
 			
 			try {
@@ -109,11 +114,54 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 			return wait;
 		}
 
+		//Visibility of element by xpath
+		public WebElement VisibilityOfElementByXpath(String xpath)
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));			
+		}
+		
+		//Visibility all of elements by xpath
+		public List<WebElement> VisibilityOfAllElementsByXpath(String xpath)
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));			
+		}
+		
+		//Visibility of element by ID
+		public WebElement VisibilityOfElementByID(String ID)
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ID)));			
+		}
+		
+		
+		
+		
+		//Presence of element by xpath
+		public WebElement PresenceOfElementByXpath(String xpath)
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));			
+		}
+		
+		
+		//Presence all of elements by xpath
+		public List<WebElement> PresenceOfAllElementsByXpath(String xpath)
+		{
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));			
+		}
+		
+		
+		
+		
+		
 		
 		//QUIT BROWSER
 		@AfterClass
 		public void quit() throws Exception{
-			Thread.sleep(5000);
+			Thread.sleep(5000); 
 			driver.quit();
 //			recorder.stop();
 		
@@ -178,7 +226,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 		        char c = val.charAt(i);
 		        String s = new StringBuilder().append(c).toString();
 		        ele.sendKeys(s);
-		        Thread.sleep(120);
+		        Thread.sleep(150);
 		    }       
 		}
 		

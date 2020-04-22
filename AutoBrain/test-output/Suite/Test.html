@@ -1,0 +1,802 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/26</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Nov 29 18:28:21 IST 2019</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (89 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.testcases.MainTest.CheckBrowsers()'><b>CheckBrowsers</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace468850333", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace468850333'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.testcases.MainTest.quit()'><b>quit</b><br>Test class: com.testcases.MainTest</td>
+<td></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyAddNewCreditCard()'><b>VerifyAddNewCreditCard</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace978922249", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace978922249'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyAlertSettings()'><b>VerifyAlertSettings</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1469881860", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1469881860'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyBeepCarPool()'><b>VerifyBeepCarPool</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2124783844", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2124783844'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyBuyDevice()'><b>VerifyBuyDevice</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1870210959", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1870210959'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyCallEmergency()'><b>VerifyCallEmergency</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2019355597", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2019355597'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyCarFinder()'><b>VerifyCarFinder</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1970251708", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1970251708'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyCarGroups()'><b>VerifyCarGroups</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1631075725", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1631075725'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyChangePassword()'><b>VerifyChangePassword</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1517788119", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1517788119'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyChangingCarFromDropdownList()'><b>VerifyChangingCarFromDropdownList</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace259332376", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace259332376'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyChatButtonFunctionality()'><b>VerifyChatButtonFunctionality</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1310376169", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1310376169'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyCustomerInfo()'><b>VerifyCustomerInfo</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1798813697", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1798813697'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyCustomerService()'><b>VerifyCustomerService</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1401729985", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1401729985'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyDownloadApp()'><b>VerifyDownloadApp</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace970483461", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace970483461'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyEnteringRegisteredEmailInForgotPasswordField()'><b>VerifyEnteringRegisteredEmailInForgotPasswordField</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1395233445", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1395233445'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyLogoutUser()'><b>VerifyLogoutUser</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace377154398", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace377154398'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyModes()'><b>VerifyModes</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace352899471", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace352899471'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyPrintRoadsideCard()'><b>VerifyPrintRoadsideCard</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace234368915", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace234368915'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyPrivacyPolicyLinkOnSignupPage()'><b>VerifyPrivacyPolicyLinkOnSignupPage</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1243958645", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1243958645'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyRoadsideAssistance()'><b>VerifyRoadsideAssistance</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace651624852", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace651624852'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyStolenCar()'><b>VerifyStolenCar</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1606844423", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1606844423'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyTermsAndConditionsLinkOnSignupPage()'><b>VerifyTermsAndConditionsLinkOnSignupPage</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace585509296", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace585509296'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyTimeline()'><b>VerifyTimeline</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace598808900", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace598808900'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyUpdateCreditCard()'><b>VerifyUpdateCreditCard</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace584886563", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace584886563'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyUpdatingContactInfo()'><b>VerifyUpdatingContactInfo</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace186140494", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace186140494'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyValidLogin()'><b>VerifyValidLogin</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace220568321", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace220568321'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+<tr>
+<td title='com.testcases.MainTest.VerifyVehicleProfile()'><b>VerifyVehicleProfile</b><br>Test class: com.testcases.MainTest</td>
+<td><div><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2122996806", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2122996806'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+in C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml
+	at org.testng.internal.Parameters.createParams(Parameters.java:290)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
+	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+</pre></div></td>
+<td>0</td>
+<td>com.testcases.MainTest@1ed4004b</td></tr>
+</table><p>
+</body>
+</html>

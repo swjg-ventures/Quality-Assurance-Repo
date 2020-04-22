@@ -1,38 +1,45 @@
 package com.testcases;
 
 import org.testng.annotations.Test;
-import com.pages.AlertSettings;
-import com.pages.BeepCarpool;
-import com.pages.CallEmergency;
-import com.pages.CarFinder;
-import com.pages.CarGroups;
-import com.pages.CustomerService;
-import com.pages.DownloadApp;
-import com.pages.GetAnotherDevice;
-import com.pages.ListOfCars;
-import com.pages.Modes;
-import com.pages.Registration;
-import com.pages.RoadsideAssistance;
-import com.pages.StolenCar;
-import com.pages.VehicleProfile;
-
-import Demo.Ck;
+import com.base.Base;
+import com.pages.Delete_Devices_From_Panel;
+import com.pages.Manually_Create_Invoice_And_Signup;
+import com.pages.Register;
 
 
 
 
-public class DemoTest extends VehicleProfile {
+
+
+public class DemoTest extends Base {
 
 
 
 
-	// ALERT SETTINGS MAIN MENU
-		@Test(priority = 22)
-		public void VerifyAlertSettings() throws Exception {
-			DownloadApp a = new DownloadApp();
-			a.DownloadAppLinks();
+	
+ 		@Test(priority = 1)
+		public void VerifyRegister1() throws Exception {
+			Register a = new Register();
+			a.register();
+		}
+
+	
+		
+//		@Test(priority = 1)		
+		public void Manually_Create_Invoice_And_Signup() throws Exception {
+			Manually_Create_Invoice_And_Signup order = new Manually_Create_Invoice_And_Signup();
+			order.RegisterWithCustomerInvoice();
 		}
 		
 		
+		
+		
+//		@Test(priority = 1)		
+		public void Dlt_Devices() throws Exception {
+			Delete_Devices_From_Panel order = new Delete_Devices_From_Panel();
+			order.delete_devices();
+		}
+		
+
 	
 }
