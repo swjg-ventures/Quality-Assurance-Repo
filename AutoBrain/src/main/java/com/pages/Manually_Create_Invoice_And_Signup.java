@@ -595,7 +595,6 @@ ArrayList<String> All_Devices_No = new ArrayList<String>();
 	
 	
 	
-	
 
 			//This will create number of devices from worker panel
 			private ArrayList<String> CreateDevicesByPanel() throws Exception 
