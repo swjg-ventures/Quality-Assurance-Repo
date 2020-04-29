@@ -1,29 +1,50 @@
 package Demo;
 
-import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.pages.Login;
 
-public class Testing{
+public class Testing extends Login{	
 	
-	public static void main(String[] args) throws Exception {
-		ChoosePlan();
+	
+	
+	
+	
+	public void CarNameList() throws Exception {
+		
+		System.out.println(ExcelRead(0, 0));
+			
 	}
 	
 	
-	
-	
-	
-	
-	public static void ChoosePlan() throws Exception
+	public void ExcelWrite(int row, int column, String webelement) throws Exception 
 	{
-		for(int i=1; i<1; i++) {
-			System.out.println("OK");
-		}
+		File file = new File ("C:\\Users\\Rajesh\\Desktop\\data.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet  = workbook.getSheetAt(0);
+		sheet.createRow(row).createCell(column).setCellValue(webelement);		
+		FileOutputStream fos = new FileOutputStream(file);
+		workbook.write(fos);	
+	}
+	
+	
+
+	public String ExcelRead(int row, int column) throws Exception
+	{
+		File file = new File ("C:\\Users\\Rajesh\\Desktop\\data.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet  = workbook.getSheetAt(0);
+		int total_rows= sheet.getLastRowNum();
+		System.out.println(total_rows);
+		String cell_value = sheet.getRow(row).getCell(column).getStringCellValue().trim();
+		return cell_value;
 	}
 	
 }
