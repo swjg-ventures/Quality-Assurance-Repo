@@ -702,7 +702,8 @@ public class Register extends Login {
 					
 				try
 				{
-				add_creadit_card_page= VisibilityOfAllElementsByXpath("//h4[contains(text(),'Add Credit Card')]").size()==1;
+				add_creadit_card_page= wait(driver, 2).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1
+				||wait(driver, 2).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Choose Plan')]"))).size()==1;
 				}
 				
 				catch (Exception e)
@@ -750,7 +751,18 @@ public class Register extends Login {
 			WebElement duration = VisibilityOfElementByXpath(prop().getProperty("choose_billing_interval"));
 			duration.click();	Thread.sleep(4000);
 			}
-						
+				
+			try
+			{
+			//Check continue button is available
+			wait(driver, 2).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Continue']"))).click();
+			}
+			
+			catch(Exception e)
+			{
+				System.out.println("Credit card page split in two pages!");
+			}
+			
 			// Enter First name
 			VisibilityOfElementByXpath("//input[@placeholder='First Name']").sendKeys("Jhon");
 

@@ -6,9 +6,9 @@
     <classes>
       <class name="com.testcases.DemoTest">
         <methods>
+          <include name="VerifyRegister1"/>
           <include name="CheckBrowsers"/>
           <include name="quit"/>
-          <include name="Dlt_Devices"/>
         </methods>
       </class> <!-- com.testcases.DemoTest -->
     </classes>
