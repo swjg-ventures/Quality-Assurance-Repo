@@ -108,7 +108,7 @@ public class Register extends Login {
 	public Properties prop() throws Exception 
 	{
 		 Properties prop = new Properties();
-		 FileInputStream fis = new FileInputStream("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\src\\main\\java\\Library\\register.properties");
+		 FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\register.properties");
 		 prop.load(fis);
 		 return prop;
 	}
@@ -530,12 +530,12 @@ public class Register extends Login {
 		if(new_entered_email==null)
 		{
 			VisibilityOfElementByXpath("//input[@id='inbox_field']").sendKeys(entered_email);;
-			
+			System.out.println("Trying to input entered_email in field"+entered_email);
 		} 
 		else 
 		{
 			VisibilityOfElementByXpath("//input[@id='inbox_field']").sendKeys(new_entered_email);;
-			
+			System.out.println("Trying to input new_entered_email in field"+new_entered_email);
 		}
 		
 		

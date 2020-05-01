@@ -30,7 +30,7 @@ ArrayList<String> All_Devices_No = new ArrayList<String>();
 	private Properties property() throws Exception 
 	{
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\src\\main\\java\\Library\\Create_Invoice.properties");
+		FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\Create_Invoice.properties");
 		prop.load(fis);
 		return prop;
 	}

@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="219707" started-at="2020-05-01T05:09:02Z" finished-at="2020-05-01T05:12:42Z">
+  <suite name="Suite" duration-ms="217078" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:35:54Z">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="219707" started-at="2020-05-01T05:09:02Z" finished-at="2020-05-01T05:12:42Z">
+    <test name="Chrome" duration-ms="217078" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:35:54Z">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="CheckBrowsers" is-config="true" duration-ms="11496" started-at="2020-05-01T05:09:02Z" finished-at="2020-05-01T05:09:14Z">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="CheckBrowsers" is-config="true" duration-ms="11139" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:32:28Z">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@4566e5bd]" name="VerifyRegister1" duration-ms="202414" started-at="2020-05-01T05:09:14Z" finished-at="2020-05-01T05:12:36Z">
+        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@4566e5bd]" name="VerifyRegister1" duration-ms="200118" started-at="2020-05-01T05:32:28Z" finished-at="2020-05-01T05:35:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyRegister1 -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="quit" is-config="true" duration-ms="5778" started-at="2020-05-01T05:12:36Z" finished-at="2020-05-01T05:12:42Z">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="quit" is-config="true" duration-ms="5793" started-at="2020-05-01T05:35:49Z" finished-at="2020-05-01T05:35:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
