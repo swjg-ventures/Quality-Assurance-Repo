@@ -521,28 +521,24 @@ public class Register extends Login {
 
 		driver.get("https://www.mailinator.com");
 		
-		//Click on Email button
-		List<WebElement> email_btn = PresenceOfAllElementsByXpath("//a[contains(text(),'Email')]");
-		email_btn.get(1).click();
 		Thread.sleep(2000);
 		
 		//Enter registered email id
 		if(new_entered_email==null)
 		{
-			VisibilityOfElementByXpath("//input[@id='inbox_field']").sendKeys(entered_email);;
-			System.out.println("Trying to input entered_email in field"+entered_email);
+			VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']").sendKeys(entered_email);;
+			System.out.println("Trying to input entered_email in field "+entered_email);
 		} 
 		else 
 		{
-			VisibilityOfElementByXpath("//input[@id='inbox_field']").sendKeys(new_entered_email);;
-			System.out.println("Trying to input new_entered_email in field"+new_entered_email);
-		}
-		
-		
-		
+			VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']").sendKeys(new_entered_email);;
+			System.out.println("Trying to input new_entered_email in field "+new_entered_email);
+		}	
+			
 		Thread.sleep(2000);
+		
 		//Click on Go button
-		VisibilityOfElementByID("go_inbox").click(); 
+		VisibilityOfElementByID("go-to-public").click(); 
 		Thread.sleep(2000);
 		
 		// Click on the first email
@@ -702,8 +698,8 @@ public class Register extends Login {
 					
 				try
 				{
-				add_creadit_card_page= wait(driver, 2).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).size()==1
-				||wait(driver, 2).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Choose Plan')]"))).size()==1;
+				add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).isDisplayed()
+				||wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]"))).isDisplayed();
 				}
 				
 				catch (Exception e)
