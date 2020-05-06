@@ -40,8 +40,8 @@ public class Register extends Login {
 	
 	boolean 
 	add_credit_error, reg_success, shipping_label_box, Is_Next_Page_Correct,	
-	p_load, add_creadit_card_page, credit_card, new_device, safty_modes, alert_setting,roadside, 
-	home, Device_Added, card_error_msg, email_added;
+	p_load, credit_card, new_device, safty_modes, alert_setting,roadside, 
+	home, Device_Added, card_error_msg, email_added, billing_interval_page_title;
 	
 	
 	//Shuffling variables			
@@ -693,31 +693,26 @@ public class Register extends Login {
 				
 				
 				//VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
-				if(!add_creadit_card_page) 
-				{
+				if(!billing_interval_page_title) 
+				{								
+					if(prop().get("account_type").equals("Autobrain Business"))
+					{
+						billing_interval_page_title= wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Billing Interval')]"))).isDisplayed();
+					}	
 					
-				try
-				{
-				add_creadit_card_page= wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Add Credit Card')]"))).isDisplayed()
-				||wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]"))).isDisplayed();
-				}
+					if(prop().get("account_type").equals("Autobrain Family"))
+					{
+						billing_interval_page_title= wait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]"))).isDisplayed();
+					}
 				
-				catch (Exception e)
-				{
-					add_creadit_card_page = false;
-				}
+					Assert.assertEquals(billing_interval_page_title, true, "Billing interval page title not found!");								
+				}			
 				
-				Assert.assertEquals(add_creadit_card_page, true, "Add credit card page not found!");
-				
-				
-				if(add_creadit_card_page) 
+				if(billing_interval_page_title) 
 				{
 					ChoosePricingPlanAndAddCardDetails();
 				}
-					
-				}
-				
-				
+									
 			}
 			
 			

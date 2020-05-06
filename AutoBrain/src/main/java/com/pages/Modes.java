@@ -13,9 +13,6 @@ public class Modes extends Login {
 	String last_geofence, enter_geofence="Test_Demo", dlt_geofence;
 	boolean mode_status=true;
 	public void mode() throws Exception {
-//		login();
-		
-			main_page(); 
 			desktop_notification_alert();
 		
 			try

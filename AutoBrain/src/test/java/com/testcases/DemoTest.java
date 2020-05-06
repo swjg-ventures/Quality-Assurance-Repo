@@ -6,7 +6,6 @@ import com.pages.Delete_Devices_From_Panel;
 import com.pages.Manually_Create_Invoice_And_Signup;
 import com.pages.Register;
 
-import Demo.Testing;
 
 
 
@@ -38,8 +37,8 @@ public class DemoTest extends Base {
 		
 //		@Test(priority = 1)		
 		public void Dlt_Devices() throws Exception {
-			Testing order = new Testing();
-			order.CarNameList();
+			Delete_Devices_From_Panel order = new Delete_Devices_From_Panel();
+			order.delete_devices();
 		}
 		
 
