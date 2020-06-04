@@ -35,7 +35,7 @@ public class ListOfCars extends Login {
 		Thread.sleep(4000);
 		
 		//Check if desktop alert open 
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		
 		//Get selected car name
 		String exp_carname= wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='active-car-title']"))).getText();

@@ -51,7 +51,7 @@ public class Screenshots extends Login {
 	
 	// PARTICULAR IMAGE COMPARISON
 	public void particularimagecomparison() throws Exception {
-		login();
+		login("john@example.com", "welcome");
 		
 		WebElement caricon = driver.findElement(By.xpath("//div[@id='bigMapCarIcon']"));
 		File f = new File("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\Images\\one.png");

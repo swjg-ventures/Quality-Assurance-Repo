@@ -15,7 +15,6 @@ import com.pages.ListOfCars;
 import com.pages.Modes;
 import com.pages.RoadsideAssistance;
 import com.pages.StolenCar;
-import com.pages.Timeline;
 import com.pages.VehicleProfile;
 
 
@@ -24,13 +23,13 @@ public class MainTest extends VehicleProfile {
 	// LOGIN
 	@Test(priority = 1)
 	public void VerifyValidLogin() throws Exception {
-		login();
+		login("john@examplecom", "welcome");
 	}
 
 	// LOGOUT
 	@Test(priority = 2)
 	public void VerifyLogoutUser() throws Exception {
-		LogoutUser();
+		logout();
 	}
 
 	// FORGOT PASSWORD
@@ -115,13 +114,6 @@ public class MainTest extends VehicleProfile {
 		buy.BuyDevice();
 	}
 
-	// TIMELINE BY DATE
-	@Test(priority = 16)
-	public void VerifyTimeline() throws Exception {
-		Timeline t = new Timeline();
-		t.Timeline_By_Date();
-	}
-
 	// LIST OF CARS IN HEADER
 	@Test(priority = 17)
 	public void VerifyChangingCarFromDropdownList() throws Exception {
@@ -175,7 +167,7 @@ public class MainTest extends VehicleProfile {
 	@Test(priority = 24)
 	public void VerifyBeepCarPool() throws Exception {
 		BeepCarpool a = new BeepCarpool();
-		a.beep_carpool();
+		a.beepCarpool();
 	}
 
 	// MODES

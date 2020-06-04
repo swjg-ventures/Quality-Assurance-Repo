@@ -51,7 +51,7 @@ List<WebElement> success_msg;
 	public void change_password() throws Exception {
 		
 		PageFactory.initElements(driver, this);
-		login();
+		login("john@example.com", "welcome");
 		
 		for (int i = 0; i < 2; i++) {
 			
@@ -109,7 +109,7 @@ List<WebElement> success_msg;
 			Thread.sleep(2000);
 			}
 			
-			LogoutUser();
+			logout();
 			login_with_new_pass();
 	}
 		softassert.assertAll();
@@ -143,7 +143,7 @@ List<WebElement> success_msg;
 		}
 			
 		softassert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		Thread.sleep(2000);
 	}
 

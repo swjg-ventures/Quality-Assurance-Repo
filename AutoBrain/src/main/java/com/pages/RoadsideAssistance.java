@@ -13,7 +13,7 @@ boolean form_open, active_request, check_assistance_complete;
 //		login(); 
 		
 		driver.navigate().to(url);
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		
 		//Click on roadside assistance button from the main main
 		List<WebElement> ele = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'ROADSIDE ASSISTANCE')]")));

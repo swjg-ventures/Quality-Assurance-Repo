@@ -11,7 +11,7 @@ public class StolenCar extends Login {
 	
 	public void stolen_car() throws Exception {
 		
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		//Click on stolen car from main menu
 		List<WebElement> stolen_car=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'STOLEN CAR')]")));
 		stolen_car.get(1).click();

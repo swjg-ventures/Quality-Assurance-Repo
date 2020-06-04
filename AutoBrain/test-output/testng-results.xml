@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="217078" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:35:54Z">
+  <suite name="Suite" duration-ms="109210" started-at="2020-06-04T15:44:14 IST" finished-at="2020-06-04T15:46:03 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="217078" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:35:54Z">
+    <test name="Chrome" duration-ms="109210" started-at="2020-06-04T15:44:14 IST" finished-at="2020-06-04T15:46:03 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="CheckBrowsers" is-config="true" duration-ms="11139" started-at="2020-05-01T05:32:17Z" finished-at="2020-05-01T05:32:28Z">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@49438269]" name="CheckBrowsers" is-config="true" duration-ms="12885" started-at="2020-06-04T15:44:14 IST" finished-at="2020-06-04T15:44:27 IST">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,75 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@4566e5bd]" name="VerifyRegister1" duration-ms="200118" started-at="2020-05-01T05:32:28Z" finished-at="2020-05-01T05:35:49Z">
+        <test-method status="FAIL" signature="Manually_Create_Invoice_And_Signup()[pri:1, instance:com.testcases.DemoTest@49438269]" name="Manually_Create_Invoice_And_Signup" duration-ms="84670" started-at="2020-06-04T15:44:27 IST" finished-at="2020-06-04T15:45:51 IST">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //h4[contains(text(),'Choose Plan')] (tried for 5 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //h4[contains(text(),'Choose Plan')] (tried for 5 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+at com.pages.Signup.Step1(Signup.java:673)
+at com.pages.SignupWithManualInvoice.Signup(SignupWithManualInvoice.java:281)
+at com.pages.SignupWithManualInvoice.signupWithManualInvoice(SignupWithManualInvoice.java:60)
+at com.testcases.DemoTest.Manually_Create_Invoice_And_Signup(DemoTest.java:21)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.access$000(SuiteRunner.java:41)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:443)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:67)
+at java.util.concurrent.FutureTask.run(Unknown Source)
+at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+at java.lang.Thread.run(Unknown Source)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h4[contains(text(),'Choose Plan')]"}
+  (Session info: chrome=83.0.4103.61)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-6Q5KS8MJ', ip: '192.168.100.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_221'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.61, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\Rajesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:50996}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: b8bb6ce6214c8fe66614d6215d6ee3cd
+*** Element info: {Using=xpath, value=//h4[contains(text(),'Choose Plan')]}
+at sun.reflect.GeneratedConstructorAccessor14.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:182)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:179)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+... 27 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerifyRegister1 -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@4566e5bd]" name="quit" is-config="true" duration-ms="5793" started-at="2020-05-01T05:35:49Z" finished-at="2020-05-01T05:35:54Z">
+        </test-method> <!-- Manually_Create_Invoice_And_Signup -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@49438269]" name="quit" is-config="true" duration-ms="5690" started-at="2020-06-04T15:45:57 IST" finished-at="2020-06-04T15:46:03 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

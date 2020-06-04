@@ -13,7 +13,7 @@ public class CarFinder extends Login {
 		
 		//Refreshing the home page
 		driver.navigate().to(url);
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		Thread.sleep(2000);
 		//Click on car finder
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[3]/div[1]/a/div[2]"))).click();
@@ -82,7 +82,7 @@ public class CarFinder extends Login {
 		
 		//Click on the Home bottom menu button
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Home')]"))).click();
-		desktop_notification_alert();
+		isDesktopNotificationAlert();
 		softassert.assertAll();
 	}
 }

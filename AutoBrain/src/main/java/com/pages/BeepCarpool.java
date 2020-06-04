@@ -15,12 +15,11 @@ boolean beep_page, form_page, member_created, beep_carpool_btn=true, beep_friend
 	
 	
 	
-	public void beep_carpool() throws Exception {
+	public void beepCarpool() throws Exception {
 		
-//		login();
+		login("john@example.com", "welcome");
 		
-		driver.navigate().to(url);
-		desktop_notification_alert();
+		
 		// Sliding to next page
 		Thread.sleep(2000);
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']"))).click();

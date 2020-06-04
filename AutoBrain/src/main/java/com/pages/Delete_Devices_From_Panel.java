@@ -17,26 +17,14 @@ public class Delete_Devices_From_Panel extends Login {
 	
 	public void delete_devices() throws Exception {
 		
-		//Login
-		
-		//Entering email
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).clear();
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("john@example.com");
-				
-		//Entering password
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).clear();
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys("welcome");
-				
-		//Click on login button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		login("john@example.com", "welcome");
 		
 		
 		//Redirect to devices page in panel
 		driver.navigate().to("https://stg.autobrain.com/worker/devices/");
 		
 		
-		
-		
+
 		for(int i=0; i<25; i++)
 		{
 			List<WebElement> ele = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Delete']")));

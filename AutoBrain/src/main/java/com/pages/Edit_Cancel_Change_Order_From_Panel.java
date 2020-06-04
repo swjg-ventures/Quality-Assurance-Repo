@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class Edit_Cancel_Change_Order_From_Panel extends Register {
+public class Edit_Cancel_Change_Order_From_Panel extends Signup {
 	String exp_plan_name = "Plan Type: Personal, Cost: $29.97, Monthly: $9.97, Free Days: 30";
 	String act_plan_name;
 	boolean error;
@@ -26,8 +26,7 @@ public class Edit_Cancel_Change_Order_From_Panel extends Register {
 		String Email = GenerateRandomEmail();
 	
 		// Calling login method
-		Login l = new Login();
-		l.login();
+		login("john@example.com", "welcome");
 	
 		 //Initializing elements 
 		PageFactory.initElements(driver, this);
