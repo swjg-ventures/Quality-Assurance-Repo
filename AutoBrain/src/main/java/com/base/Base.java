@@ -4,8 +4,11 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import org.openqa.selenium.By;
@@ -54,8 +57,21 @@ public class Base {
 		else if (bro.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
+
+			// Disable save password chrome dialog
+			Map<String, Object> prefs = new HashMap<String, Object>();
+			prefs.put("credentials_enable_service", false);
+			prefs.put("profile.password_manager_enabled", false);
+			options.setExperimentalOption("prefs", prefs);
+
+			// Disable chrome is being controlled by automated software
+			options.setExperimentalOption("useAutomationExtension", false);
+			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+
+			// Headless browser without UI
 //			options.addArguments("window-size=1366,768");
 //			options.addArguments("headless");
+
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 		}
@@ -128,6 +144,18 @@ public class Base {
 	public List<WebElement> PresenceOfAllElementsByXpath(String xpath, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
+	}
+
+	// Presence of element
+	public WebElement PresenceOfWebElement(WebElement element, int time) {
+		WebDriverWait wait = new WebDriverWait(driver, time);
+		return wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	// Presence of all elements
+	public List<WebElement> PresenceOfAllWebElements(By element, int time) {
+		WebDriverWait wait = new WebDriverWait(driver, time);
+		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
 	}
 
 	// CAPTURE SCREENSHOT IF THE TEST GOT FAILED

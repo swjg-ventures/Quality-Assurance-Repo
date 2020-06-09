@@ -12,12 +12,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class SignupWithManualInvoice extends Signup {
 	boolean error, choose_plan_page;
-	String invoice_name, invoice_id_before, email;
+	String invoice_name, invoice_id_before, email, invoice_account_type;
+	int num;
 
 	// Used for create device
 	ArrayList<String> All_Devices_No = new ArrayList<String>();
@@ -25,16 +25,17 @@ public class SignupWithManualInvoice extends Signup {
 	// CSV file for devices
 	File csvFile = new File("Files\\mark_bulk_devices_as_sold.csv");
 
-	// Property method
-	private Properties property() throws Exception {
-		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\Create_Invoice.properties");
-		prop.load(fis);
-		return prop;
-	}
-
 	// Main Methods
-	public void signupWithManualInvoice() throws Exception {
+	public void signupWithManualInvoice(String accountType) throws Exception {
+		if (accountType.contains("personal")) {
+			prop = new Properties();
+			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\personal.properties");
+			prop.load(fis);
+		}
+
+		else {
+			System.out.println("Business type is not yet configured");
+		}
 		Writer file = new FileWriter(csvFile);
 		CSVWriter writer = new CSVWriter(file);
 
@@ -85,14 +86,14 @@ public class SignupWithManualInvoice extends Signup {
 		Select pricing_plan = new Select(VisibilityOfElementByXpath("//select[@name='pricing_plan']", 15));
 
 		// Choose which pricing plan we want to select
-		pricing_plan.selectByVisibleText(property().getProperty("pricing_plan_from_mark_device_sold")); 
+		pricing_plan.selectByVisibleText(prop.getProperty("pricing_plan"));
 
 		// Distribution channel
 		Select distribution_channel = new Select(
 				VisibilityOfElementByXpath("//select[@name='distribution_channel']", 15));
 
 		// Choose which distribution channel we want to select
-		distribution_channel.selectByVisibleText(property().getProperty("distribution_channel_name"));
+		distribution_channel.selectByVisibleText(prop.getProperty("distribution_channel"));
 
 		// Submit Form
 		VisibilityOfElementByXpath("//input[@name='commit']", 15).click();
@@ -115,7 +116,6 @@ public class SignupWithManualInvoice extends Signup {
 
 	}
 
-	
 	private void Signup() throws Exception {
 		email = GenerateRandomEmail();
 		driver.navigate().to(url);
@@ -440,50 +440,61 @@ public class SignupWithManualInvoice extends Signup {
 		Assert.assertEquals(choose_plan_page, true, "Choose plan page not found!");
 
 		// BUSINESS PLAN
-		if (prop().get("account_type").equals("Autobrain Business")) {
+		if (prop.get("account_type").equals("Autobrain Business")) {
 
 			// Choose Billing Interval
-			WebElement billing_interval = PresenceOfElementByXpath(prop().getProperty("business_plan_interval"), 15);
+			WebElement billing_interval = PresenceOfElementByXpath(prop.getProperty("business_plan_interval"), 15);
 			billing_interval.click();
 			Thread.sleep(2000);
 
 		}
 
 		// FAMILY PLAN
-		if (prop().get("account_type").equals("Autobrain Family")) {
+		if (prop.get("account_type").equals("Autobrain Family")) {
 
 			// Choose Plan
 			List<WebElement> choose_plan = PresenceOfAllElementsByXpath(
 					"//div[contains(text(),'see full list')]/following-sibling::button", 15);
-			String num = property().getProperty("choose_plan");
-			int number = Integer.parseInt(num);
+
+			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")) {
+				num = 1;
+			}
+
+			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button")) {
+				num = 2;
+			}
+
+			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+				num = 3;
+			}
+
 			Thread.sleep(2000);
 
-			switch (number)
+			switch (num)
 
 			{
 			case 0: // VIP Plan
 				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[1]/button", 15).click();
 				Thread.sleep(1500);
-				choose_plan.get(number).click();
+				choose_plan.get(num).click();
 				break;
 
 			case 1: // ESSENTIAL Plan
 				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[2]/button", 15).click();
 				Thread.sleep(1500);
-				choose_plan.get(number).click();
+				choose_plan.get(num).click();
 				break;
 
 			case 2: // MONEY SAVER Plan
 				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[3]/button", 15).click();
 				Thread.sleep(1500);
-				choose_plan.get(number).click();
+				choose_plan.get(num).click();
 				break;
 
 			}
 
 			// Choose Billing Interval
-			WebElement duration = VisibilityOfElementByXpath(property().getProperty("choose_billing_interval"), 15);
+			WebElement duration = VisibilityOfElementByXpath(prop.getProperty("choose_billing_interval"), 15);
 			duration.click();
 
 			// Submit
@@ -498,7 +509,7 @@ public class SignupWithManualInvoice extends Signup {
 		driver.get("https://stg.autobrain.com/worker/retail_fulfillment/new_invoice");
 
 		// Add Quantity
-		String s = property().getProperty("quantity");
+		String s = prop.getProperty("no_of_devices");
 		int quantity = Integer.parseInt(s);
 
 		for (int i = 0; i < quantity; i++) {
@@ -516,7 +527,15 @@ public class SignupWithManualInvoice extends Signup {
 		// Select account type
 		Select select = new Select(VisibilityOfElementByID("invoice_account_type", 15));
 
-		select.selectByVisibleText(property().getProperty("create_invoice_account_type"));
+		if (prop.getProperty("account_type").equalsIgnoreCase("Autobrain Family")) {
+			invoice_account_type = "personal";
+		}
+
+		else if (prop.getProperty("account_type").equalsIgnoreCase("Autobrain Business")) {
+			invoice_account_type = "business";
+		}
+
+		select.selectByVisibleText(invoice_account_type);
 
 		// Submit button
 		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
@@ -542,21 +561,12 @@ public class SignupWithManualInvoice extends Signup {
 		String device_num = null;
 
 		// LOGIN
-		// Entering email
-		VisibilityOfElementByID("user_email", 15).clear();
-		VisibilityOfElementByID("user_email", 15).sendKeys("john@example.com");
-
-		// Entering password
-		VisibilityOfElementByID("user_password", 15).clear();
-		VisibilityOfElementByID("user_password", 15).sendKeys("welcome");
-
-		// Click on login button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		login("john@example.com", "welcome");
 
 		// Redirect to devices page in panel
 		driver.navigate().to("https://stg.autobrain.com/worker/devices/");
 
-		String total_bought_devices = property().getProperty("quantity");
+		String total_bought_devices = prop.getProperty("no_of_devices");
 		int Total_bought_devices = Integer.parseInt(total_bought_devices);
 
 		for (int i = 0; i < Total_bought_devices; i++) {

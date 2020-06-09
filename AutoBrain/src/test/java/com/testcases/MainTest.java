@@ -125,7 +125,7 @@ public class MainTest extends VehicleProfile {
 	@Test(priority = 18)
 	public void VerifyCarFinder() throws Exception {
 		CarFinder car = new CarFinder();
-		car.car_finder();
+		car.carFinder();
 	}
 
 	// CUSTOMER SERVICE MAIN MENU

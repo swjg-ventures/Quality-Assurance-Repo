@@ -81,30 +81,27 @@ public class VehicleProfile extends ForgotPassword {
 	
 	public void VehicleProfileInfo() throws Exception {
 
-		// Calling Login Method
-//		login();
-
-		
-			Thread.sleep(3000);
+			login("temp781@mailinator.com", "welcome");
+			
 			// Opening Navigation Menu
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='hamburger-container']"))).click();
-			Thread.sleep(1000);
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='hamburger-container']"))).click();
+			
 
 			// Click on Vehicle Profile from Menu
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Vehicle Profile')]"))).click();
-			Thread.sleep(2000);
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Vehicle Profile')]"))).click();
+			
 
 			// Car Name
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input"))).clear();
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input"))).clear();
 
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input")))
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input")))
 			.sendKeys(carname);
-			Thread.sleep(2000);
+	
 
 			// Expanding Car Icon drop-down
 			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='select-dropdown']/div")))
 			.click();
-			Thread.sleep(3000);
+			
 
 			// Selecting Car Icon from drop-down
 			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(caricon))).click();
@@ -120,35 +117,35 @@ public class VehicleProfile extends ForgotPassword {
 			
 			
 			// Is your car hybrid status (ON/OFF)
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(status))).click();
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(status))).click();
 			Thread.sleep(2000);
 
 			// Car Year
 			Select y = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
 			y.selectByVisibleText(year);
-			Thread.sleep(2000);
+			
 
 			// Car Make
 			Select m = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][2]/div[2]/select")));
 			m.selectByVisibleText(make);
-			Thread.sleep(2000);
+			
 
 			// Car Model
 			Select mo = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][3]/div[2]/select")));
 			mo.selectByIndex(model);
 			model_selected=mo.getFirstSelectedOption().getText().trim();
-			Thread.sleep(1000);
+			
 
 			//Fill Up Insurance and Registration Forms
 			Ins_Reg_Forms(); 
 			
 
 			// Submit button
-			wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
+			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
 			.click();
 			
 			//Validate page loaded completely
-			String page_load= wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Vehicle Profile')]")))
+			String page_load= wait(driver, 40).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Vehicle Profile')]")))
 					.getText();
 			
 			softassert.assertEquals(page_load , "Vehicle Profile");
@@ -262,12 +259,12 @@ public class VehicleProfile extends ForgotPassword {
 		
 		// VALIDATE CAR NAME
 		String act1 = wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='new-device-form']/div[1]/input"))).getAttribute("value");
-		softassert.assertEquals(act1, carname);	
-		Thread.sleep(1000);	
+		softassert.assertEquals(act1, carname, "Vehicle name is not updated!");	
+		
 		
 		// VALIDATE VIN
 		String act2= wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'VIN Number')]/following-sibling::div/input"))).getAttribute("value");
-		softassert.assertEquals(act2, VIN);	
+		softassert.assertEquals(act2, VIN, "Vehicle VIN no. is not updated!");	
 		
 		// VALIDATE Car icon 
 		String Red_car_icon ="/packs/main/images/cars/red_car-5918da978accf5d006ec426ff0848381.png";
@@ -277,59 +274,58 @@ public class VehicleProfile extends ForgotPassword {
 		String act_colour = ((JavascriptExecutor)driver).executeScript("return arguments[0].attributes['src'].value;", element).toString();
 		
 		if(caricon==caricon1) {
-			softassert.assertEquals(act_colour, Red_car_icon);
+			softassert.assertEquals(act_colour, Red_car_icon, "Vehicle icon is not updated!");
 		}
 		
 		if(caricon==caricon2) {
-			softassert.assertEquals(act_colour, Gray_car_icon);
+			softassert.assertEquals(act_colour, Gray_car_icon, "Vehicle icon is not updated!");
 		}	
-		Thread.sleep(2000);
+		
 		
 		// YEAR
 		Select y1 = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
 		String act4 = y1.getFirstSelectedOption().getText().trim();
 		
-		softassert.assertEquals(act4, year);
+		softassert.assertEquals(act4, year, "Vehicle year is not updated!");
 		
 		//Validate Car's Make
 		Select y2 = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][2]/div[2]/select")));
 		String act5 = y2.getFirstSelectedOption().getText().trim();
 		
-		softassert.assertEquals(act5, make);
+		softassert.assertEquals(act5, make, "Vehicle make is not updated!");
 		
 		//Validate Car's Model
 		Select y3 = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][3]/div[2]/select")));
 		String act6 = y3.getFirstSelectedOption().getText().trim();
 		
 		if(make=="SKODA") {
-			softassert.assertEquals(act6, model_selected);			
+			softassert.assertEquals(act6, model_selected, "Vehicle model is not updated!");			
 		}
 		if(make=="VOLVO") {
-			softassert.assertEquals(act6, model_selected);		
+			softassert.assertEquals(act6, model_selected, "Vehicle model is not updated!");		
 		}
 		
 		// Validate Effective Date
 		String act7=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Effective Date')]/following-sibling::li"))).getText();
-		softassert.assertEquals(act7, date_format(Insurance_Eff_Date) );	
+		softassert.assertEquals(act7, date_format(Insurance_Eff_Date), "Vehicle insurance effective date is not updated!" );	
 		
 		
 		// Validate Expire Date
 		String act8=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-insurance-info']//div[2]//li[2]"))).getText();
-		softassert.assertEquals(act8, date_format(Insurance_Exp_Date) );	
+		softassert.assertEquals(act8, date_format(Insurance_Exp_Date), "Vehicle insurance expiring date is not updated!" );	
 		
 		// Validate Policy number
 		String act9=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Policy Number')]/following-sibling::li"))).getText();
-		softassert.assertEquals(act9, policyno );	
+		softassert.assertEquals(act9, policyno, "Vehicle policy no. is not updated!" );	
 		
 		// Validate Insurance company name
 		String act10=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[contains(text(),'Insurance Company')]/following-sibling::li"))).getText();
-		softassert.assertEquals(act10, insurancecmpy );	
+		softassert.assertEquals(act10, insurancecmpy, "Vehicle insurance company name is not updated!" );	
 		
 		// Validate Vehicle Registration Info (Expire Date)
 		String act11=	wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='car-registration-info']//div[1]//li[2]"))).getText();
-		softassert.assertEquals(act11, date_format(car_Reg_exp) );	
-		
-		
+		softassert.assertEquals(act11, date_format(car_Reg_exp), "Vehicle registration expiring date is not updated!" );	
+				
 		softassert.assertAll();
 	}
 	

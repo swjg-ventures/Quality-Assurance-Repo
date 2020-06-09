@@ -102,15 +102,22 @@ public class Signup extends Login {
 	@FindBy(xpath = "//input[@placeholder='Enter device number']")
 	List<WebElement> no_of_input_devices;
 
-	public Properties prop() throws Exception {
-		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\register.properties");
-		prop.load(fis);
-		return prop;
-	}
+	Properties prop;
 
 	// MAIN METHOD
-	public void signup() throws Exception {
+	public void signup(String accountType) throws Exception {
+		if (accountType.contains("personal")) {
+			prop = new Properties();
+			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\personal.properties");
+			prop.load(fis);
+		}
+
+		if (accountType.contains("business")) {
+			prop = new Properties();
+			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\business.properties");
+			prop.load(fis);
+		}
+
 		orderDeviceFromWebSite();
 
 		// Clicking on sign-up button
@@ -128,7 +135,7 @@ public class Signup extends Login {
 		VisibilityOfElementByID("user_email", 15).clear();
 
 		// Change sign-up email which will different from bought product email
-		if (prop().getProperty("Want_To_Change_Signup_Email").contains("true")) {
+		if (prop.getProperty("Want_To_Change_Signup_Email").contains("true")) {
 			String new_email = GenerateRandomEmail();
 			VisibilityOfElementByID("user_email", 15).sendKeys(new_email);
 			System.out.println("Signup Email Has Been Changed --> " + new_email);
@@ -264,7 +271,7 @@ public class Signup extends Login {
 			}
 
 			catch (Exception e) {
-				System.out.println("Step 1 page not found after confirmation code.");
+				e.printStackTrace();
 			}
 		}
 
@@ -326,11 +333,11 @@ public class Signup extends Login {
 
 		// Open drop-down to select number of devices
 		Select s = new Select(VisibilityOfElementByXpath("//div[@class='quanities-container']/select", 15));
-		s.selectByVisibleText(prop().getProperty("no_of_devices")); // Coming from "register.properties"
+		s.selectByVisibleText(prop.getProperty("no_of_devices"));
 
 		// Select Account Type BUSINESS OR PERSONAL
 		Select ss = new Select(VisibilityOfElementByXpath("//div[@class='account-types-container']/select", 15));
-		ss.selectByVisibleText(prop().getProperty("account_type")); // Coming from "register.properties"
+		ss.selectByVisibleText(prop.getProperty("account_type"));
 
 		Thread.sleep(2000);
 		// Store expected product price
@@ -429,14 +436,14 @@ public class Signup extends Login {
 		Thread.sleep(2000);
 
 		// Verify order placed or not
-		boolean order_placed = VisibilityOfAllElementsByXpath("//h2[contains(text(),'Thank You For Your Order')]", 15)
+		boolean order_placed = VisibilityOfAllElementsByXpath("//h2[contains(text(),'Thank You For Your Order')]", 30)
 				.size() == 1;
 		softassert.assertEquals(order_placed, true);
 
 		// Verify order quantity
 		boolean quantiy = VisibilityOfAllElementsByXpath("//p[contains(text(),'Your package will include "
-				+ prop().getProperty("no_of_devices") + " Autobrain device as well as a 5 step quick start guide.')]",
-				15).size() == 1;
+				+ prop.getProperty("no_of_devices") + " Autobrain device as well as a 5 step quick start guide.')]", 15)
+						.size() == 1;
 
 		softassert.assertEquals(quantiy, true, "Ordered quantiy not matching with order receipt!");
 
@@ -630,8 +637,8 @@ public class Signup extends Login {
 		Thread.sleep(1000);
 
 		// Fill Up Insurance and Registration Forms
-//				VehicleProfile v = new VehicleProfile();
-//				v.Ins_Reg_Forms(); 
+//		VehicleProfile v = new VehicleProfile();
+//		v.Ins_Reg_Forms();
 
 		// Check terms and conditions
 		List<WebElement> el = VisibilityOfAllElementsByXpath("//div[@class='esf']/div[1]", 15);
@@ -661,14 +668,14 @@ public class Signup extends Login {
 
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 		if (!billing_interval_page_title) {
-			if (prop().get("account_type").equals("Autobrain Business")) {
+			if (prop.get("account_type").equals("Autobrain Business")) {
 				billing_interval_page_title = wait(driver, 5)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Billing Interval')]")))
 						.isDisplayed();
 			}
 
-			if (prop().get("account_type").equals("Autobrain Family")) {
+			if (prop.get("account_type").equals("Autobrain Family")) {
 				billing_interval_page_title = wait(driver, 5)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]")))
@@ -688,22 +695,22 @@ public class Signup extends Login {
 	private void ChoosePricingPlanAndAddCardDetails() throws Exception {
 
 		// BUSINESS PLAN
-		if (prop().get("account_type").equals("Autobrain Business")) {
+		if (prop.get("account_type").equals("Autobrain Business")) {
 
 			// Choose Billing Interval
-			WebElement billing_interval = PresenceOfElementByXpath(prop().getProperty("business_plan_interval"), 15);
+			WebElement billing_interval = PresenceOfElementByXpath(prop.getProperty("business_plan_interval"), 15);
 			billing_interval.click();
 			Thread.sleep(2000);
 		}
 
 		// FAMILY PLAN
-		if (prop().get("account_type").equals("Autobrain Family")) {
+		if (prop.get("account_type").equals("Autobrain Family")) {
 			// Choose Plan
-			WebElement choose_plan = VisibilityOfElementByXpath(prop().getProperty("choose_plan"), 15);
+			WebElement choose_plan = VisibilityOfElementByXpath(prop.getProperty("choose_plan"), 15);
 			choose_plan.click();
 
 			// Choose Billing Interval
-			WebElement duration = VisibilityOfElementByXpath(prop().getProperty("choose_billing_interval"), 15);
+			WebElement duration = VisibilityOfElementByXpath(prop.getProperty("choose_billing_interval"), 15);
 			duration.click();
 			Thread.sleep(4000);
 		}
@@ -783,11 +790,11 @@ public class Signup extends Login {
 	// Step 2 will add monitor driver details
 	public void Step2() throws Exception {
 
-		if (prop().get("account_type").equals("Autobrain Business")) {
+		if (prop.get("account_type").equals("Autobrain Business")) {
 			System.out.println("This is Business Plan");
 		}
 
-		if (prop().get("account_type").equals("Autobrain Personal")) {
+		if (prop.get("account_type").equals("Autobrain Family")) {
 			// Click on Add new monitor button
 			VisibilityOfElementByXpath("//button[contains(text(),'Add New Monitor')]", 15).click();
 
@@ -906,12 +913,12 @@ public class Signup extends Login {
 		// Validate Step 3 page opened
 
 		try {
-			if (prop().getProperty("account_type").contains("Autobrain Business")) {
+			if (prop.getProperty("account_type").contains("Autobrain Business")) {
 				safty_modes = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Introduction to Modes')]", 15)
 						.size() == 1;
 			}
 
-			else if (prop().getProperty("account_type").contains("Autobrain Family")) {
+			else if (prop.getProperty("account_type").contains("Autobrain Family")) {
 				safty_modes = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Introduction to Safety Modes')]",
 						15).size() == 1;
 			}
@@ -1015,7 +1022,7 @@ public class Signup extends Login {
 	private ArrayList<String> create_device_by_panel() throws Exception {
 		String device_num = null;
 
-		String total_bought_devices = prop().getProperty("no_of_devices");
+		String total_bought_devices = prop.getProperty("no_of_devices");
 		Total_bought_devices = Integer.parseInt(total_bought_devices);
 
 		for (int i = 0; i < Total_bought_devices; i++) {
@@ -1025,7 +1032,8 @@ public class Signup extends Login {
 
 			// Validating add device page opened or not
 			while (!isNewDevicePageFound) {
-				isNewDevicePageFound = driver.findElements(By.xpath("//h1[contains(text(),'Add a new device')]")).size() == 1;
+				isNewDevicePageFound = driver.findElements(By.xpath("//h1[contains(text(),'Add a new device')]"))
+						.size() == 1;
 			}
 
 			// Enter phone number
@@ -1101,7 +1109,7 @@ public class Signup extends Login {
 	// ESF_Exemptions Method
 	public boolean ESFExemptions() throws Exception {
 
-		if (prop().getProperty("ESF_Exemptions").contains("true")) {
+		if (prop.getProperty("ESF_exemptions").contains("true")) {
 			// Logout registered user
 			VisibilityOfElementByXpath("//div[contains(text(),'Log Out')]", 15).click();
 			Thread.sleep(2000);
