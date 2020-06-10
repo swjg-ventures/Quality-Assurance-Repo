@@ -23,7 +23,7 @@ import com.base.Base;
 import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.CSVWriter;
 
-public class aa {
+public class CSV {
 
 	public static void main(String[] args) throws Exception {
 		read_csv();

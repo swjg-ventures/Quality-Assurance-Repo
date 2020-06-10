@@ -6,7 +6,7 @@
     <classes>
       <class name="com.testcases.DemoTest">
         <methods>
-          <include name="verifyCancelSubscription"/>
+          <include name="Manually_Create_Invoice_And_Signup"/>
           <include name="CheckBrowsers"/>
           <include name="quit"/>
         </methods>

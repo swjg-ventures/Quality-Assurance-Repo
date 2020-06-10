@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="55157" started-at="2020-06-09T17:57:50 IST" finished-at="2020-06-09T17:58:45 IST">
+  <suite name="Suite" duration-ms="16" started-at="2020-06-10T12:02:29 IST" finished-at="2020-06-10T12:02:29 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="55157" started-at="2020-06-09T17:57:50 IST" finished-at="2020-06-09T17:58:45 IST">
-      <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@2833cc44]" name="CheckBrowsers" is-config="true" duration-ms="11579" started-at="2020-06-09T17:57:50 IST" finished-at="2020-06-09T17:58:02 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCancelSubscription()[pri:1, instance:com.testcases.DemoTest@2833cc44]" name="verifyCancelSubscription" duration-ms="37782" started-at="2020-06-09T17:58:02 IST" finished-at="2020-06-09T17:58:39 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCancelSubscription -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@2833cc44]" name="quit" is-config="true" duration-ms="5736" started-at="2020-06-09T17:58:39 IST" finished-at="2020-06-09T17:58:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-      </class> <!-- com.testcases.DemoTest -->
-    </test> <!-- Chrome -->
+    <test name="Test" duration-ms="16" started-at="2020-06-10T12:02:29 IST" finished-at="2020-06-10T12:02:29 IST">
+    </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
