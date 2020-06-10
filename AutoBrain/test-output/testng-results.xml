@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="16" started-at="2020-06-10T12:02:29 IST" finished-at="2020-06-10T12:02:29 IST">
+  <suite name="Suite" duration-ms="59430" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:57:18 IST">
     <groups>
     </groups>
-    <test name="Test" duration-ms="16" started-at="2020-06-10T12:02:29 IST" finished-at="2020-06-10T12:02:29 IST">
-    </test> <!-- Test -->
+    <test name="Chrome" duration-ms="59430" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:57:18 IST">
+      <class name="com.testcases.DemoTest">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="11730" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:56:30 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CheckBrowsers -->
+        <test-method status="PASS" signature="verifyCancelSubscription()[pri:1, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyCancelSubscription" duration-ms="41857" started-at="2020-06-10T14:56:30 IST" finished-at="2020-06-10T14:57:12 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyCancelSubscription -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5760" started-at="2020-06-10T14:57:12 IST" finished-at="2020-06-10T14:57:18 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- com.testcases.DemoTest -->
+    </test> <!-- Chrome -->
   </suite> <!-- Suite -->
 </testng-results>
