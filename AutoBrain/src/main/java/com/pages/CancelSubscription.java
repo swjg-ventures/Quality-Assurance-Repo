@@ -121,7 +121,7 @@ public class CancelSubscription extends Login {
 
 		// Validate device cancelled
 		boolean isDeviceUncancelled = VisibilityOfElementByXpath("//div[@id='flash_success']", 30).isDisplayed();
-		Assert.assertEquals(isDeviceUncancelled, false, "Unable to uncancelled the device!");
+		Assert.assertEquals(isDeviceUncancelled, true, "Unable to uncancelled the device!");
 		System.out.println(cancelledDevice + " Device subscription uncancelled successfully!");
 	}
 
