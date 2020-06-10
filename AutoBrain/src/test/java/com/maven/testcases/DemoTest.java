@@ -10,7 +10,7 @@ import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void VerifyRegister1() throws Exception {
 		Signup a = new Signup();
 		a.signup("personal");
@@ -35,7 +35,7 @@ public class DemoTest extends Base {
 		l.VehicleProfileInfo();
 	}
 
-//	@Test(priority = 1)
+	@Test(priority = 1)
 	public void verifyCancelSubscription() throws Exception {
 		CancelSubscription l = new CancelSubscription();
 		l.cancelSubscription();
