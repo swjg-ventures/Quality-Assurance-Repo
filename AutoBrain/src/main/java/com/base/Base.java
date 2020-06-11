@@ -68,14 +68,11 @@ public class Base {
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-//			if (System.getProperty("browser").equals("true")) {
-//				options.addArguments("window-size=1366,768");
-//				options.addArguments("headless");
-//			}
+
 
 			// Headless browser without UI
-//			options.addArguments("window-size=1366,768");
-//			options.addArguments("headless");
+			options.addArguments("window-size=1366,768");
+			options.addArguments("headless");
 
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
