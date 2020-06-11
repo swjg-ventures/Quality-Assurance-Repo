@@ -30,7 +30,7 @@ public class CancelSubscription extends Login {
 		boolean needShippingAddress;
 		try {
 			needShippingAddress = VisibilityOfElementByXpath(
-					"//table[@class='table table-hover']/tbody/tr[1]/td[7]/span", 30).getText()
+					"//table[@class='table table-hover']/tbody/tr[1]/td[7]/span", 10).getText()
 							.equalsIgnoreCase("Need Shipping Address");
 		} catch (Exception e) {
 			needShippingAddress = false;
@@ -70,6 +70,17 @@ public class CancelSubscription extends Login {
 			// Save
 			List<WebElement> saveBtn = VisibilityOfAllElementsByXpath("//div[@id='editShipping']//button", 15);
 			saveBtn.get(1).click();
+
+			// Validate shipping address added successfully
+			boolean isShippingAddressAdded;
+			try {
+				isShippingAddressAdded = VisibilityOfElementByXpath("//div[@id='flash_success']", 15).isDisplayed();
+
+			} catch (Exception e) {
+				isShippingAddressAdded = false;
+			}
+
+			Assert.assertEquals(isShippingAddressAdded, true, "Shipping Address not added successfully!");
 		}
 
 		// Click on option #1 to cancel subscription

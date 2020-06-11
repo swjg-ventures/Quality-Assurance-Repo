@@ -8,6 +8,8 @@ import com.pages.Signup;
 import com.pages.SignupWithManualInvoice;
 import com.pages.VehicleProfile;
 
+import Demo.VCSPushDemo;
+
 public class DemoTest extends Base {
 
 //	@Test(priority = 1)
@@ -23,11 +25,6 @@ public class DemoTest extends Base {
 		order.signupWithManualInvoice("personal");
 	}
 
-//	@Test(priority = 1)
-	public void verifyLogin() throws Exception {
-		Login l = new Login();
-		l.login("john@examplecom", "welcomee");
-	}
 
 //	@Test(priority = 1)
 	public void verifyCarFinder() throws Exception {

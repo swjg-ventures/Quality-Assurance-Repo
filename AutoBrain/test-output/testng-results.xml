@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="59430" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:57:18 IST">
+  <suite name="Suite" duration-ms="59340" started-at="2020-06-11T16:23:29 IST" finished-at="2020-06-11T16:24:28 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="59430" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:57:18 IST">
+    <test name="Chrome" duration-ms="59340" started-at="2020-06-11T16:23:29 IST" finished-at="2020-06-11T16:24:28 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="11730" started-at="2020-06-10T14:56:18 IST" finished-at="2020-06-10T14:56:30 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="10922" started-at="2020-06-11T16:23:29 IST" finished-at="2020-06-11T16:23:40 IST">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCancelSubscription()[pri:1, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyCancelSubscription" duration-ms="41857" started-at="2020-06-10T14:56:30 IST" finished-at="2020-06-10T14:57:12 IST">
+        <test-method status="PASS" signature="verifyCancelSubscription()[pri:1, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyCancelSubscription" duration-ms="42676" started-at="2020-06-11T16:23:40 IST" finished-at="2020-06-11T16:24:23 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCancelSubscription -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5760" started-at="2020-06-10T14:57:12 IST" finished-at="2020-06-10T14:57:18 IST">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5687" started-at="2020-06-11T16:24:23 IST" finished-at="2020-06-11T16:24:28 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
