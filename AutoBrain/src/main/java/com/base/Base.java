@@ -46,7 +46,7 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeClass
-	@Parameters("Browsers")
+	@Parameters({"Browsers"})
 	public void CheckBrowsers(String bro) throws Exception {
 		if (bro.equalsIgnoreCase("firefox")) {
 
@@ -68,10 +68,10 @@ public class Base {
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-			if (System.getProperty("browser").equals("true")) {
-				options.addArguments("window-size=1366,768");
-				options.addArguments("headless");
-			}
+//			if (System.getProperty("browser").equals("true")) {
+//				options.addArguments("window-size=1366,768");
+//				options.addArguments("headless");
+//			}
 
 			// Headless browser without UI
 //			options.addArguments("window-size=1366,768");
