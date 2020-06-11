@@ -43,6 +43,11 @@
 				<version>2.17</version>
 				<configuration>
 
+					<systemPropertyVariables>
+						<browser>${headless}</browser>
+					</systemPropertyVariables>
+
+
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>

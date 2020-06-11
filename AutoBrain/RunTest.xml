@@ -4,6 +4,7 @@
 
 	<test thread-count="5" name="Chrome">
 		<parameter name="Browsers" value="chrome" />
+		<parameter name="browser" value="${headless}" />
 	
 		<classes>
 

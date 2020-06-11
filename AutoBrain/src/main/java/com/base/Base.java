@@ -28,6 +28,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
+
+import com.assertthat.selenium_shutterbug.utils.web.Browser;
+
 import Library.Custom_Listner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import ru.yandex.qatools.ashot.AShot;
@@ -46,8 +49,8 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeClass
-	@Parameters({"Browsers"})
-	public void CheckBrowsers(String bro) throws Exception {
+	@Parameters({"Browsers", "browser"})
+	public void CheckBrowsers(String bro, String browser) throws Exception {
 		if (bro.equalsIgnoreCase("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
@@ -68,11 +71,15 @@ public class Base {
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-
+			if(browser.equalsIgnoreCase("true")) {
+				options.addArguments("window-size=1366,768");
+				options.addArguments("headless");
+				System.out.println("Headless browser working");
+			}
 
 			// Headless browser without UI
-			options.addArguments("window-size=1366,768");
-			options.addArguments("headless");
+//			options.addArguments("window-size=1366,768");
+//			options.addArguments("headless");
 
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
