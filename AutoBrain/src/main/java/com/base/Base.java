@@ -23,6 +23,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
@@ -49,7 +50,7 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeClass
-	@Parameters({"Browsers", "browser"})
+	@Parameters({ "Browsers", "browser" })
 	public void CheckBrowsers(String bro, String browser) throws Exception {
 		if (bro.equalsIgnoreCase("firefox")) {
 
@@ -71,15 +72,12 @@ public class Base {
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-			if(browser.equalsIgnoreCase("true")) {
+			// Headless browser without UI
+			if (browser.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Headless browser working");
 			}
-
-			// Headless browser without UI
-//			options.addArguments("window-size=1366,768");
-//			options.addArguments("headless");
 
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
@@ -97,6 +95,10 @@ public class Base {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		driver.get(url);
+		
+		// Validate login page displayed
+		boolean isLoginPagedLoaded = VisibilityOfElementByXpath("//input[@name='commit']", 60).isDisplayed();
+		Assert.assertEquals(isLoginPagedLoaded, true, "Staging is not loading!");
 
 	}
 

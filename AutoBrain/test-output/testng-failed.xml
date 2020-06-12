@@ -2,6 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
   <test thread-count="5" name="Chrome(failed)" parallel="tests">
+    <parameter name="browser" value="${headless}"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
       <class name="com.testcases.DemoTest">
