@@ -74,7 +74,7 @@ public class Base {
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
-			// Headless browser without UI
+			// Headless browser run without UI
 			if (browser.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
