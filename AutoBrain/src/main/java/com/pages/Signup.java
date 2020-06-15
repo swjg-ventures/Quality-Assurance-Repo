@@ -671,14 +671,14 @@ public class Signup extends Login {
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 		if (!billing_interval_page_title) {
 			if (prop.get("account_type").equals("Autobrain Business")) {
-				billing_interval_page_title = wait(driver, 5)
+				billing_interval_page_title = wait(driver, 15)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Billing Interval')]")))
 						.isDisplayed();
 			}
 
 			if (prop.get("account_type").equals("Autobrain Family")) {
-				billing_interval_page_title = wait(driver, 5)
+				billing_interval_page_title = wait(driver, 15)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]")))
 						.isDisplayed();
