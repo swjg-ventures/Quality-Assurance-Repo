@@ -10,27 +10,34 @@ import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
 
-//	@Test(priority = 1)
-	public void VerifyRegister1() throws Exception {
+	@Test(priority = 1)
+	public void VerifyPersonalAccountRegistration() throws Exception {
 		Signup a = new Signup();
 		a.signup("personal");
 
 	}
 
-//	@Test(priority = 1)
-	public void Manually_Create_Invoice_And_Signup() throws Exception {
+	@Test(priority = 2)
+	public void VerifyBusinessAccountRegistration() throws Exception {
+		Signup a = new Signup();
+		a.signup("business");
+
+	}
+
+	@Test(priority = 3)
+	public void VerifySignupWithPrepaidDevice() throws Exception {
 		SignupWithManualInvoice order = new SignupWithManualInvoice();
 		order.signupWithManualInvoice("personal");
 	}
 
-//	@Test(priority = 1)
+	@Test(priority = 4)
 	public void verifyLogin() throws Exception {
 		Login l = new Login();
 		l.login("john@examplecom", "welcomee");
 	}
 
-//	@Test(priority = 1)
-	public void verifyCarFinder() throws Exception {
+	@Test(priority = 5)
+	public void verifyUpdateVehicleProfile() throws Exception {
 		VehicleProfile l = new VehicleProfile();
 		l.VehicleProfileInfo();
 	}

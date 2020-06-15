@@ -382,7 +382,7 @@ public class Signup extends Login {
 
 		// BILLING ADDRESS (Verify new page opened or not)
 		boolean nextpage2 = VisibilityOfAllElementsByXpath("//h5[contains(text(),'Billing  Address')]", 15).size() == 1;
-		softassert.assertEquals(nextpage2, true);
+		Assert.assertEquals(nextpage2, true);
 
 		// Click on Same as shipping check-box
 		VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 15).click();
@@ -390,15 +390,15 @@ public class Signup extends Login {
 		// Get street address and verify
 		String A_address = VisibilityOfElementByXpath("//input[@placeholder='Street Address']", 15)
 				.getAttribute("value");
-		softassert.assertEquals(A_address, Street);
+		Assert.assertEquals(A_address, Street);
 
 		// Get city name and verify
 		String A_City = VisibilityOfElementByXpath("//input[@placeholder='City']", 15).getAttribute("value");
-		softassert.assertEquals(A_City, City);
+		Assert.assertEquals(A_City, City);
 
 		// Get state name and verify
 		String A_state = VisibilityOfElementByXpath("//Select[@placeholder='State']/option[13]", 15).getText().trim();
-		softassert.assertEquals(A_state, State);
+		Assert.assertEquals(A_state, State);
 
 		// Get city name and verify
 		VisibilityOfElementByXpath("//input[@placeholder='Phone Number']", 15).sendKeys(Phone);
@@ -408,7 +408,7 @@ public class Signup extends Login {
 
 		// PAYMENT METHOD (Verify new page opened or not)
 		boolean nextpage3 = VisibilityOfAllElementsByXpath("//h5[contains(text(),'Payment  Method')]", 15).size() == 1;
-		softassert.assertEquals(nextpage3, true);
+		Assert.assertEquals(nextpage3, true);
 
 		// Enter card name
 		VisibilityOfElementByXpath("//input[@placeholder='Name On Card']", 15).sendKeys(Card_Name);
@@ -428,8 +428,10 @@ public class Signup extends Login {
 		year.selectByVisibleText("2035");
 
 		// Enter zip code
-		VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15).sendKeys(Zip);
-
+		boolean isZipCodeFound = VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15)
+				.getAttribute("value").equalsIgnoreCase(Zip);
+		Assert.assertEquals(isZipCodeFound, true, "Zip code not fetch automatically!");
+		
 		// Click on submit my order button
 		VisibilityOfElementByXpath("//button[contains(text(),'Submit My Order')]", 15).click();
 
@@ -637,8 +639,8 @@ public class Signup extends Login {
 		Thread.sleep(1000);
 
 		// Fill Up Insurance and Registration Forms
-//		VehicleProfile v = new VehicleProfile();
-//		v.Ins_Reg_Forms();
+		VehicleProfile v = new VehicleProfile();
+		v.Ins_Reg_Forms();
 
 		// Check terms and conditions
 		List<WebElement> el = VisibilityOfAllElementsByXpath("//div[@class='esf']/div[1]", 15);

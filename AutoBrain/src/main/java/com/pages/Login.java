@@ -28,7 +28,7 @@ public class Login extends Base {
 							.isDisplayed();
 
 		} catch (Exception e) {
-
+			
 		}
 		Assert.assertEquals(homePage, true, "Home page is not loaded!");
 		isDesktopNotificationAlert();

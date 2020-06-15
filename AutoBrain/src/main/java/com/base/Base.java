@@ -25,7 +25,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
@@ -49,7 +51,7 @@ public class Base {
 	public static final String AUTOMATE_KEY = "cRZ8y2VauprKHB1HGg9s";
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
-	@BeforeClass
+	@BeforeMethod
 	@Parameters({ "Browsers", "browser" })
 	public void CheckBrowsers(String bro, String browser) throws Exception {
 		if (bro.equalsIgnoreCase("firefox")) {
@@ -93,7 +95,7 @@ public class Base {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 		driver.get(url);
 		
 		// Validate login page displayed
@@ -103,7 +105,7 @@ public class Base {
 	}
 
 	// QUIT BROWSER
-	@AfterClass
+	@AfterMethod
 	public void quit() throws Exception {
 		Thread.sleep(5000);
 		driver.quit();
