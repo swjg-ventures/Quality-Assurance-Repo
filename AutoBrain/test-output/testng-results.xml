@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="6" passed="5">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="806346" started-at="2020-06-15T14:11:57 IST" finished-at="2020-06-15T14:25:23 IST">
+  <suite name="Suite" duration-ms="87430" started-at="2020-06-15T23:15:48 IST" finished-at="2020-06-15T23:17:15 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="806346" started-at="2020-06-15T14:11:57 IST" finished-at="2020-06-15T14:25:23 IST">
+    <test name="Chrome" duration-ms="87430" started-at="2020-06-15T23:15:48 IST" finished-at="2020-06-15T23:17:15 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="11024" started-at="2020-06-15T14:11:57 IST" finished-at="2020-06-15T14:12:08 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@4493d195]" name="CheckBrowsers" is-config="true" duration-ms="12244" started-at="2020-06-15T23:15:48 IST" finished-at="2020-06-15T23:16:00 IST">
           <params>
             <param index="0">
               <value>
@@ -23,118 +23,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyPersonalAccountRegistration()[pri:1, instance:com.testcases.DemoTest@6ee52dcd]" name="VerifyPersonalAccountRegistration" duration-ms="211526" started-at="2020-06-15T14:12:08 IST" finished-at="2020-06-15T14:15:39 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifyPersonalAccountRegistration -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5809" started-at="2020-06-15T14:15:39 IST" finished-at="2020-06-15T14:15:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="9873" started-at="2020-06-15T14:15:45 IST" finished-at="2020-06-15T14:15:55 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[${headless}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyBusinessAccountRegistration()[pri:2, instance:com.testcases.DemoTest@6ee52dcd]" name="VerifyBusinessAccountRegistration" duration-ms="204274" started-at="2020-06-15T14:15:55 IST" finished-at="2020-06-15T14:19:19 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifyBusinessAccountRegistration -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5745" started-at="2020-06-15T14:19:19 IST" finished-at="2020-06-15T14:19:25 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="9860" started-at="2020-06-15T14:19:25 IST" finished-at="2020-06-15T14:19:35 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[${headless}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifySignupWithPrepaidDevice()[pri:3, instance:com.testcases.DemoTest@6ee52dcd]" name="VerifySignupWithPrepaidDevice" duration-ms="175226" started-at="2020-06-15T14:19:35 IST" finished-at="2020-06-15T14:22:30 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifySignupWithPrepaidDevice -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5726" started-at="2020-06-15T14:22:30 IST" finished-at="2020-06-15T14:22:36 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="9508" started-at="2020-06-15T14:22:36 IST" finished-at="2020-06-15T14:22:45 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[${headless}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyLogin()[pri:4, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyLogin" duration-ms="16870" started-at="2020-06-15T14:22:45 IST" finished-at="2020-06-15T14:23:02 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5736" started-at="2020-06-15T14:23:02 IST" finished-at="2020-06-15T14:23:08 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="9774" started-at="2020-06-15T14:23:08 IST" finished-at="2020-06-15T14:23:18 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[${headless}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="FAIL" signature="verifyUpdateVehicleProfile()[pri:5, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyUpdateVehicleProfile" duration-ms="61302" started-at="2020-06-15T14:23:18 IST" finished-at="2020-06-15T14:24:19 IST">
+        <test-method status="FAIL" signature="verifyCarFinder()[pri:1, instance:com.testcases.DemoTest@4493d195]" name="verifyCarFinder" duration-ms="67230" started-at="2020-06-15T23:16:00 IST" finished-at="2020-06-15T23:17:08 IST">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[The following asserts failed:
-Vehicle insurance effective date is not updated! expected [Jun 26, 2020] but found [June 26, 2020],
+Vehicle insurance effective date is not updated! expected [Jun 25, 2020] but found [June 25, 2020],
 Vehicle insurance expiring date is not updated! expected [Jun 28, 2020] but found [June 28, 2020]]]>
             </message>
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: The following asserts failed:
-Vehicle insurance effective date is not updated! expected [Jun 26, 2020] but found [June 26, 2020],
+Vehicle insurance effective date is not updated! expected [Jun 25, 2020] but found [June 25, 2020],
 Vehicle insurance expiring date is not updated! expected [Jun 28, 2020] but found [June 28, 2020]
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
 at com.pages.VehicleProfile.validate_data(VehicleProfile.java:329)
 at com.pages.VehicleProfile.VehicleProfileInfo(VehicleProfile.java:155)
-at com.testcases.DemoTest.verifyUpdateVehicleProfile(DemoTest.java:43)
+at com.testcases.DemoTest.verifyCarFinder(DemoTest.java:30)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -163,32 +67,8 @@ at java.lang.Thread.run(Thread.java:748)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUpdateVehicleProfile -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5696" started-at="2020-06-15T14:24:21 IST" finished-at="2020-06-15T14:24:27 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="CheckBrowsers" is-config="true" duration-ms="9760" started-at="2020-06-15T14:24:27 IST" finished-at="2020-06-15T14:24:36 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[${headless}]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCancelSubscription()[pri:6, instance:com.testcases.DemoTest@6ee52dcd]" name="verifyCancelSubscription" duration-ms="41140" started-at="2020-06-15T14:24:36 IST" finished-at="2020-06-15T14:25:17 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCancelSubscription -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@6ee52dcd]" name="quit" is-config="true" duration-ms="5719" started-at="2020-06-15T14:25:17 IST" finished-at="2020-06-15T14:25:23 IST">
+        </test-method> <!-- verifyCarFinder -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@4493d195]" name="quit" is-config="true" duration-ms="5724" started-at="2020-06-15T23:17:10 IST" finished-at="2020-06-15T23:17:15 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
