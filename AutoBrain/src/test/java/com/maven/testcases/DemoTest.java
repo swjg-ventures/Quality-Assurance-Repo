@@ -33,7 +33,7 @@ public class DemoTest extends Base {
 	@Test(priority = 4)
 	public void verifyLogin() throws Exception {
 		Login l = new Login();
-		l.login("john@examplecom", "welcomee");
+		l.login("john@example.com", "welcomee");
 	}
 
 	@Test(priority = 5)
@@ -42,7 +42,7 @@ public class DemoTest extends Base {
 		l.VehicleProfileInfo();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 6)
 	public void verifyCancelSubscription() throws Exception {
 		CancelSubscription l = new CancelSubscription();
 		l.cancelSubscription();

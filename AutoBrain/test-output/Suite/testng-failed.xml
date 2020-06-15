@@ -7,7 +7,7 @@
     <classes>
       <class name="com.testcases.DemoTest">
         <methods>
-          <include name="VerifyRegister1"/>
+          <include name="verifyCarFinder"/>
           <include name="CheckBrowsers"/>
           <include name="quit"/>
         </methods>

@@ -2,6 +2,7 @@ package com.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -83,6 +84,11 @@ public class CancelSubscription extends Login {
 			Assert.assertEquals(isShippingAddressAdded, true, "Shipping Address not added successfully!");
 		}
 
+		WebElement ele = VisibilityOfElementByXpath("//th[text()='Select A Cancellation Option']", 15);
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", ele);
+
 		// Click on option #1 to cancel subscription
 		VisibilityOfElementByXpath("//table[@class='table table-hover']/tbody/tr[1]/td[16]/form", 15).click();
 
@@ -127,7 +133,7 @@ public class CancelSubscription extends Login {
 
 		// Click on uncancel button
 		VisibilityOfElementByXpath(
-				"//table[@class='table table-hover table-bordered tablesorter tablesorter-default']/tbody/tr[1]/td[14]",
+				"//table[@class='table table-hover table-bordered tablesorter tablesorter-default']/tbody/tr[1]/td[14]/a",
 				15).click();
 
 		// Validate device cancelled
