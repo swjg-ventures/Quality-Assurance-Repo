@@ -95,7 +95,7 @@ public class Base {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 		driver.get(url);
 		
 		// Validate login page displayed

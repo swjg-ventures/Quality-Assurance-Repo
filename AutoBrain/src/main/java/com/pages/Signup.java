@@ -562,7 +562,7 @@ public class Signup extends Login {
 
 		// Click on Mark As Shipped
 		List<WebElement> mark_as_shipped_btn = PresenceOfAllElementsByXpath("//a[contains(text(),'Mark as shipped')]",
-				15);
+				25);
 		Thread.sleep(4000);
 		mark_as_shipped_btn.get(0).click();
 
@@ -671,14 +671,14 @@ public class Signup extends Login {
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 		if (!billing_interval_page_title) {
 			if (prop.get("account_type").equals("Autobrain Business")) {
-				billing_interval_page_title = wait(driver, 15)
+				billing_interval_page_title = wait(driver, 30)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Billing Interval')]")))
 						.isDisplayed();
 			}
 
 			if (prop.get("account_type").equals("Autobrain Family")) {
-				billing_interval_page_title = wait(driver, 15)
+				billing_interval_page_title = wait(driver, 30)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]")))
 						.isDisplayed();
