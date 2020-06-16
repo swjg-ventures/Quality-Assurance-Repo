@@ -52,15 +52,15 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeMethod
-	@Parameters({ "Browsers", "browser" })
-	public void CheckBrowsers(String bro, String browser) throws Exception {
-		if (bro.equalsIgnoreCase("firefox")) {
+	@Parameters({"Browsers", "Headless"})
+	public void CheckBrowsers(String Browsers, String headless) throws Exception {
+		if (Browsers.equalsIgnoreCase("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		}
 
-		else if (bro.equalsIgnoreCase("chrome")) {
+		else if (Browsers.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
 
@@ -75,7 +75,7 @@ public class Base {
 			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
 
 			// Headless browser run without UI
-			if (browser.equalsIgnoreCase("true")) {
+			if (headless.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Headless browser working");
@@ -85,7 +85,7 @@ public class Base {
 			driver = new ChromeDriver(options);
 		}
 
-		else if (bro.equalsIgnoreCase("browserstack")) {
+		else if (Browsers.equalsIgnoreCase("browserstack")) {
 			DesiredCapabilities caps = DesiredCapabilities.safari();
 			caps.setPlatform(Platform.MAC);
 			caps.setCapability("browser_version", "12");

@@ -5,7 +5,7 @@
     <listener class-name="Library.ExtentReporterNG"/>
   </listeners>
   <test thread-count="5" name="Chrome(failed)" parallel="tests">
-    <parameter name="browser" value="${headless}"/>
+    <parameter name="Headless" value="false"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
       <class name="com.testcases.DemoTest">

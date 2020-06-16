@@ -8,12 +8,12 @@
 
 	<test thread-count="5" name="Chrome">
 		<parameter name="Browsers" value="chrome" />
-		<parameter name="browser" value="${headless}" />
+		<parameter name="Headless" value="false" />
+
 
 		<classes>
 
 			<class name="com.testcases.DemoTest" />
-
 
 		</classes>
 	</test>
