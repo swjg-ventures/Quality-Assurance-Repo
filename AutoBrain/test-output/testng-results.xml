@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="226878" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:57:19 IST">
+  <suite name="Suite" duration-ms="255102" started-at="2020-06-17T20:08:49 IST" finished-at="2020-06-17T20:13:04 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="226878" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:57:19 IST">
+    <test name="Chrome" duration-ms="255102" started-at="2020-06-17T20:08:49 IST" finished-at="2020-06-17T20:13:04 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="11389" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:53:44 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="14491" started-at="2020-06-17T20:08:49 IST" finished-at="2020-06-17T20:09:03 IST">
           <params>
             <param index="0">
               <value>
@@ -16,18 +16,18 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[false]]>
+                <![CDATA[true]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="VerifyRegister1" duration-ms="209693" started-at="2020-06-17T15:53:44 IST" finished-at="2020-06-17T15:57:14 IST">
+        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="VerifyRegister1" duration-ms="234865" started-at="2020-06-17T20:09:03 IST" finished-at="2020-06-17T20:12:58 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerifyRegister1 -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5743" started-at="2020-06-17T15:57:14 IST" finished-at="2020-06-17T15:57:19 IST">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5692" started-at="2020-06-17T20:12:58 IST" finished-at="2020-06-17T20:13:04 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
