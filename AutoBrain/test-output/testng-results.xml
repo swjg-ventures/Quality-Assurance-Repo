@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="34503" started-at="2020-06-16T19:08:12 IST" finished-at="2020-06-16T19:08:46 IST">
+  <suite name="Suite" duration-ms="226878" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:57:19 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="34503" started-at="2020-06-16T19:08:12 IST" finished-at="2020-06-16T19:08:46 IST">
-      <class name="com.maven.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="11634" started-at="2020-06-16T19:08:12 IST" finished-at="2020-06-16T19:08:23 IST">
+    <test name="Chrome" duration-ms="226878" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:57:19 IST">
+      <class name="com.testcases.DemoTest">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="11389" started-at="2020-06-17T15:53:32 IST" finished-at="2020-06-17T15:53:44 IST">
           <params>
             <param index="0">
               <value>
@@ -16,22 +16,22 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[true]]>
+                <![CDATA[false]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyLogin()[pri:4, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="verifyLogin" duration-ms="17174" started-at="2020-06-16T19:08:23 IST" finished-at="2020-06-16T19:08:40 IST">
+        <test-method status="PASS" signature="VerifyRegister1()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="VerifyRegister1" duration-ms="209693" started-at="2020-06-17T15:53:44 IST" finished-at="2020-06-17T15:57:14 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5638" started-at="2020-06-16T19:08:40 IST" finished-at="2020-06-16T19:08:46 IST">
+        </test-method> <!-- VerifyRegister1 -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5743" started-at="2020-06-17T15:57:14 IST" finished-at="2020-06-17T15:57:19 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
-      </class> <!-- com.maven.testcases.DemoTest -->
+      </class> <!-- com.testcases.DemoTest -->
     </test> <!-- Chrome -->
   </suite> <!-- Suite -->
 </testng-results>
