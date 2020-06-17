@@ -81,7 +81,7 @@ public class VehicleProfile extends ForgotPassword {
 	
 	public void VehicleProfileInfo() throws Exception {
 
-			login("temp7417@mailinator.com", "welcome");
+			login("lib1@mailinator.com", "welcome");
 			
 			// Opening Navigation Menu
 			wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='hamburger-container']"))).click();
