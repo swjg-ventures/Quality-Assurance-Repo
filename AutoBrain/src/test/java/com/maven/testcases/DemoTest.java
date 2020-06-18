@@ -33,7 +33,7 @@ public class DemoTest extends Base {
 	@Test(priority = 4)
 	public void verifyLogin() throws Exception {
 		Login l = new Login();
-		l.login("john@example.com", "welcome");
+		l.login("1john@example.com", "welcome");
 	}
 
 //	@Test(priority = 5)
