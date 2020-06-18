@@ -33,10 +33,10 @@ public class DemoTest extends Base {
 	@Test(priority = 4)
 	public void verifyLogin() throws Exception {
 		Login l = new Login();
-		l.login("1john@example.com", "welcome");
+		l.login("john@example.com", "welcome");
 	}
 
-//	@Test(priority = 5)
+	@Test(priority = 5)
 	public void verifyUpdateVehicleProfile() throws Exception {
 		VehicleProfile l = new VehicleProfile();
 		l.VehicleProfileInfo();
