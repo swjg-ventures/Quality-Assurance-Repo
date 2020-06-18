@@ -93,7 +93,7 @@ public class Base {
 			java.net.URL url = new java.net.URL(URL);
 			driver = new RemoteWebDriver(url, caps);
 		}
-
+		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 		driver.get(url);
