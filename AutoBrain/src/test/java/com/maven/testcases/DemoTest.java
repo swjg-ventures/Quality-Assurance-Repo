@@ -17,14 +17,14 @@ public class DemoTest extends Base {
 
 	}
 
-//	@Test(priority = 2)
+	@Test(priority = 2)
 	public void VerifyBusinessAccountRegistration() throws Exception {
 		Signup a = new Signup();
 		a.signup("business");
 
 	}
 
-//	@Test(priority = 3)
+	@Test(priority = 3)
 	public void VerifySignupWithPrepaidDevice() throws Exception {
 		SignupWithManualInvoice order = new SignupWithManualInvoice();
 		order.signupWithManualInvoice("personal");
@@ -42,7 +42,7 @@ public class DemoTest extends Base {
 		l.VehicleProfileInfo();
 	}
 
-//	@Test(priority = 6)
+	@Test(priority = 6)
 	public void verifyCancelSubscription() throws Exception {
 		CancelSubscription l = new CancelSubscription();
 		l.cancelSubscription();
