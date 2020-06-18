@@ -8,13 +8,13 @@
     <parameter name="Headless" value="true"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
-      <class name="com.testcases.DemoTest">
+      <class name="com.maven.testcases.DemoTest">
         <methods>
-          <include name="VerifyRegister1"/>
+          <include name="verifyLogin"/>
           <include name="CheckBrowsers"/>
           <include name="quit"/>
         </methods>
-      </class> <!-- com.testcases.DemoTest -->
+      </class> <!-- com.maven.testcases.DemoTest -->
     </classes>
   </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

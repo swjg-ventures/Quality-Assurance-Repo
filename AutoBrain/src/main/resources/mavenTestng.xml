@@ -14,7 +14,6 @@
 
 			<class name="com.maven.testcases.DemoTest" />
 
-
 		</classes>
 	</test>
 

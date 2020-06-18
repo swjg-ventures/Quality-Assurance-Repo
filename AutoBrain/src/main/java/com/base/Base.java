@@ -3,6 +3,9 @@ package com.base;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -52,7 +55,7 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 	@BeforeMethod
-	@Parameters({"Browsers", "Headless"})
+	@Parameters({ "Browsers", "Headless" })
 	public void CheckBrowsers(String Browsers, String headless) throws Exception {
 		if (Browsers.equalsIgnoreCase("firefox")) {
 
@@ -76,6 +79,7 @@ public class Base {
 
 			// Headless browser run without UI
 			if (headless.equalsIgnoreCase("true")) {
+				deleteFailedTestScreenshots();
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Headless browser working");
@@ -97,7 +101,7 @@ public class Base {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
 		driver.get(url);
-		
+
 		// Validate login page displayed
 		boolean isLoginPagedLoaded = VisibilityOfElementByXpath("//input[@name='commit']", 60).isDisplayed();
 		Assert.assertEquals(isLoginPagedLoaded, true, "Staging is not loading!");
@@ -177,6 +181,23 @@ public class Base {
 				.takeScreenshot(driver);
 		ImageIO.write(fpScreenshot.getImage(), "PNG", new File("./Images/" + screenshotName + ".png"));
 
+	}
+
+	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
+	public void deleteFailedTestScreenshots() throws IOException {
+		File f = new File("Images\\");
+		int count = 0;
+		for (File file : f.listFiles()) {
+			if (file.isFile() && file.getName().endsWith(".png")) {
+				String file_name = file.getName();
+				Files.deleteIfExists(Paths.get("Images\\" + file_name));
+				count++;
+			}
+		}
+
+		if (count > 0) {
+			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
+		}
 	}
 
 	// DATE FORMATE CHANGE METHOD
