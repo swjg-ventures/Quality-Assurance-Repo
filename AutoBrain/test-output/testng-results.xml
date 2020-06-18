@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="61219" started-at="2020-06-18T17:48:54 IST" finished-at="2020-06-18T17:49:55 IST">
+  <suite name="Suite" duration-ms="61186" started-at="2020-06-18T18:59:22 IST" finished-at="2020-06-18T19:00:23 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="61219" started-at="2020-06-18T17:48:54 IST" finished-at="2020-06-18T17:49:55 IST">
+    <test name="Chrome" duration-ms="61186" started-at="2020-06-18T18:59:22 IST" finished-at="2020-06-18T19:00:23 IST">
       <class name="com.maven.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="11814" started-at="2020-06-18T17:48:54 IST" finished-at="2020-06-18T17:49:06 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="11913" started-at="2020-06-18T18:59:22 IST" finished-at="2020-06-18T18:59:34 IST">
           <params>
             <param index="0">
               <value>
@@ -23,7 +23,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="FAIL" signature="verifyLogin()[pri:4, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="verifyLogin" duration-ms="41856" started-at="2020-06-18T17:49:06 IST" finished-at="2020-06-18T17:49:48 IST">
+        <test-method status="FAIL" signature="verifyLogin()[pri:4, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="verifyLogin" duration-ms="41761" started-at="2020-06-18T18:59:34 IST" finished-at="2020-06-18T19:00:15 IST">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Home page is not loaded! expected [true] but found [false]]]>
@@ -65,7 +65,7 @@ at java.lang.Thread.run(Thread.java:748)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLogin -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5596" started-at="2020-06-18T17:49:50 IST" finished-at="2020-06-18T17:49:55 IST">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5585" started-at="2020-06-18T19:00:17 IST" finished-at="2020-06-18T19:00:23 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
