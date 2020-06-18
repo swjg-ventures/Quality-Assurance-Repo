@@ -88,10 +88,11 @@ public class CancelSubscription extends Login {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", ele);
-
+		
 		// Click on option #1 to cancel subscription
 		VisibilityOfElementByXpath("//table[@class='table table-hover']/tbody/tr[1]/td[16]/form", 15).click();
-
+		Thread.sleep(1500);
+		
 		// Check confirmation message
 		boolean isConfirmationMsg = VisibilityOfElementByXpath("//h4[contains(text(),'Are you sure?')]", 15)
 				.isDisplayed();
