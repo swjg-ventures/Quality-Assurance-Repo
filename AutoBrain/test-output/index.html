@@ -49,7 +49,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Suite">
-                    <span>C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\src\main\resources\mavenTestng.xml</span>
+                    <span>C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.maven.testcases.DemoTest" hash-for-method="verifyUpdateVehicleProfile">verifyUpdateVehicleProfile</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.testcases.DemoTest" hash-for-method="VerifyRegister1">VerifyRegister1</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -120,26 +120,50 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.maven.testcases.DemoTest</span>
+              <span class="class-name">com.testcases.DemoTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyUpdateVehicleProfile">
-                  </a> <!-- verifyUpdateVehicleProfile -->
-                  <span class="method-name">verifyUpdateVehicleProfile</span>
-                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
-	Vehicle make is not updated! expected [SKODA] but found [Choose Make],
-	Vehicle model is not updated! expected [PRAKTIK] but found [Choose Model]
-	at com.pages.VehicleProfile.validate_data(VehicleProfile.java:373)
-	at com.pages.VehicleProfile.VehicleProfileInfo(VehicleProfile.java:169)
-	at com.maven.testcases.DemoTest.verifyUpdateVehicleProfile(DemoTest.java:42)
+                  <a name="VerifyRegister1">
+                  </a> <!-- VerifyRegister1 -->
+                  <span class="method-name">VerifyRegister1</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //label[contains(text(),&apos;Create a Name for Your Car&apos;)]/following-sibling::div[1]/input (tried for 15 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.base.Base.VisibilityOfElementByXpath(Base.java:123)
+	at com.pages.Signup.Step1(Signup.java:599)
+	at com.pages.Signup.signup(Signup.java:295)
+	at com.testcases.DemoTest.VerifyRegister1(DemoTest.java:16)
 	at java.util.ArrayList.forEach(ArrayList.java:1257)
 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 20 stack frames
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//label[contains(text(),&apos;Create a Name for Your Car&apos;)]/following-sibling::div[1]/input&quot;}
+  (Session info: headless chrome=83.0.4103.61)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;LAPTOP-6Q5KS8MJ&apos;, ip: &apos;192.168.100.7&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_221&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.61, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\Rajesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:63017}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 641fe99614a8ff4e1c92d1b9d0571f01
+*** Element info: {Using=xpath, value=//label[contains(text(),&apos;Create a Name for Your Car&apos;)]/following-sibling::div[1]/input}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+	... 27 more
+... Removed 21 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -148,7 +172,7 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\src\main\resources\mavenTestng.xml</span>
+            <span class="header-content">C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -159,10 +183,10 @@
     &lt;listener class-name=&quot;Library.ExtentReporterNG&quot;/&gt;
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Chrome&quot; parallel=&quot;tests&quot;&gt;
-    &lt;parameter name=&quot;Headless&quot; value=&quot;false&quot;/&gt;
+    &lt;parameter name=&quot;Headless&quot; value=&quot;true&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.maven.testcases.DemoTest&quot;/&gt;
+      &lt;class name=&quot;com.testcases.DemoTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -204,14 +228,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyUpdateVehicleProfile')
-data.setCell(0, 2, 'com.maven.testcases.DemoTest')
-data.setCell(0, 3, 67905);
+data.setCell(0, 1, 'VerifyRegister1')
+data.setCell(0, 2, 'com.testcases.DemoTest')
+data.setCell(0, 3, 137343);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -237,20 +261,20 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.maven.testcases.DemoTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.testcases.DemoTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">CheckBrowsers(chrome, false)</span>
+                <span class="method-name">CheckBrowsers(chrome, true)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifyUpdateVehicleProfile</span>
-                <span class="method-start">13660 ms</span>
+                <span class="method-name">VerifyRegister1</span>
+                <span class="method-start">14317 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">83631 ms</span>
+                <span class="method-start">154893 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
