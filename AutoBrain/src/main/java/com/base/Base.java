@@ -79,7 +79,6 @@ public class Base {
 
 			// Headless browser run without UI
 			if (headless.equalsIgnoreCase("true")) {
-				deleteFailedTestScreenshots();
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Headless browser working");
@@ -113,6 +112,24 @@ public class Base {
 	public void quit() throws Exception {
 		Thread.sleep(5000);
 		driver.quit();
+	}
+
+	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
+	@BeforeClass
+	public void deleteFailedTestScreenshots() throws IOException {
+		File f = new File("Images\\");
+		int count = 0;
+		for (File file : f.listFiles()) {
+			if (file.isFile() && file.getName().endsWith(".png")) {
+				String file_name = file.getName();
+				Files.deleteIfExists(Paths.get("Images\\" + file_name));
+				count++;
+			}
+		}
+
+		if (count > 0) {
+			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
+		}
 	}
 
 	// WAIT
@@ -181,23 +198,6 @@ public class Base {
 				.takeScreenshot(driver);
 		ImageIO.write(fpScreenshot.getImage(), "PNG", new File("./Images/" + screenshotName + ".png"));
 
-	}
-
-	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
-	public void deleteFailedTestScreenshots() throws IOException {
-		File f = new File("Images\\");
-		int count = 0;
-		for (File file : f.listFiles()) {
-			if (file.isFile() && file.getName().endsWith(".png")) {
-				String file_name = file.getName();
-				Files.deleteIfExists(Paths.get("Images\\" + file_name));
-				count++;
-			}
-		}
-
-		if (count > 0) {
-			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
-		}
 	}
 
 	// DATE FORMATE CHANGE METHOD

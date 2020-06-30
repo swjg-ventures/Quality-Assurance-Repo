@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 import com.base.Base;
 import com.pages.CancelSubscription;
 import com.pages.Signup;
-import com.pages.SignupWithManualInvoice;
+import com.pages.SignupWithPrepaidDevice;
 import com.pages.VehicleProfile;
-
+import Demo.LTRCalculator;
 
 public class DemoTest extends Base {
 
@@ -19,10 +19,9 @@ public class DemoTest extends Base {
 
 //	@Test(priority = 1)
 	public void Manually_Create_Invoice_And_Signup() throws Exception {
-		SignupWithManualInvoice order = new SignupWithManualInvoice();
-		order.signupWithManualInvoice("personal");
+		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
+		order.signupWithPrepaidDevice("personal");
 	}
-
 
 //	@Test(priority = 1)
 	public void verifyCarFinder() throws Exception {
@@ -34,6 +33,12 @@ public class DemoTest extends Base {
 	public void verifyCancelSubscription() throws Exception {
 		CancelSubscription l = new CancelSubscription();
 		l.cancelSubscription();
+	}
+
+//	@Test(priority = 1)
+	public void verifyLTRCalculator() throws Exception {
+		LTRCalculator ltr = new LTRCalculator();
+		ltr.ltrCalculator();
 	}
 
 }

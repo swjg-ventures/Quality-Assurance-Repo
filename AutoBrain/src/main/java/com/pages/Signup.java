@@ -431,7 +431,7 @@ public class Signup extends Login {
 		boolean isZipCodeFound = VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15)
 				.getAttribute("value").equalsIgnoreCase(Zip);
 		Assert.assertEquals(isZipCodeFound, true, "Zip code not fetch automatically!");
-		
+
 		// Click on submit my order button
 		VisibilityOfElementByXpath("//button[contains(text(),'Submit My Order')]", 15).click();
 
@@ -1239,7 +1239,7 @@ public class Signup extends Login {
 		// Generating random email
 		Random randomGenerator = new Random();
 		randomInt = randomGenerator.nextInt(10000);
-		String Email = "temp" + randomInt + "@mailinator.com";
+		String Email = "junk" + randomInt + "@mailinator.com";
 		DeviceName = "test" + randomInt;
 		return Email;
 	}

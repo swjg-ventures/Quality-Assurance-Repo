@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import au.com.bytecode.opencsv.CSVWriter;
 
-public class SignupWithManualInvoice extends Signup {
+public class SignupWithPrepaidDevice extends Signup {
 	boolean error, choose_plan_page;
 	String invoice_name, invoice_id_before, email, invoice_account_type;
 	int num;
@@ -26,7 +26,7 @@ public class SignupWithManualInvoice extends Signup {
 	File csvFile = new File("Files\\mark_bulk_devices_as_sold.csv");
 
 	// Main Methods
-	public void signupWithManualInvoice(String accountType) throws Exception {
+	public void signupWithPrepaidDevice(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
 			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\personal.properties");

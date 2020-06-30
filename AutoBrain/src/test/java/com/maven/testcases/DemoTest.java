@@ -5,7 +5,7 @@ import com.base.Base;
 import com.pages.CancelSubscription;
 import com.pages.Login;
 import com.pages.Signup;
-import com.pages.SignupWithManualInvoice;
+import com.pages.SignupWithPrepaidDevice;
 import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
@@ -17,17 +17,17 @@ public class DemoTest extends Base {
 
 	}
 
-	@Test(priority = 2)
+//	@Test(priority = 2)
 	public void VerifyBusinessAccountRegistration() throws Exception {
 		Signup a = new Signup();
 		a.signup("business");
 
 	}
 
-	@Test(priority = 3)
+//	@Test(priority = 3)
 	public void VerifySignupWithPrepaidDevice() throws Exception {
-		SignupWithManualInvoice order = new SignupWithManualInvoice();
-		order.signupWithManualInvoice("personal");
+		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
+		order.signupWithPrepaidDevice("personal");
 	}
 
 	@Test(priority = 4)

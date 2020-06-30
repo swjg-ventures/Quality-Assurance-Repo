@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jun 18 18:59:22 IST 2020</td>
+<td>Started on:</td><td>Thu Jun 25 10:37:03 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>61 seconds (61186 ms)</td>
+<tr><td>Total time:</td><td>82 seconds (82156 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,23 +75,25 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.maven.testcases.DemoTest.verifyLogin()'><b>verifyLogin</b><br>Test class: com.maven.testcases.DemoTest</td>
-<td><div><pre>java.lang.AssertionError: Home page is not loaded! expected [true] but found [false]
-	at com.pages.Login.login(Login.java:33)
-	at com.maven.testcases.DemoTest.verifyLogin(DemoTest.java:36)
+<td title='com.testcases.DemoTest.Manually_Create_Invoice_And_Signup()'><b>Manually_Create_Invoice_And_Signup</b><br>Test class: com.testcases.DemoTest</td>
+<td><div><pre>java.lang.AssertionError: Confirmation key page not found! expected [true] but found [false]
+	at com.pages.SignupWithPrepaidDevice.Signup(SignupWithPrepaidDevice.java:205)
+	at com.pages.SignupWithPrepaidDevice.signupWithPrepaidDevice(SignupWithPrepaidDevice.java:61)
+	at com.testcases.DemoTest.Manually_Create_Invoice_And_Signup(DemoTest.java:23)
 	at java.util.ArrayList.forEach(ArrayList.java:1257)
 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace190166213", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace190166213'><pre>java.lang.AssertionError: Home page is not loaded! expected [true] but found [false]
+... Removed 22 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace630314068", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace630314068'><pre>java.lang.AssertionError: Confirmation key page not found! expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:97)
 	at org.testng.Assert.assertEqualsImpl(Assert.java:136)
 	at org.testng.Assert.assertEquals(Assert.java:118)
 	at org.testng.Assert.assertEquals(Assert.java:751)
-	at com.pages.Login.login(Login.java:33)
-	at com.maven.testcases.DemoTest.verifyLogin(DemoTest.java:36)
+	at com.pages.SignupWithPrepaidDevice.Signup(SignupWithPrepaidDevice.java:205)
+	at com.pages.SignupWithPrepaidDevice.signupWithPrepaidDevice(SignupWithPrepaidDevice.java:61)
+	at com.testcases.DemoTest.Manually_Create_Invoice_And_Signup(DemoTest.java:23)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -116,8 +118,8 @@ function toggleAllBoxes() {
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 </pre></div></td>
-<td>41</td>
-<td>com.maven.testcases.DemoTest@1d8d30f7</td></tr>
+<td>63</td>
+<td>com.testcases.DemoTest@3e57cd70</td></tr>
 </table><p>
 </body>
 </html>
