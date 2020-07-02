@@ -77,7 +77,7 @@ public class Base {
 			if (headless.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
-				System.out.println("Headless browser working");
+				System.out.println("Test will run in Headless Browser!");
 			}
 
 			WebDriverManager.chromedriver().setup();
