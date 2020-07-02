@@ -112,7 +112,7 @@ public class Base {
 
 	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
 	@BeforeClass
-	public void deleteFailedTestScreenshots() throws Exception {
+	public void deleteFailedTestScreenshots() throws IOException {
 		File f = new File("Images\\");
 		int count = 0;
 		for (File file : f.listFiles()) {
