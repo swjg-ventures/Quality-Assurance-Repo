@@ -53,6 +53,7 @@ public class Base {
 	@BeforeMethod
 	@Parameters({ "Browsers", "Headless" })
 	public void CheckBrowsers(String Browsers, String headless) throws Exception {
+		System.out.println("HELLO");
 		if (Browsers.equalsIgnoreCase("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
