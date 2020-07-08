@@ -10,101 +10,100 @@ import org.testng.Assert;
 
 public class Modes extends Login {
 	JavascriptExecutor js = (JavascriptExecutor) driver;
-	String last_geofence, enter_geofence="Test_Demo", dlt_geofence;
-	boolean mode_status=true;
-	public void mode() throws Exception {
+	boolean mode_status = true;
+	String create_safe_zone = "//div[text()='Safe Zone:']/following-sibling::div[2]//span[2]",
+			add_your_home_address = "//div[text()='Arrived And Left Home Alerts:']/following-sibling::div[2]//span[2]",
+			add_work_address = "//div[text()='Arrived and Left Work Alerts:']/following-sibling::div[2]//span[2]",
+			add_new_address = "//div[text()='Arrived and Left Anywhere Alerts:']/following-sibling::div[2]//span[2]";
+
+	public void createGeoFence() throws Exception {
+		login("junk4679@mailinator.com", "welcome");
 		isDesktopNotificationAlert();
-		
-			try
-			{
-			//Click on Mode from main menu
-			List<WebElement> mode = wait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
+
+		try {
+			// Click on Mode from main menu
+			List<WebElement> mode = wait(driver, 20).until(
+					ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
 			mode.get(1).click();
-			}
-			catch(Exception e)
-			{
-				mode_status=false;
-				e.printStackTrace();
-			}
-			
-			Assert.assertEquals(mode_status, true, "Mode button is disabled!");
-				
-			//Scrolling page to the bottom
-			WebElement Element = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[contains(text(),'Add A New Address')]")));
-			js.executeScript("arguments[0].scrollIntoView();",Element );
-			Thread.sleep(1000);
-			
-			//Click on add new address
-			Element.click();
-			
-			//Enter Title of geo location
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Title']"))).sendKeys(enter_geofence);
-			
-			//Enter Geo Location Address
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Address or Location']"))).sendKeys("1250");
-			
-			//Validating related above entered address list fetch or not
-			boolean address_list = wait(driver, 20).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_12V4dTH1KHShAbyaEfEsMl_0']"))).size()!=0;
-			softassert.assertEquals(address_list, true, "No address list found");	
-			
-			//Selecting address which is on first index
-			WebElement first_location=	wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='_12V4dTH1KHShAbyaEfEsMl_0'][1]")));
-			first_location.click();
-			Thread.sleep(2000);
-			
-			//Click on the Submit button
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]"))).click();
-			Thread.sleep(2000);
-			
-			//Created geo-fence name		
-			List<WebElement> el = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']")));	
-			last_geofence = el.get(el.size()-1).getText();
-			
-			//Validating geo-fence created 
-			softassert.assertEquals(last_geofence, enter_geofence, "Geo-fence not created!");
-			
-			//Delete last added geo-fence
-			delete_geo_fence();
-			
+		} catch (Exception e) {
+			mode_status = false;
+			e.printStackTrace();
+		}
+
+		Assert.assertEquals(mode_status, true, "Mode button is disabled!");
+		customMode(create_safe_zone);
+		customMode(add_your_home_address);
+		customMode(add_work_address);
+		customMode(add_new_address);
 	}
-	
-	
-	
-			//Delete geo-fence		
-			public void delete_geo_fence() throws Exception 
-			{
-				Thread.sleep(2500);
-				
-				//Created geo-fence name	
-				try 
-				{
-				List<WebElement> el = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//i[@class='fa fa-trash _2XkqKinBcWdxg7eyNtIeUK_0']")));		
-				
-				Thread.sleep(2000);
-				el.get(el.size()-1).click();
-				Thread.sleep(2000);
-				} 
-				
-				catch(Exception e) 
-				{
-				e.printStackTrace();
-				}
-				
-				//Validate geo fence deleted
-				List<WebElement> ell = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']")));	
-				
-				for(int i=0; i<ell.size(); i++) 
-				{
-				dlt_geofence = ell.get(i).getText();
-				if(dlt_geofence.contains(enter_geofence)) {
-					System.out.println("Not Deleted successfully!");
-				}
-				
-				}
-			}
-	
-	
-	
-	
-	
+
+	public void customMode(String type_of_creating_zone) throws Exception {
+
+		// Scroll until the safe zone button not found
+		WebElement scrollUntilEleFound = wait(driver, 20)
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[text()='Create a Safe Zone']")));
+		js.executeScript("arguments[0].scrollIntoView();", scrollUntilEleFound);
+		Thread.sleep(1000);
+
+		// Create safe zone
+		VisibilityOfElementByXpath(type_of_creating_zone, 10).click();
+
+		// Input address or location
+		VisibilityOfElementByXpath("//input[@placeholder='Address or Location']", 10).sendKeys("boca");
+
+		// Validate list fetch
+		boolean isAddressListFetch = VisibilityOfAllElementsByXpath("//div[@class='_12V4dTH1KHShAbyaEfEsMl_0']", 10)
+				.size() != 0;
+		Assert.assertEquals(isAddressListFetch, true, "Address list not fetched!");
+		Thread.sleep(1000);
+
+		// Select first address from the fetched list
+		VisibilityOfElementByXpath("//div[@class='_12V4dTH1KHShAbyaEfEsMl_0'][1]", 10).click();
+		Thread.sleep(1500);
+
+		// Click on submit button
+		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
+
+		boolean isTitleErrorDisplayed = false;
+		try {
+			isTitleErrorDisplayed = VisibilityOfElementByXpath("//input[@placeholder='Title']", 2).isDisplayed();
+		} catch (Exception e) {
+
+		}
+
+		if (isTitleErrorDisplayed) {
+			VisibilityOfElementByXpath("//input[@placeholder='Title']", 10).sendKeys("Test_zone");
+			VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
+		}
+
+		// Validate safe zone created
+		boolean isSafeZoneCreated = false;
+		try {
+			isSafeZoneCreated = VisibilityOfAllElementsByXpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']", 15)
+					.size() == 1;
+		} catch (Exception e) {
+
+		}
+
+		Assert.assertEquals(isSafeZoneCreated, true, "Safe zone not created!");
+
+		// Delete the created zone
+		if (isSafeZoneCreated) {
+			Thread.sleep(1500);
+			VisibilityOfElementByXpath("//i[@class='fa fa-trash _2XkqKinBcWdxg7eyNtIeUK_0']", 10).click();
+		}
+
+		// Validate zone deleted
+		boolean isSafeZoneDeleted = false;
+		try {
+			isSafeZoneCreated = VisibilityOfAllElementsByXpath("//div[@class='_1q_9csrLzQW0wMP2_ltCQd_0']", 10)
+					.size() == 1;
+		} catch (Exception e) {
+
+		}
+
+		Assert.assertEquals(isSafeZoneDeleted, false, "Safe zone not deleted!");
+
+	}
+
 }

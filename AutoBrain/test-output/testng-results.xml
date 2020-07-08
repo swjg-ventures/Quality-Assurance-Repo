@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="85780" started-at="2020-07-02T10:54:50 IST" finished-at="2020-07-02T10:56:16 IST">
+  <suite name="Suite" duration-ms="78966" started-at="2020-07-08T11:53:43 IST" finished-at="2020-07-08T11:55:02 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="85780" started-at="2020-07-02T10:54:50 IST" finished-at="2020-07-02T10:56:16 IST">
+    <test name="Chrome" duration-ms="78966" started-at="2020-07-08T11:53:43 IST" finished-at="2020-07-08T11:55:02 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="deleteFailedTestScreenshots()[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="deleteFailedTestScreenshots" is-config="true" duration-ms="16" started-at="2020-07-02T10:54:50 IST" finished-at="2020-07-02T10:54:50 IST">
+        <test-method status="PASS" signature="deleteFailedTestScreenshots()[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="deleteFailedTestScreenshots" is-config="true" duration-ms="15" started-at="2020-07-08T11:53:43 IST" finished-at="2020-07-08T11:53:43 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteFailedTestScreenshots -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="CheckBrowsers" is-config="true" duration-ms="12406" started-at="2020-07-02T10:54:50 IST" finished-at="2020-07-02T10:55:03 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="CheckBrowsers" is-config="true" duration-ms="14600" started-at="2020-07-08T11:53:43 IST" finished-at="2020-07-08T11:53:58 IST">
           <params>
             <param index="0">
               <value>
@@ -27,11 +27,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCarFinder()[pri:1, instance:com.testcases.DemoTest@3e57cd70]" name="verifyCarFinder" duration-ms="67558" started-at="2020-07-02T10:55:03 IST" finished-at="2020-07-02T10:56:10 IST">
+        <test-method status="PASS" signature="verifyCarFinder()[pri:1, instance:com.testcases.DemoTest@3e57cd70]" name="verifyCarFinder" duration-ms="58578" started-at="2020-07-08T11:53:58 IST" finished-at="2020-07-08T11:54:56 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyCarFinder -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="quit" is-config="true" duration-ms="5743" started-at="2020-07-02T10:56:10 IST" finished-at="2020-07-02T10:56:16 IST">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@3e57cd70]" name="quit" is-config="true" duration-ms="5720" started-at="2020-07-08T11:54:56 IST" finished-at="2020-07-08T11:55:02 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

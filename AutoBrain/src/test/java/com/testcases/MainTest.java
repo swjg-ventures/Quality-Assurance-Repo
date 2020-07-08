@@ -14,7 +14,6 @@ import com.pages.GetAnotherDevice;
 import com.pages.ListOfCars;
 import com.pages.Modes;
 import com.pages.RoadsideAssistance;
-import com.pages.StolenCar;
 import com.pages.VehicleProfile;
 
 
@@ -35,25 +34,25 @@ public class MainTest extends VehicleProfile {
 	// FORGOT PASSWORD
 	@Test(priority = 3)
 	public void VerifyEnteringRegisteredEmailInForgotPasswordField() throws Exception {
-		RegisteredEmail();
+		
 	}
 
 	// SIGNUP- TERMS AND CONDITIONS LINK
 	@Test(priority = 4)
 	public void VerifyTermsAndConditionsLinkOnSignupPage() throws Exception {
-		TermsandConditions();
+		
 	}
 
 	// SIGNUP- PRIVACY POLICY LINK
 	@Test(priority = 5)
 	public void VerifyPrivacyPolicyLinkOnSignupPage() throws Exception {
-		PrivayPolicy();
+		
 	}
 
 	// SINGUP- CHAT BUTTON FUNCTIONALITY
 	@Test(priority = 6)
 	public void VerifyChatButtonFunctionality() throws Exception {
-		ChatButton();
+		
 	}
 
 	// MANAGE ACCOUNT- CHANGE PASSWORD
@@ -66,19 +65,19 @@ public class MainTest extends VehicleProfile {
 	// MANAGE ACCOUNT- UPDATE CONTACT INFO
 	@Test(priority = 8)
 	public void VerifyUpdatingContactInfo() throws Exception {
-		UpdatingContactInfo();
+		
 	}
 
 	// MANAGE ACCOUNT- ADD CREDIT CARD
 	@Test(priority = 9)
 	public void VerifyAddNewCreditCard() throws Exception {
-		AddNewCreditCard();
+		
 	}
 
 	// MANAGE ACCOUNT- UPDATE CREDIT CARD
 	@Test(priority = 10)
 	public void VerifyUpdateCreditCard() throws Exception {
-		UpdateCreditCard();
+		
 	}
 
 	// MANAGE ACCOUNT- CUSTOMER INFO
@@ -91,7 +90,7 @@ public class MainTest extends VehicleProfile {
 	// MANAGE ACCOUNT- PRINT ROADSIDE CARD
 	@Test(priority = 12)
 	public void VerifyPrintRoadsideCard() throws Exception {
-		PrintRoadsideCard();
+		
 	}
 
 	// MENU- VEHICLE PROFILE
@@ -145,8 +144,7 @@ public class MainTest extends VehicleProfile {
 	// STOLEN CAR MAIN MENU
 	@Test(priority = 21)
 	public void VerifyStolenCar() throws Exception {
-		StolenCar c = new StolenCar();
-		c.stolen_car();
+	
 	}
 
 	// ALERT SETTINGS MAIN MENU
@@ -173,8 +171,7 @@ public class MainTest extends VehicleProfile {
 	// MODES
 	@Test(priority = 25)
 	public void VerifyModes() throws Exception {
-		Modes a = new Modes();
-		a.mode();
+	
 	}
 
 	// ROADSIDE ASSISTANCE

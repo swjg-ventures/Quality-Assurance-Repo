@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class VehicleProfile extends ForgotPassword {
+public class VehicleProfile extends Login {
 	String carname1 = "Testing car", caricon1 = "//div[@class='grid']/div[1]",
 			status1 = "//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']/parent::div", year1 = "2015", make1 = "SKODA",
 			VIN1 = "DHSJ879373J738H";

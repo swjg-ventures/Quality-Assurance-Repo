@@ -229,12 +229,14 @@ public class Signup extends Login {
 				VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
 						.sendKeys(entered_email);
 				;
-				System.out.println("Trying to input entered_email in field " + entered_email);
-			} else {
+				System.out.println("Input entered_email in mailinator.com " + entered_email);
+			} 
+			
+			else {
 				VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
 						.sendKeys(new_entered_email);
 				;
-				System.out.println("Trying to input new_entered_email in field " + new_entered_email);
+				System.out.println("Input new_entered_email in mailinator.com " + new_entered_email);
 			}
 
 			Thread.sleep(2000);
@@ -956,6 +958,44 @@ public class Signup extends Login {
 	// Step 4 Alert Setting
 	public void Step4() throws Exception {
 		Thread.sleep(2000);
+
+		// TURN ON LOW FUEL NOTIFICATIONS ALERTS
+		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 10)
+				.click();
+		Thread.sleep(2000);
+
+		// Toggle status
+		String fuel_noti_toggle_status = VisibilityOfElementByXpath(
+				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 10).getText();
+
+		// Validate notification toggle has turned ON
+		Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
+
+		// Click on advance setting to set fuel percentage notification
+		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div//i", 10).click();
+
+		// Validate low fuel notifications settings page opened
+		boolean low_fuel_noti_settings_page_opened = VisibilityOfAllElementsByXpath(
+				"//h4[text()='Low Fuel Notifications Settings']", 10).size() == 1;
+
+		Assert.assertEquals(low_fuel_noti_settings_page_opened, true,
+				"Low fuel notifications settings page not opened!");
+
+		// Set fuel percentage to 50%
+		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 10).click();
+		Thread.sleep(2000);
+
+		// Validate percentage set to 50 or not
+		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
+				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 10).getText().contains("ON");
+
+		Assert.assertEquals(is_percentage_set_to_50, true,
+				"Unable to set fuel percentage to 50! Status not turned ON.");
+
+		// Click on all alert settings button (Going back)
+		VisibilityOfElementByXpath("//button[text()='All Alert Settings']", 10).click();
+
+		// Click on Next page button
 		try {
 			wait(driver, 2).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To')]"))).click();

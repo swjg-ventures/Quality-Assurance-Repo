@@ -3,9 +3,11 @@ package com.maven.testcases;
 import org.testng.annotations.Test;
 import com.base.Base;
 import com.pages.CancelSubscription;
-import com.pages.Login;
+import com.pages.CarFinder;
+import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
+import com.pages.TermsAndConditions;
 import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
@@ -40,6 +42,24 @@ public class DemoTest extends Base {
 	public void verifyCancelSubscription() throws Exception {
 		CancelSubscription l = new CancelSubscription();
 		l.cancelSubscription();
+	}
+
+	@Test(priority = 6)
+	public void verifyCarFinder() throws Exception {
+		CarFinder s = new CarFinder();
+		s.carFinder();
+	}
+
+	@Test(priority = 7)
+	public void verifyTermsAndPrivacyPolicy() throws Exception {
+		TermsAndConditions s = new TermsAndConditions();
+		s.termsAndPrivacy();
+	}
+
+	@Test(priority = 8)
+	public void verifyCreateGeoFences() throws Exception {
+		Modes m = new Modes();
+		m.createGeoFence();
 	}
 
 }

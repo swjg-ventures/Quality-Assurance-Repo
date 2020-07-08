@@ -3,14 +3,16 @@ package com.testcases;
 import org.testng.annotations.Test;
 import com.base.Base;
 import com.pages.CancelSubscription;
+import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
+import com.pages.TermsAndConditions;
 import com.pages.VehicleProfile;
 import Demo.LTRCalculator;
 
 public class DemoTest extends Base {
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void VerifyRegister1() throws Exception {
 		Signup a = new Signup();
 		a.signup("personal");
@@ -24,7 +26,7 @@ public class DemoTest extends Base {
 	}
 
 //	@Test(priority = 1)
-	public void verifyCarFinder() throws Exception {
+	public void verifyVehicleProfile() throws Exception {
 		VehicleProfile l = new VehicleProfile();
 		l.VehicleProfileInfo();
 	}
@@ -39,6 +41,12 @@ public class DemoTest extends Base {
 	public void verifyLTRCalculator() throws Exception {
 		LTRCalculator ltr = new LTRCalculator();
 		ltr.ltrCalculator();
+	}
+	
+	@Test(priority = 1)
+	public void verifyCarFinder() throws Exception {
+		Modes m = new Modes();
+		m.createGeoFence();
 	}
 
 }

@@ -1,1 +1,0 @@
-This file helps jenkins not to exclude this Images folder while building workspace before running the test

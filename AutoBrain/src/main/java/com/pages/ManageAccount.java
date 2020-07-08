@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 
-public class ManageAccount extends Terms_Privay_Chat {
+public class ManageAccount extends Login {
 	SoftAssert softassert = new SoftAssert();
 
 	// 1. METHOD- UDPATE CONTACT INFO METHOD

@@ -11,7 +11,6 @@ public class CarFinder extends Login {
 
 	public void carFinder() throws Exception {
 
-
 		login("john@example.com", "welcome");
 
 		isDesktopNotificationAlert();
@@ -48,7 +47,7 @@ public class CarFinder extends Login {
 		// Closing the spotlight description by clicking on the cross button
 		VisibilityOfElementByXpath("//i[@class='fa fa-times _3N4180tmOGF0PjzMAODtFh_0']", 15).click();
 
-		Thread.sleep(2500);
+		Thread.sleep(2000);
 
 		// Turning status ON
 		VisibilityOfElementByXpath("//div[@class='spotlight-car'][1]/div[1]/div[2]", 15).click();

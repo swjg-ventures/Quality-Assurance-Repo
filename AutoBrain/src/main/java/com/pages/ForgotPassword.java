@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 // 4.
-public class ForgotPassword extends ManageAccount{
+public class ForgotPassword extends Login{
 
 	//1. Entering valid registered email
 	public void RegisteredEmail() throws Exception {

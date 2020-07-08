@@ -10,7 +10,7 @@
     <classes>
       <class name="com.testcases.DemoTest">
         <methods>
-          <include name="Manually_Create_Invoice_And_Signup"/>
+          <include name="verifyCarFinder"/>
           <include name="CheckBrowsers"/>
           <include name="quit"/>
           <include name="deleteFailedTestScreenshots"/>
