@@ -217,42 +217,50 @@ public class Signup extends Login {
 
 			Assert.assertEquals(Is_Next_Page_Correct, true, "Confirmation key page not found!");
 
-			// MAILINATOR.COM
+			// YOPMAIL.COM
 			Thread.sleep(2000);
 
-			driver.get("https://www.mailinator.com");
+			driver.get("http://www.yopmail.com/en/");
 
 			Thread.sleep(2000);
 
 			// Enter registered email id
+			
 			if (new_entered_email == null) {
-				VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
+			
+				VisibilityOfElementByXpath("//input[@id='login']", 15)
 						.sendKeys(entered_email);
 				;
 				System.out.println("Input entered_email in mailinator.com " + entered_email);
 			} 
 			
 			else {
-				VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
+				new_entered_email = new_entered_email.replace("@maildrop.cc", "");
+				VisibilityOfElementByXpath("//input[@id='login']", 15)
 						.sendKeys(new_entered_email);
 				;
 				System.out.println("Input new_entered_email in mailinator.com " + new_entered_email);
 			}
 
-			Thread.sleep(2000);
-
-			// Click on Go button
-			VisibilityOfElementByID("go-to-public", 15).click();
-			Thread.sleep(2000);
-
-			// Click on the first email
-			VisibilityOfElementByXpath("//a[contains(text(),'Autobrain account')]", 15).click();
+			// Click on check for new email button
+			VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
+			Thread.sleep(1000);
 
 			// Switch to frame
-			driver.switchTo().frame(driver.findElement(By.id("msg_body")));
+			driver.switchTo().frame(driver.findElement(By.id("ifinbox")));	
 
+			// Open confirmation email
+			VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
+			Thread.sleep(1000);
+
+			// Back to parent frame
+			driver.switchTo().parentFrame();
+			
+			// Switch to frame
+			driver.switchTo().frame(driver.findElement(By.id("ifmail")));
+			
 			// Get confirmation code
-			code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
+			String code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
 
 			driver.get(url);
 
@@ -262,8 +270,6 @@ public class Signup extends Login {
 			// Click on submit button
 			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			Thread.sleep(2000);
-//		System.out.println(entered_email);
-
 		}
 
 		if (!p_load) {
@@ -642,7 +648,7 @@ public class Signup extends Login {
 
 		// Fill Up Insurance and Registration Forms
 		VehicleProfile v = new VehicleProfile();
-		v.Ins_Reg_Forms();
+//		v.Ins_Reg_Forms();
 
 		// Check terms and conditions
 		List<WebElement> el = VisibilityOfAllElementsByXpath("//div[@class='esf']/div[1]", 15);
@@ -783,7 +789,7 @@ public class Signup extends Login {
 
 		// Validate Step 2 page opened
 		try {
-			credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Driver Setup')]", 15).size() == 1;
+			credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Driver Setup')]", 20).size() == 1;
 		} catch (Exception e) {
 
 		}
@@ -798,7 +804,7 @@ public class Signup extends Login {
 			System.out.println("This is Business Plan");
 		}
 
-		if (prop.get("account_type").equals("Autobrain Family")) {
+		if (prop.get("account_type").equals("Autobrain Familyss")) {
 			// Click on Add new monitor button
 			VisibilityOfElementByXpath("//button[contains(text(),'Add New Monitor')]", 15).click();
 
@@ -944,7 +950,7 @@ public class Signup extends Login {
 
 		// Validate Step 4 page opened
 		try {
-			alert_setting = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Alert Settings')]", 15).size() == 1;
+			alert_setting = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Alert Settings')]", 20).size() == 1;
 		}
 
 		catch (Exception e) {
@@ -982,12 +988,12 @@ public class Signup extends Login {
 				"Low fuel notifications settings page not opened!");
 
 		// Set fuel percentage to 50%
-		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 10).click();
+		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 15).click();
 		Thread.sleep(2000);
 
 		// Validate percentage set to 50 or not
 		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
-				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 10).getText().contains("ON");
+				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 15).getText().contains("ON");
 
 		Assert.assertEquals(is_percentage_set_to_50, true,
 				"Unable to set fuel percentage to 50! Status not turned ON.");
@@ -1279,7 +1285,7 @@ public class Signup extends Login {
 		// Generating random email
 		Random randomGenerator = new Random();
 		randomInt = randomGenerator.nextInt(10000);
-		String Email = "junk" + randomInt + "@mailinator.com";
+		String Email = "junk" + randomInt + "@yopmail.com";
 		DeviceName = "test" + randomInt;
 		return Email;
 	}

@@ -25,27 +25,31 @@ public class Delete_Devices_From_Panel extends Login {
 		
 		
 
-		for(int i=0; i<25; i++)
+		for(int i=0; i<180; i++)
 		{
 			List<WebElement> ele = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Delete']")));
 		ele.get(0).click(); Thread.sleep(1000);
 		
-		//Click on confirm button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
+		driver.switchTo().alert().accept();
 		
-
-				//Alert message closed
-				try
-				{
-				    alt_closed = wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='modal false fade in']"))).size()!=1;
-				}
-				
-				catch(Exception e)
-				{
-					alt_closed = true;
-				}
-				
-				Assert.assertEquals(alt_closed, true, "Alert not closed successfully!");
+		
+		
+		//Click on confirm button
+//		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
+//		
+//
+//				//Alert message closed
+//				try
+//				{
+//				    alt_closed = wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='modal false fade in']"))).size()!=1;
+//				}
+//				
+//				catch(Exception e)
+//				{
+//					alt_closed = true;
+//				}
+//				
+//				Assert.assertEquals(alt_closed, true, "Alert not closed successfully!");
 				
 				
 		

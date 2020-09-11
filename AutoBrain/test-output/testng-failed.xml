@@ -10,8 +10,8 @@
     <classes>
       <class name="com.testcases.DemoTest">
         <methods>
-          <include name="verifyCarFinder"/>
           <include name="CheckBrowsers"/>
+          <include name="deleteDevices"/>
           <include name="quit"/>
           <include name="deleteFailedTestScreenshots"/>
         </methods>

@@ -205,38 +205,51 @@ public class SignupWithPrepaidDevice extends Signup {
 		Assert.assertEquals(Is_Next_Page_Correct, true, "Confirmation key page not found!");
 
 		// Open new tab
+		// MAILINATOR.COM
 		Thread.sleep(2000);
-		driver.get("https://www.mailinator.com");
+
+		driver.get("http://www.yopmail.com/en/");
 
 		Thread.sleep(2000);
 
 		// Enter registered email id
+		
 		if (new_entered_email == null) {
-			VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
+		
+			VisibilityOfElementByXpath("//input[@id='login']", 15)
 					.sendKeys(entered_email);
 			;
-			System.out.println("Trying to input entered_email in field " + entered_email);
-		} else {
-			VisibilityOfElementByXpath("//input[@placeholder='Enter Public Mailinator Inbox']", 15)
+			System.out.println("Input entered_email in mailinator.com " + entered_email);
+		} 
+		
+		else {
+			new_entered_email = new_entered_email.replace("@maildrop.cc", "");
+			VisibilityOfElementByXpath("//input[@id='login']", 15)
 					.sendKeys(new_entered_email);
 			;
-			System.out.println("Trying to input new_entered_email in field " + new_entered_email);
+			System.out.println("Input new_entered_email in mailinator.com " + new_entered_email);
 		}
 
-		Thread.sleep(2000);
-
-		// Click on Go button
-		VisibilityOfElementByID("go-to-public", 15).click();
-		Thread.sleep(2000);
-
-		// Click on the first email
-		VisibilityOfElementByXpath("//a[contains(text(),'Autobrain account')]", 15).click();
+		// Click on check for new email button
+		VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
+		Thread.sleep(1000);
 
 		// Switch to frame
-		driver.switchTo().frame(driver.findElement(By.id("msg_body")));
+		driver.switchTo().frame(driver.findElement(By.id("ifinbox")));	
 
+		// Open confirmation email
+		VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
+		Thread.sleep(1000);
+
+		// Back to parent frame
+		driver.switchTo().parentFrame();
+		
+		// Switch to frame
+		driver.switchTo().frame(driver.findElement(By.id("ifmail")));
+		
 		// Get confirmation code
-		code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
+		String code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
+
 
 		driver.get(url);
 
@@ -456,20 +469,21 @@ public class SignupWithPrepaidDevice extends Signup {
 			List<WebElement> choose_plan = PresenceOfAllElementsByXpath(
 					"//div[contains(text(),'see full list')]/following-sibling::button", 15);
 
-			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")) {
-				num = 1;
-			}
-
-			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button")) {
-				num = 2;
-			}
-
-			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
-				num = 3;
-			}
+//			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")) {
+//				num = 1;
+//			}
+//
+//			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button")) {
+//				num = 2;
+//			}
+//
+//			if (prop.getProperty("choose_plan").contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+//				num = 3;
+//			}
 
 			Thread.sleep(2000);
-
+			String Num = prop.getProperty("activate_new_device_plan");
+			num = Integer.parseInt(Num);
 			switch (num)
 
 			{
