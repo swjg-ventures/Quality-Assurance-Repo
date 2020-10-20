@@ -28,17 +28,17 @@ public class Signup extends Login {
 			VIN2 = "MCSJ879373J736G", model_selected, Insurance_Eff_Date, Insurance_Exp_Date, car_Reg_exp, DeviceName,
 			Signup_New_Email, entered_email, code, Device_Num, new_entered_email;
 
-	int randomInt, Total_bought_devices, model1 = 2, model2 = 6;
+	int num, randomInt, Total_bought_devices, model1 = 2, model2 = 6;
 
 	// Store email which we used during buy the product on
 	ArrayList<String> ar = new ArrayList<String>();
 
 	// Store number of all bought devices (Used in create_device_by_panel)
-	ArrayList<String> All_Devices_No = new ArrayList<String>();
+	static ArrayList<String> All_Devices_No = new ArrayList<String>();
 
 	boolean reg_success, shipping_label_box, Is_Next_Page_Correct, p_load, credit_card, isNewDevicePageFound,
 			safty_modes, alert_setting, roadside, home, Device_Added, card_error_msg, email_added,
-			billing_interval_page_title;
+			billing_interval_page_title, choose_plan_page;
 
 	// Shuffling variables
 	// Car name
@@ -102,7 +102,7 @@ public class Signup extends Login {
 	@FindBy(xpath = "//input[@placeholder='Enter device number']")
 	List<WebElement> no_of_input_devices;
 
-	Properties prop;
+	static Properties prop;
 
 	// MAIN METHOD
 	public void signup(String accountType) throws Exception {
@@ -225,19 +225,17 @@ public class Signup extends Login {
 			Thread.sleep(2000);
 
 			// Enter registered email id
-			
+
 			if (new_entered_email == null) {
-			
-				VisibilityOfElementByXpath("//input[@id='login']", 15)
-						.sendKeys(entered_email);
+
+				VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(entered_email);
 				;
 				System.out.println("Input entered_email in mailinator.com " + entered_email);
-			} 
-			
+			}
+
 			else {
 				new_entered_email = new_entered_email.replace("@maildrop.cc", "");
-				VisibilityOfElementByXpath("//input[@id='login']", 15)
-						.sendKeys(new_entered_email);
+				VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(new_entered_email);
 				;
 				System.out.println("Input new_entered_email in mailinator.com " + new_entered_email);
 			}
@@ -247,7 +245,7 @@ public class Signup extends Login {
 			Thread.sleep(1000);
 
 			// Switch to frame
-			driver.switchTo().frame(driver.findElement(By.id("ifinbox")));	
+			driver.switchTo().frame(driver.findElement(By.id("ifinbox")));
 
 			// Open confirmation email
 			VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
@@ -255,10 +253,10 @@ public class Signup extends Login {
 
 			// Back to parent frame
 			driver.switchTo().parentFrame();
-			
+
 			// Switch to frame
 			driver.switchTo().frame(driver.findElement(By.id("ifmail")));
-			
+
 			// Get confirmation code
 			String code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
 
@@ -311,6 +309,8 @@ public class Signup extends Login {
 		Done();
 
 		Thread.sleep(2500);
+		SignupWithPrepaidDevice ss = new SignupWithPrepaidDevice();
+		ss.ActivateNewDevice();
 		softassert.assertAll();
 
 	}
@@ -324,21 +324,21 @@ public class Signup extends Login {
 
 		// Calling login method
 		login("john@example.com", "welcome");
-
+		driver.get("https://stg.autobrain.com/buy");
 		// Click on Menu button
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
-				.click();
+//		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
+//				.click();
 
-		// Click on Download App
-		VisibilityOfElementByXpath("//span[contains(text(),'Get Another Device')]", 15).click();
-		Thread.sleep(2000);
-
-		// Checking how many windows are opened currently
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-
-		// Switching to Buy now page
-		driver.switchTo().window(tabs.get(1));
-
+//		// Click on Download App
+//		VisibilityOfElementByXpath("//span[contains(text(),'Get Another Device')]", 15).click();
+//		Thread.sleep(2000);
+//
+//		// Checking how many windows are opened currently
+//		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//
+//		// Switching to Buy now page
+//		driver.switchTo().window(tabs.get(1));
+		driver.get("https://stg.autobrain.com/buy");
 		// Open drop-down to select number of devices
 		Select s = new Select(VisibilityOfElementByXpath("//div[@class='quanities-container']/select", 15));
 		s.selectByVisibleText(prop.getProperty("no_of_devices"));
@@ -464,12 +464,12 @@ public class Signup extends Login {
 		softassert.assertEquals(actual_product_price, expected_product_price,
 				"Expected product price not matching with actual product price!");
 
-		// Closing current window
-		driver.switchTo().window(tabs.get(1)).close();
-		Thread.sleep(1000);
-
-		// Switching to main window
-		driver.switchTo().window(tabs.get(0));
+//		// Closing current window
+//		driver.switchTo().window(tabs.get(1)).close();
+//		Thread.sleep(1000);
+//
+//		// Switching to main window
+//		driver.switchTo().window(tabs.get(0));
 		Thread.sleep(1000);
 
 		ar.clear();
@@ -647,7 +647,7 @@ public class Signup extends Login {
 		Thread.sleep(1000);
 
 		// Fill Up Insurance and Registration Forms
-		VehicleProfile v = new VehicleProfile();
+//		VehicleProfile v = new VehicleProfile();
 //		v.Ins_Reg_Forms();
 
 		// Check terms and conditions
@@ -966,13 +966,13 @@ public class Signup extends Login {
 		Thread.sleep(2000);
 
 		// TURN ON LOW FUEL NOTIFICATIONS ALERTS
-		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 10)
+		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
 				.click();
 		Thread.sleep(2000);
 
 		// Toggle status
 		String fuel_noti_toggle_status = VisibilityOfElementByXpath(
-				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 10).getText();
+				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 15).getText();
 
 		// Validate notification toggle has turned ON
 		Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
@@ -993,7 +993,7 @@ public class Signup extends Login {
 
 		// Validate percentage set to 50 or not
 		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
-				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 15).getText().contains("ON");
+				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 20).getText().contains("ON");
 
 		Assert.assertEquals(is_percentage_set_to_50, true,
 				"Unable to set fuel percentage to 50! Status not turned ON.");
@@ -1064,6 +1064,174 @@ public class Signup extends Login {
 		}
 
 		Assert.assertEquals(reg_success, true, "Not Found. Searching vehicle tripe...");
+	}
+
+	// Step 1 for Activating new device
+	public void StepOneActivateNewDevice(String device_no) throws Exception {
+
+		// Open navigation menu
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
+				.click();
+		Thread.sleep(2000);
+
+		// Activate new device
+		VisibilityOfElementByXpath("//span[contains(text(),'Activate New Device')]", 15).click();
+		Thread.sleep(2000);
+
+		// Create a Name for Your Car
+		VisibilityOfElementByXpath(
+				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[1]/input", 15)
+						.sendKeys(device_no);
+
+		// Enter device number
+		VisibilityOfElementByXpath(
+				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[2]/input", 15)
+						.sendKeys(device_no);
+
+		// Re-enter device number
+		VisibilityOfElementByXpath(
+				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[3]/input", 15)
+						.sendKeys(device_no);
+
+		// Enter Your VIN
+		VisibilityOfElementByXpath(
+				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[4]/input", 15)
+						.sendKeys(VIN);
+
+		// Expanding Car Icon drop-down
+		VisibilityOfElementByXpath("//div[@class='select-dropdown']/div", 15).click();
+		Thread.sleep(3000);
+
+		// Selecting Car Icon from drop-down
+		VisibilityOfElementByXpath(caricon, 15).click();
+
+		// Car Year
+		Select y = new Select(VisibilityOfElementByXpath("//div[@class='secondary-input'][1]/div[2]/select", 15));
+		y.selectByVisibleText(year);
+		Thread.sleep(2000);
+
+		// Car Make
+		Select m = new Select(VisibilityOfElementByXpath("//div[@class='secondary-input'][2]/div[2]/select", 15));
+		m.selectByVisibleText(make);
+		Thread.sleep(2000);
+
+		// Car Model
+		Select mo = new Select(VisibilityOfElementByXpath("//div[@class='secondary-input'][3]/div[2]/select", 15));
+		mo.selectByIndex(model);
+		model_selected = mo.getFirstSelectedOption().getText().trim();
+		Thread.sleep(1000);
+
+		// Fill Up Insurance and Registration Forms
+		VehicleProfile v = new VehicleProfile();
+		v.Ins_Reg_Forms();
+
+		// Check terms and conditions
+		List<WebElement> el = VisibilityOfAllElementsByXpath("//div[@class='esf']/div[1]", 15);
+		el.get(0).click();
+		Thread.sleep(2000);
+		try {
+			el.get(1).click();
+		}
+
+		catch (Exception e) {
+			System.out.println("Excemption not found! Because the check-box is hidden for this customer.");
+		}
+
+		Thread.sleep(4000);
+
+		try {
+			// Submit
+			wait(driver, 4).until(
+					ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]")))
+					.click();
+
+		}
+
+		catch (Exception e) {
+			// Submit
+			wait(driver, 2).until(
+					ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
+					.click();
+		}
+
+		// VALIDATE CHOOSE PLAN PAGE
+		try {
+			choose_plan_page = wait(driver, 10)
+					.until(ExpectedConditions
+							.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Choose Plan')]")))
+					.size() == 1;
+		}
+
+		catch (Exception e) {
+			choose_plan_page = false;
+		}
+
+		Assert.assertEquals(choose_plan_page, true, "Choose plan page not found!");
+
+		// BUSINESS PLAN
+		if (prop.get("account_type").equals("Autobrain Business")) {
+
+			// Choose Billing Interval
+			WebElement billing_interval = PresenceOfElementByXpath(prop.getProperty("business_plan_interval"), 15);
+			billing_interval.click();
+			Thread.sleep(2000);
+
+		}
+
+		// FAMILY PLAN
+		if (prop.get("account_type").equals("Autobrain Family")) {
+
+			// Choose Plan
+			List<WebElement> choose_plan = PresenceOfAllElementsByXpath(
+					"//div[contains(text(),'see full list')]/following-sibling::button", 15);
+
+			Thread.sleep(2000);
+			String Num = prop.getProperty("activate_new_device_plan");
+			num = Integer.parseInt(Num);
+			switch (num)
+
+			{
+			case 0: // VIP Plan
+				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[1]/button", 15).click();
+				Thread.sleep(1500);
+				choose_plan.get(num).click();
+				break;
+
+			case 1: // ESSENTIAL Plan
+				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[2]/button", 15).click();
+				Thread.sleep(1500);
+				choose_plan.get(num).click();
+				break;
+
+			case 2: // MONEY SAVER Plan
+				VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[3]/button", 15).click();
+				Thread.sleep(1500);
+				choose_plan.get(num).click();
+				break;
+
+			}
+
+			// Choose Billing Interval
+			WebElement duration = VisibilityOfElementByXpath(prop.getProperty("choose_billing_interval"), 15);
+			duration.click();
+
+			// Submit
+			VisibilityOfElementByXpath("//button[@class='submit-btn HSKg29-lwI4BPWKQPVBps_0']", 15).click();
+
+		}
+	}
+
+	public void ActivateNewDevice() throws Exception {
+
+		for (int i = 1; i < All_Devices_No.size(); i++) {
+
+			StepOneActivateNewDevice(All_Devices_No.get(i));
+			Step2();
+			Step3();
+			Step4();
+			Done();
+		}
+
 	}
 
 	// CREATE DEVICE NUMBER FROM WORKER PANEL

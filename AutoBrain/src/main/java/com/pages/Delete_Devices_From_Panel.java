@@ -25,17 +25,17 @@ public class Delete_Devices_From_Panel extends Login {
 		
 		
 
-		for(int i=0; i<180; i++)
+		for(int i=0; i<508; i++)
 		{
 			List<WebElement> ele = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Delete']")));
 		ele.get(0).click(); Thread.sleep(1000);
 		
-		driver.switchTo().alert().accept();
+//		driver.switchTo().alert().accept();
 		
 		
 		
 		//Click on confirm button
-//		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
 //		
 //
 //				//Alert message closed

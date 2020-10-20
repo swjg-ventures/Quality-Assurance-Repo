@@ -15,7 +15,7 @@ public class DemoTest extends Base {
 	@Test(priority = 1)
 	public void VerifyRegister1() throws Exception {
 		Signup a = new Signup();
-		a.signup("business");
+		a.signup("personal");
 
 	}
 
