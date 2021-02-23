@@ -146,7 +146,7 @@
     &lt;listener class-name=&quot;Library.ExtentReporterNG&quot;/&gt;
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Chrome&quot; parallel=&quot;tests&quot;&gt;
-    &lt;parameter name=&quot;Headless&quot; value=&quot;true&quot;/&gt;
+    &lt;parameter name=&quot;Headless&quot; value=&quot;false&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.testcases.DemoTest&quot;/&gt;
@@ -193,12 +193,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'Manually_Create_Invoice_And_Signup')
 data.setCell(0, 2, 'com.testcases.DemoTest')
-data.setCell(0, 3, 154538);
+data.setCell(0, 3, 102907);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -225,21 +225,17 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.testcases.DemoTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">deleteFailedTestScreenshots</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">CheckBrowsers(chrome, true)</span>
-                <span class="method-start">44 ms</span>
+                <span class="method-name">CheckBrowsers(chrome, false)</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">Manually_Create_Invoice_And_Signup</span>
-                <span class="method-start">15574 ms</span>
+                <span class="method-start">8900 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">170118 ms</span>
+                <span class="method-start">111811 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

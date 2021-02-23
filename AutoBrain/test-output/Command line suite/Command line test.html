@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Command line test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/0/13</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Aug 26 18:33:21 IST 2019</td>
+<td>Started on:</td><td>Tue Oct 27 21:44:50 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>10 seconds (10147 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (56 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,39 +75,46 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.testcases.MainTest.CheckBrowsers()'><b>CheckBrowsers</b><br>Test class: com.testcases.MainTest</td>
+<td title='com.testcases.DemoTest.CheckBrowsers()'><b>CheckBrowsers</b><br>Test class: com.testcases.DemoTest</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+Parameter &apos;Browsers&apos; is required by BeforeMethod on method CheckBrowsers but has not been marked @Optional or defined
 
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1989811701", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1989811701'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.testcases.TestRunner.main(TestRunner.java:16)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1340328248", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1340328248'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeMethod on method CheckBrowsers but has not been marked @Optional or defined
 
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
+	at org.testng.internal.Parameters.createParams(Parameters.java:289)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:377)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:721)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:164)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:275)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:683)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:510)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.testng.TestRunner.privateRun(TestRunner.java:770)
+	at org.testng.TestRunner.run(TestRunner.java:591)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+	at org.testng.TestNG.runSuites(TestNG.java:1032)
+	at org.testng.TestNG.run(TestNG.java:1000)
+	at com.testcases.TestRunner.main(TestRunner.java:16)
 </pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
+<td>-1603815290</td>
+<td>com.testcases.DemoTest@174d20a</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
@@ -117,10 +124,10 @@ Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowser
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.testcases.MainTest.quit()'><b>quit</b><br>Test class: com.testcases.MainTest</td>
+<td title='com.testcases.DemoTest.quit()'><b>quit</b><br>Test class: com.testcases.DemoTest</td>
 <td></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
+<td>-1603815290</td>
+<td>com.testcases.DemoTest@174d20a</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -130,447 +137,46 @@ Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowser
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.testcases.MainTest.VerifyBlankLogin()'><b>VerifyBlankLogin</b><br>Test class: com.testcases.MainTest</td>
+<td title='com.testcases.DemoTest.VerifyRegister1()'><b>VerifyRegister1</b><br>Test class: com.testcases.DemoTest</td>
 <td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+Parameter &apos;Browsers&apos; is required by BeforeMethod on method CheckBrowsers but has not been marked @Optional or defined
 
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace127791068", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace127791068'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at com.testcases.TestRunner.main(TestRunner.java:16)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace36202360", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace36202360'><pre>org.testng.TestNGException: 
+Parameter &apos;Browsers&apos; is required by BeforeMethod on method CheckBrowsers but has not been marked @Optional or defined
 
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
+	at org.testng.internal.Parameters.createParams(Parameters.java:289)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:377)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:721)
+	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:164)
+	at org.testng.internal.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:275)
+	at org.testng.internal.TestInvoker.runConfigMethods(TestInvoker.java:683)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:510)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+	at org.testng.TestRunner.privateRun(TestRunner.java:770)
+	at org.testng.TestRunner.run(TestRunner.java:591)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+	at org.testng.TestNG.runSuites(TestNG.java:1032)
+	at org.testng.TestNG.run(TestNG.java:1000)
+	at com.testcases.TestRunner.main(TestRunner.java:16)
 </pre></div></td>
 <td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyChangePassword()'><b>VerifyChangePassword</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace573200870", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace573200870'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyChatButtonFunctionality()'><b>VerifyChatButtonFunctionality</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace873634936", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace873634936'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyEnteringInvalidEmailInForgotPasswordFiled()'><b>VerifyEnteringInvalidEmailInForgotPasswordFiled</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace929697158", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace929697158'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyEnteringRegisteredEmailInForgotPasswordField()'><b>VerifyEnteringRegisteredEmailInForgotPasswordField</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace951031848", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace951031848'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyForgotPasswordCancelButtonRedirection()'><b>VerifyForgotPasswordCancelButtonRedirection</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1650813924", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1650813924'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyInvalidLogin()'><b>VerifyInvalidLogin</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1481818223", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1481818223'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyLogoutUser()'><b>VerifyLogoutUser</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace164332069", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace164332069'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyPrivacyPolicyLinkOnSignupPage()'><b>VerifyPrivacyPolicyLinkOnSignupPage</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1408482749", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1408482749'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyTermsAndConditionsLinkOnSignupPage()'><b>VerifyTermsAndConditionsLinkOnSignupPage</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace400103862", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace400103862'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyUpdatingContactInfo()'><b>VerifyUpdatingContactInfo</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2103569237", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2103569237'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyValidLogin()'><b>VerifyValidLogin</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1095352419", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1095352419'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
-<tr>
-<td title='com.testcases.MainTest.VerifyValidSignup()'><b>VerifyValidSignup</b><br>Test class: com.testcases.MainTest</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-... Removed 20 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1991278377", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1991278377'><pre>org.testng.TestNGException: 
-Parameter &apos;Browsers&apos; is required by BeforeClass on method CheckBrowsers but has not been marked @Optional or defined
-
-	at org.testng.internal.Parameters.createParams(Parameters.java:290)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:359)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:620)
-	at org.testng.internal.Parameters.createConfigurationParameters(Parameters.java:190)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:209)
-	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:142)
-	at org.testng.internal.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:168)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:105)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at com.testcases.TestRunner.main(TestRunner.java:11)
-</pre></div></td>
-<td>0</td>
-<td>com.testcases.MainTest@2be94b0f</td></tr>
+<td>com.testcases.DemoTest@174d20a</td></tr>
 </table><p>
 </body>
 </html>

@@ -108,13 +108,13 @@ public class Signup extends Login {
 	public void signup(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\personal.properties");
+			FileInputStream fis = new FileInputStream("personal.properties");
 			prop.load(fis);
 		}
 
 		if (accountType.contains("business")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\business.properties");
+			FileInputStream fis = new FileInputStream("business.properties");
 			prop.load(fis);
 		}
 
@@ -563,13 +563,15 @@ public class Signup extends Login {
 
 		Assert.assertEquals(shipping_label_box, true, "Print/View shipping label prompt box not opened!");
 
-		// Close print label
-		List<WebElement> close_print_msgbox = PresenceOfAllElementsByXpath("//button[@class='close']", 15);
-		Thread.sleep(2000);
-		close_print_msgbox.get(2).click(); // Thread.sleep(2000);
+		// Select Purchase Label
+		List<WebElement> select_purchase_label = PresenceOfAllElementsByXpath(
+				"//button[contains(text(),'Purchase Label')]", 15);
 
+		Thread.sleep(4000);
+		select_purchase_label.get(0).click(); // Thread.sleep(2000);
+		Thread.sleep(3000);
 		// Click on Mark As Shipped
-		List<WebElement> mark_as_shipped_btn = PresenceOfAllElementsByXpath("//a[contains(text(),'Mark as shipped')]",
+		List<WebElement> mark_as_shipped_btn = VisibilityOfAllElementsByXpath("//a[contains(text(),'Mark as shipped')]",
 				25);
 		Thread.sleep(4000);
 		mark_as_shipped_btn.get(0).click();
@@ -715,6 +717,7 @@ public class Signup extends Login {
 
 		// FAMILY PLAN
 		if (prop.get("account_type").equals("Autobrain Family")) {
+
 			// Choose Plan
 			WebElement choose_plan = VisibilityOfElementByXpath(prop.getProperty("choose_plan"), 15);
 			choose_plan.click();
@@ -725,76 +728,87 @@ public class Signup extends Login {
 			Thread.sleep(4000);
 		}
 
-		try {
-			// Check continue button is available
-			wait(driver, 2)
-					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Continue']")))
-					.click();
-		}
+		if (prop.get("bluetooth_is_free").equals("free")) {
+			System.out.println("This is Bluetooth free device!");
 
-		catch (Exception e) {
-			System.out.println("Credit card page split in two pages!");
-		}
+			// Click on try for free button
+			VisibilityOfElementByXpath("//button[contains(text(),'Try For Free')]", 10).click();
 
-		// Enter First name
-		VisibilityOfElementByXpath("//input[@placeholder='First Name']", 15).sendKeys("Jhon");
+			// Validate alert found
+			boolean isFound = VisibilityOfElementByXpath("//h4[contains(text(),'Are You Sure?')]", 10).isDisplayed();
+			Assert.assertEquals(isFound, true, "Try for free, Alert not found!");
 
-		// Enter Last name
-		VisibilityOfElementByXpath("//input[@placeholder='Last Name']", 15).sendKeys("example");
+			// Click on Yes
+			VisibilityOfElementByXpath("//button[contains(text(),'Yes')]", 10).click();
 
-		// Enter Billing Address
-		VisibilityOfElementByXpath("//input[@placeholder='Billing Address']", 15).sendKeys(Street);
+			// Validate user redirected to home page or not
+			Assert.assertTrue(VisibilityOfElementByXpath("//h4[contains(text(),'Bluetooth Instructions')]", 15)
+					.getText().contains("Bluetooth Instructions"));
 
-		// Enter City
-		VisibilityOfElementByXpath("//input[@placeholder='City']", 15).sendKeys(City);
-		Thread.sleep(2000);
-
-		// Select State
-		Select state = new Select(VisibilityOfElementByXpath("//option[contains(text(),'State')]//parent::select", 15));
-		state.selectByVisibleText(State);
-
-		// Add card number
-		VisibilityOfElementByXpath("//input[@placeholder='Card Number']", 15).sendKeys(Card_No);
-
-		// Select Month
-		Select month = new Select(VisibilityOfElementByXpath("//option[contains(text(),'Month')]//parent::select", 15));
-		month.selectByIndex(11);
-		Thread.sleep(2000);
-
-		// Select Year
-		Select year = new Select(VisibilityOfElementByXpath("//option[contains(text(),'Year')]//parent::select", 15));
-		year.selectByIndex(8);
-
-		// Enter CVV
-		VisibilityOfElementByXpath("//input[@placeholder='CVV']", 15).sendKeys(Card_CVV);
-
-		// Enter Zip Code
-		VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15).sendKeys(Zip);
-
-		// Click on check-box (Make This Your Primary Card)
-		VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 15).click();
-
-		// Click on Save button
-		VisibilityOfElementByXpath("//button[contains(text(),'Save')]", 15).click();
-
-		// Validate enter card details accepted or not
-		try {
-			card_error_msg = wait(driver, 5).until(ExpectedConditions
-					.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center error']")))
-					.size() == 1;
-		} catch (Exception e) {
+			VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
 
 		}
-		Assert.assertEquals(card_error_msg, false, "Found error while trying to submit the card details!");
 
-		// Validate Step 2 page opened
-		try {
-			credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Driver Setup')]", 20).size() == 1;
-		} catch (Exception e) {
+		else if (prop.get("bluetooth_is_free").equals("paid")) {
+
+			System.out.println("This is bluetooth paid device!");
+			// Click on continue button
+			VisibilityOfElementByXpath("//button[text()='Continue']", 2).click();
+
+			// Add credit card
+			AddCreditCard();
+
+			// Same as billing check box
+			VisibilityOfElementByXpath("//div[contains(text(),'Same as Billing')]/div//span", 10).click();
+
+			// Enter email address
+			if (!SignupWithPrepaidDevice.email_alert_error) {
+				VisibilityOfElementByXpath("//input[@placeholder='Email Address']", 15)
+						.sendKeys(SignupWithPrepaidDevice.email);
+
+			}
+
+			else {
+				VisibilityOfElementByXpath("//input[@placeholder='Email Address']", 15)
+						.sendKeys(SignupWithPrepaidDevice.new_entered_email);
+			}
+
+			// Check terms and conditions check-box
+			VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 10).click();
+
+			// Click on continue to billing info button
+			VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
+
+			// Validate bluetooth HomePage
+			Assert.assertTrue(VisibilityOfElementByXpath("//h4[contains(text(),'Bluetooth Instructions')]", 15)
+					.getText().contains("Bluetooth Instructions"));
+
+			VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
 
 		}
-		Assert.assertEquals(credit_card, true, "Monitor and Driver page not found!");
-		Thread.sleep(2000);
+
+		else {
+
+			try {
+				// Check continue button is available
+				VisibilityOfElementByXpath("//button[text()='Continue']", 2).click();
+			}
+
+			catch (Exception e) {
+				System.out.println("Continue button not found!");
+			}
+
+			AddCreditCard();
+
+			// Validate Step 2 page opened
+			try {
+				credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Driver Setup')]", 20).size() == 1;
+			} catch (Exception e) {
+
+			}
+			Assert.assertEquals(credit_card, true, "Monitor and Driver page not found!");
+			Thread.sleep(2000);
+		}
 	}
 
 	// Step 2 will add monitor driver details
@@ -946,7 +960,8 @@ public class Signup extends Login {
 	// Step 3 Safety Mode
 	public void Step3() throws Exception {
 		Thread.sleep(2000);
-		VisibilityOfElementByXpath("//a[@class='hide-below-500 nav-button']/span", 15).click();
+//		VisibilityOfElementByXpath("//a[@class='hide-below-500 nav-button']/span", 15).click();
+		VisibilityOfElementByXpath("//span[contains(text(),'Skip')]", 15).click();
 
 		// Validate Step 4 page opened
 		try {
@@ -966,40 +981,40 @@ public class Signup extends Login {
 		Thread.sleep(2000);
 
 		// TURN ON LOW FUEL NOTIFICATIONS ALERTS
-		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
-				.click();
-		Thread.sleep(2000);
-
-		// Toggle status
-		String fuel_noti_toggle_status = VisibilityOfElementByXpath(
-				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 15).getText();
-
-		// Validate notification toggle has turned ON
-		Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
-
-		// Click on advance setting to set fuel percentage notification
-		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div//i", 10).click();
-
-		// Validate low fuel notifications settings page opened
-		boolean low_fuel_noti_settings_page_opened = VisibilityOfAllElementsByXpath(
-				"//h4[text()='Low Fuel Notifications Settings']", 10).size() == 1;
-
-		Assert.assertEquals(low_fuel_noti_settings_page_opened, true,
-				"Low fuel notifications settings page not opened!");
-
-		// Set fuel percentage to 50%
-		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 15).click();
-		Thread.sleep(2000);
-
-		// Validate percentage set to 50 or not
-		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
-				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 20).getText().contains("ON");
-
-		Assert.assertEquals(is_percentage_set_to_50, true,
-				"Unable to set fuel percentage to 50! Status not turned ON.");
-
-		// Click on all alert settings button (Going back)
-		VisibilityOfElementByXpath("//button[text()='All Alert Settings']", 10).click();
+//		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
+//				.click();
+//		Thread.sleep(2000);
+//
+//		// Toggle status
+//		String fuel_noti_toggle_status = VisibilityOfElementByXpath(
+//				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 15).getText();
+//
+//		// Validate notification toggle has turned ON
+//		Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
+//
+//		// Click on advance setting to set fuel percentage notification
+//		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div//i", 10).click();
+//
+//		// Validate low fuel notifications settings page opened
+//		boolean low_fuel_noti_settings_page_opened = VisibilityOfAllElementsByXpath(
+//				"//h4[text()='Low Fuel Notifications Settings']", 10).size() == 1;
+//
+//		Assert.assertEquals(low_fuel_noti_settings_page_opened, true,
+//				"Low fuel notifications settings page not opened!");
+//
+//		// Set fuel percentage to 50%
+//		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 15).click();
+//		Thread.sleep(2000);
+//
+//		// Validate percentage set to 50 or not
+//		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
+//				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 20).getText().contains("ON");
+//
+//		Assert.assertEquals(is_percentage_set_to_50, true,
+//				"Unable to set fuel percentage to 50! Status not turned ON.");
+//
+//		// Click on all alert settings button (Going back)
+//		VisibilityOfElementByXpath("//button[text()='All Alert Settings']", 10).click();
 
 		// Click on Next page button
 		try {
@@ -1031,6 +1046,11 @@ public class Signup extends Login {
 		// Click on Finish button
 		VisibilityOfElementByXpath("//a[contains(text(),'Finish')]", 15).click();
 
+		Assert.assertTrue(Validate_HomePage_Landing(), "HomePage Landing failed! Not Found. Searching vehicle trip...");
+
+	}
+
+	public boolean Validate_HomePage_Landing() {
 		// Verify user redirected to home page or not
 		try {
 			home = VisibilityOfAllElementsByXpath("//li[contains(text(),'You are now ready to drive!')]", 15)
@@ -1063,7 +1083,7 @@ public class Signup extends Login {
 					"NOT FOUND--> Your Autobrain device may take up to 12 hours and 3 drives to sync with your car.");
 		}
 
-		Assert.assertEquals(reg_success, true, "Not Found. Searching vehicle tripe...");
+		return reg_success;
 	}
 
 	// Step 1 for Activating new device
@@ -1232,6 +1252,59 @@ public class Signup extends Login {
 			Done();
 		}
 
+	}
+
+	public void AddCreditCard() throws Exception {
+		// Enter First name
+		VisibilityOfElementByXpath("//input[@placeholder='First Name']", 15).sendKeys("Jhon");
+
+		// Enter Last name
+		VisibilityOfElementByXpath("//input[@placeholder='Last Name']", 15).sendKeys("example");
+
+		// Enter Billing Address
+		VisibilityOfElementByXpath("//input[@placeholder='Billing Address']", 15).sendKeys(Street);
+
+		// Enter City
+		VisibilityOfElementByXpath("//input[@placeholder='City']", 15).sendKeys(City);
+		Thread.sleep(2000);
+
+		// Select State
+		Select state = new Select(VisibilityOfElementByXpath("//option[contains(text(),'State')]//parent::select", 15));
+		state.selectByVisibleText(State);
+
+		// Add card number
+		VisibilityOfElementByXpath("//input[@placeholder='Card Number']", 15).sendKeys(Card_No);
+
+		// Select Month
+		Select month = new Select(VisibilityOfElementByXpath("//option[contains(text(),'Month')]//parent::select", 15));
+		month.selectByIndex(11);
+		Thread.sleep(2000);
+
+		// Select Year
+		Select year = new Select(VisibilityOfElementByXpath("//option[contains(text(),'Year')]//parent::select", 15));
+		year.selectByIndex(8);
+
+		// Enter CVV
+		VisibilityOfElementByXpath("//input[@placeholder='CVV']", 15).sendKeys(Card_CVV);
+
+		// Enter Zip Code
+		VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15).sendKeys(Zip);
+
+		// Click on check-box (Make This Your Primary Card)
+		VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 15).click();
+
+		// Click on Save button
+		VisibilityOfElementByXpath("//button[contains(text(),'Save')]", 15).click();
+
+		// Validate enter card details accepted or not
+		try {
+			card_error_msg = wait(driver, 5).until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center error']")))
+					.size() == 1;
+		} catch (Exception e) {
+
+		}
+		Assert.assertEquals(card_error_msg, false, "Found error while trying to submit the card details!");
 	}
 
 	// CREATE DEVICE NUMBER FROM WORKER PANEL
@@ -1453,7 +1526,7 @@ public class Signup extends Login {
 		// Generating random email
 		Random randomGenerator = new Random();
 		randomInt = randomGenerator.nextInt(10000);
-		String Email = "junk" + randomInt + "@yopmail.com";
+		String Email = "junking" + randomInt + "@yopmail.com";
 		DeviceName = "test" + randomInt;
 		return Email;
 	}

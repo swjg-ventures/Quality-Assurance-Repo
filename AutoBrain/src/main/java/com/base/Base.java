@@ -111,22 +111,22 @@ public class Base {
 	}
 
 	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
-	@BeforeClass
-	public void deleteFailedTestScreenshots() throws IOException {
-		File f = new File("Images\\");
-		int count = 0;
-		for (File file : f.listFiles()) {
-			if (file.isFile() && file.getName().endsWith(".png")) {
-				String file_name = file.getName();
-				Files.deleteIfExists(Paths.get("Images\\" + file_name));
-				count++;
-			}
-		}
-
-		if (count > 0) {
-			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
-		}
-	}
+//	@BeforeClass
+//	public void deleteFailedTestScreenshots() throws IOException {
+//		File f = new File("Images\\");
+//		int count = 0;
+//		for (File file : f.listFiles()) {
+//			if (file.isFile() && file.getName().endsWith(".png")) {
+//				String file_name = file.getName();
+//				Files.deleteIfExists(Paths.get("Images\\" + file_name));
+//				count++;
+//			}
+//		}
+//
+//		if (count > 0) {
+//			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
+//		}
+//	}
 
 	// WAIT
 	public WebDriverWait wait(WebDriver driver, int time) {

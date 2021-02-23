@@ -8,17 +8,18 @@ import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
 import com.pages.VehicleProfile;
-import Demo.LTRCalculator;
+
 
 public class DemoTest extends Base {
 
 	@Test(priority = 1)
 	public void VerifyRegister1() throws Exception {
 		Signup a = new Signup();
-		a.signup("personal");
+		a.signup("business");
 
 	}
 
+	//NEED TO UPDATE THE CELLULAR AND MODEL TYPE BC OF BLUETOOTHE	
 //	@Test(priority = 1)
 	public void Manually_Create_Invoice_And_Signup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
@@ -37,11 +38,6 @@ public class DemoTest extends Base {
 		l.cancelSubscription();
 	}
 
-//	@Test(priority = 1)
-	public void verifyLTRCalculator() throws Exception {
-		LTRCalculator ltr = new LTRCalculator();
-		ltr.ltrCalculator();
-	}
 	
 //	@Test(priority = 1)
 	public void verifyCarFinder() throws Exception {

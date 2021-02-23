@@ -1,29 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Command line suite]">
   <test thread-count="5" name="Command line test(failed)">
     <classes>
-      <class name="com.testcases.MainTest">
+      <class name="com.testcases.DemoTest">
         <methods>
-          <include name="VerifyTermsAndConditionsLinkOnSignupPage"/>
-          <include name="VerifyValidLogin"/>
-          <include name="VerifyLogoutUser"/>
-          <include name="VerifyEnteringInvalidEmailInForgotPasswordFiled"/>
-          <include name="startbro"/>
-          <include name="VerifyForgotPasswordCancelButtonRedirection"/>
-          <include name="VerifyPrivacyPolicyLinkOnSignupPage"/>
-          <include name="quit"/>
-          <include name="VerifyBlankLogin"/>
-          <include name="VerifyChatButtonFunctionality"/>
-          <include name="quitbro"/>
-          <include name="VerifyUpdatingContactInfo"/>
+          <include name="VerifyRegister1"/>
           <include name="CheckBrowsers"/>
-          <include name="VerifyValidSignup"/>
-          <include name="VerifyInvalidLogin"/>
-          <include name="VerifyChangePassword"/>
-          <include name="VerifyEnteringRegisteredEmailInForgotPasswordField"/>
+          <include name="quit"/>
+          <include name="deleteFailedTestScreenshots"/>
         </methods>
-      </class> <!-- com.testcases.MainTest -->
+      </class> <!-- com.testcases.DemoTest -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

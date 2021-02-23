@@ -24,7 +24,7 @@ public class Login extends Base {
 		// Validation login
 		try {
 			homePage = VisibilityOfElementByXpath(
-					"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 60)
+					"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 90)
 							.isDisplayed();
 
 		} catch (Exception e) {

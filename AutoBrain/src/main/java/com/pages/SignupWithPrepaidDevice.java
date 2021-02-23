@@ -15,7 +15,8 @@ import au.com.bytecode.opencsv.CSVWriter;
 
 public class SignupWithPrepaidDevice extends Signup {
 	boolean error;
-	String invoice_name, invoice_id_before, email, invoice_account_type;
+	static boolean email_alert_error;
+	public static String invoice_name, invoice_id_before, email, invoice_account_type, new_entered_email;
 
 	// CSV file for devices
 	File csvFile = new File("Files\\mark_bulk_devices_as_sold.csv");
@@ -24,7 +25,7 @@ public class SignupWithPrepaidDevice extends Signup {
 	public void signupWithPrepaidDevice(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("src\\main\\java\\Library\\personal.properties");
+			FileInputStream fis = new FileInputStream("personal.properties");
 			prop.load(fis);
 		}
 
@@ -152,7 +153,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		Thread.sleep(2500);
 
 		for (int i = 0; i < driver.findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
-			boolean email_alert = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
+			email_alert_error = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
 					.size() != 0;
 			boolean firstN_alert = driver
 					.findElements(By.xpath("//input[@placeholder='First Name']/following-sibling::span")).size() != 0;
@@ -172,7 +173,7 @@ public class SignupWithPrepaidDevice extends Signup {
 			}
 
 			// Email already exist
-			if (email_alert == true) {
+			if (email_alert_error == true) {
 				VisibilityOfElementByID("user_email", 15).clear();
 				new_entered_email = GenerateRandomEmail();
 				System.out.println();
@@ -282,20 +283,27 @@ public class SignupWithPrepaidDevice extends Signup {
 			softassert.assertAll();
 		}
 
-		Step1(All_Devices_No.get(0));
+		if (prop.get("cellular_service_type").equals("FREE_1")) {
+			Step1(All_Devices_No.get(0));
+		}
 
-		Step2();
+		else {
+			Step1(All_Devices_No.get(0));
 
-		Step3();
+			Step2();
 
-		Step4();
+			Step3();
 
-		Done();
+			Step4();
 
-		Thread.sleep(2000);
+			Done();
 
-		ActivateNewDevice();
-		softassert.assertAll();
+			Thread.sleep(2000);
+
+			ActivateNewDevice();
+			softassert.assertAll();
+
+		}
 
 	}
 
@@ -386,11 +394,11 @@ public class SignupWithPrepaidDevice extends Signup {
 			// Enter Cellular service type
 			wait(driver, 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.name("device[cellular_service_type]")))
-					.sendKeys("WYLESS");
+					.sendKeys(prop.getProperty("cellular_service_type"));
 
 			// Select Model
 			Select sel = new Select(driver.findElement(By.name("device[model]")));
-			sel.selectByVisibleText("Standard");
+			sel.selectByVisibleText(prop.getProperty("model"));
 
 			// Enter Device UID (ESN)
 			VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
