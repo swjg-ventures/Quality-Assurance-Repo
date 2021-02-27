@@ -51,18 +51,18 @@ List<WebElement> success_msg;
 	public void change_password() throws Exception {
 		
 		PageFactory.initElements(driver, this);
-		login("john@example.com", "welcome");
+		login("junking2255@yopmail.com", "Welcome5");
 		
 		for (int i = 0; i < 2; i++) {
 			
 			if (i == 0) {
-				currentpass = "welcome";
-				newpass = "welcome1";
-				confirmnewpass = "welcome1";
+				currentpass = "Welcome5";
+				newpass = "welcome";
+				confirmnewpass = "welcome";
 			}
 
 			if (i == 1) {
-				currentpass = "welcome1";
+				currentpass = "welcome";
 				newpass = "welcome";
 				confirmnewpass = "welcome";
 			}
@@ -123,7 +123,7 @@ List<WebElement> success_msg;
 		PageFactory.initElements(driver, this);
 		
 		//Entering email
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("john@example.com");
+		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys("junking2255@yopmail.com");
 		
 		//Entering password
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password"))).sendKeys(newpass);
@@ -135,7 +135,7 @@ List<WebElement> success_msg;
 		//Validation login
 		while(home_page_loaded==false) {
 			try {
-			home_page_loaded =wait(driver, 80).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]"))).isDisplayed();	
+			home_page_loaded =wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]"))).isDisplayed();	
 			} catch(Exception e) {
 				System.out.println("Home page not loaded properly.");
 				break;

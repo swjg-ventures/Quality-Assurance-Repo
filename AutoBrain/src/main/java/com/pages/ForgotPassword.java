@@ -8,7 +8,7 @@ import org.testng.Assert;
 public class ForgotPassword extends Login{
 
 	//1. Entering valid registered email
-	public void RegisteredEmail() throws Exception {
+	public void forgot_password() throws Exception {
 
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Forgot password')]"))).click();
 		

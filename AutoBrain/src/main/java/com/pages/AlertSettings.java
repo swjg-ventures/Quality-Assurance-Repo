@@ -18,7 +18,7 @@ public class AlertSettings extends Login {
 
 	public void alert_settings() throws Exception {
 
-		login("john@example.com", "welcome");
+		login("lib1@mailinator.com", "welcome");
 		isDesktopNotificationAlert();
 
 		// Sliding to next page
@@ -59,7 +59,7 @@ public class AlertSettings extends Login {
 			}
 
 			for (j = i; j == i; j++) {
-				if (j==8 || j==9) {
+				if (j==9 || j==10) {
 					Thread.sleep(1500);
 				}
 				arr.add(toggleBtnStatus.get(j).getText());
@@ -209,9 +209,9 @@ public class AlertSettings extends Login {
 		System.out.println("VEHICLE REGISTATION RENEWAL" + "-->" + vehicleRegistrationRenewal + "=" + arr.get(8));
 
 		// DESKTOP NOTIFICATIONS
-		String desktopNotifications = exp_Status.get(10).getText();
-		softassert.assertEquals(arr.get(10), desktopNotifications, err_msg);
-		System.out.println("VEHICLE REGISTATION RENEWAL" + "-->" + desktopNotifications + "=" + arr.get(8));
+//		String desktopNotifications = exp_Status.get(10).getText();
+//		softassert.assertEquals(arr.get(10), desktopNotifications, err_msg);
+//		System.out.println("VEHICLE REGISTATION RENEWAL" + "-->" + desktopNotifications + "=" + arr.get(8));
 
 	}
 

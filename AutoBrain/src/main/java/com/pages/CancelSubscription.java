@@ -94,7 +94,7 @@ public class CancelSubscription extends Login {
 		Thread.sleep(1500);
 		
 		// Check confirmation message
-		boolean isConfirmationMsg = VisibilityOfElementByXpath("//h4[contains(text(),'Are you sure?')]", 15)
+		boolean isConfirmationMsg = VisibilityOfElementByXpath("//h5[contains(text(),'Are you sure?')]", 15)
 				.isDisplayed();
 		Assert.assertEquals(isConfirmationMsg, true,
 				"Confirmation message not found before cacelling device subscription!");
@@ -125,8 +125,8 @@ public class CancelSubscription extends Login {
 
 		// Searched device number
 		String searchedDevice = VisibilityOfElementByXpath(
-				"//table[@class='table table-hover table-bordered tablesorter tablesorter-default']/tbody/tr[1]/td[5]",
-				30).getText();
+				"//td[5]",
+				15).getText();
 
 		// Validate cancelled device and searched device to uncancel needs to be same
 		Assert.assertEquals(searchedDevice, cancelledDevice,
@@ -134,7 +134,7 @@ public class CancelSubscription extends Login {
 
 		// Click on uncancel button
 		VisibilityOfElementByXpath(
-				"//table[@class='table table-hover table-bordered tablesorter tablesorter-default']/tbody/tr[1]/td[14]/a",
+				"//a[contains(text(),'Uncancel Device')]",
 				15).click();
 
 		// Validate device cancelled

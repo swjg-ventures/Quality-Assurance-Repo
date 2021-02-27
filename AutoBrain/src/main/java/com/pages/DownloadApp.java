@@ -11,7 +11,7 @@ public class DownloadApp extends Login {
 	
 	public void DownloadAppLinks() throws Exception {
 	
-		
+		login("John@example.com", "welcome");
 		
 		//Click on Menu button
 		Thread.sleep(2000);

@@ -2,8 +2,20 @@ package com.testcases;
 
 import org.testng.annotations.Test;
 import com.base.Base;
+import com.pages.AlertSettings;
+import com.pages.BeepCarpool;
+import com.pages.CallEmergency;
 import com.pages.CancelSubscription;
+import com.pages.CarFinder;
+import com.pages.CarGroups;
+import com.pages.ChangePassword;
+import com.pages.CustomerService;
 import com.pages.Delete_Devices_From_Panel;
+import com.pages.DownloadApp;
+import com.pages.ForgotPassword;
+import com.pages.GetAnotherDevice;
+import com.pages.ListOfCars;
+import com.pages.ManageAccount;
 import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
@@ -12,7 +24,7 @@ import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void VerifyRegister1() throws Exception {
 		Signup a = new Signup();
 		a.signup("business");
@@ -27,23 +39,17 @@ public class DemoTest extends Base {
 	}
 
 //	@Test(priority = 1)
-	public void verifyVehicleProfile() throws Exception {
-		VehicleProfile l = new VehicleProfile();
-		l.VehicleProfileInfo();
+	public void verifyCarGroups() throws Exception {
+		CarGroups l = new CarGroups();
+		l.cargroups();
 	}
 
-//	@Test(priority = 1)
-	public void verifyCancelSubscription() throws Exception {
-		CancelSubscription l = new CancelSubscription();
-		l.cancelSubscription();
+	@Test(priority = 1)
+	public void verifyDownloadApp() throws Exception {
+		Modes l = new Modes();
+		l.createGeoFence();
 	}
 
-	
-//	@Test(priority = 1)
-	public void verifyCarFinder() throws Exception {
-		Modes m = new Modes();
-		m.createGeoFence();
-	}
 	
 //	@Test(priority = 1)
 	public void deleteDevices() throws Exception {

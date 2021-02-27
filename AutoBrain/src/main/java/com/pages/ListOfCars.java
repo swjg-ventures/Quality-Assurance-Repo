@@ -9,8 +9,7 @@ public class ListOfCars extends Login {
 	public void ChangeCar() throws Exception {
 		SoftAssert softassert = new SoftAssert();
 		
-		//Calling login method
-//		login();
+		login("john@example.com", "welcome");
 	
 		for (int i=0; i<2; i++) {
 			String xpath=null;

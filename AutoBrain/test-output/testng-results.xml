@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="117616" started-at="2021-02-22T22:17:01 IST" finished-at="2021-02-22T22:18:58 IST">
+  <suite name="Suite" duration-ms="63948" started-at="2021-02-26T20:19:35 IST" finished-at="2021-02-26T20:20:39 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="117616" started-at="2021-02-22T22:17:01 IST" finished-at="2021-02-22T22:18:58 IST">
+    <test name="Chrome" duration-ms="63948" started-at="2021-02-26T20:19:35 IST" finished-at="2021-02-26T20:20:39 IST">
       <class name="com.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="8899" started-at="2021-02-22T22:17:01 IST" finished-at="2021-02-22T22:17:09 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="6850" started-at="2021-02-26T20:19:35 IST" finished-at="2021-02-26T20:19:42 IST">
           <params>
             <param index="0">
               <value>
@@ -23,11 +23,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="Manually_Create_Invoice_And_Signup()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="Manually_Create_Invoice_And_Signup" duration-ms="102907" started-at="2021-02-22T22:17:09 IST" finished-at="2021-02-22T22:18:52 IST">
+        <test-method status="PASS" signature="verifyDownloadApp()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="verifyDownloadApp" duration-ms="51304" started-at="2021-02-26T20:19:42 IST" finished-at="2021-02-26T20:20:34 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Manually_Create_Invoice_And_Signup -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5753" started-at="2021-02-22T22:18:52 IST" finished-at="2021-02-22T22:18:58 IST">
+        </test-method> <!-- verifyDownloadApp -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5744" started-at="2021-02-26T20:20:34 IST" finished-at="2021-02-26T20:20:39 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

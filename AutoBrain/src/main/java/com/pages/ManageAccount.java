@@ -15,7 +15,7 @@ public class ManageAccount extends Login {
 	// 1. METHOD- UDPATE CONTACT INFO METHOD
 	public void UpdatingContactInfo() throws Exception {
 
-
+		login("junking4334@yopmail.com", "welcome");
 		// Click on corner dots to expand the menu
 		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
@@ -30,15 +30,15 @@ public class ManageAccount extends Login {
 			if (i == 0) {
 				fname = "Shon";
 				lname = "Gill";
-				email = "shon@mailinator.com";
+				email = "junking4334@mailinator.com";
 				ph = "9876543210";
 
 			}
 
 			if (i == 1) {
-				fname = "John";
-				lname = "Example";
-				email = "john@example.com";
+				fname = "Temp";
+				lname = "4334";
+				email = "junking4334@yopmail.com";
 				ph = "1234567890";
 
 			}

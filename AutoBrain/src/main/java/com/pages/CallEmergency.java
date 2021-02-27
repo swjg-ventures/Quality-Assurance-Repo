@@ -12,7 +12,7 @@ public class CallEmergency extends Login {
 	boolean error_msg;
 	
 		public void call_emergency() throws Exception {
-//		login();
+			login("john@example.com", "welcome");
 		
 		// Click on call emergency button
 		List<WebElement> call_emer=wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'CALL EMERGENCY')]")));
@@ -25,7 +25,7 @@ public class CallEmergency extends Login {
 		
 		//Select emergency service will be calling
 		Select s = new Select(wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='field-label'][3]/following-sibling::select"))));
-		s.selectByVisibleText("Steven Wolf");
+		s.selectByVisibleText("John Example");
 		Thread.sleep(2000);
 		
 		//Click on call emergency button
@@ -34,7 +34,7 @@ public class CallEmergency extends Login {
 	
 		//Get error message
 		try {
-		 error_msg = wait(driver, 7).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'There was an error')]"))).size()==0;
+		 error_msg = wait(driver, 5).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'There was an error')]"))).size()==0;
 		
 		//Click the opened message box
 		 wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'There was an error')]/following-sibling::div/button"))).click();

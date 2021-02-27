@@ -17,9 +17,7 @@ public void BuyDevice() throws Exception {
 			City = "Califonia", State = "Texas", Zip = "55525", Phone = "1236547895", Card_Name = "Demo card",
 			Card_CVV = "555", Card_No = "4242424242424242";
 		
-	
-			// Calling login method
-//			login();
+			login("john@example.com", "welcome");
 		
 	
 			// Click on Menu button

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class CustomerService extends Login {
 
 	public void customer_service() throws Exception {
-//		login();
+		login("john@example.com", "welcome");
 
 		// Click on customer service
 		List<WebElement> Car_Finder = wait(driver, 20).until(
