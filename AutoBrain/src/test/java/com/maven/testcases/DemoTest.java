@@ -44,19 +44,19 @@ public class DemoTest extends Base {
 		l.cancelSubscription();
 	}
 
-	@Test(priority = 6)
+//	@Test(priority = 6)
 	public void verifyCarFinder() throws Exception {
 		CarFinder s = new CarFinder();
 		s.carFinder();
 	}
 
-	@Test(priority = 7)
+//	@Test(priority = 7)
 	public void verifyTermsAndPrivacyPolicy() throws Exception {
 		TermsAndConditions s = new TermsAndConditions();
 		s.termsAndPrivacy();
 	}
 
-	@Test(priority = 8)
+//	@Test(priority = 8)
 	public void verifyCreateGeoFences() throws Exception {
 		Modes m = new Modes();
 		m.createGeoFence();

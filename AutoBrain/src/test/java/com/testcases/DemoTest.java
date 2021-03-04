@@ -32,7 +32,7 @@ public class DemoTest extends Base {
 	}
 
 	//NEED TO UPDATE THE CELLULAR AND MODEL TYPE BC OF BLUETOOTHE	
-//	@Test(priority = 1)
+	@Test(priority = 1)
 	public void Manually_Create_Invoice_And_Signup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
 		order.signupWithPrepaidDevice("personal");
@@ -44,7 +44,7 @@ public class DemoTest extends Base {
 		l.cargroups();
 	}
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void verifyDownloadApp() throws Exception {
 		Modes l = new Modes();
 		l.createGeoFence();
