@@ -16,16 +16,16 @@ import au.com.bytecode.opencsv.CSVWriter;
 public class SignupWithPrepaidDevice extends Signup {
 	boolean error;
 	static boolean email_alert_error;
-	public static String invoice_name, invoice_id_before, email, invoice_account_type, new_entered_email;
+	public static String invoice_name, invoice_id_before, email, invoice_account_type, new_entered_email, registered_email;
 
 	// CSV file for devices
-	File csvFile = new File("Files\\mark_bulk_devices_as_sold.csv");
+	File csvFile = new File("Files\\Mark_Device_Sold_and_Shipped.csv");
 
 	// Main Methods
 	public void signupWithPrepaidDevice(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("personal.properties");
+			FileInputStream fis = new FileInputStream("Files//personal.properties");
 			prop.load(fis);
 		}
 
@@ -40,6 +40,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		writer.writeNext(header);
 
 		// Create device
+		login("john@example.com", "welcome");
 		CreateDevicesByPanel();
 
 		for (int i = 0; i < All_Devices_No.size(); i++) {
@@ -211,16 +212,16 @@ public class SignupWithPrepaidDevice extends Signup {
 
 		if (new_entered_email == null) {
 
-			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(entered_email);
-			;
+			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(entered_email);			
 			System.out.println("Input entered_email in mailinator.com " + entered_email);
+			registered_email = entered_email;
 		}
 
 		else {
 			new_entered_email = new_entered_email.replace("@maildrop.cc", "");
 			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(new_entered_email);
-			;
 			System.out.println("Input new_entered_email in mailinator.com " + new_entered_email);
+			registered_email = new_entered_email;
 		}
 
 		// Click on check for new email button
@@ -361,11 +362,8 @@ public class SignupWithPrepaidDevice extends Signup {
 	}
 
 	// This will create number of devices from worker panel
-	private ArrayList<String> CreateDevicesByPanel() throws Exception {
+	public ArrayList<String> CreateDevicesByPanel() throws Exception {
 		String device_num = null;
-
-		// LOGIN
-		login("john@example.com", "welcome");
 
 		// Redirect to devices page in panel
 		driver.navigate().to("https://stg.autobrain.com/worker/devices/");

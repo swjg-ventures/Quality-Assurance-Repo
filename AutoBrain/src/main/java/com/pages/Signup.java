@@ -34,7 +34,7 @@ public class Signup extends Login {
 	ArrayList<String> ar = new ArrayList<String>();
 
 	// Store number of all bought devices (Used in create_device_by_panel)
-	static ArrayList<String> All_Devices_No = new ArrayList<String>();
+	 ArrayList<String> All_Devices_No = new ArrayList<String>();
 
 	boolean reg_success, shipping_label_box, Is_Next_Page_Correct, p_load, credit_card, isNewDevicePageFound,
 			safty_modes, alert_setting, roadside, home, Device_Added, card_error_msg, email_added,
@@ -108,13 +108,13 @@ public class Signup extends Login {
 	public void signup(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("personal.properties");
+			FileInputStream fis = new FileInputStream("Files//personal.properties");
 			prop.load(fis);
 		}
 
 		if (accountType.contains("business")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("business.properties");
+			FileInputStream fis = new FileInputStream("Files//business.properties");
 			prop.load(fis);
 		}
 
@@ -1236,7 +1236,13 @@ public class Signup extends Login {
 			duration.click();
 
 			// Submit
-			VisibilityOfElementByXpath("//button[@class='submit-btn HSKg29-lwI4BPWKQPVBps_0']", 15).click();
+			try {
+			VisibilityOfElementByXpath("//button[@class='submit-btn HSKg29-lwI4BPWKQPVBps_0']", 5).click();
+			}
+			catch(Exception e) {
+				System.out.println("Choosing replacement plan");
+				VisibilityOfElementByXpath("//div[@class='submit-container']/button", 10).click();
+			}
 
 		}
 	}
