@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import com.base.Base;
 import com.pages.CancelSubscription;
 import com.pages.CarFinder;
+import com.pages.DeviceReplacement;
+import com.pages.MarkReplacedDeviceForReuse;
 import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
@@ -12,27 +14,27 @@ import com.pages.VehicleProfile;
 
 public class DemoTest extends Base {
 
-//	@Test(priority = 1)
-	public void VerifyPersonalAccountRegistration() throws Exception {
+	@Test(priority = 1)
+	public void VerifyPersonlDeviceSignup() throws Exception {
 		Signup a = new Signup();
 		a.signup("personal");
 
 	}
 
-//	@Test(priority = 2)
-	public void VerifyBusinessAccountRegistration() throws Exception {
+	@Test(priority = 2)
+	public void VerifyBusinessDeviceSignup() throws Exception {
 		Signup a = new Signup();
 		a.signup("business");
 
 	}
 
-//	@Test(priority = 3)
-	public void VerifySignupWithPrepaidDevice() throws Exception {
+	@Test(priority = 3)
+	public void VerifyRetailerDeviceSignup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
 		order.signupWithPrepaidDevice("personal");
 	}
 
-//	@Test(priority = 4)
+	@Test(priority = 4)
 	public void verifyUpdateVehicleProfile() throws Exception {
 		VehicleProfile l = new VehicleProfile();
 		l.VehicleProfileInfo();
@@ -44,22 +46,34 @@ public class DemoTest extends Base {
 		l.cancelSubscription();
 	}
 
-//	@Test(priority = 6)
+	@Test(priority = 6)
 	public void verifyCarFinder() throws Exception {
 		CarFinder s = new CarFinder();
 		s.carFinder();
 	}
 
-//	@Test(priority = 7)
+	@Test(priority = 7)
 	public void verifyTermsAndPrivacyPolicy() throws Exception {
 		TermsAndConditions s = new TermsAndConditions();
 		s.termsAndPrivacy();
 	}
 
-//	@Test(priority = 8)
+	@Test(priority = 8)
 	public void verifyCreateGeoFences() throws Exception {
 		Modes m = new Modes();
 		m.createGeoFence();
 	}
 
+	@Test(priority = 9)
+	public void verifyDeviceReplacement() throws Exception {
+		DeviceReplacement l = new DeviceReplacement();
+		l.Device_replacement();
+
+	}
+
+	@Test(priority = 10)
+	public void verifyMarkReplacedDeviceForReuse() throws Exception {
+		MarkReplacedDeviceForReuse l = new MarkReplacedDeviceForReuse();
+		l.markReplacedDeviceForReuse();
+	}
 }

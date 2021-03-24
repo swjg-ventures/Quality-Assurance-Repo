@@ -5,16 +5,16 @@
     <listener class-name="Library.ExtentReporterNG"/>
   </listeners>
   <test thread-count="5" name="Chrome(failed)" parallel="tests">
-    <parameter name="Headless" value="false"/>
+    <parameter name="Headless" value="true"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
-      <class name="com.testcases.DemoTest">
+      <class name="com.maven.testcases.DemoTest">
         <methods>
           <include name="CheckBrowsers"/>
-          <include name="bbb"/>
+          <include name="VerifyPersonlDeviceSignup"/>
           <include name="quit"/>
         </methods>
-      </class> <!-- com.testcases.DemoTest -->
+      </class> <!-- com.maven.testcases.DemoTest -->
     </classes>
   </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

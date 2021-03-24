@@ -3,9 +3,13 @@ package com.base;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
@@ -14,6 +18,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
@@ -241,6 +248,63 @@ public class Base {
 			ele.sendKeys(s);
 			Thread.sleep(150);
 		}
+	}
+
+	// EXCEL CREATE ROW AND CELL TO WRITE
+	public void ExcelCreateRowCreateCellAndWrite(int row, int column, String input_data, String file_path)
+			throws Exception {
+		File file = new File(file_path);
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		sheet.createRow(row).createCell(column).setCellValue(input_data);
+		FileOutputStream fos = new FileOutputStream(file);
+		workbook.write(fos);
+	}
+
+	// EXCEL GET ROW AND CREATE CELL TO WRITE
+	public void ExcelGetRowCreateCellAndWrite(int row, int column, String input_data, String file_path)
+			throws Exception {
+		File file = new File(file_path);
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		sheet.getRow(row).createCell(column).setCellValue(input_data);
+		FileOutputStream fos = new FileOutputStream(file);
+		workbook.write(fos);
+	}
+
+	// EXCEL READ
+	public String ExcelRead(int row, int column, String file_path) throws Exception {
+		File file = new File(file_path);
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		String cell_value = sheet.getRow(row).getCell(column).getStringCellValue().trim();
+		return cell_value;
+	}
+
+	// EXCEL GET TOTAL NUMBER OF ROWS
+	public int ExcelGetNumberOfRows(String file_path) throws Exception {
+		File file = new File(file_path);
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		int total_rows = sheet.getLastRowNum();
+		return total_rows;
+	}
+
+	// PRINT CURRENT DATE AND TIME
+	public String GetCurrentDateTime() {
+		// Create object of SimpleDateFormat class and decide the format for date and
+		// time
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+		// get current date time with Date()
+		Date date = new Date();
+		// Now format the date
+		String date1 = dateFormat.format(date);
+		return date1;
+
 	}
 
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class DeviceReplacement extends SignupWithPrepaidDevice {
+	String excel_file_path = "C:\\Users\\Rajesh\\Desktop\\data.xlsx";
 
 	public void Device_replacement() throws Exception {
 		signupWithPrepaidDevice("personal");
@@ -191,18 +192,18 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		// Login registered user
 		driver.get("https://stg.autobrain.com/users/sign_in");
 		login(registered_email, "welcome");
-		
+
 		// Activating replaced device
 		StepOneActivateNewDevice(All_Devices_No.get(1));
 
-		
 		Assert.assertTrue(VisibilityOfElementByXpath(
-					"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 15)
-							.isDisplayed());
+				"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 15)
+						.isDisplayed());
 		// Expand list of cars
 		VisibilityOfElementByXpath("//span[@class='active-car-title']", 5).click();
 
-		if (VisibilityOfElementByXpath("//span[@class='active-car-title']", 5).getText().contains(All_Devices_No.get(1))) {
+		if (VisibilityOfElementByXpath("//span[@class='active-car-title']", 5).getText()
+				.contains(All_Devices_No.get(1))) {
 			System.out.println("Replcement device found in active car title");
 		}
 
@@ -214,8 +215,30 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 			while (!all_cars.get(i).getText().equals(All_Devices_No.get(1))) {
 				i++;
 			}
-			System.out.println("Replacement device added successfully in the account!");
+			System.out.println("Replacement unit added successfully in the account!");
 
+		}
+
+		int totalrows = ExcelGetNumberOfRows(excel_file_path);
+		int newtotalrows = totalrows + 1;
+
+		try {
+			ExcelRead(newtotalrows, 0, excel_file_path).isEmpty();
+			System.out.println("Unable to add device number bc cell is not empty!");
+		}
+
+		catch (Exception e) {
+			ExcelCreateRowCreateCellAndWrite(newtotalrows, 0, All_Devices_No.get(0), excel_file_path);
+		}
+
+		try {
+			ExcelRead(newtotalrows, 1, excel_file_path).isEmpty();
+			System.out.println("Unable to add device status in excel sheet bc cell is not empty!");
+		}
+
+		catch (Exception e) {
+			ExcelGetRowCreateCellAndWrite(newtotalrows, 1, "Pending", excel_file_path);
+			System.out.println("Defective device added in the excel sheet.");
 		}
 
 	}

@@ -17,22 +17,24 @@ import com.pages.ForgotPassword;
 import com.pages.GetAnotherDevice;
 import com.pages.ListOfCars;
 import com.pages.ManageAccount;
+import com.pages.MarkReplacedDeviceForReuse;
 import com.pages.Modes;
 import com.pages.Signup;
 import com.pages.SignupWithPrepaidDevice;
 import com.pages.VehicleProfile;
-import com.pages.testingrep;
+
+import Demo.Testing;
 
 public class DemoTest extends Base {
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void VerifyPersonlDeviceSignup() throws Exception {
 		Signup a = new Signup();
 		a.signup("personal");
 
 	}
 
-	@Test(priority = 2)
+//	@Test(priority = 2)
 	public void VerifyBusinessDeviceSignup() throws Exception {
 		Signup a = new Signup();
 		a.signup("business");
@@ -46,17 +48,19 @@ public class DemoTest extends Base {
 		order.signupWithPrepaidDevice("personal");
 	}
 
-	@Test(priority = 4)
+//	@Test(priority = 4)
 	public void verifyDeviceReplacement() throws Exception {
 		DeviceReplacement l = new DeviceReplacement();
 		l.Device_replacement();
 	}
 
-//	@Test(priority = 1)
-	public void verifyDownloadApp() throws Exception {
-		Modes l = new Modes();
-		l.createGeoFence();
+//	@Test(priority = 5)
+	public void verifyMarkReplacedDeviceForReuse() throws Exception {
+		MarkReplacedDeviceForReuse l = new MarkReplacedDeviceForReuse();
+		l.markReplacedDeviceForReuse();
 	}
+	
+	
 
 //	@Test(priority = 1)
 	public void deleteDevices() throws Exception {

@@ -118,6 +118,7 @@ public class Signup extends Login {
 			prop.load(fis);
 		}
 
+		
 		orderDeviceFromWebSite();
 
 		// Clicking on sign-up button
