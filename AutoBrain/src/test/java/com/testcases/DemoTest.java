@@ -9,12 +9,13 @@ import com.pages.CancelSubscription;
 import com.pages.CarFinder;
 import com.pages.CarGroups;
 import com.pages.ChangePassword;
+import com.pages.CustomerInfo;
 import com.pages.CustomerService;
 import com.pages.Delete_Devices_From_Panel;
 import com.pages.DeviceReplacement;
 import com.pages.DownloadApp;
 import com.pages.ForgotPassword;
-import com.pages.GetAnotherDevice;
+import com.pages.GetAnotherDeviceFromWeb;
 import com.pages.ListOfCars;
 import com.pages.ManageAccount;
 import com.pages.MarkReplacedDeviceForReuse;
@@ -42,7 +43,7 @@ public class DemoTest extends Base {
 	}
 
 	// NEED TO UPDATE THE CELLULAR AND MODEL TYPE BC OF BLUETOOTHE
-	@Test(priority = 3)
+//	@Test(priority = 3)
 	public void VerifyRetailerDeviceSignup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
 		order.signupWithPrepaidDevice("personal");
@@ -66,6 +67,12 @@ public class DemoTest extends Base {
 	public void deleteDevices() throws Exception {
 		Delete_Devices_From_Panel d = new Delete_Devices_From_Panel();
 		d.delete_devices();
+	}
+	
+	@Test(priority = 1)
+	public void ValidateTests() throws Exception {
+		ForgotPassword d = new ForgotPassword();
+		d.forgotPassword();
 	}
 
 }

@@ -5,8 +5,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CustomerInfo extends Login{
 
-	public void Customer_Info() throws Exception {
+	public void customerInfo() throws Exception {
 		String fname, lname;	
+		
+		login("lib1@mailinator.com", "welcome");
+		
 		// Click on corner dots to expand the menu
 		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);

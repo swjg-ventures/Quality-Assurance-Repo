@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="10" passed="10">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="1079756" started-at="2021-03-24T07:20:50 IST" finished-at="2021-03-24T07:38:50 IST">
+  <suite name="Suite" duration-ms="44223" started-at="2021-03-24T21:53:48 IST" finished-at="2021-03-24T21:54:32 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="1079756" started-at="2021-03-24T07:20:50 IST" finished-at="2021-03-24T07:38:50 IST">
-      <class name="com.maven.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="6385" started-at="2021-03-24T07:20:50 IST" finished-at="2021-03-24T07:20:56 IST">
+    <test name="Chrome" duration-ms="44223" started-at="2021-03-24T21:53:48 IST" finished-at="2021-03-24T21:54:32 IST">
+      <class name="com.testcases.DemoTest">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="7337" started-at="2021-03-24T21:53:48 IST" finished-at="2021-03-24T21:53:55 IST">
           <params>
             <param index="0">
               <value>
@@ -16,238 +16,22 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[true]]>
+                <![CDATA[false]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyPersonlDeviceSignup()[pri:1, instance:com.maven.testcases.DemoTest@9a7504c]" name="VerifyPersonlDeviceSignup" duration-ms="174675" started-at="2021-03-24T07:20:56 IST" finished-at="2021-03-24T07:23:51 IST">
+        <test-method status="PASS" signature="ValidateTests()[pri:1, instance:com.testcases.DemoTest@1d8d30f7]" name="ValidateTests" duration-ms="31044" started-at="2021-03-24T21:53:55 IST" finished-at="2021-03-24T21:54:26 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerifyPersonlDeviceSignup -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5647" started-at="2021-03-24T07:23:51 IST" finished-at="2021-03-24T07:23:57 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="5057" started-at="2021-03-24T07:23:57 IST" finished-at="2021-03-24T07:24:02 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyBusinessDeviceSignup()[pri:2, instance:com.maven.testcases.DemoTest@9a7504c]" name="VerifyBusinessDeviceSignup" duration-ms="164450" started-at="2021-03-24T07:24:02 IST" finished-at="2021-03-24T07:26:46 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifyBusinessDeviceSignup -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5683" started-at="2021-03-24T07:26:46 IST" finished-at="2021-03-24T07:26:52 IST">
+        </test-method> <!-- ValidateTests -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="5797" started-at="2021-03-24T21:54:26 IST" finished-at="2021-03-24T21:54:32 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="4756" started-at="2021-03-24T07:26:52 IST" finished-at="2021-03-24T07:26:57 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="VerifyRetailerDeviceSignup()[pri:3, instance:com.maven.testcases.DemoTest@9a7504c]" name="VerifyRetailerDeviceSignup" duration-ms="130339" started-at="2021-03-24T07:26:57 IST" finished-at="2021-03-24T07:29:07 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerifyRetailerDeviceSignup -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5661" started-at="2021-03-24T07:29:07 IST" finished-at="2021-03-24T07:29:13 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="6642" started-at="2021-03-24T07:29:13 IST" finished-at="2021-03-24T07:29:19 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyUpdateVehicleProfile()[pri:4, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyUpdateVehicleProfile" duration-ms="62982" started-at="2021-03-24T07:29:19 IST" finished-at="2021-03-24T07:30:22 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUpdateVehicleProfile -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5619" started-at="2021-03-24T07:30:22 IST" finished-at="2021-03-24T07:30:28 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="5064" started-at="2021-03-24T07:30:28 IST" finished-at="2021-03-24T07:30:33 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCancelSubscription()[pri:5, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyCancelSubscription" duration-ms="31844" started-at="2021-03-24T07:30:33 IST" finished-at="2021-03-24T07:31:05 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCancelSubscription -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5615" started-at="2021-03-24T07:31:05 IST" finished-at="2021-03-24T07:31:10 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="5008" started-at="2021-03-24T07:31:10 IST" finished-at="2021-03-24T07:31:15 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCarFinder()[pri:6, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyCarFinder" duration-ms="29847" started-at="2021-03-24T07:31:15 IST" finished-at="2021-03-24T07:31:45 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCarFinder -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5631" started-at="2021-03-24T07:31:45 IST" finished-at="2021-03-24T07:31:51 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="6786" started-at="2021-03-24T07:31:51 IST" finished-at="2021-03-24T07:31:58 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyTermsAndPrivacyPolicy()[pri:7, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyTermsAndPrivacyPolicy" duration-ms="21051" started-at="2021-03-24T07:31:58 IST" finished-at="2021-03-24T07:32:19 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTermsAndPrivacyPolicy -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5629" started-at="2021-03-24T07:32:19 IST" finished-at="2021-03-24T07:32:24 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="5319" started-at="2021-03-24T07:32:24 IST" finished-at="2021-03-24T07:32:30 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyCreateGeoFences()[pri:8, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyCreateGeoFences" duration-ms="54862" started-at="2021-03-24T07:32:30 IST" finished-at="2021-03-24T07:33:25 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCreateGeoFences -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5635" started-at="2021-03-24T07:33:25 IST" finished-at="2021-03-24T07:33:30 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="5232" started-at="2021-03-24T07:33:30 IST" finished-at="2021-03-24T07:33:35 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyDeviceReplacement()[pri:9, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyDeviceReplacement" duration-ms="267574" started-at="2021-03-24T07:33:35 IST" finished-at="2021-03-24T07:38:03 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDeviceReplacement -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5645" started-at="2021-03-24T07:38:03 IST" finished-at="2021-03-24T07:38:09 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="CheckBrowsers" is-config="true" duration-ms="4703" started-at="2021-03-24T07:38:09 IST" finished-at="2021-03-24T07:38:13 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[true]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="verifyMarkReplacedDeviceForReuse()[pri:10, instance:com.maven.testcases.DemoTest@9a7504c]" name="verifyMarkReplacedDeviceForReuse" duration-ms="30727" started-at="2021-03-24T07:38:13 IST" finished-at="2021-03-24T07:38:44 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyMarkReplacedDeviceForReuse -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.maven.testcases.DemoTest@9a7504c]" name="quit" is-config="true" duration-ms="5618" started-at="2021-03-24T07:38:44 IST" finished-at="2021-03-24T07:38:50 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-      </class> <!-- com.maven.testcases.DemoTest -->
+      </class> <!-- com.testcases.DemoTest -->
     </test> <!-- Chrome -->
   </suite> <!-- Suite -->
 </testng-results>

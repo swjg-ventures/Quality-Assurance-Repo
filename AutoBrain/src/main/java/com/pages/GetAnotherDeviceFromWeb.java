@@ -8,10 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class GetAnotherDevice extends Login {
+public class GetAnotherDeviceFromWeb extends Login {
 boolean order_placed;
 
-public void BuyDevice() throws Exception {
+public void getAnotherDeviceFromWeb() throws Exception {
 	
 			String F_name = "Test", L_name = "Demo", Emai = "Demo@gmail.com", Street = "Demo 123 street",
 			City = "Califonia", State = "Texas", Zip = "55525", Phone = "1236547895", Card_Name = "Demo card",

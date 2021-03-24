@@ -32,7 +32,10 @@ public class BeepCarpool extends Login {
 				.size() == 1;
 		Assert.assertEquals(beep_page, true, "Beep Carpool page not opened!");
 
+		deleteAlreadyExistBeepCarpoolMember();
+
 		// Click on Add a New Carpool Member button
+		Thread.sleep(1000);
 		wait(driver, 10)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Add a New Carpool Member')]")))
@@ -100,14 +103,14 @@ public class BeepCarpool extends Login {
 		driver.navigate().back();
 
 		// Add member
-		add_frnd_from_beep_frnd();
+		addFrndFromBeepCarpool();
 
 		// Delete member
-		delete_beep_frnd();
+		deleteBeepFrnd();
 
 	}
 
-	public void add_frnd_from_beep_frnd() throws Exception {
+	public void addFrndFromBeepCarpool() throws Exception {
 
 		Thread.sleep(2000);
 		// Sliding to next page
@@ -155,7 +158,7 @@ public class BeepCarpool extends Login {
 	}
 
 	// Deleted added member from carpool member list
-	public void delete_beep_frnd() throws Exception {
+	public void deleteBeepFrnd() throws Exception {
 		boolean member_dlt = false;
 		Thread.sleep(2000);
 		// Click on added member
@@ -171,21 +174,58 @@ public class BeepCarpool extends Login {
 		wait(driver, 10)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Delete')]")))
 				.click();
-		
+
 		Thread.sleep(2500);
 
 		// Validate member deleted or not
 		try {
-			member_dlt = wait(driver, 5)
-					.until(ExpectedConditions
-							.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool Member')]")))
+			member_dlt = wait(driver, 5).until(ExpectedConditions
+					.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool Member')]")))
 					.size() == 1;
-		}catch (Exception e) {
-			
+		} catch (Exception e) {
+
 		}
-		
 
 		Assert.assertEquals(member_dlt, false, "Member not deleted!");
+	}
+
+	public void deleteAlreadyExistBeepCarpoolMember() throws Exception {
+		List<WebElement> ele = null;
+		try {
+			ele = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool Member')]", 10);
+		}
+
+		catch (Exception e) {
+
+		}
+
+		if (ele != null) {
+
+			for (int i = 0; i < ele.size(); i++) {
+				List<WebElement> ele1 = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool Member')]",
+						10);
+				
+				ele.get(i).click();
+				VisibilityOfElementByXpath("//div[contains(text(),'DELETE BEEP')]", 10).click();
+				Assert.assertTrue(
+						VisibilityOfElementByXpath("//div[contains(text(),'Are you sure you want to delete')]", 10)
+								.isDisplayed());
+				VisibilityOfElementByXpath("//button[contains(text(),'Delete')]", 10).click();
+				Thread.sleep(1500);
+				List<WebElement> ele2 = null;
+
+				try {
+					ele2 = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool Member')]", 10);
+					Assert.assertTrue(ele1.size() != ele2.size());
+				}
+
+				catch (Exception e) {
+					
+				}
+
+			}
+		}
+
 	}
 
 }

@@ -10,7 +10,7 @@ import com.pages.ChangePassword;
 import com.pages.CustomerInfo;
 import com.pages.CustomerService;
 import com.pages.DownloadApp;
-import com.pages.GetAnotherDevice;
+import com.pages.GetAnotherDeviceFromWeb;
 import com.pages.ListOfCars;
 import com.pages.Modes;
 import com.pages.RoadsideAssistance;
@@ -84,7 +84,7 @@ public class MainTest extends VehicleProfile {
 	@Test(priority = 11)
 	public void VerifyCustomerInfo() throws Exception {
 		CustomerInfo c= new CustomerInfo();
-		c.Customer_Info();
+		c.customerInfo();
 	}
 
 	// MANAGE ACCOUNT- PRINT ROADSIDE CARD
@@ -109,8 +109,8 @@ public class MainTest extends VehicleProfile {
 	// GET ANOTHER DEVICE
 	@Test(priority = 15)
 	public void VerifyBuyDevice() throws Exception {
-		GetAnotherDevice buy = new GetAnotherDevice();
-		buy.BuyDevice();
+		GetAnotherDeviceFromWeb buy = new GetAnotherDeviceFromWeb();
+		buy.getAnotherDeviceFromWeb();
 	}
 
 	// LIST OF CARS IN HEADER
@@ -131,14 +131,14 @@ public class MainTest extends VehicleProfile {
 	@Test(priority = 19)
 	public void VerifyCustomerService() throws Exception {
 		CustomerService cst = new CustomerService();
-		cst.customer_service();
+		cst.customerService();
 	}
 
 	// CALL EMERGENCY MAIN MENU
 	@Test(priority = 20)
 	public void VerifyCallEmergency() throws Exception {
 		CallEmergency c = new CallEmergency();
-		c.call_emergency();
+		c.callEmergency();
 	}
 
 	// STOLEN CAR MAIN MENU
@@ -158,7 +158,7 @@ public class MainTest extends VehicleProfile {
 	@Test(priority = 23)
 	public void VerifyCarGroups() throws Exception {
 		CarGroups a = new CarGroups();
-		a.cargroups();
+		a.carGroups();
 	}
 
 	// BEEP CARPOOL

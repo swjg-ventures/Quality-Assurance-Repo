@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 public class CallEmergency extends Login {
 	boolean error_msg;
 	
-		public void call_emergency() throws Exception {
+		public void callEmergency() throws Exception {
 			login("john@example.com", "welcome");
 		
 		// Click on call emergency button

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CustomerService extends Login {
 
-	public void customer_service() throws Exception {
+	public void customerService() throws Exception {
 		login("john@example.com", "welcome");
 
 		// Click on customer service

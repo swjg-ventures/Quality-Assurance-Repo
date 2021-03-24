@@ -1,40 +1,79 @@
 package com.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.util.ArrayList;
+
 import org.testng.Assert;
 
-// 4.
-public class ForgotPassword extends Login{
+public class ForgotPassword extends Login {
 
-	//1. Entering valid registered email
-	public void forgot_password() throws Exception {
+	public void forgotPassword() throws Exception {
 
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Forgot password')]"))).click();
-		
-		//Validating user redirected to actual page or not
+		String date = GetCurrentDateTime();
+		String reset_pass = date.replace(" ", "");
+
+		VisibilityOfElementByXpath("//a[contains(text(),'Forgot password')]", 20).click();
+
+		// Validating user redirected to actual page or not
 		Assert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/users/password/new");
-		
-		//Entering registered email in forgot password field
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.id("forgot-password-email"))).sendKeys("john@example.com");
+
+		// Entering registered email in forgot password field
+		VisibilityOfElementByID("forgot-password-email", 5).sendKeys("junking4946@yopmail.com");
+
+		Thread.sleep(1500);
+
+		// Click on submit button
+		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
+
+		// Validating success message
+		Assert.assertTrue(
+				VisibilityOfElementByXpath("//h2[contains(text(),'Email Sent')]", 30).getText().contains("Email Sent"));
+
+		// Validate customer receive replacement email
+		driver.get("http://www.yopmail.com/en/");
 		Thread.sleep(2000);
-		
-		//Click on submit button
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]"))).click();
+
+		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys("junking4946@yopmail.com");
+
+		// Click on check for new email button
+		VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
 		Thread.sleep(2000);
-		//Storing expected message 
-		String exp = "Email Sent";
-		
-		//Validating that user received Email sent message after enter valid email or not
-		String act = wait(driver, 35).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(),'Email Sent')]"))).getText();
-		Thread.sleep(4000);
-		//Validating both messages
-		Assert.assertEquals(act, exp);
-		
-		//Taking back user to Login page
-		driver.navigate().to(url);
+
+		// Switch to frame
+		driver.switchTo().frame("ifmail");
+
+		// Validate email received
+		Assert.assertTrue(
+				VisibilityOfElementByXpath("//td[contains(text(),'We received a request to reset your password')]", 10)
+						.isDisplayed());
+
+		// Click on set new password button link
+		VisibilityOfElementByXpath("//a[contains(text(),'Set New Password')]", 10).click();
+
+		// Checking how many windows are opened currently
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+
+		// Switching to Buy now page
+		driver.switchTo().window(tabs.get(1));
+
+		// Confirm reset password page opened
+		Assert.assertTrue(
+				VisibilityOfElementByXpath("//label[contains(text(),'Confirm New Password')]", 10).isDisplayed());
+
+		// Enter new password
+		VisibilityOfElementByXpath("//input[@id='user_password']", 10).sendKeys(reset_pass);
+		Thread.sleep(1000);
+
+		// Enter confirm new password
+		VisibilityOfElementByXpath("//input[@id='user_password_confirmation']", 10).sendKeys(reset_pass);
+		Thread.sleep(1000);
+
+		// Submit
+		VisibilityOfElementByXpath("//input[@id='submitPassword']", 10).click();
+		Thread.sleep(1000);
+
+		// Now user should login automatically after submit
+		Assert.assertTrue(driver.getCurrentUrl().contentEquals("https://stg.autobrain.com/"));
+
 	}
-	
-		
-		
-} 	
+
+}

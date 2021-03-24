@@ -17,7 +17,7 @@ public class CarGroups extends Login {
 	ArrayList<String> arr3 = new ArrayList<String>();
 	List<WebElement> cars_title, cars;
 
-	public void cargroups() throws Exception {
+	public void carGroups() throws Exception {
 		login("john@example.com", "welcome");
 
 		// Click on corner dots to expand the menu
@@ -38,7 +38,7 @@ public class CarGroups extends Login {
 		if (total_cars.size() > 0) {
 			wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener")))
 					.click();
-			
+
 			Thread.sleep(1000);
 			// Select Car Groups from expanded drop-down
 			wait(driver, 10).until(
@@ -162,6 +162,9 @@ public class CarGroups extends Login {
 			System.out.println(
 					"Car group option not available in Menu because of" + " " + total_cars.size() + " " + "car");
 		}
+
+		// Deleting existing existing car group
+		dlt_grp();
 	}
 
 	// Edit group button
@@ -186,12 +189,14 @@ public class CarGroups extends Login {
 
 	// Delete existing group
 	public void dlt_grp() throws Exception {
+		Thread.sleep(1500);
 		List<WebElement> Element1 = driver.findElements(By.xpath("//div[@class='group-container']/div[1]/div[1]"));
 		List<WebElement> dlt_grp = driver.findElements(By.xpath("//div[@class='group-container']/div[2]/div[2]"));
 		for (z = 0; z < Element1.size(); z++) {
 			String group_name = Element1.get(z).getText();
 
 			if (group_name.contains("Test_Group")) {
+				
 				dlt_grp.get(z).click();
 				wait(driver, 10).until(
 						ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Yes')]")))

@@ -8,28 +8,43 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.WebElement;
+
 import com.base.Base;
 
 
 public class Testing extends Base {
 
 	public static void main(String[] args) throws Exception {
-	int total_rows = ExcelGetNumberOfRows();
-	int newt = total_rows + 1;
-	
-	ArrayList<Date> dd = new ArrayList<Date>();
-	
-	for (int i=1; i<newt; i++) {
 		
-		dd.add(ExcelDate(i, 2));
-
-	}
+		List<WebElement> ele = null ;
+		ele.size();
+		
 	
-	Date minDate = Collections.min(dd);
-	System.out.println(minDate);
+		System.out.println(ele);
+		
+		
+		
+		
+		
+//	int total_rows = ExcelGetNumberOfRows();
+//	int newt = total_rows + 1;
+//	
+//	ArrayList<Date> dd = new ArrayList<Date>();
+//	
+//	for (int i=1; i<newt; i++) {
+//		
+//		dd.add(ExcelDate(i, 2));
+//
+//	}
+//	
+//	Date minDate = Collections.min(dd);
+//	System.out.println(minDate);
 	
 	}
 
