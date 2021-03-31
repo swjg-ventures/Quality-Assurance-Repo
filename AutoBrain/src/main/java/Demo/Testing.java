@@ -20,35 +20,13 @@ import com.base.Base;
 
 public class Testing extends Base {
 
+	
 	public static void main(String[] args) throws Exception {
-		
-		List<WebElement> ele = null ;
-		ele.size();
-		
 	
-		System.out.println(ele);
-		
-		
-		
-		
-		
-//	int total_rows = ExcelGetNumberOfRows();
-//	int newt = total_rows + 1;
-//	
-//	ArrayList<Date> dd = new ArrayList<Date>();
-//	
-//	for (int i=1; i<newt; i++) {
-//		
-//		dd.add(ExcelDate(i, 2));
-//
-//	}
-//	
-//	Date minDate = Collections.min(dd);
-//	System.out.println(minDate);
-	
+	System.out.println("HELLO");
 	}
 
-	
+
 
 	public static void ExcelWrite(int row, int column, String webelement) throws Exception {
 		File file = new File("C:\\Users\\Rajesh\\Desktop\\data.xlsx");

@@ -5,16 +5,13 @@ import java.io.FileWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.omg.CORBA.NO_IMPLEMENT;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class MarkReplacedDeviceForReuse extends Login {
-	String excel_file_path = "C:\\Users\\Rajesh\\Desktop\\data.xlsx";
-	String csv_file_path = "C:\\Users\\Rajesh\\Desktop\\convertedCSVFile.csv";
+	String excel_file_path = "Files\\Device_replacement.xlsx";
+	String csv_file_path = "Files\\Mark_for_reuse_devices.csv";
 	ArrayList<String> excel_pending_devices;
 	ArrayList<String> no_subscription_found;
 

@@ -108,13 +108,13 @@ public class Signup extends Login {
 	public void signup(String accountType) throws Exception {
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("Files//personal.properties");
+			FileInputStream fis = new FileInputStream("Files//Personal.properties");
 			prop.load(fis);
 		}
 
 		if (accountType.contains("business")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("Files//business.properties");
+			FileInputStream fis = new FileInputStream("Files//Business.properties");
 			prop.load(fis);
 		}
 
@@ -728,8 +728,10 @@ public class Signup extends Login {
 			duration.click();
 			Thread.sleep(4000);
 		}
-
-		if (prop.get("bluetooth_is_free").equals("free")) {
+		
+	
+		
+		if (SignupWithPrepaidDevice.bluetooth_is.equals("free")) {
 			System.out.println("This is Bluetooth free device!");
 
 			// Click on try for free button
@@ -750,7 +752,7 @@ public class Signup extends Login {
 
 		}
 
-		else if (prop.get("bluetooth_is_free").equals("paid")) {
+		else if (SignupWithPrepaidDevice.bluetooth_is.equals("paid")) {
 
 			System.out.println("This is bluetooth paid device!");
 			// Click on continue button

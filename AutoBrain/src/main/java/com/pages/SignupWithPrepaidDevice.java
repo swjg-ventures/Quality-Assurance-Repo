@@ -16,16 +16,27 @@ import au.com.bytecode.opencsv.CSVWriter;
 public class SignupWithPrepaidDevice extends Signup {
 	boolean error;
 	static boolean email_alert_error;
-	public static String invoice_name, invoice_id_before, email, invoice_account_type, new_entered_email, registered_email;
+	public static String invoice_name, invoice_id_before, email, invoice_account_type, new_entered_email,
+			registered_email;
 
 	// CSV file for devices
 	File csvFile = new File("Files\\Mark_Device_Sold_and_Shipped.csv");
 
+	public static String accountType, cellular_service_type, model, pricing_plan, bluetooth_is;
+
 	// Main Methods
-	public void signupWithPrepaidDevice(String accountType) throws Exception {
+	public void signupWithPrepaidDevice(String accountType, String cellular_service_type, String model,
+			String pricing_plan, String bluetooth_is) throws Exception {
+		
+		SignupWithPrepaidDevice.accountType = accountType;
+		SignupWithPrepaidDevice.cellular_service_type = cellular_service_type;
+		SignupWithPrepaidDevice.model = model;
+		SignupWithPrepaidDevice.pricing_plan = pricing_plan;
+		SignupWithPrepaidDevice.bluetooth_is = bluetooth_is;
+
 		if (accountType.contains("personal")) {
 			prop = new Properties();
-			FileInputStream fis = new FileInputStream("Files//personal.properties");
+			FileInputStream fis = new FileInputStream("Files//Personal.properties");
 			prop.load(fis);
 		}
 
@@ -80,10 +91,10 @@ public class SignupWithPrepaidDevice extends Signup {
 		VisibilityOfElementByXpath("//select[@name='invoice']/option[2]", 15).click();
 
 		// Pricing plan
-		Select pricing_plan = new Select(VisibilityOfElementByXpath("//select[@name='pricing_plan']", 15));
+		Select select_pricing_plan = new Select(VisibilityOfElementByXpath("//select[@name='pricing_plan']", 15));
 
 		// Choose which pricing plan we want to select
-		pricing_plan.selectByVisibleText(prop.getProperty("pricing_plan"));
+		select_pricing_plan.selectByVisibleText(pricing_plan);
 
 		// Distribution channel
 		Select distribution_channel = new Select(
@@ -212,7 +223,7 @@ public class SignupWithPrepaidDevice extends Signup {
 
 		if (new_entered_email == null) {
 
-			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(entered_email);			
+			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(entered_email);
 			System.out.println("Input entered_email in mailinator.com " + entered_email);
 			registered_email = entered_email;
 		}
@@ -284,7 +295,7 @@ public class SignupWithPrepaidDevice extends Signup {
 			softassert.assertAll();
 		}
 
-		if (prop.get("cellular_service_type").equals("FREE_1")) {
+		if (cellular_service_type.equals("FREE_1")) {
 			Step1(All_Devices_No.get(0));
 		}
 
@@ -392,11 +403,11 @@ public class SignupWithPrepaidDevice extends Signup {
 			// Enter Cellular service type
 			wait(driver, 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.name("device[cellular_service_type]")))
-					.sendKeys(prop.getProperty("cellular_service_type"));
+					.sendKeys(cellular_service_type);
 
 			// Select Model
 			Select sel = new Select(driver.findElement(By.name("device[model]")));
-			sel.selectByVisibleText(prop.getProperty("model"));
+			sel.selectByVisibleText(model);
 
 			// Enter Device UID (ESN)
 			VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
@@ -433,6 +444,16 @@ public class SignupWithPrepaidDevice extends Signup {
 					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 				}
 			}
+
+			boolean broken_page = false;
+			try {
+				broken_page = VisibilityOfElementByXpath(
+						"//h1[contains(text(),'Whoops! It seems like something went wrong!')]", 5).isDisplayed();
+			} catch (Exception e) {
+
+			}
+
+			Assert.assertFalse(broken_page, "Unable to add device becuase page is getting broken!");
 
 			// Adding device one by one
 			All_Devices_No.add(device_num);

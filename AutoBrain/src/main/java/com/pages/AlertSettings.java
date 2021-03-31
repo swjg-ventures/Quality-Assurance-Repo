@@ -16,7 +16,7 @@ public class AlertSettings extends Login {
 	int i, j;
 	ArrayList<String> arr = new ArrayList<String>();
 
-	public void alert_settings() throws Exception {
+	public void alertSettings() throws Exception {
 
 		login("lib1@mailinator.com", "welcome");
 		isDesktopNotificationAlert();

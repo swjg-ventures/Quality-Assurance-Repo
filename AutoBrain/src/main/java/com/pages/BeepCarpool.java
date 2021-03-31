@@ -1,11 +1,9 @@
 package com.pages;
 
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -18,17 +16,15 @@ public class BeepCarpool extends Login {
 
 		// Sliding to next page
 		Thread.sleep(2000);
-		wait(driver, 20)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']")))
-				.click();
+
+		VisibilityOfElementByXpath("//button[@class='hooper-indicator']", 20).click();
 		Thread.sleep(2000);
 
 		// Click on beep carpool button
 		VisibilityOfElementByXpath("//li[5]/div[6]/a/div[2]", 10).click();
 
 		// Validate beep carpool page opened
-		beep_page = wait(driver, 10).until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Add a New Carpool Member')]")))
+		beep_page = VisibilityOfAllElementsByXpath("//span[contains(text(),'Add a New Carpool Member')]", 10)
 				.size() == 1;
 		Assert.assertEquals(beep_page, true, "Beep Carpool page not opened!");
 
@@ -36,20 +32,15 @@ public class BeepCarpool extends Login {
 
 		// Click on Add a New Carpool Member button
 		Thread.sleep(1000);
-		wait(driver, 10)
-				.until(ExpectedConditions
-						.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Add a New Carpool Member')]")))
-				.click();
+		VisibilityOfElementByXpath("//span[contains(text(),'Add a New Carpool Member')]", 10).click();
 
 		// Validate add member form opened
-		form_page = wait(driver, 10).until(ExpectedConditions
-				.visibilityOfAllElementsLocatedBy(By.xpath("//button[contains(text(),'Add a New Carpool Member')]")))
+		form_page = VisibilityOfAllElementsByXpath("//span[contains(text(),'Add a New Carpool Member')]", 10)
 				.size() == 1;
 		Assert.assertEquals(form_page, true, "Form page not opened!");
 
 		// Select Add a New Carpool Member option
-		WebElement ele = wait(driver, 10).until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='add-from-toggles']/button[1]")));
+		WebElement ele = VisibilityOfElementByXpath("//div[@class='add-from-toggles']/button[1]", 10);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", ele);
 
@@ -57,45 +48,30 @@ public class BeepCarpool extends Login {
 		System.out.println(col);
 
 		// Enter first name
-		wait(driver, 10)
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][1]/input")))
+		VisibilityOfElementByXpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][1]/input", 10)
 				.sendKeys("Test_Carpool");
 
 		// Enter last name
-		wait(driver, 10).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][2]/input")))
+		VisibilityOfElementByXpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][2]/input", 10)
 				.sendKeys("Member");
 
 		// Enter phone number
-		wait(driver, 10)
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][3]/input")))
+		VisibilityOfElementByXpath("//div[@class='beep-input gWHzj82vXtHhEXQk0erkB_0'][3]/input", 10)
 				.sendKeys("8965471235");
 
 		// Enter address
-		wait(driver, 10)
-				.until(ExpectedConditions
-						.visibilityOfElementLocated(By.xpath("//div[@class='gWHzj82vXtHhEXQk0erkB_0']/input")))
-				.sendKeys("Houston");
+		VisibilityOfElementByXpath("//div[@class='gWHzj82vXtHhEXQk0erkB_0']/input", 10).sendKeys("Houston");
 
 		// Select fetch location from list
-		wait(driver, 10).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@class='_2aL9ikio50GMobGq7MN6LE_0']/div[2]/div[1]")))
-				.click();
-
+		VisibilityOfElementByXpath("//div[@class='_2aL9ikio50GMobGq7MN6LE_0']/div[2]/div[1]", 10).click();
 		Thread.sleep(2500);
+
 		// Click on submit button
-		wait(driver, 10)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
-				.click();
+		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
 
 		// Validate group created
 		try {
-			member_created = wait(driver, 10)
-					.until(ExpectedConditions
-							.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool')]")))
-					.size() == 1;
+			member_created = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool')]", 10).size() == 1;
 		} catch (Exception e) {
 //			extractJSLogsInfo();
 		}
@@ -114,28 +90,21 @@ public class BeepCarpool extends Login {
 
 		Thread.sleep(2000);
 		// Sliding to next page
-		wait(driver, 20)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='hooper-indicator']")))
-				.click();
+		VisibilityOfElementByXpath("//button[@class='hooper-indicator']", 10).click();
 
 		// Click on beep carpool button
 		VisibilityOfElementByXpath("//li[5]/div[5]/a/div[2]", 10).click();
 
 		// Click on Add a New Carpool Member button
-		wait(driver, 10)
-				.until(ExpectedConditions
-						.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Add a New Beep Friend')]")))
-				.click();
+		VisibilityOfElementByXpath("//span[contains(text(),'Add a New Beep Friend')]", 10).click();
 
 		// Validate add member form opened
-		form_page = wait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-				By.xpath("//button[contains(text(),'Add a Friend from Beep Carpool')]"))).size() == 1;
+		form_page = VisibilityOfAllElementsByXpath("//button[contains(text(),'Add a Friend from Beep Carpool')]", 10)
+				.size() == 1;
 		Assert.assertEquals(form_page, true, "Form page not opened!");
 
 		// Click on Add a New Carpool Member button
-		wait(driver, 10).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add a Friend from Beep Carpool')]")))
-				.click();
+		VisibilityOfElementByXpath("//button[contains(text(),'Add a Friend from Beep Carpool')]", 10).click();
 
 		// Select a friend from beep friend list
 		Select s = new Select(
@@ -143,15 +112,10 @@ public class BeepCarpool extends Login {
 		s.selectByVisibleText("Test_Carpool Member");
 
 		// Click on submit button
-		wait(driver, 10)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
-				.click();
+		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
 
 		try {
-			member_created = wait(driver, 10)
-					.until(ExpectedConditions
-							.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool')]")))
-					.size() == 1;
+			member_created = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool')]", 10).size() == 1;
 		} catch (Exception e) {
 		}
 
@@ -162,25 +126,19 @@ public class BeepCarpool extends Login {
 		boolean member_dlt = false;
 		Thread.sleep(2000);
 		// Click on added member
-		wait(driver, 10)
-				.until(ExpectedConditions
-						.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Test_Carpool Member')]")))
-				.click();
+		VisibilityOfElementByXpath("//span[contains(text(),'Test_Carpool Member')]", 10).click();
 
 		// Click on delete button
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.className("delete-beep"))).click();
+		VisibilityOfElementByClassName("delete-beep", 10).click();
 
 		// Select Delete option
-		wait(driver, 10)
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Delete')]")))
-				.click();
+		VisibilityOfElementByXpath("//button[contains(text(),'Delete')]", 10).click();
 
 		Thread.sleep(2500);
 
 		// Validate member deleted or not
 		try {
-			member_dlt = wait(driver, 5).until(ExpectedConditions
-					.visibilityOfAllElementsLocatedBy(By.xpath("//span[contains(text(),'Test_Carpool Member')]")))
+			member_dlt = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool Member')]", 10)
 					.size() == 1;
 		} catch (Exception e) {
 
@@ -204,7 +162,7 @@ public class BeepCarpool extends Login {
 			for (int i = 0; i < ele.size(); i++) {
 				List<WebElement> ele1 = VisibilityOfAllElementsByXpath("//span[contains(text(),'Test_Carpool Member')]",
 						10);
-				
+
 				ele.get(i).click();
 				VisibilityOfElementByXpath("//div[contains(text(),'DELETE BEEP')]", 10).click();
 				Assert.assertTrue(
@@ -220,7 +178,7 @@ public class BeepCarpool extends Login {
 				}
 
 				catch (Exception e) {
-					
+
 				}
 
 			}

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class DownloadApp extends Login {
 	
-	public void DownloadAppLinks() throws Exception {
+	public void downloadApp() throws Exception {
 	
 		login("John@example.com", "welcome");
 		

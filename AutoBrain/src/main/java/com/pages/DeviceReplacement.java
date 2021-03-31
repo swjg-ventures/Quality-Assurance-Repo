@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class DeviceReplacement extends SignupWithPrepaidDevice {
-	String excel_file_path = "C:\\Users\\Rajesh\\Desktop\\data.xlsx";
+	String excel_file_path = "Files\\Device_replacement.xlsx";
 
 	public void Device_replacement() throws Exception {
-		signupWithPrepaidDevice("personal");
+		signupWithPrepaidDevice("personal", "WYLESS", "Standard", "90 days personal plan", "false");
 		System.out.println("Signup done. Now requesting for replacement.");
 
 		// Logout registered account

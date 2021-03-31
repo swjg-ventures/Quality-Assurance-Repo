@@ -16,7 +16,6 @@ import com.pages.DeviceReplacement;
 import com.pages.DownloadApp;
 import com.pages.ForgotPassword;
 import com.pages.GetAnotherDeviceFromWeb;
-import com.pages.ListOfCars;
 import com.pages.ManageAccount;
 import com.pages.MarkReplacedDeviceForReuse;
 import com.pages.Modes;
@@ -44,35 +43,47 @@ public class DemoTest extends Base {
 
 	// NEED TO UPDATE THE CELLULAR AND MODEL TYPE BC OF BLUETOOTHE
 //	@Test(priority = 3)
-	public void VerifyRetailerDeviceSignup() throws Exception {
+	public void VerifyRetailerCellularDeviceSignup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
-		order.signupWithPrepaidDevice("personal");
+		order.signupWithPrepaidDevice("personal", "SPRINT", "Standard", "90 days personal plan", "false");
 	}
 
-//	@Test(priority = 4)
+	@Test(priority = 4)
+	public void VerifyRetailerFreeBluetoothDeviceSignup() throws Exception {
+		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
+		order.signupWithPrepaidDevice("personal", "FREE_1", "Autobrain_Bluetooth_1",
+				"Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90", "free");
+	}
+
+//	@Test(priority = 5)
+	public void VerifyRetailerPaidBluetoothDeviceSignup() throws Exception {
+		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
+		order.signupWithPrepaidDevice("personal", "FREE_1", "Autobrain_Bluetooth_1",
+				"Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90", "paid");
+	}
+
+//	@Test(priority = 6)
 	public void verifyDeviceReplacement() throws Exception {
 		DeviceReplacement l = new DeviceReplacement();
 		l.Device_replacement();
 	}
 
-//	@Test(priority = 5)
+//	@Test(priority = 7)
 	public void verifyMarkReplacedDeviceForReuse() throws Exception {
 		MarkReplacedDeviceForReuse l = new MarkReplacedDeviceForReuse();
 		l.markReplacedDeviceForReuse();
 	}
-	
-	
 
 //	@Test(priority = 1)
 	public void deleteDevices() throws Exception {
 		Delete_Devices_From_Panel d = new Delete_Devices_From_Panel();
 		d.delete_devices();
 	}
-	
-	@Test(priority = 1)
+
+//	@Test(priority = 1)
 	public void ValidateTests() throws Exception {
-		ForgotPassword d = new ForgotPassword();
-		d.forgotPassword();
+		ChangePassword d = new ChangePassword();
+		d.changePassword();
 	}
 
 }
