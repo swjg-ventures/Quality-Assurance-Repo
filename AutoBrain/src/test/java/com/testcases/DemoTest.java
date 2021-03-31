@@ -42,13 +42,13 @@ public class DemoTest extends Base {
 	}
 
 	// NEED TO UPDATE THE CELLULAR AND MODEL TYPE BC OF BLUETOOTHE
-//	@Test(priority = 3)
+	@Test(priority = 3)
 	public void VerifyRetailerCellularDeviceSignup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
 		order.signupWithPrepaidDevice("personal", "SPRINT", "Standard", "90 days personal plan", "false");
 	}
 
-	@Test(priority = 4)
+//	@Test(priority = 4)
 	public void VerifyRetailerFreeBluetoothDeviceSignup() throws Exception {
 		SignupWithPrepaidDevice order = new SignupWithPrepaidDevice();
 		order.signupWithPrepaidDevice("personal", "FREE_1", "Autobrain_Bluetooth_1",
