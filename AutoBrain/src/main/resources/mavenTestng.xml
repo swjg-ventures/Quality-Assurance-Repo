@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="tests">
 
 	<listeners>
-		<listener class-name="Library.ExtentReporterNG" />
+		<listener class-name="com.autobrain.utilities.ExtentReporterNG" />
 	</listeners>
 	
 	<test thread-count="5" name="Chrome">
@@ -12,7 +12,7 @@
 
 		<classes>
 
-			<class name="com.maven.testcases.DemoTest" />
+			<class name="com.autobrain.testcases.MavenTest" />
 
 		</classes>
 	</test>

@@ -2,19 +2,19 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
   <listeners>
-    <listener class-name="Library.ExtentReporterNG"/>
+    <listener class-name="com.autobrain.utilities.ExtentReporterNG"/>
   </listeners>
   <test thread-count="5" name="Chrome(failed)" parallel="tests">
     <parameter name="Headless" value="false"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
-      <class name="com.testcases.DemoTest">
+      <class name="com.autobrain.testcases.DemoTest">
         <methods>
-          <include name="CheckBrowsers"/>
-          <include name="VerifyRetailerFreeBluetoothDeviceSignup"/>
+          <include name="ValidateNewSignupReplacement"/>
           <include name="quit"/>
+          <include name="CheckBrowsers"/>
         </methods>
-      </class> <!-- com.testcases.DemoTest -->
+      </class> <!-- com.autobrain.testcases.DemoTest -->
     </classes>
   </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->
