@@ -8,8 +8,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-public class Delete_Devices_From_Panel extends Login {
-	boolean msg_closed, alt_closed;
+public class DeleteDevices_FromWorkerPanel extends Login {
+	boolean msg_closed, al_closed;
 	
 	@FindBy(xpath = "//a[contains(text(),'Add device #')]")
 	List<WebElement> ele;

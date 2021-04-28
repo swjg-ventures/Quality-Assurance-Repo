@@ -14,7 +14,7 @@ public class DemoTest extends Base {
 
 
 
-	@Test(priority = 1)
+//	@Test(priority = 1)
 	public void ValidatePersonalBoughtDeviceTests() throws Exception {
 		SignupWithBoughtDeviceFromABWebsite ss = new SignupWithBoughtDeviceFromABWebsite();
 		ss.signupWithBoughtDeviceFromABWebsite(1, "personal", "vip", "yearly", false);
@@ -26,7 +26,7 @@ public class DemoTest extends Base {
 		ss.signupWithBoughtDeviceFromABWebsite(1, "business", "vip", "yearly", false);
 	}
 
-//	@Test(priority = 3)
+	@Test(priority = 3)
 	public void ValidatePersonalRetailerTests() throws Exception {
 		SignupWithRetailerDevice ss = new SignupWithRetailerDevice();
 		ss.signupWithRetailerDevice(1, "personal", "vip", "monthly", "90 days personal plan", false);

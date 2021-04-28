@@ -798,7 +798,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 			}
 			// Submit button
 			VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 15).click();
-
+			Thread.sleep(1000);
 			// Verify success message after click on submit button
 			boolean success_msg2 = VisibilityOfAllElementsByXpath("//div[@class='flash-message text-center success']",
 					15).size() == 1;
