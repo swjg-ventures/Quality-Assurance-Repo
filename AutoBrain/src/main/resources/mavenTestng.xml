@@ -8,7 +8,7 @@
 	
 	<test thread-count="5" name="Chrome">
 		<parameter name="Browsers" value="chrome" />
-		<parameter name="Headless" value="false" />
+		<parameter name="Headless" value="true" />
 
 		<classes>
 
