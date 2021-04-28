@@ -13,7 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<suiteXmlFile>src/main/resources/mavenTestng.xml</suiteXmlFile>
+		
 	</properties>
 
 
@@ -49,7 +49,7 @@
 
 
 					<suiteXmlFiles>
-						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+						<suiteXmlFile>src/main/resources/mavenTestng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 
 				</configuration>
