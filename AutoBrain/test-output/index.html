@@ -141,11 +141,11 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.autobrain.utilities.ExtentReporterNG&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Chrome&quot; parallel=&quot;tests&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Chrome&quot;&gt;
     &lt;parameter name=&quot;Headless&quot; value=&quot;true&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
@@ -193,7 +193,7 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'ValidatePersonalRetailerTests')
 data.setCell(0, 2, 'com.autobrain.testcases.DemoTest')
-data.setCell(0, 3, 162561);
+data.setCell(0, 3, 178659);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
@@ -231,11 +231,11 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">ValidatePersonalRetailerTests</span>
-                <span class="method-start">9929 ms</span>
+                <span class="method-start">12843 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">172496 ms</span>
+                <span class="method-start">191507 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

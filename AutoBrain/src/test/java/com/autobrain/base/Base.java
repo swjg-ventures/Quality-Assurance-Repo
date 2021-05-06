@@ -116,7 +116,7 @@ public class Base {
 		driver.quit();
 	}
 
-	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
+// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
 //	@BeforeClass
 //	public void deleteFailedTestScreenshots() throws IOException {
 //		File f = new File("Images\\");
