@@ -132,7 +132,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 
 				VisibilityOfElementByID("user_email", 15).clear();
 				SignupModel.setOwner_email(GenerateRandomEmail());
-				System.out.println("Email Already exist! New Entered Email-->" + " " + SignupModel.getOwner_email());
+				System.out.println("Email Already exist! New Email Is-->" + " " + SignupModel.getOwner_email());
 				VisibilityOfElementByID("user_email", 15).sendKeys(SignupModel.getOwner_email());
 
 				VisibilityOfElementByID("user_password", 15).sendKeys("welcome");

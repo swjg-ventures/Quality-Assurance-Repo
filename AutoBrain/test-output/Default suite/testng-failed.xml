@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testcases.DemoTest">
+      <class name="com.autobrain.testcases.DemoTest">
         <methods>
-          <include name="CheckBrowsers"/>
           <include name="quit"/>
-          <include name="VerifyBusinessDeviceSignup"/>
+          <include name="CheckBrowsers"/>
+          <include name="ValidatePersonalRetailerTests"/>
         </methods>
-      </class> <!-- com.testcases.DemoTest -->
+      </class> <!-- com.autobrain.testcases.DemoTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

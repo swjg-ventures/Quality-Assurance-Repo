@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="197285" started-at="2021-04-30T20:23:00 IST" finished-at="2021-04-30T20:26:17 IST">
+  <suite name="Suite" duration-ms="505758" started-at="2021-05-07T10:17:21 IST" finished-at="2021-05-07T10:25:47 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="197285" started-at="2021-04-30T20:23:00 IST" finished-at="2021-04-30T20:26:17 IST">
+    <test name="Chrome" duration-ms="505758" started-at="2021-05-07T10:17:21 IST" finished-at="2021-05-07T10:25:47 IST">
       <class name="com.autobrain.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="CheckBrowsers" is-config="true" duration-ms="12841" started-at="2021-04-30T20:23:00 IST" finished-at="2021-04-30T20:23:13 IST">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="CheckBrowsers" is-config="true" duration-ms="7606" started-at="2021-05-07T10:17:21 IST" finished-at="2021-05-07T10:17:29 IST">
           <params>
             <param index="0">
               <value>
@@ -16,18 +16,18 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[true]]>
+                <![CDATA[false]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="ValidatePersonalRetailerTests()[pri:3, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="ValidatePersonalRetailerTests" duration-ms="178659" started-at="2021-04-30T20:23:13 IST" finished-at="2021-04-30T20:26:11 IST">
+        <test-method status="PASS" signature="ValidatePersonalRetailerTests()[pri:3, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="ValidatePersonalRetailerTests" duration-ms="492133" started-at="2021-05-07T10:17:29 IST" finished-at="2021-05-07T10:25:41 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidatePersonalRetailerTests -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="quit" is-config="true" duration-ms="5703" started-at="2021-04-30T20:26:11 IST" finished-at="2021-04-30T20:26:17 IST">
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.autobrain.testcases.DemoTest@32d2fa64]" name="quit" is-config="true" duration-ms="5959" started-at="2021-05-07T10:25:41 IST" finished-at="2021-05-07T10:25:47 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
