@@ -82,8 +82,6 @@ public class CSV {
 		String ab =  df.formatCellValue(sh.getRow(0).getCell(0));		
 		System.out.println(ab);
 		
-	//	sh.getRow(2).createCell(1).setCellValue("okay");
-//		sh.createRow(1).createCell(0).setCellValue("device_number");
 		sh.getRow(1).getCell(0).setCellValue("new entry");
 		FileOutputStream fos = new FileOutputStream(file);
 		
