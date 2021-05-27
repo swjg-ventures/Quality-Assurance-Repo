@@ -65,7 +65,7 @@ public class SignupModel {
 	private static String choose_business_billing_interval;
 	private static String pricing_plan;
 	private static boolean set_esf;
-	private static boolean confirmation_email;
+
 
 	public static String getBluetooth_is() {
 		return bluetooth_is;
@@ -83,13 +83,7 @@ public class SignupModel {
 		SignupModel.pricing_plan = pricing_plan;
 	}
 
-	public static boolean isConfirmation_email() {
-		return confirmation_email;
-	}
-
-	public static void setConfirmation_email(boolean confirmation_email) {
-		SignupModel.confirmation_email = confirmation_email;
-	}
+	
 
 	public static ArrayList<String> getAll_Devices_No() {
 		return All_Devices_No;

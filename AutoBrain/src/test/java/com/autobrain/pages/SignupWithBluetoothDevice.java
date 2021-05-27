@@ -18,7 +18,6 @@ public class SignupWithBluetoothDevice {
 			String set_billing_interval, String set_pricing_plan, boolean set_esf) throws Exception {
 
 		// Set-up data
-		SignupModel.setConfirmation_email(true);
 		SignupModel.setTotal_bought_devices(1);
 		SignupModel.setAccount_type(account_type);
 		SignupModel.setBluetooth_is(bluetooth_is);

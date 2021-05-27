@@ -10,9 +10,9 @@
     <classes>
       <class name="com.autobrain.testcases.DemoTest">
         <methods>
-          <include name="gotdfdso"/>
           <include name="quit"/>
           <include name="CheckBrowsers"/>
+          <include name="ValidatePersonalRetailerTests"/>
         </methods>
       </class> <!-- com.autobrain.testcases.DemoTest -->
     </classes>

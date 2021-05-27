@@ -90,7 +90,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 
 		// Sign-up email
 		VisibilityOfElementByID("user_email", 15).sendKeys(SignupModel.getOwner_email());
-
+		
 		// Entering phone number
 		VisibilityOfElementByID("user_contacts_attributes_0_data", 15).clear();
 		VisibilityOfElementByID("user_contacts_attributes_0_data", 15).sendKeys("1234567890");
@@ -107,7 +107,8 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 		VisibilityOfElementByXpath("//div[contains(text(),'SIGN UP')]", 15).click();
 
 		Thread.sleep(3500);
-		for (int i = 0; i < driver.findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
+		int error = driver.findElements(By.xpath("//span[@class='help-block']")).size();
+		while (error != 0) {
 			boolean email_alert = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
 					.size() != 0;
 			boolean firstN_alert = driver
@@ -132,7 +133,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 
 				VisibilityOfElementByID("user_email", 15).clear();
 				SignupModel.setOwner_email(GenerateRandomEmail());
-				System.out.println("Email Already exist! New Email Is-->" + " " + SignupModel.getOwner_email());
+				System.out.println("Email Already exist during signup! New Email Is: " + SignupModel.getOwner_email());
 				VisibilityOfElementByID("user_email", 15).sendKeys(SignupModel.getOwner_email());
 
 				VisibilityOfElementByID("user_password", 15).sendKeys("welcome");
@@ -141,13 +142,20 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 				// Clicking on sign-up button to register
 				VisibilityOfElementByXpath("//div[contains(text(),'SIGN UP')]", 15).click();
 			}
-
+			
+			try {
+			 error = VisibilityOfAllElementsByXpath("//span[@class='help-block']", 5).size();
+			
+			}
+			catch(Exception e) {
+				error = 0;
+			}
 		}
 
-		if (SignupModel.getTotal_bought_devices() == 1 || SignupModel.isConfirmation_email()) {
+		try {
 
 			// Validating confirmation key page found
-			Assert.assertTrue(VisibilityOfElementByXpath("//a[contains(text(),'Resend Confirmation Email')]", 15)
+			Assert.assertTrue(VisibilityOfElementByXpath("//a[contains(text(),'Resend Confirmation Email')]", 10)
 					.getText().contains("Resend Confirmation Email"), "Confirmation key page not found!");
 
 			// YOPMAIL.COM
@@ -189,11 +197,12 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			Thread.sleep(2000);
 		}
-
-		// Validate next page Step 1
-		Assert.assertTrue(
-				VisibilityOfElementByXpath("//div[contains(text(),'Is Your')]/following-sibling::div//span", 15)
-						.isDisplayed());
+		
+		catch(Exception e) {
+			// Validate next page Step 1
+			System.out.println("Owner email: " + SignupModel.getOwner_email());
+			Assert.assertTrue(VisibilityOfElementByXpath("//h4[contains(text(),'Create a Vehicle Profile')]", 15).isDisplayed());
+		}
 
 	}
 
@@ -244,7 +253,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 
 		// Enter email address
 		VisibilityOfElementByXpath("//input[@placeholder='Email Address']", 15).sendKeys(SignupModel.getOwner_email());
-		System.out.println("Entered Email During Bought The Product " + "--> " + SignupModel.getOwner_email());
+		System.out.println("Ordered Email: "+ SignupModel.getOwner_email());
 
 		// Enter street address
 		VisibilityOfElementByXpath("//input[@placeholder='Street Address']", 15).sendKeys(SignupModel.getStreet());
@@ -1006,6 +1015,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 //		v.Ins_Reg_Forms();
 
 		// Check terms and conditions
+		Thread.sleep(1500);
 		List<WebElement> el = VisibilityOfAllElementsByXpath("//div[@class='esf']/div[1]", 15);
 		el.get(0).click();
 		Thread.sleep(2000);
@@ -1060,13 +1070,13 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 
 			Thread.sleep(2000);
 
-			if (SignupModel.getPersonal_plan().contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+			if (SignupModel.getPersonal_plan().equalsIgnoreCase("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
 				num = 0;
 			}
-			if (SignupModel.getPersonal_plan().contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+			if (SignupModel.getPersonal_plan().equalsIgnoreCase("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button")) {
 				num = 1;
 			}
-			if (SignupModel.getPersonal_plan().contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+			if (SignupModel.getPersonal_plan().equalsIgnoreCase("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")) {
 				num = 2;
 			}
 
@@ -1401,6 +1411,7 @@ public class SignupWithBoughtDeviceFromABWebsite extends Base {
 		Random randomGenerator = new Random();
 		SignupModel.setRandom_int(randomGenerator.nextInt(10000));
 		String email = "junking" + SignupModel.getRandom_int() + "@yopmail.com";
+		
 		SignupModel.setL_name("" + SignupModel.getRandom_int());
 		return email;
 	}

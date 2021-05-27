@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="12944" started-at="2021-05-18T01:01:26 IST" finished-at="2021-05-18T01:01:39 IST">
+  <suite name="Suite" duration-ms="1069" started-at="2021-05-24T13:53:15 IST" finished-at="2021-05-24T13:53:17 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="12944" started-at="2021-05-18T01:01:26 IST" finished-at="2021-05-18T01:01:39 IST">
-      <class name="com.autobrain.testcases.DemoTest">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String, java.lang.String)[pri:0, instance:com.autobrain.testcases.DemoTest@1d8d30f7]" name="CheckBrowsers" is-config="true" duration-ms="6670" started-at="2021-05-18T01:01:26 IST" finished-at="2021-05-18T01:01:33 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[false]]>
-              </value>
-            </param>
-          </params>
+    <test name="Test" duration-ms="1069" started-at="2021-05-24T13:53:15 IST" finished-at="2021-05-24T13:53:17 IST">
+      <class name="Demo.NewExample">
+        <test-method status="PASS" signature="he()[pri:0, instance:Demo.NewExample@1877ab81]" name="he" duration-ms="1022" started-at="2021-05-24T13:53:16 IST" finished-at="2021-05-24T13:53:17 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- CheckBrowsers -->
-        <test-method status="PASS" signature="gotdfdso()[pri:0, instance:com.autobrain.testcases.DemoTest@1d8d30f7]" name="gotdfdso" duration-ms="17" started-at="2021-05-18T01:01:33 IST" finished-at="2021-05-18T01:01:33 IST">
+        </test-method> <!-- he -->
+        <test-method status="PASS" signature="newhe()[pri:0, instance:Demo.NewExample@1877ab81]" name="newhe" duration-ms="1022" started-at="2021-05-24T13:53:16 IST" finished-at="2021-05-24T13:53:17 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- gotdfdso -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.autobrain.testcases.DemoTest@1d8d30f7]" name="quit" is-config="true" duration-ms="6215" started-at="2021-05-18T01:01:33 IST" finished-at="2021-05-18T01:01:39 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- quit -->
-      </class> <!-- com.autobrain.testcases.DemoTest -->
-    </test> <!-- Chrome -->
+        </test-method> <!-- newhe -->
+      </class> <!-- Demo.NewExample -->
+    </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
