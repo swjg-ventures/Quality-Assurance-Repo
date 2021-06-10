@@ -14,7 +14,7 @@ public class ForgotPassword extends Login {
 		VisibilityOfElementByXpath("//a[contains(text(),'Forgot password')]", 20).click();
 
 		// Validating user redirected to actual page or not
-		Assert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/users/password/new");
+		Assert.assertEquals(getDriver().getCurrentUrl(), "https://stg.autobrain.com/users/password/new");
 
 		// Entering registered email in forgot password field
 		VisibilityOfElementByID("forgot-password-email", 5).sendKeys(email);
@@ -29,7 +29,7 @@ public class ForgotPassword extends Login {
 				VisibilityOfElementByXpath("//h2[contains(text(),'Email Sent')]", 30).getText().contains("Email Sent"));
 
 		// Validate customer receive replacement email
-		driver.get("http://www.yopmail.com/en/");
+		getDriver().get("http://www.yopmail.com/en/");
 		Thread.sleep(2000);
 
 		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(email);
@@ -39,7 +39,7 @@ public class ForgotPassword extends Login {
 		Thread.sleep(2000);
 
 		// Switch to frame
-		driver.switchTo().frame("ifmail");
+		getDriver().switchTo().frame("ifmail");
 
 		// Validate email received
 		Assert.assertTrue(
@@ -50,10 +50,10 @@ public class ForgotPassword extends Login {
 		VisibilityOfElementByXpath("//a[contains(text(),'Set New Password')]", 10).click();
 
 		// Checking how many windows are opened currently
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		// Switching to Buy now page
-		driver.switchTo().window(tabs.get(1));
+		getDriver().switchTo().window(tabs.get(1));
 
 		// Confirm reset password page opened
 		Assert.assertTrue(
@@ -72,7 +72,7 @@ public class ForgotPassword extends Login {
 		Thread.sleep(1000);
 
 		// Now user should login automatically after submit
-		Assert.assertTrue(driver.getCurrentUrl().contentEquals("https://stg.autobrain.com/"));
+		Assert.assertTrue(getDriver().getCurrentUrl().contentEquals("https://stg.autobrain.com/"));
 
 		// Validate the loading of home page
 		// Validation login

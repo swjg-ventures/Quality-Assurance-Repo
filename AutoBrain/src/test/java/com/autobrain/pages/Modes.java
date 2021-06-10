@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class Modes extends Login {
-	JavascriptExecutor js = (JavascriptExecutor) driver;
+	JavascriptExecutor js = (JavascriptExecutor) getDriver();
 	boolean mode_status = true;
 	String create_safe_zone = "//div[text()='Safe Zone:']/following-sibling::div[2]//span[2]",
 			add_your_home_address = "//div[text()='Arrived And Left Home Alerts:']/following-sibling::div[2]//span[2]",
@@ -22,7 +22,7 @@ public class Modes extends Login {
 
 		try {
 			// Click on Mode from main menu
-			List<WebElement> mode = wait(driver, 20).until(
+			List<WebElement> mode = wait(getDriver(), 20).until(
 					ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'MODES')]")));
 			mode.get(1).click();
 		} catch (Exception e) {
@@ -40,7 +40,7 @@ public class Modes extends Login {
 	public void customMode(String type_of_creating_zone) throws Exception {
 
 		// Scroll until the safe zone button not found
-		WebElement scrollUntilEleFound = wait(driver, 20)
+		WebElement scrollUntilEleFound = wait(getDriver(), 20)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//b[text()='Create a Safe Zone']")));
 		js.executeScript("arguments[0].scrollIntoView();", scrollUntilEleFound);
 		Thread.sleep(1000);

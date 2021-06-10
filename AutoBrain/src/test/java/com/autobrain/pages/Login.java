@@ -30,17 +30,26 @@ public class Login extends Base {
 		} catch (Exception e) {
 
 		}
+
+		try {
+			// Click on Yes
+			VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 2).click();
+		}
+
+		catch (Exception e) {
+
+		}
 		Assert.assertEquals(homePage, true, "Home page is not loaded!");
 		isDesktopNotificationAlert();
 	}
 
 	public void isDesktopNotificationAlert() {
 		try {
-			desktopNotification = wait(driver, 4).until(ExpectedConditions
+			desktopNotification = wait(getDriver(), 4).until(ExpectedConditions
 					.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Desktop Notifications')]")))
 					.size() == 1;
 
-			driver.findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
+			getDriver().findElement(By.xpath("//button[contains(text(),'Yes')]")).click();
 			Thread.sleep(1500);
 
 		} catch (Exception e) {
@@ -54,7 +63,7 @@ public class Login extends Base {
 		VisibilityOfElementByXpath("//a[contains(text(),'LOG OUT')]", 10).click();
 
 		String loginpage = "https://stg.autobrain.com/users/sign_in";
-		Assert.assertEquals(driver.getCurrentUrl(), loginpage);
+		Assert.assertEquals(getDriver().getCurrentUrl(), loginpage);
 
 	}
 }

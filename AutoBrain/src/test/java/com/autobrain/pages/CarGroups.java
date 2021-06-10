@@ -22,33 +22,33 @@ public class CarGroups extends Login {
 
 		// Click on corner dots to expand the menu
 		Thread.sleep(2000);
-//		wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
+//		wait(getDriver(), 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 
 		// Check car group option in menu
-		wait(driver, 10)
+		wait(getDriver(), 10)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='active-car-title']")))
 				.click();
 		Thread.sleep(1000);
-		List<WebElement> total_cars = wait(driver, 10)
+		List<WebElement> total_cars = wait(getDriver(), 10)
 				.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[@class='car-title']")));
-		wait(driver, 10)
+		wait(getDriver(), 10)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='active-car-title']")))
 				.click();
 
 		if (total_cars.size() > 0) {
-			wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener")))
+			wait(getDriver(), 30).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener")))
 					.click();
 
 			Thread.sleep(1000);
 			// Select Car Groups from expanded drop-down
-			wait(driver, 10).until(
+			wait(getDriver(), 10).until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Car Groups')]")))
 					.click();
 
 			Thread.sleep(1500);
 
 			// Verify car groups page opened
-			Assert.assertEquals(driver.findElement(By.xpath("//h4[contains(text(),'Car Groups')]")).getText(),
+			Assert.assertEquals(getDriver().findElement(By.xpath("//h4[contains(text(),'Car Groups')]")).getText(),
 					"Car Groups");
 
 			// Print total number of grouped cars
@@ -61,38 +61,38 @@ public class CarGroups extends Login {
 			dlt_grp();
 
 			// Click on Create Group button
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//button[contains(text(),'+ Create Group')]")))
 					.click();
 
 			// Verify form page opened
 			Assert.assertEquals(
-					wait(driver, 10)
+					wait(getDriver(), 10)
 							.until(ExpectedConditions
 									.visibilityOfElementLocated(By.xpath("//h4[contains(text(),'Group Name')]")))
 							.getText(),
 					"Group Name");
 
 			// Enter Group Name
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//input[@placeholder='Enter Group Name']")))
 					.sendKeys("Test_Group");
 
 			// Enter Address or Location
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//input[@placeholder='Address or Location']")))
 					.sendKeys("Houston");
 
 			// Select fetch location from list
-			wait(driver, 10).until(ExpectedConditions
+			wait(getDriver(), 10).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//div[@class='_2aL9ikio50GMobGq7MN6LE_0']/div[2]/div[1]")))
 					.click();
 
 			// Storing element for scrolling page
-			List<WebElement> Ele = wait(driver, 10).until(
+			List<WebElement> Ele = wait(getDriver(), 10).until(
 					ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//button[contains(text(),'Save')]")));
 
 			// Scrolling page to the bottom
@@ -100,31 +100,31 @@ public class CarGroups extends Login {
 			Thread.sleep(4000);
 
 			// Increase radius
-			WebElement Slider = driver
+			WebElement Slider = getDriver()
 					.findElement(By.xpath("//div[@class='fNjXxCP3qpHRngtT1uPy5_0']/following-sibling::input"));
-			Actions moveSlider = new Actions(driver);
+			Actions moveSlider = new Actions(getDriver());
 			Action action = moveSlider.dragAndDropBy(Slider, 30, 0).build();
 			action.perform();
 
 			// Storing Actual radius value
-			String Act_radius = wait(driver, 10)
+			String Act_radius = wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//div[@class='_1U3QaQ0p_zC4zwFUWcNqP2_0']")))
 					.getText();
 
 			// Click on save button
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 					.click();
 			Thread.sleep(2000);
 
-			while (driver.findElements(By.xpath("//h4[contains(text(),'Car Groups')]")).size() != 1) {
+			while (getDriver().findElements(By.xpath("//h4[contains(text(),'Car Groups')]")).size() != 1) {
 				System.out.println("Loading...");
 			}
 
 			// Validate group created
 			try {
-				group_status = wait(driver, 15)
+				group_status = wait(getDriver(), 15)
 						.until(ExpectedConditions
 								.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Test_Group')]")))
 						.isDisplayed();
@@ -138,12 +138,12 @@ public class CarGroups extends Login {
 			Thread.sleep(2000);
 
 			// Scrolling page
-			List<WebElement> Ele1 = wait(driver, 10).until(
+			List<WebElement> Ele1 = wait(getDriver(), 10).until(
 					ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//button[contains(text(),'Save')]")));
 			scroll_until_ele_not_found(Ele1);
 
 			// Store expected radius
-			String Exp_radius = wait(driver, 10)
+			String Exp_radius = wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//div[@class='_1U3QaQ0p_zC4zwFUWcNqP2_0']")))
 					.getText();
@@ -151,7 +151,7 @@ public class CarGroups extends Login {
 
 			Thread.sleep(1200);
 			// Click on save button
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 					.click();
 
@@ -170,9 +170,9 @@ public class CarGroups extends Login {
 	// Edit group button
 	public void edit_grp_btn() throws Exception {
 
-		List<WebElement> Element = wait(driver, 10).until(ExpectedConditions
+		List<WebElement> Element = wait(getDriver(), 10).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='group-container']/div[1]/div[1]")));
-		List<WebElement> Edit = wait(driver, 10).until(ExpectedConditions
+		List<WebElement> Edit = wait(getDriver(), 10).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='group-container']/div[2]/div[1]")));
 		for (int i = 0; i < Element.size(); i++) {
 
@@ -190,21 +190,21 @@ public class CarGroups extends Login {
 	// Delete existing group
 	public void dlt_grp() throws Exception {
 		Thread.sleep(1500);
-		List<WebElement> Element1 = driver.findElements(By.xpath("//div[@class='group-container']/div[1]/div[1]"));
-		List<WebElement> dlt_grp = driver.findElements(By.xpath("//div[@class='group-container']/div[2]/div[2]"));
+		List<WebElement> Element1 = getDriver().findElements(By.xpath("//div[@class='group-container']/div[1]/div[1]"));
+		List<WebElement> dlt_grp = getDriver().findElements(By.xpath("//div[@class='group-container']/div[2]/div[2]"));
 		for (z = 0; z < Element1.size(); z++) {
 			String group_name = Element1.get(z).getText();
 
 			if (group_name.contains("Test_Group")) {
 				
 				dlt_grp.get(z).click();
-				wait(driver, 10).until(
+				wait(getDriver(), 10).until(
 						ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Yes')]")))
 						.click();
 				Thread.sleep(2000);
 
 				try {
-					group_deleted = wait(driver, 2)
+					group_deleted = wait(getDriver(), 2)
 							.until(ExpectedConditions
 									.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'Test_Group')]")))
 							.size() == 0;
@@ -224,10 +224,10 @@ public class CarGroups extends Login {
 
 	// Total Grouped cars
 	public int grouped_cars() {
-		cars_title = wait(driver, 10).until(ExpectedConditions
+		cars_title = wait(getDriver(), 10).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='group-container']/div[1]/div[1]")));
 
-		cars = wait(driver, 10).until(ExpectedConditions
+		cars = wait(getDriver(), 10).until(ExpectedConditions
 				.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='group-container']/div[1]/div[2]")));
 
 		// Print total size

@@ -17,7 +17,7 @@ public class SignupModel {
 	public static File csvFile = new File("Files\\Mark_Device_Sold_and_Shipped.csv");
 
 	// To store all devices created from worker panel
-	private static ArrayList<String> All_Devices_No;
+	private ArrayList<String> All_Devices_No;
 
 	// For card details
 	private static String f_name = "Test";
@@ -54,58 +54,64 @@ public class SignupModel {
 	private static String policyno2 = "44125";
 
 	// Others
-	private static String account_type;
-	private static String bluetooth_is = "false";
-	private static String owner_email;
-	private static String device_no;
-	private static int random_int;
-	private static int total_bought_devices;
-	private static String personal_plan;
-	private static String personal_billing_interval;
-	private static String choose_business_billing_interval;
-	private static String pricing_plan;
-	private static boolean set_esf;
+	private String account_type;
+	private String bluetooth_is = "false";
+	private String owner_email;
+	private String device_no;
+	private int random_int;
+	private int total_bought_devices=1;
+	private String personal_plan;
+	private String personal_billing_interval;
+	private String choose_business_billing_interval;
+	private String pricing_plan;
+	private boolean set_esf;
+	private boolean confirmation_email;
 
-
-	public static String getBluetooth_is() {
+	public String getBluetooth_is() {
 		return bluetooth_is;
 	}
 
-	public static void setBluetooth_is(String bluetooth_is) {
-		SignupModel.bluetooth_is = bluetooth_is;
+	public void setBluetooth_is(String bluetooth_is) {
+		this.bluetooth_is = bluetooth_is;
 	}
 
-	public static String getPricing_plan() {
+	public String getPricing_plan() {
 		return pricing_plan;
 	}
 
-	public static void setPricing_plan(String pricing_plan) {
-		SignupModel.pricing_plan = pricing_plan;
+	public void setPricing_plan(String pricing_plan) {
+		this.pricing_plan = pricing_plan;
 	}
 
-	
+	public boolean isConfirmation_email() {
+		return confirmation_email;
+	}
 
-	public static ArrayList<String> getAll_Devices_No() {
+	public void setConfirmation_email(boolean confirmation_email) {
+		this.confirmation_email = confirmation_email;
+	}
+
+	public ArrayList<String> getAll_Devices_No() {
 		return All_Devices_No;
 	}
 
-	public static void setAll_Devices_No(ArrayList<String> all_Devices_No) {
+	public void setAll_Devices_No(ArrayList<String> all_Devices_No) {
 		All_Devices_No = all_Devices_No;
 	}
 
-	public static boolean isSet_esf() {
+	public boolean isSet_esf() {
 		return set_esf;
 	}
 
-	public static void setSet_esf(boolean set_esf) {
-		SignupModel.set_esf = set_esf;
+	public void setSet_esf(boolean set_esf) {
+		this.set_esf = set_esf;
 	}
 
-	public static String getChoose_business_billing_interval() {
+	public String getChoose_business_billing_interval() {
 		return choose_business_billing_interval;
 	}
 
-	public static void setChoose_business_billing_interval(String choose_business_billing_interval) {
+	public void setChoose_business_billing_interval(String choose_business_billing_interval) {
 		if (choose_business_billing_interval.contains("monthly")) {
 			choose_business_billing_interval = "//div[@class='TpDbnpVtZG__uMj7UUtnd_0']/div[1]//button";
 		}
@@ -114,14 +120,14 @@ public class SignupModel {
 			choose_business_billing_interval = "//div[@class='TpDbnpVtZG__uMj7UUtnd_0']/div[2]//button";
 		}
 
-		SignupModel.choose_business_billing_interval = choose_business_billing_interval;
+		this.choose_business_billing_interval = choose_business_billing_interval;
 	}
 
-	public static String getPersonal_plan() {
+	public String getPersonal_plan() {
 		return personal_plan;
 	}
 
-	public static void setPersonal_plan(String personal_plan) {
+	public void setPersonal_plan(String personal_plan) {
 		if (personal_plan.contains("vip")) {
 			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button";
 		}
@@ -133,14 +139,14 @@ public class SignupModel {
 		if (personal_plan.contains("moneysaver")) {
 			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button";
 		}
-		SignupModel.personal_plan = personal_plan;
+		this.personal_plan = personal_plan;
 	}
 
-	public static String getPersonal_billing_interval() {
+	public String getPersonal_billing_interval() {
 		return personal_billing_interval;
 	}
 
-	public static void setChoose_personal_billing_interval(String personal_billing_interval) {
+	public void setChoose_personal_billing_interval(String personal_billing_interval) {
 		if (personal_billing_interval.contains("monthly")) {
 			personal_billing_interval = "//div[@class='TpDbnpVtZG__uMj7UUtnd_0']/div[1]/button";
 		}
@@ -148,23 +154,23 @@ public class SignupModel {
 		if (personal_billing_interval.contains("yearly")) {
 			personal_billing_interval = "//div[@class='TpDbnpVtZG__uMj7UUtnd_0']/div[2]/button";
 		}
-		SignupModel.personal_billing_interval = personal_billing_interval;
+		this.personal_billing_interval = personal_billing_interval;
 	}
 
-	public static String getAccount_type() {
+	public String getAccount_type() {
 		return account_type;
 	}
 
-	public static void setAccount_type(String account_type) {
-		SignupModel.account_type = account_type;
+	public void setAccount_type(String account_type) {
+		this.account_type = account_type;
 	}
 
-	public static String getOwner_email() {
+	public String getOwner_email() {
 		return owner_email;
 	}
 
-	public static void setOwner_email(String owner_email) {
-		SignupModel.owner_email = owner_email;
+	public void setOwner_email(String owner_email) {
+		this.owner_email = owner_email;
 	}
 
 	// Shuffling vehicle info variables
@@ -376,28 +382,28 @@ public class SignupModel {
 		SignupModel.policyno = policyno;
 	}
 
-	public static String getDevice_no() {
+	public String getDevice_no() {
 		return device_no;
 	}
 
-	public static void setDevice_no(String device_no) {
-		SignupModel.device_no = device_no;
+	public void setDevice_no(String device_no) {
+		this.device_no = device_no;
 	}
 
-	public static int getRandom_int() {
+	public int getRandom_int() {
 		return random_int;
 	}
 
-	public static void setRandom_int(int random_int) {
-		SignupModel.random_int = random_int;
+	public void setRandom_int(int random_int) {
+		this.random_int = random_int;
 	}
 
-	public static int getTotal_bought_devices() {
+	public int getTotal_bought_devices() {
 		return total_bought_devices;
 	}
 
-	public static void setTotal_bought_devices(int total_bought_devices) {
-		SignupModel.total_bought_devices = total_bought_devices;
+	public void setTotal_bought_devices(int total_bought_devices) {
+		this.total_bought_devices = total_bought_devices;
 	}
 
 	public static Properties getProp() {
@@ -407,5 +413,6 @@ public class SignupModel {
 	public static void setProp(Properties prop) {
 		SignupModel.prop = prop;
 	}
+
 
 }

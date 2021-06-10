@@ -24,7 +24,7 @@ public class Screenshots extends Login {
 	
 	//WHOLE PAGE SCREENSHOT
 	public void WholePageScreenshot(String screenshotName) throws Exception {
-		 Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+		 Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(getDriver());
 		 ImageIO.write(fpScreenshot.getImage(),"PNG",new File("./Images/"+screenshotName+".png"));
 
 	}
@@ -32,7 +32,7 @@ public class Screenshots extends Login {
 	
 	//NORMAL SCREENSOT
 	public void NormalScreenshot(String screenshotName) throws Exception {
-		TakesScreenshot ts = (TakesScreenshot)driver;	
+		TakesScreenshot ts = (TakesScreenshot)getDriver();	
 		File source = ts.getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(source, new File("./Images/"+screenshotName+".png"));
@@ -55,12 +55,12 @@ public class Screenshots extends Login {
 	public void particularimagecomparison() throws Exception {
 		login("john@example.com", "welcome");
 		
-		WebElement caricon = driver.findElement(By.xpath("//div[@id='bigMapCarIcon']"));
+		WebElement caricon = getDriver().findElement(By.xpath("//div[@id='bigMapCarIcon']"));
 		File f = new File("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\Images\\one.png");
 		BufferedImage expimage = ImageIO.read(f);
 		
 		// Step 1
-		Screenshot car = new AShot().takeScreenshot(driver, caricon);
+		Screenshot car = new AShot().takeScreenshot(getDriver(), caricon);
 		
 		//To save screenshot
 //		ImageIO.write(car.getImage(), "PNG", new File(""));
@@ -81,10 +81,10 @@ public class Screenshots extends Login {
 	public void wholepageimagecomparison() throws Exception {
 		
 //		element.click();
-//		driver.findElement(By.xpath("//a[contains(text(),'Terms of Use')]")).click(); 
+//		getDriver().findElement(By.xpath("//a[contains(text(),'Terms of Use')]")).click(); 
 		Thread.sleep(4000);
-		Screenshot sc = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(3000)).takeScreenshot(driver);
-//		Screenshot sc = new AShot().takeScreenshot(driver);
+		Screenshot sc = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(3000)).takeScreenshot(getDriver());
+//		Screenshot sc = new AShot().takeScreenshot(getDriver());
 		File f = new File("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\Images\\whole.png");
 		ImageIO.write(sc.getImage(), "PNG", f);
 	
@@ -92,8 +92,8 @@ public class Screenshots extends Login {
 		
 	
 		Thread.sleep(2000);
-		Screenshot sc1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-//		Screenshot sc1 = new AShot().takeScreenshot(driver);
+		Screenshot sc1 = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(getDriver());
+//		Screenshot sc1 = new AShot().takeScreenshot(getDriver());
 		File f1 = new File("C:\\Users\\Rajesh\\git\\Quality-Assurance-Repo\\AutoBrain\\Images\\whole1.png");
 		ImageIO.write(sc1.getImage(), "PNG", f1);
 		

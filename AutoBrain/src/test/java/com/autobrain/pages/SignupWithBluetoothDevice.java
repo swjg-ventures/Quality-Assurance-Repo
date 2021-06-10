@@ -1,68 +1,64 @@
 package com.autobrain.pages;
 
-import com.autobrain.base.Base;
+import com.autobrain.base.Signup;
 import com.autobrain.models.SignupModel;
 
-public class SignupWithBluetoothDevice {
-	com.autobrain.pages.SignupWithBoughtDeviceFromABWebsite signup;
-	com.autobrain.pages.SignupWithRetailerDevice retailer_signup;
-	com.autobrain.pages.Login login;
+public class SignupWithBluetoothDevice extends Signup {
 
-	public SignupWithBluetoothDevice() {
-		login = new Login();
-		signup = new SignupWithBoughtDeviceFromABWebsite();
-		retailer_signup = new SignupWithRetailerDevice();
+	public SignupWithBluetoothDevice(SignupModel signupModel) {
+		super(signupModel);
 	}
 
-	public void signupWithBluetoothDevice(String account_type, String bluetooth_is, String set_plan,
-			String set_billing_interval, String set_pricing_plan, boolean set_esf) throws Exception {
+	public void signupWithBluetoothDevice(boolean AddCellularDevicewithoutPricingPlan) throws Exception {
 
-		// Set-up data
-		SignupModel.setTotal_bought_devices(1);
-		SignupModel.setAccount_type(account_type);
-		SignupModel.setBluetooth_is(bluetooth_is);
-		SignupModel.setPersonal_plan(set_plan);
-		SignupModel.setChoose_personal_billing_interval(set_billing_interval);
-		SignupModel.setChoose_business_billing_interval(set_billing_interval);
-		SignupModel.setPricing_plan(set_pricing_plan);
-		SignupModel.setSet_esf(set_esf);
+		synchronized (LockObject) {
 
-		retailer_signup.addDevicesInCsvFile();
+			addDevicesInCsvFile();
 
-		retailer_signup.CreateInvoice();
+			CreateInvoice();
 
-		retailer_signup.SubmitCsvFile();
+			SubmitCsvFile();
 
-		retailer_signup.ChooseInvoicePricingPlanAndDistributionChannel();
+			ChooseInvoicePricingPlanAndDistributionChannel();
+		}
+		signup();
 
-		signup.signup();
+		EsfExemptionsSetup();
 
-		signup.EsfExemptionsSetup();
+		step1Setup(signupModel.getAll_Devices_No().get(0));
 
-		signup.step1Setup(SignupModel.getAll_Devices_No().get(0));
+		choosePricingPlanAndAddCardDetails();
 
-		signup.choosePricingPlanAndAddCardDetails();
+		// Add device which having no pricing plan
+		if (AddCellularDevicewithoutPricingPlan) {
+			signupModel.setBluetooth_is("Upgraded");
+			login.logout();
+			login.login("john@example.com", "welcome");
+			createDeviceFromPanel();
+			VisibilityOfElementByXpath("//a[contains(text(),'Log Out')]", 15).click();
+			getDriver().navigate().to(url);
+			login.login(signupModel.getOwner_email(), "welcome");
+			Thread.sleep(500);
+			activateNewDevice(signupModel.getAll_Devices_No().get(1));
+		}
 
 		// If more than one device then activate new device
-		if (bluetooth_is.equals("free_plus_paid")) {
+		if (signupModel.getBluetooth_is().equals("free_plus_paid")) {
 
 			// Logout current user
 			login.logout();
 
 			// Change blue-tooth type for upgraded device
-			SignupModel.setBluetooth_is("upgraded_device");
+			signupModel.setBluetooth_is("upgraded_device");
 			// Order to ship upgraded device
-			signup.orderToShip();
+			orderToShip();
 
 			// Set blue-tooth type back to default
-			SignupModel.setBluetooth_is("free_plus_paid");
+			signupModel.setBluetooth_is("free_plus_paid");
 			// Login registered user
-			login.login(SignupModel.getOwner_email(), "welcome");
+			login.login(signupModel.getOwner_email(), "welcome");
 
-			// Close the blue-tooth instruction popup
-			Base b = new Base();
-			b.VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
-			signup.activateNewDevice(SignupModel.getAll_Devices_No().get(1));
+			activateNewDevice(signupModel.getAll_Devices_No().get(1));
 
 		}
 

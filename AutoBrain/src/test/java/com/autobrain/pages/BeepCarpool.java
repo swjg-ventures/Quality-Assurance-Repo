@@ -41,7 +41,7 @@ public class BeepCarpool extends Login {
 
 		// Select Add a New Carpool Member option
 		WebElement ele = VisibilityOfElementByXpath("//div[@class='add-from-toggles']/button[1]", 10);
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		JavascriptExecutor executor = (JavascriptExecutor) getDriver();
 		executor.executeScript("arguments[0].click();", ele);
 
 		String col = ele.getCssValue("background-color");
@@ -76,7 +76,7 @@ public class BeepCarpool extends Login {
 //			extractJSLogsInfo();
 		}
 		Assert.assertEquals(member_created, true, "Member not created!");
-		driver.navigate().back();
+		getDriver().navigate().back();
 
 		// Add member
 		addFrndFromBeepCarpool();
@@ -108,7 +108,7 @@ public class BeepCarpool extends Login {
 
 		// Select a friend from beep friend list
 		Select s = new Select(
-				driver.findElement(By.xpath("//select[@class='select gm0q1xaPzRR_hIlmNUybK_0 form-control']")));
+				getDriver().findElement(By.xpath("//select[@class='select gm0q1xaPzRR_hIlmNUybK_0 form-control']")));
 		s.selectByVisibleText("Test_Carpool Member");
 
 		// Click on submit button

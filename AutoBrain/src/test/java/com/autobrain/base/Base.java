@@ -13,7 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import javax.imageio.ImageIO;
+import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -23,7 +25,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -34,9 +42,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import com.autobrain.utilities.Custom_Listner;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -44,28 +50,33 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 @Listeners(Custom_Listner.class)
 public class Base {
+	public Logger logger = null;
+
 	boolean page_load;
-	public static WebDriver driver;
 	public String url = "https://stg.autobrain.com/";
 	public SoftAssert softassert = new SoftAssert();
-
 	public static final String USERNAME = "prince202";
 	public static final String AUTOMATE_KEY = "cRZ8y2VauprKHB1HGg9s";
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-
-
-	
 	@BeforeMethod
 	@Parameters({ "Browsers", "Headless" })
 	public void CheckBrowsers(String Browsers, String headless) throws Exception {
 		if (Browsers.equalsIgnoreCase("firefox")) {
 
 			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+			driver.set(new FirefoxDriver());
 		}
 
 		else if (Browsers.equalsIgnoreCase("chrome")) {
+			System.setProperty("org.freemarker.loggerLibrary", "none");
+
+			DesiredCapabilities cap = DesiredCapabilities.chrome();
+			LoggingPreferences log = new LoggingPreferences();
+			log.enable(LogType.BROWSER, Level.SEVERE);
+			cap.setCapability(CapabilityType.LOGGING_PREFS, log);
+
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-notifications");
 
@@ -87,7 +98,8 @@ public class Base {
 			}
 
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver(options);
+			driver.set(new ChromeDriver(options.merge(cap)));
+
 		}
 
 		else if (Browsers.equalsIgnoreCase("browserstack")) {
@@ -96,12 +108,18 @@ public class Base {
 			caps.setCapability("browser_version", "12");
 			caps.setCapability("browserstack.debug", true);
 			java.net.URL url = new java.net.URL(URL);
-			driver = new RemoteWebDriver(url, caps);
+			driver.set(new RemoteWebDriver(url, caps));
 		}
-		driver.manage().deleteAllCookies();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
-		driver.get(url);
+
+		else if (Browsers.equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driver.set(new EdgeDriver());
+		}
+
+		getDriver().manage().deleteAllCookies();
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		getDriver().get(url);
 
 		// Validate login page displayed
 		boolean isLoginPagedLoaded = VisibilityOfElementByXpath("//input[@name='commit']", 60).isDisplayed();
@@ -109,11 +127,31 @@ public class Base {
 
 	}
 
+	public WebDriver getDriver() {
+		return driver.get();
+	}
+
 	// QUIT BROWSER
 	@AfterMethod
 	public void quit() throws Exception {
-		Thread.sleep(5000);
-		driver.quit();
+		getDriver().quit();
+	}
+
+	// Get javascript error from console
+	public boolean extractJSLogsInfo(String inputErrorMsg) throws Exception {
+		Thread.sleep(1000);
+		getDriver().getCurrentUrl();
+		Thread.sleep(1000);
+		LogEntries logEntries = getDriver().manage().logs().get(LogType.BROWSER);
+		for (LogEntry entry : logEntries) {
+			if (entry.getMessage().contains("500 (Internal Server Error)")) {
+				System.out.println(AnsiConsoleColors.RED_BACKGROUND_BRIGHT + AnsiConsoleColors.WHITE_BOLD_BRIGHT
+						+ inputErrorMsg + AnsiConsoleColors.RESET);
+				return true;
+			}
+		}
+		return false;
+
 	}
 
 // DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
@@ -142,62 +180,62 @@ public class Base {
 
 	// Visibility of element by xpath
 	public WebElement VisibilityOfElementByXpath(String xpath, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 	}
 
 	// Visibility all of elements by xpath
 	public List<WebElement> VisibilityOfAllElementsByXpath(String xpath, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
 	}
 
 	// Visibility of element by ID
 	public WebElement VisibilityOfElementByID(String ID, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(ID)));
 	}
 
 	// Visibility of element by class name
 	public WebElement VisibilityOfElementByClassName(String className, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(className)));
 	}
 
 	// Visibility of element by name
 	public WebElement VisibilityOfElementByName(String Name, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(Name)));
 	}
 
 	// Presence of element by xpath
 	public WebElement PresenceOfElementByXpath(String xpath, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
 	}
 
 	// Presence all of elements by xpath
 	public List<WebElement> PresenceOfAllElementsByXpath(String xpath, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpath)));
 	}
 
 	// Presence of element
 	public WebElement PresenceOfWebElement(WebElement element, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	// Presence of all elements
 	public List<WebElement> PresenceOfAllWebElements(By element, int time) {
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
 	}
 
 	// CAPTURE SCREENSHOT IF THE TEST GOT FAILED
 	public void FullPageScreenshot(String screenshotName) throws Exception {
 		Screenshot fpScreenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
-				.takeScreenshot(driver);
+				.takeScreenshot(getDriver());
 		ImageIO.write(fpScreenshot.getImage(), "PNG", new File("./Images/" + screenshotName + ".png"));
 
 	}
@@ -305,5 +343,4 @@ public class Base {
 		return date1;
 	}
 
-	
 }

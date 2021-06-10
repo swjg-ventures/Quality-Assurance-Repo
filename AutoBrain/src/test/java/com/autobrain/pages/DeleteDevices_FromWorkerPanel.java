@@ -21,27 +21,27 @@ public class DeleteDevices_FromWorkerPanel extends Login {
 		
 		
 		//Redirect to devices page in panel
-		driver.navigate().to("https://stg.autobrain.com/worker/devices/");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/devices/");
 		
 		
 
 		for(int i=0; i<508; i++)
 		{
-			List<WebElement> ele = wait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Delete']")));
+			List<WebElement> ele = wait(getDriver(), 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//a[text()='Delete']")));
 		ele.get(0).click(); Thread.sleep(1000);
 		
-//		driver.switchTo().alert().accept();
+//		getDriver().switchTo().alert().accept();
 		
 		
 		
 		//Click on confirm button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Confirm']"))).click();
 //		
 //
 //				//Alert message closed
 //				try
 //				{
-//				    alt_closed = wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='modal false fade in']"))).size()!=1;
+//				    alt_closed = wait(getDriver(), 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='modal false fade in']"))).size()!=1;
 //				}
 //				
 //				catch(Exception e)
@@ -55,13 +55,13 @@ public class DeleteDevices_FromWorkerPanel extends Login {
 		
 		
 		//Close alert message
-		wait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='alert alert-info']/a"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='alert alert-info']/a"))).click();
 		
 		
 				//Validate message closed
 				try
 				{
-					msg_closed = wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='alert alert-info']/a"))).size()!=1;
+					msg_closed = wait(getDriver(), 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='alert alert-info']/a"))).size()!=1;
 					
 				}
 		

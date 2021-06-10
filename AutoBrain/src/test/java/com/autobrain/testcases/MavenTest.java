@@ -2,6 +2,7 @@ package com.autobrain.testcases;
 
 import org.testng.annotations.Test;
 import com.autobrain.base.Base;
+import com.autobrain.models.SignupModel;
 import com.autobrain.pages.AlertSettings;
 import com.autobrain.pages.BeepCarpool;
 import com.autobrain.pages.CallEmergency;
@@ -24,48 +25,107 @@ import com.autobrain.pages.VehicleProfile;
 
 public class MavenTest extends Base {
 
-	@Test(priority = 1)
+//	@Test
 	public void ValidatePersonalBoughtDeviceTests() throws Exception {
-		SignupWithBoughtDeviceFromABWebsite ss = new SignupWithBoughtDeviceFromABWebsite();
-		ss.signupWithBoughtDeviceFromABWebsite(1, "personal", "vip", "yearly", false);
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setTotal_bought_devices(2);
+		SignupModel.setAccount_type("personal");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_personal_billing_interval("yearly");
+		SignupModel.setSet_esf(false);
+
+		SignupWithBoughtDeviceFromABWebsite ss = new SignupWithBoughtDeviceFromABWebsite(SignupModel);
+		ss.signupWithBoughtDeviceFromABWebsite();
 	}
 
-	@Test(priority = 2)
+//	@Test
 	public void ValidateBusinessBoughtDeviceTests() throws Exception {
-		SignupWithBoughtDeviceFromABWebsite ss = new SignupWithBoughtDeviceFromABWebsite();
-		ss.signupWithBoughtDeviceFromABWebsite(1, "business", "vip", "yearly", false);
+
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setTotal_bought_devices(2);
+		SignupModel.setAccount_type("business");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_business_billing_interval("yearly");
+		SignupModel.setSet_esf(false);
+
+		SignupWithBoughtDeviceFromABWebsite ss = new SignupWithBoughtDeviceFromABWebsite(SignupModel);
+		ss.signupWithBoughtDeviceFromABWebsite();
 	}
 
-	@Test(priority = 3)
+//	@Test
 	public void ValidatePersonalRetailerTests() throws Exception {
-		SignupWithRetailerDevice ss = new SignupWithRetailerDevice();
-		ss.signupWithRetailerDevice(1, "personal", "vip", "monthly", "90 days personal plan", false);
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setTotal_bought_devices(2);
+		SignupModel.setAccount_type("personal");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_personal_billing_interval("monthly");
+		SignupModel.setPricing_plan("90 days personal plan");
+		SignupModel.setSet_esf(false);
+
+		SignupWithRetailerDevice ss = new SignupWithRetailerDevice(SignupModel);
+		ss.signupWithRetailerDevice();
 	}
 
-	@Test(priority = 4)
+//	@Test
 	public void ValidateBusinessRetailerTests() throws Exception {
-		SignupWithRetailerDevice ss = new SignupWithRetailerDevice();
-		ss.signupWithRetailerDevice(2, "business", "vip", "monthly",
-				"Plan Type: Business Referral, Cost: $19.99, Monthly: $14.99, Free Days: 14", false);
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setTotal_bought_devices(3);
+		SignupModel.setAccount_type("business");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_business_billing_interval("monthly");
+		SignupModel.setPricing_plan("Plan Type: Business Referral, Cost: $19.99, Monthly: $14.99, Free Days: 14");
+		SignupModel.setSet_esf(false);
+
+		SignupWithRetailerDevice ss = new SignupWithRetailerDevice(SignupModel);
+		ss.signupWithRetailerDevice();
 	}
 
-	@Test(priority = 5)
+//	@Test
 	public void ValidateFreeBluetoothTests() throws Exception {
-		SignupWithBluetoothDevice ss = new SignupWithBluetoothDevice();
-		ss.signupWithBluetoothDevice("personal", "free", "vip", "monthly",
-				"Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90", false);
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setAccount_type("personal");
+		SignupModel.setBluetooth_is("free");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_personal_billing_interval("monthly");
+		SignupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
+		SignupModel.setSet_esf(false);
+
+		SignupWithBluetoothDevice ss = new SignupWithBluetoothDevice(SignupModel);
+		ss.signupWithBluetoothDevice(false);
 	}
 
-	@Test(priority = 6)
+//	@Test
 	public void ValidatePaidBluetoothTests() throws Exception {
-		SignupWithBluetoothDevice ss = new SignupWithBluetoothDevice();
-		ss.signupWithBluetoothDevice("personal", "free_plus_paid", "vip", "monthly",
-				"Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90", false);
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setAccount_type("personal");
+		SignupModel.setBluetooth_is("free_plus_paid");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_personal_billing_interval("monthly");
+		SignupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
+		SignupModel.setSet_esf(false);
+
+		SignupWithBluetoothDevice ss = new SignupWithBluetoothDevice(SignupModel);
+		ss.signupWithBluetoothDevice(false);
 	}
 
-	@Test(priority = 7)
+	@Test
 	public void ValidateDeviceReplacement() throws Exception {
-		DeviceReplacement n = new DeviceReplacement();
+
+		SignupModel SignupModel = new SignupModel();
+
+		SignupModel.setAccount_type("personal");
+		SignupModel.setPersonal_plan("vip");
+		SignupModel.setChoose_personal_billing_interval("monthly");
+		SignupModel.setPricing_plan("90 days personal plan");
+		SignupModel.setSet_esf(false);
+
+		DeviceReplacement n = new DeviceReplacement(SignupModel);
 		n.deviceReplacement();
 	}
 

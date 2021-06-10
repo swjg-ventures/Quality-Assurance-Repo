@@ -26,23 +26,23 @@ public class CarFinder extends Login {
 		VisibilityOfElementByXpath("//span[contains(text(),'NAV TO CAR')]", 15).click();
 
 		// Checking how many windows are opened currently
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 
 		// Validating window opened or not
 		Assert.assertEquals(tabs.size(), 2);
 
-		driver.switchTo().window(tabs.get(1));
+		getDriver().switchTo().window(tabs.get(1));
 		Thread.sleep(1000);
-		driver.switchTo().window(tabs.get(1)).close();
+		getDriver().switchTo().window(tabs.get(1)).close();
 
 		// Switching to main window
-		driver.switchTo().window(tabs.get(0));
+		getDriver().switchTo().window(tabs.get(0));
 
 		// Click on spotlight
 		VisibilityOfElementByXpath("//a[contains(text(),'SPOTLIGHT')]", 15).click();
 
 		// Validating correct page opened or not
-		Assert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/spotlight");
+		Assert.assertEquals(getDriver().getCurrentUrl(), "https://stg.autobrain.com/spotlight");
 
 		// Closing the spotlight description by clicking on the cross button
 		VisibilityOfElementByXpath("//i[@class='fa fa-times _3N4180tmOGF0PjzMAODtFh_0']", 15).click();
@@ -75,7 +75,7 @@ public class CarFinder extends Login {
 
 		Thread.sleep(2000);
 		// Validating status OFF or not
-		boolean status_off = driver.findElements(By.xpath("//span[contains(text(),'ON')]")).size() == 0;
+		boolean status_off = getDriver().findElements(By.xpath("//span[contains(text(),'ON')]")).size() == 0;
 		Assert.assertEquals(status_off, true);
 	}
 }

@@ -45,7 +45,7 @@ public class ChangePassword extends Login {
 
 	public void changePassword() throws Exception {
 
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 		// Resetting password will help to know the current password
 		ForgotPassword fpass = new ForgotPassword();
@@ -90,7 +90,7 @@ public class ChangePassword extends Login {
 				"Seems like password not updated successfully because no success message found!");
 
 		// Wait unit the flash message disappear
-		while (driver.findElements(By.xpath("//div[@class='flash-message text-center success']")).size() != 0) {
+		while (getDriver().findElements(By.xpath("//div[@class='flash-message text-center success']")).size() != 0) {
 			System.out.println("Checking...");
 			Thread.sleep(2000);
 		}
@@ -102,22 +102,22 @@ public class ChangePassword extends Login {
 
 	public void loginWithNewPassword(String new_pass) throws Exception {
 		// Login with new password
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 		// Entering email
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(email);
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_email"))).sendKeys(email);
 
 		// Entering password
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password")))
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.id("user_password")))
 				.sendKeys(new_pass);
 
 		// Click on login button
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 
 		// Validation login
 		while (home_page_loaded == false) {
 			try {
-				home_page_loaded = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+				home_page_loaded = wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 						"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]")))
 						.isDisplayed();
 			} catch (Exception e) {
@@ -126,7 +126,7 @@ public class ChangePassword extends Login {
 			}
 		}
 
-		Assert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/");
+		Assert.assertEquals(getDriver().getCurrentUrl(), "https://stg.autobrain.com/");
 		isDesktopNotificationAlert();
 		Thread.sleep(2000);
 	}

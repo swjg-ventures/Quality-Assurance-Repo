@@ -13,34 +13,38 @@ public class DeviceReplacement extends Base {
 	SignupWithRetailerDevice retailer_signup;
 	Login login;
 	SignupWithBoughtDeviceFromABWebsite signup;
+	SignupModel obj;
+
+	public DeviceReplacement(SignupModel object) {
+		// Initialization
+		retailer_signup = new SignupWithRetailerDevice(object);
+		login = new Login();
+		signup = new SignupWithBoughtDeviceFromABWebsite(object);
+		obj = object;
+	}
 
 	public void deviceReplacement() throws Exception {
 
-		// Initialization
-		retailer_signup = new SignupWithRetailerDevice();
-		login = new Login();
-		signup = new SignupWithBoughtDeviceFromABWebsite();
-
 		// Signup new user
-		retailer_signup.signupWithRetailerDevice(1, "personal", "vip", "monthly", "90 days personal plan", false);
+		retailer_signup.signupWithRetailerDevice();
 
 		// Logout registered account
 		login.logout();
 
 		// Login worker panel for replacement process
 		login.login("john@example.com", "welcome");
-		
+
 		// Generate new device number
 		signup.createDeviceFromPanel();
 
 		// Device replacement process
-		deviceReplacement(SignupModel.getAll_Devices_No().get(0), SignupModel.getAll_Devices_No().get(1));
+		deviceReplacement(obj.getAll_Devices_No().get(0), obj.getAll_Devices_No().get(1));
 	}
 
 	public void deviceReplacement(String old_device_no, String replaced_device_no) throws Exception {
 
 		// Select a device to be replaced
-		driver.get("https://stg.autobrain.com/worker/device_replacements");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements");
 
 		// Validate device replacement page opened
 		Assert.assertTrue(VisibilityOfElementByXpath("//h1[contains(text(),'Select a device to be replaced')]", 15)
@@ -120,7 +124,7 @@ public class DeviceReplacement extends Base {
 				.contains("Device replaced"));
 
 		// Select a new device to send to the user as a replacement
-		driver.get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
 
 		// Validate Select a new device to send to the user as a replacement page opened
 		Assert.assertTrue(VisibilityOfElementByXpath(
@@ -134,10 +138,10 @@ public class DeviceReplacement extends Base {
 //		signup.createDeviceFromPanel();
 
 		// Select a new device to send to the user as a replacement
-		driver.get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
 
 		// Input new device number to replace
-		VisibilityOfElementByXpath("//td[contains(text(),\"" + SignupModel.getAll_Devices_No().get(0)
+		VisibilityOfElementByXpath("//td[contains(text(),\"" + obj.getAll_Devices_No().get(0)
 				+ "\")]/following-sibling::td[8]//input[@id='device_replacement_new_device_number']", 5)
 						.sendKeys(replaced_device_no);
 
@@ -152,7 +156,7 @@ public class DeviceReplacement extends Base {
 		Assert.assertTrue(VisibilityOfElementByXpath("//div[@id='flash_success']", 10).isDisplayed());
 
 		// Print Shipping Label for Replacement Device
-		driver.get("https://stg.autobrain.com/worker/device_replacements/print_shipping_label");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/print_shipping_label");
 
 		// Click on print shipping label button
 		VisibilityOfElementByXpath("//td[contains(text(),\"" + replaced_device_no + "\")]/following-sibling::td[6]/a",
@@ -171,7 +175,7 @@ public class DeviceReplacement extends Base {
 		Thread.sleep(6000);
 
 		// Mark replacement device and return envelope as sent
-		driver.get("https://stg.autobrain.com/worker/device_replacements/need_envelope");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/need_envelope");
 
 		// Validate page opened
 		Assert.assertTrue(VisibilityOfElementByXpath(
@@ -190,16 +194,16 @@ public class DeviceReplacement extends Base {
 		Assert.assertTrue(VisibilityOfElementByXpath("//div[@id='flash_success']", 10).isDisplayed());
 
 		// Validate customer receive replacement email
-		driver.get("http://www.yopmail.com/en/");
+		getDriver().get("http://www.yopmail.com/en/");
 		Thread.sleep(2000);
-		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(SignupModel.getOwner_email());
+		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(obj.getOwner_email());
 
 		// Click on check for new email button
 		VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
 		Thread.sleep(2000);
 
 		// Switch to frame
-		driver.switchTo().frame("ifmail");
+		getDriver().switchTo().frame("ifmail");
 
 		// Validate email received
 		Assert.assertTrue(
@@ -207,12 +211,12 @@ public class DeviceReplacement extends Base {
 						.isDisplayed());
 
 		// Logout worker panel
-		driver.get("https://stg.autobrain.com/worker");
+		getDriver().get("https://stg.autobrain.com/worker");
 		VisibilityOfElementByXpath("//a[contains(text(),'Log Out')]", 15).click();
 
 		// Login registered user
-		driver.get("https://stg.autobrain.com/users/sign_in");
-		login.login(SignupModel.getOwner_email(), "welcome");
+		getDriver().get("https://stg.autobrain.com/users/sign_in");
+		login.login(obj.getOwner_email(), "welcome");
 
 		signup.activateNewDevice(replaced_device_no);
 

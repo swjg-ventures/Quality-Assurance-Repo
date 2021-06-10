@@ -31,17 +31,17 @@ public class TermsAndConditions extends Base {
 		String expectedpage = "https://stg.autobrain.com/terms";
 
 		// Validating actual page opened or not with url
-		Assert.assertEquals(driver.getCurrentUrl(), expectedpage);
+		Assert.assertEquals(getDriver().getCurrentUrl(), expectedpage);
 
 		// Storing actual title of terms and condition page
-		String ActHeading = driver.findElement(By.xpath("//h4[contains(text(),'Terms of Use and End User License')]"))
+		String ActHeading = getDriver().findElement(By.xpath("//h4[contains(text(),'Terms of Use and End User License')]"))
 				.getText();
 
 		// Validating terms and condition title is matching or not
 		Assert.assertEquals(ActHeading, "Terms of Use and End User License");
 
 		// Navigating back user to login page
-		driver.navigate().to(url);
+		getDriver().navigate().to(url);
 
 	}
 
@@ -58,7 +58,7 @@ public class TermsAndConditions extends Base {
 		String expectedpage = "https://stg.autobrain.com/privacy_policy";
 
 		// Validating actual page opened or not
-		Assert.assertEquals(driver.getCurrentUrl(), expectedpage);
+		Assert.assertEquals(getDriver().getCurrentUrl(), expectedpage);
 
 		// Storing actual heading of privacy policy page
 		String ActHeading = VisibilityOfElementByXpath("//h4[contains(text(),'Privacy Policy')]", 10).getText();
@@ -67,7 +67,7 @@ public class TermsAndConditions extends Base {
 		Assert.assertEquals(ActHeading, "Privacy Policy");
 
 		// Navigating back user to login page
-		driver.navigate().to(url);
+		getDriver().navigate().to(url);
 	}
 
 
@@ -80,10 +80,10 @@ public class TermsAndConditions extends Base {
 
 		Assert.assertEquals(isSignupPageDisplayed, true, "Signup page not displayed!");
 
-		driver.switchTo().frame("fc_widget");
+		getDriver().switchTo().frame("fc_widget");
 		Thread.sleep(1000);
 
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("chat-content"))).click();
+		wait(getDriver(), 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("chat-content"))).click();
 
 		// Writing message in chat box
 		VisibilityOfElementByID("app-conversation-editor", 10).sendKeys("Hello, this is for test!");
@@ -91,20 +91,20 @@ public class TermsAndConditions extends Base {
 		Thread.sleep(3000);
 		// Now, pressing the Enter button from keyboard in order to submit the query in
 		// inbox
-		WebElement textbox = driver.findElement(By.id("app-conversation-editor"));
+		WebElement textbox = getDriver().findElement(By.id("app-conversation-editor"));
 		textbox.sendKeys(Keys.ENTER);
 		Thread.sleep(5000);
 
 		// Validating text sent in in-box or not
-		boolean text = wait(driver, 5)
+		boolean text = wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.id("app-conversation-editor"))).getText()
 				.isEmpty();
 		Assert.assertEquals(text, true);
 
 		// Closing the opened chat box
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("minimize"))).click();
+		wait(getDriver(), 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("minimize"))).click();
 		Thread.sleep(2000);
-		driver.navigate().to(url);
+		getDriver().navigate().to(url);
 
 	}
 

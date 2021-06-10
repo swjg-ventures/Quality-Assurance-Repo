@@ -17,11 +17,11 @@ public class ManageAccount extends Login {
 
 		login("junking4334@yopmail.com", "welcome");
 		// Click on corner dots to expand the menu
-		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
+		wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
 
 		// Click on update contact info from expanded drop-down
-		wait(driver, 20).until(
+		wait(getDriver(), 20).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Update Contact Info')]")))
 				.click();
 
@@ -46,38 +46,38 @@ public class ManageAccount extends Login {
 			// Giving some wait to load the data
 			Thread.sleep(2000);
 			// Updating first name
-			wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).clear();
-			wait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).sendKeys(fname);
+			wait(getDriver(), 30).until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).clear();
+			wait(getDriver(), 30).until(ExpectedConditions.visibilityOfElementLocated(By.id("firstName"))).sendKeys(fname);
 
 			// Updating last name
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("lastName"))).clear();
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("lastName"))).sendKeys(lname);
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("lastName"))).clear();
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("lastName"))).sendKeys(lname);
 
 			// Updating Email
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("email"))).clear();
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("email"))).sendKeys(email);
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("email"))).clear();
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("email"))).sendKeys(email);
 
 			// Updating Phone Number
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("phoneNumber"))).clear();
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("phoneNumber"))).sendKeys(ph);
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("phoneNumber"))).clear();
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("phoneNumber"))).sendKeys(ph);
 
 			// Click on Update button
-			wait(driver, 20).until(
+			wait(getDriver(), 20).until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'UPDATE')]")))
 					.click();
 
 			// Enter password before click on Submit button
-			wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("password")))
+			wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.id("password")))
 					.sendKeys("welcome");
 			Thread.sleep(2000);
 
 			// Click on submit button to udpate the details
-			wait(driver, 20).until(
+			wait(getDriver(), 20).until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
 					.click();
 
 			// Storing success message
-			String successmsg = wait(driver, 20)
+			String successmsg = wait(getDriver(), 20)
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Your information')]")))
 					.getText();
@@ -97,16 +97,16 @@ public class ManageAccount extends Login {
 		// ValidLogin();
 
 		// Click on corner dots to expand the menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
 
 		// Click on update contact info from expanded drop-down
-		wait(driver, 15).until(
+		wait(getDriver(), 15).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Payment Methods')]")))
 				.click();
 		
 		
-		while(driver.findElements(By.xpath("//button[contains(text(),'Add A New Credit Card')]")).size()!=1)
+		while(getDriver().findElements(By.xpath("//button[contains(text(),'Add A New Credit Card')]")).size()!=1)
 		{
 			System.out.println("Waiting for the visibility of Add A New Credit Card Button");
 			Thread.sleep(1500);
@@ -118,74 +118,74 @@ public class ManageAccount extends Login {
 		
 		
 		// Clicking on Add new credit card button
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Add A New Credit Card')]")))
 				.click();
 
 		// Enter First name
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']")))
 				.sendKeys("Jhon");
 
 		// Enter Last name
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Last Name']")))
 				.sendKeys("example");
 
 		// Enter Billing Address
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//input[@placeholder='Billing Address']")))
 				.sendKeys("#123 street tower");
 
 		// Enter City
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
 				.sendKeys("New York");
 		Thread.sleep(2000);
 
 		// Select State
-		Select state = new Select(wait(driver, 20).until(ExpectedConditions
+		Select state = new Select(wait(getDriver(), 20).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//option[contains(text(),'State')]//parent::select"))));
 		state.selectByVisibleText("Alaska");
 
 		// Add card number
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Card Number']")))
 				.sendKeys("4000056655665556");
 
 		// Select Month
-		Select month = new Select(wait(driver, 20).until(ExpectedConditions
+		Select month = new Select(wait(getDriver(), 20).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//option[contains(text(),'Month')]//parent::select"))));
 		month.selectByIndex(11);
 		Thread.sleep(2000);
 
 		// Select Year
-		Select year = new Select(wait(driver, 20).until(ExpectedConditions
+		Select year = new Select(wait(getDriver(), 20).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//option[contains(text(),'Year')]//parent::select"))));
 		year.selectByIndex(8);
 
 		// Enter CVV
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='CVV']")))
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='CVV']")))
 				.sendKeys("111");
 
 		// Enter Zip Code
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Zip Code']")))
 				.sendKeys("160065");
 
 		// Click on check-box (Make This Your Primary Card)
-		wait(driver, 15).until(
+		wait(getDriver(), 15).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']")))
 				.click();
 
 		// Click on Save button
-		wait(driver, 15)
+		wait(getDriver(), 15)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 				.click();
 		
 		//Store result message
-		String msg = wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Success')]"))).getText();
+		String msg = wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Success')]"))).getText();
 		
 		//Validate result
 		Assert.assertEquals(msg, "Success", "Success message not found!");
@@ -231,78 +231,78 @@ public class ManageAccount extends Login {
 //		ValidLogin();
 		Thread.sleep(4000);
 		// Click on corner dots to expand the menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
 
 		// Click on update contact info from expanded drop-down
-		wait(driver, 20).until(
+		wait(getDriver(), 20).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Payment Methods')]")))
 				.click();
 		Thread.sleep(5000);
 
 		// Select credit card and click on update button
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(
+		wait(getDriver(), 5).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[contains(text(),'MasterCard')]/following-sibling::a/button"))).click();
 
 		Thread.sleep(7000);
 		// Enter First name
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']")))
 				.clear();
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='First Name']")))
 				.sendKeys(Fname);
 		Thread.sleep(2000);
 
 		// Enter Last name
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Last Name']")))
 				.clear();
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Last Name']")))
 				.sendKeys(Lname);
 		Thread.sleep(2000);
 
 		// Enter Billing Address
-		wait(driver, 5).until(
+		wait(getDriver(), 5).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Billing Address']")))
 				.clear();
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//input[@placeholder='Billing Address']")))
 				.sendKeys(Billingadd);
 		Thread.sleep(2000);
 
 		// Enter City
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
+		wait(getDriver(), 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
 				.clear();
-		wait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
+		wait(getDriver(), 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='City']")))
 				.sendKeys(City);
 		Thread.sleep(2000);
 
 		// Select State
-		Select state = new Select(driver.findElement(By.xpath("//option[contains(text(),'State')]//parent::select")));
+		Select state = new Select(getDriver().findElement(By.xpath("//option[contains(text(),'State')]//parent::select")));
 		state.selectByVisibleText(State);
 		Thread.sleep(2000);
 
 		// Select Month
-		Select month = new Select(driver.findElement(By.xpath("//option[contains(text(),'Month')]//parent::select")));
+		Select month = new Select(getDriver().findElement(By.xpath("//option[contains(text(),'Month')]//parent::select")));
 
 		month.selectByIndex(mnth);
 		Thread.sleep(2000);
 
 		// Select Year
-		Select year = new Select(driver.findElement(By.xpath("//option[contains(text(),'Year')]//parent::select")));
+		Select year = new Select(getDriver().findElement(By.xpath("//option[contains(text(),'Year')]//parent::select")));
 
 		year.selectByIndex(yr);
 		Thread.sleep(2000);
 
 		// Click on Save button to update the info
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Save')]")))
 				.click();
 		Thread.sleep(4000);
-//			Assert.assertEquals(driver.getCurrentUrl(), "https://stg.autobrain.com/payments/card_info");
+//			Assert.assertEquals(getDriver().getCurrentUrl(), "https://stg.autobrain.com/payments/card_info");
 
 	}
 
@@ -312,25 +312,25 @@ public class ManageAccount extends Login {
 //		ValidLogin();
 		Thread.sleep(4000);
 		// Click on corner dots to expand the menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("ellipsis-opener"))).click();
 		Thread.sleep(2000);
 
 		// Click on update contact info from expanded drop-down
-		wait(driver, 5).until(
+		wait(getDriver(), 5).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(text(),'Print Roadside Card')]")))
 				.click();
 		Thread.sleep(3000);
 
 		// Emergency Contact #1
 		// Enter Name
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@class='contact'][1]/div[2]/div[1]/input")))
 				.sendKeys("John");
 		Thread.sleep(1000);
 
 		// Enter Phone number
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@class='contact'][1]/div[2]/div[2]/input")))
 				.sendKeys("1234567890");
@@ -338,14 +338,14 @@ public class ManageAccount extends Login {
 
 		// Emergency Contact #2
 		// Enter Name
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@class='contact'][2]/div[2]/div[1]/input")))
 				.sendKeys("Albert");
 		Thread.sleep(1000);
 
 		// Enter Phone number
-		wait(driver, 5)
+		wait(getDriver(), 5)
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@class='contact'][2]/div[2]/div[2]/input")))
 				.sendKeys("9998885552");

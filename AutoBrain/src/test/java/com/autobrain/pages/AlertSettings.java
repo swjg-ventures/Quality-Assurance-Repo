@@ -75,7 +75,7 @@ public class AlertSettings extends Login {
 		System.out.println("----------------------------------------------------");
 
 		// Refreshing the page
-		driver.navigate().refresh();
+		getDriver().navigate().refresh();
 
 		while(!VisibilityOfElementByXpath("//h4[contains(text(),'Alert Settings')]", 20).isDisplayed()){
 			System.out.println("Loading afte refresh!");
@@ -122,7 +122,7 @@ public class AlertSettings extends Login {
 
 		// Clicking on Save button
 		WebElement ele = VisibilityOfElementByXpath("//button[contains(text(),'Save')]", 15);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("arguments[0].scrollIntoView(true);", ele);
 		Thread.sleep(2000);
 		ele.click();

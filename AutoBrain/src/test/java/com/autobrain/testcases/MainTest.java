@@ -1,7 +1,6 @@
 package com.autobrain.testcases;
 
 import org.testng.annotations.Test;
-
 import com.autobrain.pages.AlertSettings;
 import com.autobrain.pages.BeepCarpool;
 import com.autobrain.pages.CallEmergency;
@@ -12,7 +11,6 @@ import com.autobrain.pages.CustomerInfo;
 import com.autobrain.pages.CustomerService;
 import com.autobrain.pages.DownloadApp;
 import com.autobrain.pages.GetAnotherDeviceFromWeb;
-import com.autobrain.pages.Modes;
 import com.autobrain.pages.RoadsideAssistance;
 import com.autobrain.pages.VehicleProfile;
 

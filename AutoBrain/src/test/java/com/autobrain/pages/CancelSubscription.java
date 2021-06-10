@@ -12,7 +12,7 @@ public class CancelSubscription extends Login {
 	public void cancelSubscription() throws Exception {
 		login("john@example.com", "welcome");
 
-		driver.navigate().to("https://stg.autobrain.com/worker");
+		getDriver().navigate().to("https://stg.autobrain.com/worker");
 
 		// Validate worker panel page loaded
 		boolean isWorkerPanelPageLoaded = VisibilityOfElementByXpath("//strong[contains(text(),'Customer Service')]",
@@ -86,7 +86,7 @@ public class CancelSubscription extends Login {
 
 		WebElement ele = VisibilityOfElementByXpath("//th[text()='Select A Cancellation Option']", 15);
 
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("arguments[0].scrollIntoView(true);", ele);
 		
 		// Click on option #1 to cancel subscription
@@ -115,7 +115,7 @@ public class CancelSubscription extends Login {
 		System.out.println(cancelledDevice + " Device subscription cancelled successfully!");
 
 		// PROCESS TO UNCANCEL THE CANCELLED DEVICE
-		driver.navigate().to("https://stg.autobrain.com/worker/device_cancellations/canceled_devices");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/device_cancellations/canceled_devices");
 
 		// Enter cancelled device number in search
 		VisibilityOfElementByXpath("//input[@id='query']", 15).sendKeys(cancelledDevice);

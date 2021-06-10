@@ -30,7 +30,7 @@ public class MarkReplacedDeviceForReuse extends Login {
 
 		if (!(excel_pending_devices.size() == 0)) {
 			login("john@example.com", "welcome");
-			driver.get("https://stg.autobrain.com/worker/device_cancellations/bulk_retail");
+			getDriver().get("https://stg.autobrain.com/worker/device_cancellations/bulk_retail");
 
 			// CSV file to add devices
 			File csvFile = new File(csv_file_path);

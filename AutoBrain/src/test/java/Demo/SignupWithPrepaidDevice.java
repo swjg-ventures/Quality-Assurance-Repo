@@ -62,7 +62,7 @@ public class SignupWithPrepaidDevice extends Signup {
 	private void SubmitCsvFile() throws Exception {
 
 		// Redirect to devices page in panel
-		driver.get("https://stg.autobrain.com/worker/retail_fulfillment/ready_for_distribution");
+		getDriver().get("https://stg.autobrain.com/worker/retail_fulfillment/ready_for_distribution");
 
 		// Click on upload file button
 		WebElement upload_file = PresenceOfElementByXpath("//input[@name='file']", 15);
@@ -97,7 +97,7 @@ public class SignupWithPrepaidDevice extends Signup {
 
 		// Check error exist
 		try {
-			error = wait(driver, 5)
+			error = wait(getDriver(), 5)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='flash_alert']")))
 					.isDisplayed();
 		}
@@ -115,7 +115,7 @@ public class SignupWithPrepaidDevice extends Signup {
 
 	private void Signup() throws Exception {
 		email = GenerateRandomEmail();
-		driver.navigate().to(url);
+		getDriver().navigate().to(url);
 
 		// Clicking on sign-up button
 		VisibilityOfElementByXpath("//a[contains(text(),'SIGN UP')]", 15).click();
@@ -135,7 +135,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		VisibilityOfElementByID("user_email", 15).sendKeys(email);
 
 		// Store entered email in variable
-		entered_email = driver.findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
+		entered_email = getDriver().findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
 
 		// Entering phone number
 		VisibilityOfElementByID("user_contacts_attributes_0_data", 15).clear();
@@ -153,12 +153,12 @@ public class SignupWithPrepaidDevice extends Signup {
 		VisibilityOfElementByXpath("//div[contains(text(),'SIGN UP')]", 15).click();
 		Thread.sleep(2500);
 
-		for (int i = 0; i < driver.findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
-			email_alert_error = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
+		for (int i = 0; i < getDriver().findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
+			email_alert_error = getDriver().findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
 					.size() != 0;
-			boolean firstN_alert = driver
+			boolean firstN_alert = getDriver()
 					.findElements(By.xpath("//input[@placeholder='First Name']/following-sibling::span")).size() != 0;
-			boolean lastN_alert = driver
+			boolean lastN_alert = getDriver()
 					.findElements(By.xpath("//input[@placeholder='Last Name']/following-sibling::span")).size() != 0;
 
 			// First name already exist
@@ -204,7 +204,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		// YOPMAIL.COM
 		Thread.sleep(2000);
 
-		driver.get("http://www.yopmail.com/en/");
+		getDriver().get("http://www.yopmail.com/en/");
 
 		Thread.sleep(2000);
 
@@ -229,28 +229,28 @@ public class SignupWithPrepaidDevice extends Signup {
 		Thread.sleep(1000);
 
 		// Switch to frame
-		driver.switchTo().frame(driver.findElement(By.id("ifinbox")));
+		getDriver().switchTo().frame(getDriver().findElement(By.id("ifinbox")));
 
 		// Open confirmation email
 		VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
 		Thread.sleep(1000);
 
 		// Back to parent frame
-		driver.switchTo().parentFrame();
+		getDriver().switchTo().parentFrame();
 
 		// Switch to frame
-		driver.switchTo().frame(driver.findElement(By.id("ifmail")));
+		getDriver().switchTo().frame(getDriver().findElement(By.id("ifmail")));
 
 		// Get confirmation code
 		String code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
 
-		driver.get(url);
+		getDriver().get(url);
 
 		// Input verification code
 		VisibilityOfElementByXpath("//input[@placeholder='Confirmation Code']", 15).sendKeys(code);
 
 		// Click on submit button
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 		Thread.sleep(2000);
 
 		if (p_load == false) {
@@ -267,10 +267,10 @@ public class SignupWithPrepaidDevice extends Signup {
 		// ESF_Exemptions
 		if (ESFExemptions()) {
 			boolean check_box;
-			driver.navigate().refresh();
+			getDriver().navigate().refresh();
 			Thread.sleep(4000);
 			try {
-				check_box = wait(driver, 10)
+				check_box = wait(getDriver(), 10)
 						.until(ExpectedConditions
 								.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(text(),'Upon canceling')]")))
 						.size() == 1;
@@ -311,7 +311,7 @@ public class SignupWithPrepaidDevice extends Signup {
 	// This will just create a invoice from worker panel
 	private String CreateInvoice() throws Exception {
 
-		driver.get("https://stg.autobrain.com/worker/retail_fulfillment/new_invoice");
+		getDriver().get("https://stg.autobrain.com/worker/retail_fulfillment/new_invoice");
 
 		// Add Quantity
 		String s = prop.getProperty("no_of_devices");
@@ -343,7 +343,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		select.selectByVisibleText(invoice_account_type);
 
 		// Submit button
-		wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+		wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 
 		// Validate invoice created
 		// Get invoice auto-generated number
@@ -366,7 +366,7 @@ public class SignupWithPrepaidDevice extends Signup {
 		String device_num = null;
 
 		// Redirect to devices page in panel
-		driver.navigate().to("https://stg.autobrain.com/worker/devices/");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/devices/");
 
 		String total_bought_devices = prop.getProperty("no_of_devices");
 		int Total_bought_devices = Integer.parseInt(total_bought_devices);
@@ -374,11 +374,11 @@ public class SignupWithPrepaidDevice extends Signup {
 		for (int i = 0; i < Total_bought_devices; i++) {
 
 			// Navigate to add device page
-			driver.navigate().to("https://stg.autobrain.com/worker/devices/new");
+			getDriver().navigate().to("https://stg.autobrain.com/worker/devices/new");
 
 			// Validating add device page opened or not
 			while (!isNewDevicePageFound) {
-				isNewDevicePageFound = driver.findElements(By.xpath("//h1[contains(text(),'Add a new device')]"))
+				isNewDevicePageFound = getDriver().findElements(By.xpath("//h1[contains(text(),'Add a new device')]"))
 						.size() == 1;
 			}
 
@@ -390,12 +390,12 @@ public class SignupWithPrepaidDevice extends Signup {
 			VisibilityOfElementByXpath("//input[@id='device_international_phone_number']", 15).click();
 
 			// Enter Cellular service type
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.name("device[cellular_service_type]")))
 					.sendKeys(prop.getProperty("cellular_service_type"));
 
 			// Select Model
-			Select sel = new Select(driver.findElement(By.name("device[model]")));
+			Select sel = new Select(getDriver().findElement(By.name("device[model]")));
 			sel.selectByVisibleText(prop.getProperty("model"));
 
 			// Enter Device UID (ESN)
@@ -404,15 +404,15 @@ public class SignupWithPrepaidDevice extends Signup {
 			device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 					.getAttribute("value");
 			// Select ESN Format
-			Select sel2 = new Select(driver.findElement(By.name("device[uid_format]")));
+			Select sel2 = new Select(getDriver().findElement(By.name("device[uid_format]")));
 			sel2.selectByVisibleText("Decimal");
 
 			// Click on create device button
-			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+			wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 
 			// VALIDATE ERROR
-			while (driver.findElements(By.id("flash_alert")).size() > 0) {
-				if (driver.findElements(By.xpath("//div[contains(text(),'Uid has already been taken')]"))
+			while (getDriver().findElements(By.id("flash_alert")).size() > 0) {
+				if (getDriver().findElements(By.xpath("//div[contains(text(),'Uid has already been taken')]"))
 						.size() == 1 == true) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
@@ -420,17 +420,17 @@ public class SignupWithPrepaidDevice extends Signup {
 					device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 							.getAttribute("value");
 					// Click on create device button
-					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+					wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 				}
 
-				if (driver.findElements(By.xpath("//div[contains(text(),' Phone number has already been taken')]"))
+				if (getDriver().findElements(By.xpath("//div[contains(text(),' Phone number has already been taken')]"))
 						.size() == 1 == true) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 5).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15)
 							.sendKeys(GeneratePhoneNumber());
 
 					// Click on create device button
-					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+					wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 				}
 			}
 

@@ -151,7 +151,7 @@ public class Signup extends Login {
 		}
 
 		// Store entered email in variable
-		entered_email = driver.findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
+		entered_email = getDriver().findElement(By.xpath("//input[@placeholder='Email']")).getAttribute("value");
 
 		// Entering phone number
 		VisibilityOfElementByID("user_contacts_attributes_0_data", 15).clear();
@@ -170,12 +170,12 @@ public class Signup extends Login {
 		VisibilityOfElementByXpath("//div[contains(text(),'SIGN UP')]", 15).click();
 		Thread.sleep(2500);
 
-		for (int i = 0; i < driver.findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
-			boolean email_alert = driver.findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
+		for (int i = 0; i < getDriver().findElements(By.xpath("//span[@class='help-block']")).size(); i++) {
+			boolean email_alert = getDriver().findElements(By.xpath("//span[contains(text(),'has already been taken')]"))
 					.size() != 0;
-			boolean firstN_alert = driver
+			boolean firstN_alert = getDriver()
 					.findElements(By.xpath("//input[@placeholder='First Name']/following-sibling::span")).size() != 0;
-			boolean lastN_alert = driver
+			boolean lastN_alert = getDriver()
 					.findElements(By.xpath("//input[@placeholder='Last Name']/following-sibling::span")).size() != 0;
 
 			// First name already exist
@@ -223,7 +223,7 @@ public class Signup extends Login {
 			// YOPMAIL.COM
 			Thread.sleep(2000);
 
-			driver.get("http://www.yopmail.com/en/");
+			getDriver().get("http://www.yopmail.com/en/");
 
 			Thread.sleep(2000);
 
@@ -248,28 +248,28 @@ public class Signup extends Login {
 			Thread.sleep(1000);
 
 			// Switch to frame
-			driver.switchTo().frame(driver.findElement(By.id("ifinbox")));
+			getDriver().switchTo().frame(getDriver().findElement(By.id("ifinbox")));
 
 			// Open confirmation email
 			VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
 			Thread.sleep(1000);
 
 			// Back to parent frame
-			driver.switchTo().parentFrame();
+			getDriver().switchTo().parentFrame();
 
 			// Switch to frame
-			driver.switchTo().frame(driver.findElement(By.id("ifmail")));
+			getDriver().switchTo().frame(getDriver().findElement(By.id("ifmail")));
 
 			// Get confirmation code
 			String code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15).getText();
 
-			driver.get(url);
+			getDriver().get(url);
 
 			// Input verification code
 			VisibilityOfElementByXpath("//input[@placeholder='Confirmation Code']", 15).sendKeys(code);
 
 			// Click on submit button
-			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+			wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 			Thread.sleep(2000);
 		}
 
@@ -287,7 +287,7 @@ public class Signup extends Login {
 		// ESF_Exemptions
 		if (ESFExemptions()) {
 			boolean check_box;
-			driver.navigate().refresh();
+			getDriver().navigate().refresh();
 			Thread.sleep(4000);
 			try {
 				check_box = PresenceOfAllElementsByXpath("//div[contains(text(),'Upon canceling')]", 15).size() == 1;
@@ -320,16 +320,16 @@ public class Signup extends Login {
 
 	private ArrayList<String> orderDeviceFromWebSite() throws Exception {
 		// Initializing elements
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 
 		// Generating random email
 		String Email = GenerateRandomEmail();
 
 		// Calling login method
 		login("john@example.com", "welcome");
-		driver.get("https://stg.autobrain.com/buy");
+		getDriver().get("https://stg.autobrain.com/buy");
 		// Click on Menu button
-//		wait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
+//		wait(getDriver(), 20).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
 //				.click();
 
 //		// Click on Download App
@@ -337,11 +337,11 @@ public class Signup extends Login {
 //		Thread.sleep(2000);
 //
 //		// Checking how many windows are opened currently
-//		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+//		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 //
 //		// Switching to Buy now page
-//		driver.switchTo().window(tabs.get(1));
-		driver.get("https://stg.autobrain.com/buy");
+//		getDriver().switchTo().window(tabs.get(1));
+		getDriver().get("https://stg.autobrain.com/buy");
 		// Open drop-down to select number of devices
 		Select s = new Select(VisibilityOfElementByXpath("//div[@class='quanities-container']/select", 15));
 		s.selectByVisibleText(prop.getProperty("no_of_devices"));
@@ -468,27 +468,27 @@ public class Signup extends Login {
 				"Expected product price not matching with actual product price!");
 
 //		// Closing current window
-//		driver.switchTo().window(tabs.get(1)).close();
+//		getDriver().switchTo().window(tabs.get(1)).close();
 //		Thread.sleep(1000);
 //
 //		// Switching to main window
-//		driver.switchTo().window(tabs.get(0));
+//		getDriver().switchTo().window(tabs.get(0));
 		Thread.sleep(1000);
 
 		ar.clear();
 		ar.add(Email);
 
 		// Navigate to devices page
-		driver.navigate().to("https://stg.autobrain.com/worker/devices");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/devices");
 
 		// Store user buy device ID
-		String user_buy_device = driver.findElement(By.xpath("//tbody/tr[1]/td[1]")).getText();
+		String user_buy_device = getDriver().findElement(By.xpath("//tbody/tr[1]/td[1]")).getText();
 
 		// Create device number for customer
 		create_device_by_panel();
 
 		// Switch to Orders To Ship page
-		driver.navigate().to("https://stg.autobrain.com/worker/online_fulfillment/invoices_to_ship");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/online_fulfillment/invoices_to_ship");
 
 		// Click on Add Device button to add the manually created device
 		add_device_btn.get(0).click();
@@ -507,18 +507,18 @@ public class Signup extends Login {
 			Thread.sleep(3000);
 
 			// Check if the error exist after enter custom created device number
-			while (driver.findElements(By.xpath("//div[@class='form-group form-inline col-xs-12 has-error']"))
+			while (getDriver().findElements(By.xpath("//div[@class='form-group form-inline col-xs-12 has-error']"))
 					.size() > 0) {
 				// Closed opened message box
-				List<WebElement> close_btn = driver.findElements(By.xpath("//div[@class='modal fade in']//button[1]"));
+				List<WebElement> close_btn = getDriver().findElements(By.xpath("//div[@class='modal fade in']//button[1]"));
 				close_btn.get(1).click();
 				Thread.sleep(1000);
 
 				// Refresh the page
-				driver.navigate().refresh();
+				getDriver().navigate().refresh();
 
 				// Time to reload the complete page
-				while (driver.findElements(By.xpath("//h3[contains(text(),'Orders to ship')]")).size() == 0) {
+				while (getDriver().findElements(By.xpath("//h3[contains(text(),'Orders to ship')]")).size() == 0) {
 					System.out.println("Loading...Orders to ship page!");
 				}
 
@@ -536,7 +536,7 @@ public class Signup extends Login {
 		}
 
 		// Click on Save button
-		List<WebElement> btn = driver.findElements(By.xpath("//button[contains(text(),'Save changes')]"));
+		List<WebElement> btn = getDriver().findElements(By.xpath("//button[contains(text(),'Save changes')]"));
 		btn.get(0).click();
 
 		// Validate device added
@@ -580,27 +580,27 @@ public class Signup extends Login {
 		mark_as_shipped_btn.get(0).click();
 
 		// Refresh the page
-		driver.navigate().refresh();
+		getDriver().navigate().refresh();
 
 		Thread.sleep(2500);
 
 		// After marked as shipped device should disappear from the list
-		boolean user_disappear_from_list = driver
+		boolean user_disappear_from_list = getDriver()
 				.findElements(By.xpath("//a[contains(text(),'Device #" + "Device_Num" + " added')]")).size() == 0;
 		Assert.assertEquals(user_disappear_from_list, true,
 				"User still exist in the list which should not after marked the device as shipped!");
 
 		// Navigate to devices page
-		driver.navigate().to("https://stg.autobrain.com/worker/devices");
+		getDriver().navigate().to("https://stg.autobrain.com/worker/devices");
 
-		String device_no = driver.findElement(By.xpath("//tbody/tr[2]/td[1]")).getText();
+		String device_no = getDriver().findElement(By.xpath("//tbody/tr[2]/td[1]")).getText();
 
 		boolean user_device_updated = user_buy_device != device_no;
 		Assert.assertEquals(user_device_updated, true, "User bought device not updated!");
 
 		VisibilityOfElementByXpath("//a[contains(text(),'Log Out')]", 15).click();
 		Thread.sleep(2000);
-		driver.navigate().to("https://stg.autobrain.com");
+		getDriver().navigate().to("https://stg.autobrain.com");
 		softassert.assertAll();
 		return ar;
 	}
@@ -636,17 +636,17 @@ public class Signup extends Login {
 		VisibilityOfElementByXpath(caricon, 15).click();
 
 		// Car Year
-		Select y = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
+		Select y = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
 		y.selectByVisibleText(year);
 		Thread.sleep(2000);
 
 		// Car Make
-		Select m = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][2]/div[2]/select")));
+		Select m = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][2]/div[2]/select")));
 		m.selectByVisibleText(make);
 		Thread.sleep(2000);
 
 		// Car Model
-		Select mo = new Select(driver.findElement(By.xpath("//div[@class='secondary-input'][3]/div[2]/select")));
+		Select mo = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][3]/div[2]/select")));
 		mo.selectByIndex(model);
 		model_selected = mo.getFirstSelectedOption().getText().trim();
 		Thread.sleep(1000);
@@ -684,14 +684,14 @@ public class Signup extends Login {
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD OPENED)
 		if (!billing_interval_page_title) {
 			if (prop.get("account_type").equals("Autobrain Business")) {
-				billing_interval_page_title = wait(driver, 30)
+				billing_interval_page_title = wait(getDriver(), 30)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Billing Interval')]")))
 						.isDisplayed();
 			}
 
 			if (prop.get("account_type").equals("Autobrain Family")) {
-				billing_interval_page_title = wait(driver, 30)
+				billing_interval_page_title = wait(getDriver(), 30)
 						.until(ExpectedConditions
 								.presenceOfElementLocated(By.xpath("//h4[contains(text(),'Choose Plan')]")))
 						.isDisplayed();
@@ -805,16 +805,16 @@ public class Signup extends Login {
 
 			// Validate Step 2 page opened
 			try {
-				credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Driver Setup')]", 20).size() == 1;
+				credit_card = VisibilityOfAllElementsByXpath("//h4[contains(text(),'getDriver() Setup')]", 20).size() == 1;
 			} catch (Exception e) {
 
 			}
-			Assert.assertEquals(credit_card, true, "Monitor and Driver page not found!");
+			Assert.assertEquals(credit_card, true, "Monitor and getDriver() page not found!");
 			Thread.sleep(2000);
 		}
 	}
 
-	// Step 2 will add monitor driver details
+	// Step 2 will add monitor getDriver() details
 	public void Step2() throws Exception {
 
 		if (prop.get("account_type").equals("Autobrain Business")) {
@@ -858,44 +858,44 @@ public class Signup extends Login {
 			Assert.assertEquals(success_msg, true, "Succes message not appear!");
 
 			// Verify Monitor added in drop-down list (Who Drives This Car The Most?)
-			Select sel = new Select(driver.findElement(By.xpath("//select[@class='select']")));
+			Select sel = new Select(getDriver().findElement(By.xpath("//select[@class='select']")));
 			try {
 				sel.selectByVisibleText("Test_Monitor Demo");
 			} catch (Exception e) {
 				softassert.assertEquals(false, true, "Added Monitor not found in drop-down list!");
 			}
 
-			// Added Monitor should also appear in List Of All Monitors And Drivers
+			// Added Monitor should also appear in List Of All Monitors And getDriver()s
 			boolean list_mon = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Test_Monitor Demo')]", 15)
 					.size() == 1;
-			softassert.assertEquals(list_mon, true, "Added Monitor not found in List Of All Monitors And Drivers!");
+			softassert.assertEquals(list_mon, true, "Added Monitor not found in List Of All Monitors And getDriver()s!");
 
 			// Closing the Monitor form
 			VisibilityOfElementByXpath("//button[contains(text(),'Cancel')]", 15).click();
 
-			// ADD DRIVER
-			// Click on Add New Driver button
-			VisibilityOfElementByXpath("//button[contains(text(),'Add New Driver')]", 15).click();
+			// ADD getDriver()
+			// Click on Add New getDriver() button
+			VisibilityOfElementByXpath("//button[contains(text(),'Add New getDriver()')]", 15).click();
 
 			// Validate form open
-			boolean form_open2 = VisibilityOfAllElementsByXpath("//label[contains(text(),'Driver First Name')]", 15)
+			boolean form_open2 = VisibilityOfAllElementsByXpath("//label[contains(text(),'getDriver() First Name')]", 15)
 					.size() == 1;
-			Assert.assertEquals(form_open2, true, "Add Driver form not opened!");
+			Assert.assertEquals(form_open2, true, "Add getDriver() form not opened!");
 
 			// Storing all elements to fill up Monitor form
 			List<WebElement> mon_ele2 = VisibilityOfAllElementsByXpath("//div[@class='gWHzj82vXtHhEXQk0erkB_0']/input",
 					15);
 
-			// Enter Driver First Name
-			mon_ele2.get(0).sendKeys("Test_Driver");
+			// Enter getDriver() First Name
+			mon_ele2.get(0).sendKeys("Test_getDriver()");
 
-			// Enter Driver Last Name
+			// Enter getDriver() Last Name
 			mon_ele2.get(1).sendKeys("Demo");
 
-			// Driver Email
-			mon_ele2.get(2).sendKeys("demodriver123@mailinator.com");
+			// getDriver() Email
+			mon_ele2.get(2).sendKeys("demogetDriver()123@mailinator.com");
 
-			// Driver phone number
+			// getDriver() phone number
 			mon_ele2.get(3).sendKeys("7418529632");
 
 			// Check-box (Phone number is not from US)
@@ -910,25 +910,25 @@ public class Signup extends Login {
 			Assert.assertEquals(success_msg2, true, "Succes message not appear!");
 
 			// Verify Monitor added in drop-down list (Who Drives This Car The Most?)
-			Select sel2 = new Select(driver.findElement(By.xpath("//select[@class='select']")));
+			Select sel2 = new Select(getDriver().findElement(By.xpath("//select[@class='select']")));
 			Thread.sleep(2000);
 			try {
-				sel2.selectByVisibleText("Test_Driver Demo");
+				sel2.selectByVisibleText("Test_getDriver() Demo");
 			} catch (Exception e) {
-				softassert.assertEquals(false, true, "Added Driver not found in drop-down list!");
+				softassert.assertEquals(false, true, "Added getDriver() not found in drop-down list!");
 			}
 
-			// Added Monitor should also appear in List Of All Monitors And Drivers
-			boolean list_mon2 = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Test_Driver Demo')]", 15)
+			// Added Monitor should also appear in List Of All Monitors And getDriver()s
+			boolean list_mon2 = VisibilityOfAllElementsByXpath("//h4[contains(text(),'Test_getDriver() Demo')]", 15)
 					.size() == 1;
-			softassert.assertEquals(list_mon2, true, "Added Driver not found in List Of All Monitors And Drivers!");
+			softassert.assertEquals(list_mon2, true, "Added getDriver() not found in List Of All Monitors And getDriver()s!");
 		}
 
 		// Finally click on Save and Go To Next Step button
 		Thread.sleep(2000);
 
 		try {
-			wait(driver, 3).until(ExpectedConditions
+			wait(getDriver(), 3).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To Next Step')]")))
 					.click();
 		}
@@ -1021,7 +1021,7 @@ public class Signup extends Login {
 
 		// Click on Next page button
 		try {
-			wait(driver, 2).until(ExpectedConditions
+			wait(getDriver(), 2).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Save and Go To')]"))).click();
 		}
 
@@ -1093,7 +1093,7 @@ public class Signup extends Login {
 	public void StepOneActivateNewDevice(String device_no) throws Exception {
 
 		// Open navigation menu
-		wait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
+		wait(getDriver(), 15).until(ExpectedConditions.visibilityOfElementLocated(By.className("hamburger-container")))
 				.click();
 		Thread.sleep(2000);
 
@@ -1164,7 +1164,7 @@ public class Signup extends Login {
 
 		try {
 			// Submit
-			wait(driver, 4).until(
+			wait(getDriver(), 4).until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Continue')]")))
 					.click();
 
@@ -1172,14 +1172,14 @@ public class Signup extends Login {
 
 		catch (Exception e) {
 			// Submit
-			wait(driver, 2).until(
+			wait(getDriver(), 2).until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Submit')]")))
 					.click();
 		}
 
 		// VALIDATE CHOOSE PLAN PAGE
 		try {
-			choose_plan_page = wait(driver, 10)
+			choose_plan_page = wait(getDriver(), 10)
 					.until(ExpectedConditions
 							.visibilityOfAllElementsLocatedBy(By.xpath("//h4[contains(text(),'Choose Plan')]")))
 					.size() == 1;
@@ -1306,7 +1306,7 @@ public class Signup extends Login {
 
 		// Validate enter card details accepted or not
 		try {
-			card_error_msg = wait(driver, 5).until(ExpectedConditions
+			card_error_msg = wait(getDriver(), 5).until(ExpectedConditions
 					.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='flash-message text-center error']")))
 					.size() == 1;
 		} catch (Exception e) {
@@ -1325,11 +1325,11 @@ public class Signup extends Login {
 		for (int i = 0; i < Total_bought_devices; i++) {
 
 			// Navigate to add device page
-			driver.navigate().to("https://stg.autobrain.com/worker/devices/new");
+			getDriver().navigate().to("https://stg.autobrain.com/worker/devices/new");
 
 			// Validating add device page opened or not
 			while (!isNewDevicePageFound) {
-				isNewDevicePageFound = driver.findElements(By.xpath("//h1[contains(text(),'Add a new device')]"))
+				isNewDevicePageFound = getDriver().findElements(By.xpath("//h1[contains(text(),'Add a new device')]"))
 						.size() == 1;
 			}
 
@@ -1341,12 +1341,12 @@ public class Signup extends Login {
 			VisibilityOfElementByXpath("//input[@id='device_international_phone_number']", 15).click();
 
 			// Enter Cellular service type
-			wait(driver, 10)
+			wait(getDriver(), 10)
 					.until(ExpectedConditions.visibilityOfElementLocated(By.name("device[cellular_service_type]")))
 					.sendKeys("WYLESS");
 
 			// Select Model
-			Select sel = new Select(driver.findElement(By.name("device[model]")));
+			Select sel = new Select(getDriver().findElement(By.name("device[model]")));
 			sel.selectByVisibleText("Standard");
 
 			// Enter Device UID (ESN)
@@ -1355,15 +1355,15 @@ public class Signup extends Login {
 			device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 					.getAttribute("value");
 			// Select ESN Format
-			Select sel2 = new Select(driver.findElement(By.name("device[uid_format]")));
+			Select sel2 = new Select(getDriver().findElement(By.name("device[uid_format]")));
 			sel2.selectByVisibleText("Decimal");
 
 			// Click on create device button
-			wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+			wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 
 			// Check if page broken
 			try {
-				if (wait(driver, 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
+				if (wait(getDriver(), 2).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
 						By.xpath("//h1[text()='Whoops! It seems like something went wrong!']"))).size() == 1) {
 					System.out.println("Page broken. Unable to create device number.");
 					Assert.assertEquals(true, false, "Page broken!");
@@ -1373,25 +1373,25 @@ public class Signup extends Login {
 			}
 
 			// VALIDATE ERROR
-			while (driver.findElements(By.id("flash_alert")).size() > 0) {
-				if (driver.findElements(By.xpath("//div[contains(text(),'Uid has already been taken')]")).size() == 1) {
+			while (getDriver().findElements(By.id("flash_alert")).size() > 0) {
+				if (getDriver().findElements(By.xpath("//div[contains(text(),'Uid has already been taken')]")).size() == 1) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 							.sendKeys(GenerateDeviceNumber());
 					device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 							.getAttribute("value");
 					// Click on create device button
-					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+					wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 				}
 
-				if (driver.findElements(By.xpath("//div[contains(text(),' Phone number has already been taken')]"))
+				if (getDriver().findElements(By.xpath("//div[contains(text(),' Phone number has already been taken')]"))
 						.size() == 1 == true) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15)
 							.sendKeys(GeneratePhoneNumber());
 
 					// Click on create device button
-					wait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+					wait(getDriver(), 10).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 				}
 			}
 
@@ -1415,7 +1415,7 @@ public class Signup extends Login {
 			login("john@example.com", "welcome");
 
 			// Navigate to ESF_Exemptions page
-			driver.navigate().to("https://stg.autobrain.com/worker/esf_exemptions");
+			getDriver().navigate().to("https://stg.autobrain.com/worker/esf_exemptions");
 
 			// Enter email
 			if (new_entered_email == null) {
@@ -1452,7 +1452,7 @@ public class Signup extends Login {
 			Thread.sleep(2000);
 
 			// Navigate user to login url
-			driver.navigate().to(url);
+			getDriver().navigate().to(url);
 
 			// Login last registered user
 			if (new_entered_email == null) {
@@ -1465,7 +1465,7 @@ public class Signup extends Login {
 			VisibilityOfElementByID("user_password", 15).sendKeys("welcome");
 
 			// Click on login button
-			wait(driver, 25).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
+			wait(getDriver(), 25).until(ExpectedConditions.visibilityOfElementLocated(By.name("commit"))).click();
 
 			boolean create_a_vehicle_profile;
 			try {

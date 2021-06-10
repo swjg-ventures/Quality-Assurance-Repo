@@ -20,7 +20,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		login("john@example.com", "welcome");
 
 		// Select a device to be replaced
-		driver.get("https://stg.autobrain.com/worker/device_replacements");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements");
 
 		// Validate device replacement page opened
 		Assert.assertTrue(VisibilityOfElementByXpath("//h1[contains(text(),'Select a device to be replaced')]", 15)
@@ -100,7 +100,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 				.contains("Device replaced"));
 
 		// Select a new device to send to the user as a replacement
-		driver.get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
 
 		// Validate Select a new device to send to the user as a replacement page opened
 		Assert.assertTrue(VisibilityOfElementByXpath(
@@ -114,7 +114,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		CreateDevicesByPanel();
 
 		// Select a new device to send to the user as a replacement
-		driver.get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
 
 		// Input new device number to replace
 		VisibilityOfElementByXpath("//td[contains(text(),\"" + All_Devices_No.get(0)
@@ -131,7 +131,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		Assert.assertTrue(VisibilityOfElementByXpath("//div[@id='flash_success']", 10).isDisplayed());
 
 		// Print Shipping Label for Replacement Device
-		driver.get("https://stg.autobrain.com/worker/device_replacements/print_shipping_label");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/print_shipping_label");
 
 		// Click on print shipping label button
 		VisibilityOfElementByXpath(
@@ -150,7 +150,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		Thread.sleep(6000);
 
 		// Mark replacement device and return envelope as sent
-		driver.get("https://stg.autobrain.com/worker/device_replacements/need_envelope");
+		getDriver().get("https://stg.autobrain.com/worker/device_replacements/need_envelope");
 
 		// Validate page opened
 		Assert.assertTrue(VisibilityOfElementByXpath(
@@ -169,7 +169,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		Assert.assertTrue(VisibilityOfElementByXpath("//div[@id='flash_success']", 10).isDisplayed());
 
 		// Validate customer receive replacement email
-		driver.get("http://www.yopmail.com/en/");
+		getDriver().get("http://www.yopmail.com/en/");
 		Thread.sleep(2000);
 		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(registered_email);
 
@@ -178,7 +178,7 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 		Thread.sleep(2000);
 
 		// Switch to frame
-		driver.switchTo().frame("ifmail");
+		getDriver().switchTo().frame("ifmail");
 
 		// Validate email received
 		Assert.assertTrue(
@@ -186,11 +186,11 @@ public class DeviceReplacement extends SignupWithPrepaidDevice {
 						.isDisplayed());
 
 		// Logout worker panel
-		driver.get("https://stg.autobrain.com/worker");
+		getDriver().get("https://stg.autobrain.com/worker");
 		VisibilityOfElementByXpath("//a[contains(text(),'Log Out')]", 15).click();
 
 		// Login registered user
-		driver.get("https://stg.autobrain.com/users/sign_in");
+		getDriver().get("https://stg.autobrain.com/users/sign_in");
 		login(registered_email, "welcome");
 
 		// Activating replaced device
