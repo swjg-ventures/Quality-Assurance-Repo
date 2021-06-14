@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class BeepCarpool extends Login {
 	boolean beep_page, form_page, member_created, beep_carpool_btn = true, beep_friends_btn = true;
 
-	
+	@Test
 	public void beepCarpool() throws Exception {
 
 		login("lib1@mailinator.com", "welcome");
