@@ -23,6 +23,15 @@ public class Custom_Listner extends Base implements ITestListener{
 	//CAPTURE SCREENSHOT IF THE TEST GOT FAILED	
 	@Override
 	public void onTestFailure(ITestResult result) {
+		
+		try {
+			extractJSLogsInfo("500 (Internal Server Error)");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		// TODO Auto-generated method stub
 		System.out.println("Failed Test");
 		if(ITestResult.FAILURE==result.getStatus()) {

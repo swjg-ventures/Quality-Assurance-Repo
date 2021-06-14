@@ -1,49 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="7" passed="7">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="116" started-at="2021-06-10T16:31:42 IST" finished-at="2021-06-10T16:31:42 IST">
+  <suite name="Suite" duration-ms="238570" started-at="2021-06-14T17:22:02 IST" finished-at="2021-06-14T17:26:01 IST">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="116" started-at="2021-06-10T16:31:42 IST" finished-at="2021-06-10T16:31:42 IST">
-      <class name="Demo.Class1">
-        <test-method status="PASS" signature="verifySignupWithBusinessDeviceBoughtFromAB()[pri:0, instance:Demo.Class1@5bfbf16f]" name="verifySignupWithBusinessDeviceBoughtFromAB" duration-ms="19" started-at="2021-06-10T16:31:42 IST" description="Bought business from AB website" finished-at="2021-06-10T16:31:42 IST">
+    <test name="Chrome" duration-ms="238570" started-at="2021-06-14T17:22:02 IST" finished-at="2021-06-14T17:26:01 IST">
+      <class name="com.autobrain.pages.DeviceReplacement">
+        <test-method status="PASS" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.DeviceReplacement@8e24743]" name="CheckBrowsers" is-config="true" duration-ms="6721" started-at="2021-06-14T17:22:02 IST" finished-at="2021-06-14T17:22:09 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySignupWithBusinessDeviceBoughtFromAB -->
-        <test-method status="PASS" signature="verifySignupWithPersonalDeviceBoughtFromAB()[pri:0, instance:Demo.Class1@5bfbf16f]" name="verifySignupWithPersonalDeviceBoughtFromAB" duration-ms="4" started-at="2021-06-10T16:31:42 IST" description="Bought personal from AB website" finished-at="2021-06-10T16:31:42 IST">
+        </test-method> <!-- CheckBrowsers -->
+        <test-method status="PASS" signature="deviceReplacement()[pri:0, instance:com.autobrain.pages.DeviceReplacement@8e24743]" name="deviceReplacement" duration-ms="230997" started-at="2021-06-14T17:22:09 IST" finished-at="2021-06-14T17:26:00 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySignupWithPersonalDeviceBoughtFromAB -->
-      </class> <!-- Demo.Class1 -->
+        </test-method> <!-- deviceReplacement -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:com.autobrain.pages.DeviceReplacement@8e24743]" name="quit" is-config="true" duration-ms="795" started-at="2021-06-14T17:26:00 IST" finished-at="2021-06-14T17:26:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- com.autobrain.pages.DeviceReplacement -->
     </test> <!-- Chrome -->
-    <test name="Edge" duration-ms="116" started-at="2021-06-10T16:31:42 IST" finished-at="2021-06-10T16:31:42 IST">
-      <class name="Demo.Class3">
-        <test-method status="PASS" signature="verifyActivateCellularDeviceWhichContainNoInvoiceUnderFreeBluetoothAccount()[pri:0, instance:Demo.Class3@7276c8cd]" name="verifyActivateCellularDeviceWhichContainNoInvoiceUnderFreeBluetoothAccount" duration-ms="19" started-at="2021-06-10T16:31:42 IST" description="Signup Free Bluetooth Device and the Activate personal device which contain no invoice" finished-at="2021-06-10T16:31:42 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyActivateCellularDeviceWhichContainNoInvoiceUnderFreeBluetoothAccount -->
-        <test-method status="PASS" signature="verifySignpuWithFreePlusPaidBluetoothDevice()[pri:0, instance:Demo.Class3@7276c8cd]" name="verifySignpuWithFreePlusPaidBluetoothDevice" duration-ms="2" started-at="2021-06-10T16:31:42 IST" description="Signup Free Plus Paid Bluetooth Device" finished-at="2021-06-10T16:31:42 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySignpuWithFreePlusPaidBluetoothDevice -->
-        <test-method status="PASS" signature="verifySignupWithFreeBluetoothDevice()[pri:0, instance:Demo.Class3@7276c8cd]" name="verifySignupWithFreeBluetoothDevice" duration-ms="3" started-at="2021-06-10T16:31:42 IST" description="Signup Free Bluetooth Device" finished-at="2021-06-10T16:31:42 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySignupWithFreeBluetoothDevice -->
-      </class> <!-- Demo.Class3 -->
-    </test> <!-- Edge -->
-    <test name="Firefox" duration-ms="116" started-at="2021-06-10T16:31:42 IST" finished-at="2021-06-10T16:31:42 IST">
-      <class name="Demo.Class2">
-        <test-method status="PASS" signature="verifySignupWithBusinessDeviceBoughtFromRetailer()[pri:0, instance:Demo.Class2@42607a4f]" name="verifySignupWithBusinessDeviceBoughtFromRetailer" duration-ms="19" started-at="2021-06-10T16:31:42 IST" description="Bought business from retailer" finished-at="2021-06-10T16:31:42 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySignupWithBusinessDeviceBoughtFromRetailer -->
-        <test-method status="PASS" signature="verifySignupWithPersonalDeviceBoughtFromRetailer()[pri:0, instance:Demo.Class2@42607a4f]" name="verifySignupWithPersonalDeviceBoughtFromRetailer" duration-ms="5" started-at="2021-06-10T16:31:42 IST" description="Bought personal from retailer" finished-at="2021-06-10T16:31:42 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySignupWithPersonalDeviceBoughtFromRetailer -->
-      </class> <!-- Demo.Class2 -->
-    </test> <!-- Firefox -->
   </suite> <!-- Suite -->
 </testng-results>

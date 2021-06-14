@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
 
 
 public class AlertSettings extends Login {
@@ -16,6 +17,7 @@ public class AlertSettings extends Login {
 	int i, j;
 	ArrayList<String> arr = new ArrayList<String>();
 
+	
 	public void alertSettings() throws Exception {
 
 		login("lib1@mailinator.com", "welcome");

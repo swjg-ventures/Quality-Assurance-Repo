@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="3" parallel="tests">
+<suite name="Suite" thread-count="1" parallel="methods">
 
 	<listeners>
 		<listener
@@ -11,14 +11,25 @@
 		<parameter name="Browsers" value="chrome" />
 		<parameter name="Headless" value="false" />
 
-
 		<classes>
-
-			<class name="com.autobrain.testcases.DemoTest" />
-
+			<class name="com.autobrain.pages.DeviceReplacement" />
 		</classes>
 	</test>
 
+
+<!--  	<test name="FireFox">
+		<parameter name="Browsers" value="firefox" />
+		<parameter name="Headless" value="false" />
+
+		<groups>
+			<run>
+				<include name="firefox"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.autobrain.pages.SignUp" />
+		</classes>
+	</test> -->
 
 
 </suite> 

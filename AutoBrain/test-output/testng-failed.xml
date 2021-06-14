@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="methods">
   <listeners>
     <listener class-name="com.autobrain.utilities.ExtentReporterNG"/>
   </listeners>
-  <test thread-count="3" name="Edge(failed)" parallel="tests">
+  <test thread-count="1" name="Chrome(failed)" parallel="methods">
     <parameter name="Headless" value="false"/>
-    <parameter name="Browsers" value="edge"/>
+    <parameter name="Browsers" value="chrome"/>
     <classes>
-      <class name="Demo.ClassE">
+      <class name="com.autobrain.pages.DeviceReplacement">
         <methods>
           <include name="quit"/>
           <include name="CheckBrowsers"/>
-          <include name="verifyActivateCellularDeviceWhichContainNoInvoiceUnderFreeBluetoothAccount"/>
+          <include name="deviceReplacement"/>
         </methods>
-      </class> <!-- Demo.ClassE -->
+      </class> <!-- com.autobrain.pages.DeviceReplacement -->
     </classes>
-  </test> <!-- Edge(failed) -->
+  </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

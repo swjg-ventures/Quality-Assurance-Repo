@@ -8,6 +8,7 @@ import java.util.Random;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -17,13 +18,13 @@ import com.autobrain.pages.Login;
 
 import au.com.bytecode.opencsv.CSVWriter;
 
-public class Signup extends Base {
-	public SignupModel signupModel;
-	public SignupModel pageObj;
+public class SignUpBase extends Base {
+	private SignupModel signupModel;
+	private SignupModel pageObj;
 	public Login login;
 	public String LockObject = "lockObject";
 
-	public Signup(SignupModel signupModel) {
+	public SignUpBase(SignupModel signupModel) {
 		// Initializing
 		login = new Login();
 		pageObj = PageFactory.initElements(getDriver(), SignupModel.class);
@@ -113,36 +114,6 @@ public class Signup extends Base {
 			// Validating confirmation key page found
 			Assert.assertTrue(VisibilityOfElementByXpath("//a[contains(text(),'Resend Confirmation Email')]", 15)
 					.getText().contains("Resend Confirmation Email"), "Confirmation key page not found!");
-
-//			// YOPMAIL.COM
-//			Thread.sleep(2000);
-//			getDriver().get("http://www.yopmail.com/en/");
-//			Thread.sleep(2000);
-//
-//			// Input email
-//			VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(signupModel.getOwner_email());
-//			System.out.println("Owner email: " + signupModel.getOwner_email());
-//
-//			// Click on check for new email button
-//			VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
-//			Thread.sleep(1000);
-//
-//			// Switch to frame
-//			getDriver().switchTo().frame(getDriver().findElement(By.id("ifinbox")));
-//
-//			// Open confirmation email
-//			VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
-//			Thread.sleep(1000);
-//
-//			// Back to parent frame
-//			getDriver().switchTo().parentFrame();
-//
-//			// Switch to frame
-//			getDriver().switchTo().frame(getDriver().findElement(By.id("ifmail")));
-//
-//			// Get confirmation code
-//			String confirmation_code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15)
-//					.getText();
 
 			String confirmation_code = getConfirmationCode();
 			getDriver().get(url);
@@ -310,12 +281,6 @@ public class Signup extends Base {
 		Assert.assertEquals(actual_product_price, expected_product_price,
 				"Expected product price not matching with actual product price!");
 
-		// Closing current window
-		// getDriver().switchTo().window(tabs.get(1)).close();
-		// Thread.sleep(1000);
-
-		// Switching to main window
-		// getDriver().switchTo().window(tabs.get(0));
 		Thread.sleep(1000);
 		orderToShip();
 	}
@@ -399,11 +364,11 @@ public class Signup extends Base {
 		// Click on Save button
 		List<WebElement> btn = getDriver().findElements(By.xpath("//button[contains(text(),'Save changes')]"));
 		btn.get(0).click();
-
+		Thread.sleep(1000);
 		// Validate device added
 		boolean device_added;
 		try {
-			device_added = VisibilityOfAllElementsByXpath("//tbody/tr[1]//td[8]/a[contains(text(),'Device #')]", 15)
+			device_added = PresenceOfAllElementsByXpath("//tbody/tr[1]//td[8]/a[contains(text(),'Device #')]", 15)
 					.size() == 1;
 		} catch (Exception e) {
 			device_added = false;
@@ -412,10 +377,12 @@ public class Signup extends Base {
 
 		Assert.assertEquals(device_added, true, "Device not added!");
 
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 
 		// Click on Print/View shipping label
-		VisibilityOfElementByXpath("//tbody/tr[1]//td[9]/a", 15).click();
+		Actions action = new Actions(getDriver());
+		WebElement el = ElementToBeClickableByXpath("//tbody/tr[1]//td[9]/a", 15);
+		action.moveToElement(el).click().build().perform();
 
 		// Waiting until the message box not opened
 		boolean shipping_label_box;
@@ -441,7 +408,8 @@ public class Signup extends Base {
 		List<WebElement> mark_as_shipped_btn = VisibilityOfAllElementsByXpath("//a[contains(text(),'Mark as shipped')]",
 				10);
 		Thread.sleep(4000);
-		mark_as_shipped_btn.get(0).click();
+		Actions actions = new Actions(getDriver());
+		actions.moveToElement(mark_as_shipped_btn.get(0)).click().build().perform();
 
 		// Refresh the page
 		getDriver().navigate().refresh();
@@ -469,6 +437,7 @@ public class Signup extends Base {
 
 	// Step 1 will add all car info
 	public void step1Setup(String device_no) throws Exception {
+
 		// Create a Name for Your Car
 		VisibilityOfElementByXpath(
 				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[1]/input", 15)

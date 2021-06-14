@@ -1,4 +1,4 @@
-package com.autobrain.pages;
+package Demo;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import com.autobrain.pages.Login;
 
 public class DeleteDevices_FromWorkerPanel extends Login {
 	boolean msg_closed, al_closed;

@@ -6,10 +6,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class BeepCarpool extends Login {
 	boolean beep_page, form_page, member_created, beep_carpool_btn = true, beep_friends_btn = true;
 
+	
 	public void beepCarpool() throws Exception {
 
 		login("lib1@mailinator.com", "welcome");

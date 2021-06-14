@@ -60,7 +60,7 @@ public class Base {
 	public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	@Parameters({ "Browsers", "Headless" })
 	public void CheckBrowsers(String Browsers, String headless) throws Exception {
 		if (Browsers.equalsIgnoreCase("firefox")) {
@@ -92,7 +92,8 @@ public class Base {
 
 			// Headless browser run without UI
 			if (headless.equalsIgnoreCase("true")) {
-				options.addArguments("window-size=1366,768");
+				options.addArguments("window-size=1920,1080");
+			//	options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Test will run in Headless Browser!");
 			}
@@ -132,7 +133,7 @@ public class Base {
 	}
 
 	// QUIT BROWSER
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void quit() throws Exception {
 		getDriver().quit();
 	}
@@ -230,6 +231,18 @@ public class Base {
 	public List<WebElement> PresenceOfAllWebElements(By element, int time) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), time);
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
+	}
+
+	// Element clickable by xpath
+	public WebElement ElementToBeClickableByXpath(String xpath, int time) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
+	}
+
+	// Element clickable by webelement
+	public WebElement ElementToBeClickableByWebElement(WebElement webElement, int time) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), time);
+		return wait.until(ExpectedConditions.elementToBeClickable(webElement));
 	}
 
 	// CAPTURE SCREENSHOT IF THE TEST GOT FAILED

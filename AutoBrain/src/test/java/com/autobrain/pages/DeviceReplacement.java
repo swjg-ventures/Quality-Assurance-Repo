@@ -2,45 +2,73 @@ package com.autobrain.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.autobrain.base.Base;
+import com.autobrain.base.SignUpBase;
 import com.autobrain.models.SignupModel;
 
 public class DeviceReplacement extends Base {
 	String excel_file_path = "Files\\Device_replacement.xlsx";
-	SignupWithRetailerDevice retailer_signup;
-	Login login;
-	SignupWithBoughtDeviceFromABWebsite signup;
-	SignupModel obj;
+	SignupModel signupModel;
+	SignUpBase signUpBase;
 
-	public DeviceReplacement(SignupModel object) {
-		// Initialization
-		retailer_signup = new SignupWithRetailerDevice(object);
-		login = new Login();
-		signup = new SignupWithBoughtDeviceFromABWebsite(object);
-		obj = object;
-	}
-
+	@Test
 	public void deviceReplacement() throws Exception {
+		signupModel = new SignupModel();
+		signupModel.setTotal_bought_devices(1);
+		signupModel.setAccount_type("personal");
+		signupModel.setPersonal_plan("moneysaver");
+		signupModel.setChoose_personal_billing_interval("monthly");
+		signupModel.setPricing_plan("90 days personal plan");
+		signupModel.setSet_esf(false);
+
+		signUpBase = new SignUpBase(signupModel);
 
 		// Signup new user
-		retailer_signup.signupWithRetailerDevice();
+		synchronized (signUpBase.LockObject) {
+			signUpBase.addDevicesInCsvFile();
+
+			signUpBase.CreateInvoice();
+
+			signUpBase.SubmitCsvFile();
+
+			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+		}
+
+		signUpBase.signup();
+
+		signUpBase.EsfExemptionsSetup();
+
+		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
+
+		signUpBase.choosePricingPlanAndAddCardDetails();
+
+		signUpBase.step2Setup();
+
+		signUpBase.step3Setup();
+
+		signUpBase.step4Setup();
+
+		signUpBase.step5FinishSetup();
 
 		// Logout registered account
-		login.logout();
+		signUpBase.login.logout();
 
 		// Login worker panel for replacement process
-		login.login("john@example.com", "welcome");
+		signUpBase.login.login("john@example.com", "welcome");
 
 		// Generate new device number
-		signup.createDeviceFromPanel();
+		signUpBase.createDeviceFromPanel();
 
 		// Device replacement process
-		deviceReplacement(obj.getAll_Devices_No().get(0), obj.getAll_Devices_No().get(1));
+		deviceReplacement(signupModel.getAll_Devices_No().get(0), signupModel.getAll_Devices_No().get(1));
 	}
-
+	
 	public void deviceReplacement(String old_device_no, String replaced_device_no) throws Exception {
 
 		// Select a device to be replaced
@@ -141,7 +169,7 @@ public class DeviceReplacement extends Base {
 		getDriver().get("https://stg.autobrain.com/worker/device_replacements/select_new_device");
 
 		// Input new device number to replace
-		VisibilityOfElementByXpath("//td[contains(text(),\"" + obj.getAll_Devices_No().get(0)
+		VisibilityOfElementByXpath("//td[contains(text(),\"" + signupModel.getAll_Devices_No().get(0)
 				+ "\")]/following-sibling::td[8]//input[@id='device_replacement_new_device_number']", 5)
 						.sendKeys(replaced_device_no);
 
@@ -194,16 +222,21 @@ public class DeviceReplacement extends Base {
 		Assert.assertTrue(VisibilityOfElementByXpath("//div[@id='flash_success']", 10).isDisplayed());
 
 		// Validate customer receive replacement email
-		getDriver().get("http://www.yopmail.com/en/");
+		getDriver().get("http://mailcatch.com");
 		Thread.sleep(2000);
-		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(obj.getOwner_email());
+		VisibilityOfElementByXpath("//input[@name='box']", 15).sendKeys(signupModel.getOwner_email());
 
-		// Click on check for new email button
-		VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
+		// Click on go to check new email
+		VisibilityOfElementByXpath("//input[@value='Go!']", 15).click();
 		Thread.sleep(2000);
+
+		// Open replacement email
+		List<WebElement> rep_email = VisibilityOfAllElementsByXpath(
+				"//a[contains(text(),'Device Replacement Return')]", 10);
+		rep_email.get(0).click();
 
 		// Switch to frame
-		getDriver().switchTo().frame("ifmail");
+		getDriver().switchTo().frame(getDriver().findElement(By.id("emailframe")));
 
 		// Validate email received
 		Assert.assertTrue(
@@ -216,9 +249,9 @@ public class DeviceReplacement extends Base {
 
 		// Login registered user
 		getDriver().get("https://stg.autobrain.com/users/sign_in");
-		login.login(obj.getOwner_email(), "welcome");
+		signUpBase.login.login(signupModel.getOwner_email(), "welcome");
 
-		signup.activateNewDevice(replaced_device_no);
+		signUpBase.activateNewDevice(replaced_device_no);
 
 		Assert.assertTrue(VisibilityOfElementByXpath(
 				"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 15)
