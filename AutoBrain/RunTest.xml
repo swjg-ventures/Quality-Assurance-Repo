@@ -13,7 +13,7 @@
 
 		<classes>
 			
-			<class name="com.autobrain.pages.SignUps" />
+			<class name="com.autobrain.pages.SignUp" />
 			
 			
 		</classes>
