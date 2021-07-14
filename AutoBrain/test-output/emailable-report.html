@@ -9,15 +9,19 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">49,544</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">330,132</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.autobrain.pages.MarkReplacedDeviceForReuse</td><td><a href="#m0">markReplacedDeviceForReuse</a></td><td rowspan="1">1623690200870</td><td rowspan="1">34444</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.autobrain.pages.DeviceReplacement</td><td><a href="#m0">deviceReplacement</a></td><td rowspan="1">1626244108970</td><td rowspan="1">316041</td></tr></tbody>
 </table>
-<h2>Chrome</h2><h3 id="m0">com.autobrain.pages.MarkReplacedDeviceForReuse#markReplacedDeviceForReuse</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Getting error: #&lt;Job id: 7732, car_id: 32600, job_type: &quot;for reuse.&quot;, status: &quot;active&quot;, date_scheduled: &quot;2021-06-14 16:47:46&quot;, date_completed: nil&gt; expected [true] but found [false]
-	at com.autobrain.pages.MarkReplacedDeviceForReuse.markReplacedDeviceForReuse(MarkReplacedDeviceForReuse.java:102)
+<h2>Chrome</h2><h3 id="m0">com.autobrain.pages.DeviceReplacement#deviceReplacement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
+90 days of free service remaining.
+Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
+30 days of free service remaining.
+Next Payment: $9.97 on August 13, 2021.]
+	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 15 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 17 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

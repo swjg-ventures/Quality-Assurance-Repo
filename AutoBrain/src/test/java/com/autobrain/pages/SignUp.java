@@ -96,15 +96,15 @@ public class SignUp extends Base {
 		softassert.assertAll();
 	}
 
-//	@Test
+	@Test
 	public void signupPersonalRetailerDevice() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
-		signupModel.setTotal_bought_devices(1);
+		signupModel.setTotal_bought_devices(2);
 		signupModel.setAccount_type("personal");
 		signupModel.setPersonal_plan("moneysaver");
 		signupModel.setChoose_personal_billing_interval("monthly");
-		signupModel.setPricing_plan("90 days personal plan");
+		signupModel.setPricing_plan("365 days new plan");
 		signupModel.setSet_esf(false);
 
 		SignUpBase signUpBase = new SignUpBase(signupModel);
@@ -198,7 +198,7 @@ public class SignUp extends Base {
 		softassert.assertAll();
 	}
 
-	@Test
+//	@Test
 	public void signupFreeBluetoothDevice() throws Exception {
 
 		SignupModel signupModel = new SignupModel();

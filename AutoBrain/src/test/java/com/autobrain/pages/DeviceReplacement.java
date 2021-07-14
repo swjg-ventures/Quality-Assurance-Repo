@@ -16,6 +16,7 @@ public class DeviceReplacement extends Base {
 	String excel_file_path = "Files\\Device_replacement.xlsx";
 	SignupModel signupModel;
 	SignUpBase signUpBase;
+	public static boolean is_device_rep;
 
 	@Test
 	public void deviceReplacement() throws Exception {
@@ -56,6 +57,16 @@ public class DeviceReplacement extends Base {
 
 		signUpBase.step5FinishSetup();
 
+		// Plan information
+		getDriver().get("https://stg.autobrain.com/cars/plan_information");
+		
+		// Capture old plan info
+		VisibilityOfElementByXpath("//input[@placeholder='Search For Car']", 10).sendKeys(signupModel.getAll_Devices_No().get(0));
+		Thread.sleep(1000);
+		String old_unit_plan = VisibilityOfElementByXpath("//div[@class='plan-info-container']", 10).getText();
+		System.out.println("Old unit plan: "+old_unit_plan);
+		
+		
 		// Logout registered account
 		signUpBase.login.logout();
 
@@ -65,10 +76,23 @@ public class DeviceReplacement extends Base {
 		// Generate new device number
 		signUpBase.createDeviceFromPanel();
 
-		// Device replacement process
-		deviceReplacement(signupModel.getAll_Devices_No().get(0), signupModel.getAll_Devices_No().get(1));
+		synchronized (signUpBase.LockObject) {
+			// Device replacement process
+			deviceReplacement(signupModel.getAll_Devices_No().get(0), signupModel.getAll_Devices_No().get(1));
+		}
+		
+		// Plan information
+		getDriver().get("https://stg.autobrain.com/cars/plan_information");
+		// Capture replaced unit plan information
+		VisibilityOfElementByXpath("//input[@placeholder='Search For Car']", 10).sendKeys(signupModel.getAll_Devices_No().get(1));
+		Thread.sleep(1000);
+		String replaced_unit_plan = VisibilityOfElementByXpath("//div[@class='plan-info-container']", 10).getText();
+		System.out.println("Replaced unit plan: "+replaced_unit_plan);
+		
+		// Validate both old and replaced unit plan
+		Assert.assertEquals(replaced_unit_plan, old_unit_plan, "Replaced unit should get old plan!");
 	}
-	
+
 	public void deviceReplacement(String old_device_no, String replaced_device_no) throws Exception {
 
 		// Select a device to be replaced
@@ -231,8 +255,8 @@ public class DeviceReplacement extends Base {
 		Thread.sleep(2000);
 
 		// Open replacement email
-		List<WebElement> rep_email = VisibilityOfAllElementsByXpath(
-				"//a[contains(text(),'Device Replacement Return')]", 10);
+		List<WebElement> rep_email = VisibilityOfAllElementsByXpath("//a[contains(text(),'Device Replacement Return')]",
+				10);
 		rep_email.get(0).click();
 
 		// Switch to frame
@@ -251,6 +275,8 @@ public class DeviceReplacement extends Base {
 		getDriver().get("https://stg.autobrain.com/users/sign_in");
 		signUpBase.login.login(signupModel.getOwner_email(), "welcome");
 
+		// Using this status to skip tiers while activating replacement unit
+		is_device_rep = true;
 		signUpBase.activateNewDevice(replaced_device_no);
 
 		Assert.assertTrue(VisibilityOfElementByXpath(
@@ -294,7 +320,7 @@ public class DeviceReplacement extends Base {
 
 		catch (Exception e) {
 			ExcelGetRowCreateCellAndWrite(newtotalrows, 1, "Pending", excel_file_path);
-			System.out.println("Defective device added in the excel sheet.");
+			System.out.println("Old device added in the excel sheet.");
 		}
 
 	}

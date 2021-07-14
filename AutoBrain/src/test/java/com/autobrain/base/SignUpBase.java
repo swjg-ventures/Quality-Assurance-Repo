@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import com.autobrain.models.SignupModel;
+import com.autobrain.pages.DeviceReplacement;
 import com.autobrain.pages.Login;
 
 import au.com.bytecode.opencsv.CSVWriter;
@@ -463,7 +464,7 @@ public class SignUpBase extends Base {
 		Thread.sleep(3000);
 
 		// Selecting Car Icon from drop-down
-		VisibilityOfElementByXpath(SignupModel.getCaricon(), 15).click();
+//		VisibilityOfElementByXpath(SignupModel.getCaricon(), 15).click();
 
 		// Car Year
 		Select y = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
@@ -513,7 +514,7 @@ public class SignUpBase extends Base {
 
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD PAGE OPENED)
 		if (signupModel.getAccount_type().contains("personal")) {
-			Assert.assertTrue(PresenceOfElementByXpath("//h4[contains(text(),'Choose Plan')]", 30).isDisplayed(),
+			Assert.assertTrue(PresenceOfElementByXpath("//h4[contains(text(),'Choose Plan')]", 60).isDisplayed(),
 					"Billing interval page not found!");
 		}
 
@@ -554,8 +555,11 @@ public class SignUpBase extends Base {
 		if (signupModel.getBluetooth_is().equals("free")) {
 			System.out.println("This is Bluetooth free device!");
 
-			// Click on try for free button
-			VisibilityOfElementByXpath("//button[contains(text(),'Try For Free')]", 10).click();
+			// Choose free plan
+			VisibilityOfElementByXpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button", 10).click();
+			
+			// Click on continue
+			VisibilityOfElementByXpath("//button[text()='Continue']", 10).click();
 
 			// Validate alert found
 			boolean isFound = VisibilityOfElementByXpath("//h4[contains(text(),'Are You Sure?')]", 10).isDisplayed();
@@ -853,8 +857,14 @@ public class SignUpBase extends Base {
 	public void step5FinishSetup() throws Exception {
 		Thread.sleep(2000);
 
+		try {
 		// Click on Finish button
-		VisibilityOfElementByXpath("//a[contains(text(),'Finish')]", 15).click();
+		VisibilityOfElementByXpath("//a[contains(text(),'Finish')]", 4).click();
+		}
+		
+		catch(Exception e) {
+			VisibilityOfElementByXpath("//a[contains(text(),'Save and Go To Next Step')]", 5).click();
+		}
 		Assert.assertTrue(Validate_HomePage_Landing(), "HomePage Landing failed! Not Found. Searching vehicle trip...");
 
 	}
@@ -862,7 +872,7 @@ public class SignUpBase extends Base {
 	public boolean Validate_HomePage_Landing() {
 		// Verify user redirected to home page or not
 		Assert.assertTrue(
-				VisibilityOfElementByXpath("//li[contains(text(),'You are now ready to drive!')]", 15).isDisplayed(),
+				VisibilityOfElementByXpath("//li[contains(text(),'You are now ready to drive!')]", 60).isDisplayed(),
 				"Home page not found!");
 
 		try {
@@ -969,6 +979,9 @@ public class SignUpBase extends Base {
 			Assert.assertFalse(true, "The server responded with a status of 500!");
 		}
 
+		if(!DeviceReplacement.is_device_rep)
+		{
+			
 		// VALIDATE CHOOSE PLAN PAGE
 		Assert.assertTrue(VisibilityOfElementByXpath("//h4[contains(text(),'Choose Plan')]", 10).isDisplayed(),
 				"Choose plan page not found!");
@@ -1040,7 +1053,7 @@ public class SignUpBase extends Base {
 			} catch (Exception e) {
 				VisibilityOfElementByXpath("//div[@class='submit-container']/button", 10).click();
 			}
-
+		}
 		}
 
 		// Load home page

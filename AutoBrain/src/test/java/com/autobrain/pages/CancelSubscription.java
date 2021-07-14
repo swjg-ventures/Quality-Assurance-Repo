@@ -6,9 +6,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class CancelSubscription extends Login {
-
+// Used lib1@mailinator.com 
+	
+	@Test
 	public void cancelSubscription() throws Exception {
 		login("john@example.com", "welcome");
 
@@ -26,6 +29,12 @@ public class CancelSubscription extends Login {
 		boolean isCanceADevicePageOpened = VisibilityOfElementByXpath("//h1[contains(text(),'Cancel a device')]", 30)
 				.isDisplayed();
 		Assert.assertEquals(isCanceADevicePageOpened, true, "Cancel A Device page not opened!");
+
+		// Enter cancelled device number in search
+		VisibilityOfElementByXpath("//input[@id='query']", 15).sendKeys("3232847144");
+
+		// Click on search button
+		VisibilityOfElementByXpath("//input[@name='commit']", 15).click();
 
 		// Check device cancellation needs shipping address
 		boolean needShippingAddress;
@@ -88,11 +97,11 @@ public class CancelSubscription extends Login {
 
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("arguments[0].scrollIntoView(true);", ele);
-		
+
 		// Click on option #1 to cancel subscription
 		VisibilityOfElementByXpath("//table[@class='table table-hover']/tbody/tr[1]/td[16]/form", 15).click();
 		Thread.sleep(1500);
-		
+
 		// Check confirmation message
 		boolean isConfirmationMsg = VisibilityOfElementByXpath("//h5[contains(text(),'Are you sure?')]", 15)
 				.isDisplayed();
@@ -124,18 +133,14 @@ public class CancelSubscription extends Login {
 		VisibilityOfElementByXpath("//input[@name='commit']", 15).click();
 
 		// Searched device number
-		String searchedDevice = VisibilityOfElementByXpath(
-				"//td[5]",
-				15).getText();
+		String searchedDevice = VisibilityOfElementByXpath("//td[5]", 15).getText();
 
 		// Validate cancelled device and searched device to uncancel needs to be same
 		Assert.assertEquals(searchedDevice, cancelledDevice,
 				"Cancelled device and Searched device to cancel should be same before uncancellation!");
 
 		// Click on uncancel button
-		VisibilityOfElementByXpath(
-				"//a[contains(text(),'Uncancel Device')]",
-				15).click();
+		VisibilityOfElementByXpath("//a[contains(text(),'Uncancel Device')]", 15).click();
 
 		// Validate device cancelled
 		boolean isDeviceUncancelled = VisibilityOfElementByXpath("//div[@id='flash_success']", 30).isDisplayed();

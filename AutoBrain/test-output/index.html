@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.autobrain.pages.MarkReplacedDeviceForReuse" hash-for-method="markReplacedDeviceForReuse">markReplacedDeviceForReuse</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.autobrain.pages.DeviceReplacement" hash-for-method="deviceReplacement">deviceReplacement</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -122,20 +122,24 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.autobrain.pages.MarkReplacedDeviceForReuse</span>
+              <span class="class-name">com.autobrain.pages.DeviceReplacement</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="markReplacedDeviceForReuse">
-                  </a> <!-- markReplacedDeviceForReuse -->
-                  <span class="method-name">markReplacedDeviceForReuse</span>
-                  <div class="stack-trace">java.lang.AssertionError: Getting error: #&lt;Job id: 7732, car_id: 32600, job_type: &quot;for reuse.&quot;, status: &quot;active&quot;, date_scheduled: &quot;2021-06-14 16:47:46&quot;, date_completed: nil&gt; expected [true] but found [false]
-	at com.autobrain.pages.MarkReplacedDeviceForReuse.markReplacedDeviceForReuse(MarkReplacedDeviceForReuse.java:102)
+                  <a name="deviceReplacement">
+                  </a> <!-- deviceReplacement -->
+                  <span class="method-name">deviceReplacement</span>
+                  <div class="stack-trace">java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
+90 days of free service remaining.
+Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
+30 days of free service remaining.
+Next Payment: $9.97 on August 13, 2021.]
+	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 15 stack frames
+... Removed 17 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -150,15 +154,15 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;2&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;classes&quot;&gt;
+&lt;suite thread-count=&quot;4&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;methods&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.autobrain.utilities.ExtentReporterNG&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;2&quot; name=&quot;Chrome&quot; parallel=&quot;classes&quot;&gt;
+  &lt;test thread-count=&quot;4&quot; name=&quot;Chrome&quot; parallel=&quot;methods&quot;&gt;
     &lt;parameter name=&quot;Headless&quot; value=&quot;false&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.autobrain.pages.MarkReplacedDeviceForReuse&quot;/&gt;
+      &lt;class name=&quot;com.autobrain.pages.DeviceReplacement&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -200,14 +204,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'markReplacedDeviceForReuse')
-data.setCell(0, 2, 'com.autobrain.pages.MarkReplacedDeviceForReuse')
-data.setCell(0, 3, 34444);
+data.setCell(0, 1, 'deviceReplacement')
+data.setCell(0, 2, 'com.autobrain.pages.DeviceReplacement')
+data.setCell(0, 3, 316041);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 34 seconds</span>
+              <span class="suite-total-time">Total running time: 5 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -233,7 +237,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.autobrain.pages.MarkReplacedDeviceForReuse</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.autobrain.pages.DeviceReplacement</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">CheckBrowsers(chrome, false)</span>
                 <span class="method-start">0 ms</span>
@@ -241,12 +245,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">markReplacedDeviceForReuse</span>
-                <span class="method-start">9454 ms</span>
+                <span class="method-name">deviceReplacement</span>
+                <span class="method-start">8983 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">48756 ms</span>
+                <span class="method-start">329193 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -5,10 +5,12 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class CarFinder extends Login {
 	By carFinderBtn = By.xpath("//div[contains(text(),'CAR FINDER')]");
 
+	@Test
 	public void carFinder() throws Exception {
 
 		login("john@example.com", "welcome");

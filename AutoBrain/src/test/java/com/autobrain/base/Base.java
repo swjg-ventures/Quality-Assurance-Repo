@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -78,6 +77,7 @@ public class Base {
 			cap.setCapability(CapabilityType.LOGGING_PREFS, log);
 
 			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--no-sandbox");
 			options.addArguments("--disable-notifications");
 
 			// Disable save password chrome dialog
@@ -87,9 +87,8 @@ public class Base {
 			options.setExperimentalOption("prefs", prefs);
 
 			// Disable chrome is being controlled by automated software
-			options.setExperimentalOption("useAutomationExtension", false);
-			options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
-
+			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+			
 			// Headless browser run without UI
 			if (headless.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1920,1080");

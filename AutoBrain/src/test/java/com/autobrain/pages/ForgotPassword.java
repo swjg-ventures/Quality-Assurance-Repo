@@ -3,11 +3,17 @@ package com.autobrain.pages;
 import java.util.ArrayList;
 
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class ForgotPassword extends Login {
 	String date = GetCurrentDateTime();
 	String reset_pass = date.replace(" ", "");
-	// Use this email for forgot password: junking4946@yopmail.com
+	String email = "junking4946@yopmail.com";
+
+	@Test
+	public void validateForgotPassword() throws Exception {
+		forgotPassword(email);
+	}
 
 	public void forgotPassword(String email) throws Exception {
 
@@ -28,7 +34,6 @@ public class ForgotPassword extends Login {
 		Assert.assertTrue(
 				VisibilityOfElementByXpath("//h2[contains(text(),'Email Sent')]", 30).getText().contains("Email Sent"));
 
-		// Validate customer receive replacement email
 		getDriver().get("http://www.yopmail.com/en/");
 		Thread.sleep(2000);
 
@@ -52,7 +57,7 @@ public class ForgotPassword extends Login {
 		// Checking how many windows are opened currently
 		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 
-		// Switching to Buy now page
+		// Switching window
 		getDriver().switchTo().window(tabs.get(1));
 
 		// Confirm reset password page opened
@@ -71,11 +76,10 @@ public class ForgotPassword extends Login {
 		VisibilityOfElementByXpath("//input[@id='submitPassword']", 10).click();
 		Thread.sleep(1000);
 
-		// Now user should login automatically after submit
+		// Validating urls
 		Assert.assertTrue(getDriver().getCurrentUrl().contentEquals("https://stg.autobrain.com/"));
 
 		// Validate the loading of home page
-		// Validation login
 		try {
 			homePage = VisibilityOfElementByXpath(
 					"//li[@class='hooper-slide column is-active is-current']//div[contains(text(),'CAR FINDER')]", 90)

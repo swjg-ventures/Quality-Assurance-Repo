@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Jun 14 22:33:11 IST 2021</td>
+<td>Started on:</td><td>Wed Jul 14 11:58:19 IST 2021</td>
 </tr>
-<tr><td>Total time:</td><td>49 seconds (49544 ms)</td>
+<tr><td>Total time:</td><td>330 seconds (330132 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,18 +75,28 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.autobrain.pages.MarkReplacedDeviceForReuse.markReplacedDeviceForReuse()'><b>markReplacedDeviceForReuse</b><br>Test class: com.autobrain.pages.MarkReplacedDeviceForReuse</td>
-<td><div><pre>java.lang.AssertionError: Getting error: #&lt;Job id: 7732, car_id: 32600, job_type: &quot;for reuse.&quot;, status: &quot;active&quot;, date_scheduled: &quot;2021-06-14 16:47:46&quot;, date_completed: nil&gt; expected [true] but found [false]
-	at com.autobrain.pages.MarkReplacedDeviceForReuse.markReplacedDeviceForReuse(MarkReplacedDeviceForReuse.java:102)
+<td title='com.autobrain.pages.DeviceReplacement.deviceReplacement()'><b>deviceReplacement</b><br>Test class: com.autobrain.pages.DeviceReplacement</td>
+<td><div><pre>java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
+90 days of free service remaining.
+Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
+30 days of free service remaining.
+Next Payment: $9.97 on August 13, 2021.]
+	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-... Removed 15 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1837956126", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1837956126'><pre>java.lang.AssertionError: Getting error: #&lt;Job id: 7732, car_id: 32600, job_type: &quot;for reuse.&quot;, status: &quot;active&quot;, date_scheduled: &quot;2021-06-14 16:47:46&quot;, date_completed: nil&gt; expected [true] but found [false]
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1748544679", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1748544679'><pre>java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
+90 days of free service remaining.
+Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
+30 days of free service remaining.
+Next Payment: $9.97 on August 13, 2021.]
 	at org.testng.Assert.fail(Assert.java:99)
 	at org.testng.Assert.failNotEquals(Assert.java:1037)
-	at org.testng.Assert.assertTrue(Assert.java:45)
-	at com.autobrain.pages.MarkReplacedDeviceForReuse.markReplacedDeviceForReuse(MarkReplacedDeviceForReuse.java:102)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:629)
+	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -103,8 +113,8 @@ function toggleAllBoxes() {
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 </pre></div></td>
-<td>34</td>
-<td>com.autobrain.pages.MarkReplacedDeviceForReuse@8e24743</td></tr>
+<td>316</td>
+<td>com.autobrain.pages.DeviceReplacement@186f8716</td></tr>
 </table><p>
 </body>
 </html>
