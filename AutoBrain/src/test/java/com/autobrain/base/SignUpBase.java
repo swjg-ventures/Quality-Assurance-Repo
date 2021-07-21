@@ -369,7 +369,7 @@ public class SignUpBase extends Base {
 		// Validate device added
 		boolean device_added;
 		try {
-			device_added = PresenceOfAllElementsByXpath("//tbody/tr[1]//td[8]/a[contains(text(),'Device #')]", 15)
+			device_added = PresenceOfAllElementsByXpath("//tbody/tr[1]//td[9]/a[contains(text(),'Device #')]", 15)
 					.size() == 1;
 		} catch (Exception e) {
 			device_added = false;
@@ -382,7 +382,7 @@ public class SignUpBase extends Base {
 
 		// Click on Print/View shipping label
 		Actions action = new Actions(getDriver());
-		WebElement el = ElementToBeClickableByXpath("//tbody/tr[1]//td[9]/a", 15);
+		WebElement el = ElementToBeClickableByXpath("//tbody/tr[1]//td[10]/a", 15);
 		action.moveToElement(el).click().build().perform();
 
 		// Waiting until the message box not opened

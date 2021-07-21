@@ -9,19 +9,17 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">330,132</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">96,008</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.autobrain.pages.DeviceReplacement</td><td><a href="#m0">deviceReplacement</a></td><td rowspan="1">1626244108970</td><td rowspan="1">316041</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.autobrain.pages.SignUp</td><td><a href="#m0">signupPersonalDeviceBoughtFromABWebsite</a></td><td rowspan="1">1626849591425</td><td rowspan="1">75120</td></tr></tbody>
 </table>
-<h2>Chrome</h2><h3 id="m0">com.autobrain.pages.DeviceReplacement#deviceReplacement</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
-90 days of free service remaining.
-Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
-30 days of free service remaining.
-Next Payment: $9.97 on August 13, 2021.]
-	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
+<h2>Chrome</h2><h3 id="m0">com.autobrain.pages.SignUp#signupPersonalDeviceBoughtFromABWebsite</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: Device not added! expected [true] but found [false]
+	at com.autobrain.base.SignUpBase.orderToShip(SignUpBase.java:379)
+	at com.autobrain.base.SignUpBase.orderDeviceFromWebSite(SignUpBase.java:286)
+	at com.autobrain.pages.SignUp.signupPersonalDeviceBoughtFromABWebsite(SignUp.java:24)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
 ... Removed 17 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

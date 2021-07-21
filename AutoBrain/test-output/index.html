@@ -24,22 +24,22 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
-      <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
       <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
         <span>All suites</span>
-        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
-          <img class="collapse-all-icon" src="collapseall.gif">
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
           </img> <!-- collapse-all-icon -->
         </a> <!-- collapse-all-link -->
       </div> <!-- navigator-suite-header -->
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-Suite">
+            <a href="#" panel-name="suite-Suite" class="navigator-link">
               <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
@@ -50,37 +50,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-Suite">
-                    <span>C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
+                  <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
+                    <span>C:\Users\rishi\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-Suite">
+                  <a href="#" panel-name="testlist-Suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-Suite">
+                  <a href="#" panel-name="group-Suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-Suite">
+                  <a href="#" panel-name="times-Suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-Suite">
+                  <a href="#" panel-name="reporter-Suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-Suite">
+                  <a href="#" panel-name="ignored-methods-Suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-Suite">
+                  <a href="#" panel-name="chronological-Suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -103,8 +103,8 @@
                     </span>
                     <div class="method-list-content failed suite-Suite">
                       <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="com.autobrain.pages.DeviceReplacement" hash-for-method="deviceReplacement">deviceReplacement</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.autobrain.pages.SignUp" class="method navigator-link" hash-for-method="signupPersonalDeviceBoughtFromABWebsite">signupPersonalDeviceBoughtFromABWebsite</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -122,23 +122,21 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.autobrain.pages.DeviceReplacement</span>
+              <span class="class-name">com.autobrain.pages.SignUp</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="deviceReplacement">
-                  </a> <!-- deviceReplacement -->
-                  <span class="method-name">deviceReplacement</span>
-                  <div class="stack-trace">java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
-90 days of free service remaining.
-Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
-30 days of free service remaining.
-Next Payment: $9.97 on August 13, 2021.]
-	at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
+                  <a name="signupPersonalDeviceBoughtFromABWebsite">
+                  </a> <!-- signupPersonalDeviceBoughtFromABWebsite -->
+                  <span class="method-name">signupPersonalDeviceBoughtFromABWebsite</span>
+                  <div class="stack-trace">java.lang.AssertionError: Device not added! expected [true] but found [false]
+	at com.autobrain.base.SignUpBase.orderToShip(SignUpBase.java:379)
+	at com.autobrain.base.SignUpBase.orderDeviceFromWebSite(SignUpBase.java:286)
+	at com.autobrain.pages.SignUp.signupPersonalDeviceBoughtFromABWebsite(SignUp.java:24)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
 ... Removed 17 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -148,21 +146,21 @@ Next Payment: $9.97 on August 13, 2021.]
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Rajesh\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
+            <span class="header-content">C:\Users\rishi\git\Quality-Assurance-Repo\AutoBrain\RunTest.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;4&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;methods&quot;&gt;
+&lt;suite thread-count=&quot;1&quot; parallel=&quot;methods&quot; name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.autobrain.utilities.ExtentReporterNG&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;4&quot; name=&quot;Chrome&quot; parallel=&quot;methods&quot;&gt;
+  &lt;test thread-count=&quot;1&quot; parallel=&quot;methods&quot; name=&quot;Chrome&quot;&gt;
     &lt;parameter name=&quot;Headless&quot; value=&quot;false&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.autobrain.pages.DeviceReplacement&quot;/&gt;
+      &lt;class name=&quot;com.autobrain.pages.SignUp&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -204,14 +202,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'deviceReplacement')
-data.setCell(0, 2, 'com.autobrain.pages.DeviceReplacement')
-data.setCell(0, 3, 316041);
+data.setCell(0, 1, 'signupPersonalDeviceBoughtFromABWebsite')
+data.setCell(0, 2, 'com.autobrain.pages.SignUp')
+data.setCell(0, 3, 75120);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 5 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -237,7 +235,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.autobrain.pages.DeviceReplacement</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.autobrain.pages.SignUp</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">CheckBrowsers(chrome, false)</span>
                 <span class="method-start">0 ms</span>
@@ -245,12 +243,12 @@ return data;
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">deviceReplacement</span>
-                <span class="method-start">8983 ms</span>
+                <span class="method-name">signupPersonalDeviceBoughtFromABWebsite</span>
+                <span class="method-start">11733 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">329193 ms</span>
+                <span class="method-start">95644 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

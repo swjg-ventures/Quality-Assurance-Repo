@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="330132" started-at="2021-07-14T11:58:19 IST" finished-at="2021-07-14T12:03:50 IST">
+  <suite started-at="2021-07-21T12:09:39 IST" name="Suite" finished-at="2021-07-21T12:11:15 IST" duration-ms="96008">
     <groups>
     </groups>
-    <test name="Chrome" duration-ms="330132" started-at="2021-07-14T11:58:19 IST" finished-at="2021-07-14T12:03:50 IST">
-      <class name="com.autobrain.pages.DeviceReplacement">
-        <test-method status="PASS" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.DeviceReplacement@186f8716]" name="CheckBrowsers" is-config="true" duration-ms="8982" started-at="2021-07-14T11:58:19 IST" finished-at="2021-07-14T11:58:28 IST">
+    <test started-at="2021-07-21T12:09:39 IST" name="Chrome" finished-at="2021-07-21T12:11:15 IST" duration-ms="96008">
+      <class name="com.autobrain.pages.SignUp">
+        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@6253c26]" started-at="2021-07-21T12:09:39 IST" name="CheckBrowsers" finished-at="2021-07-21T12:09:51 IST" duration-ms="11731" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,31 +23,25 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method status="FAIL" signature="deviceReplacement()[pri:0, instance:com.autobrain.pages.DeviceReplacement@186f8716]" name="deviceReplacement" duration-ms="316041" started-at="2021-07-14T11:58:28 IST" finished-at="2021-07-14T12:03:45 IST">
+        <test-method signature="signupPersonalDeviceBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@6253c26]" started-at="2021-07-21T12:09:51 IST" name="signupPersonalDeviceBoughtFromABWebsite" finished-at="2021-07-21T12:11:06 IST" duration-ms="75120" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
-90 days of free service remaining.
-Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
-30 days of free service remaining.
-Next Payment: $9.97 on August 13, 2021.]]]>
+              <![CDATA[Device not added! expected [true] but found [false]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Replaced unit should get old plan! expected [Current Plan: Personal Tier 1 Monthly
-90 days of free service remaining.
-Next Payment: $8.99 on October 12, 2021.] but found [Current Plan: Personal Monthly
-30 days of free service remaining.
-Next Payment: $9.97 on August 13, 2021.]
+              <![CDATA[java.lang.AssertionError: Device not added! expected [true] but found [false]
 at org.testng.Assert.fail(Assert.java:99)
 at org.testng.Assert.failNotEquals(Assert.java:1037)
 at org.testng.Assert.assertEqualsImpl(Assert.java:140)
 at org.testng.Assert.assertEquals(Assert.java:122)
-at org.testng.Assert.assertEquals(Assert.java:629)
-at com.autobrain.pages.DeviceReplacement.deviceReplacement(DeviceReplacement.java:93)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.Assert.assertEquals(Assert.java:819)
+at com.autobrain.base.SignUpBase.orderToShip(SignUpBase.java:379)
+at com.autobrain.base.SignUpBase.orderDeviceFromWebSite(SignUpBase.java:286)
+at com.autobrain.pages.SignUp.signupPersonalDeviceBoughtFromABWebsite(SignUp.java:24)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:567)
 at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
 at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
 at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
@@ -56,20 +50,20 @@ at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-at java.lang.Thread.run(Thread.java:748)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+at java.base/java.lang.Thread.run(Thread.java:831)
 ]]>
             </full-stacktrace>
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- deviceReplacement -->
-        <test-method status="PASS" signature="quit()[pri:0, instance:com.autobrain.pages.DeviceReplacement@186f8716]" name="quit" is-config="true" duration-ms="866" started-at="2021-07-14T12:03:49 IST" finished-at="2021-07-14T12:03:50 IST">
+        </test-method> <!-- signupPersonalDeviceBoughtFromABWebsite -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@6253c26]" started-at="2021-07-21T12:11:15 IST" name="quit" finished-at="2021-07-21T12:11:15 IST" duration-ms="314" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
-      </class> <!-- com.autobrain.pages.DeviceReplacement -->
+      </class> <!-- com.autobrain.pages.SignUp -->
     </test> <!-- Chrome -->
   </suite> <!-- Suite -->
 </testng-results>

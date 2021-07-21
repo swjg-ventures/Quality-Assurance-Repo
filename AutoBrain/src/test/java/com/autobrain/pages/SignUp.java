@@ -8,7 +8,7 @@ import com.autobrain.models.SignupModel;
 
 public class SignUp extends Base {
 
-//	 @Test
+	 @Test
 	public void signupPersonalDeviceBoughtFromABWebsite() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
@@ -96,7 +96,7 @@ public class SignUp extends Base {
 		softassert.assertAll();
 	}
 
-	@Test
+//	@Test
 	public void signupPersonalRetailerDevice() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
