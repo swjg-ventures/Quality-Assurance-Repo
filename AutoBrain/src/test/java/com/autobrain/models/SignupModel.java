@@ -129,15 +129,19 @@ public class SignupModel {
 
 	public void setPersonal_plan(String personal_plan) {
 		if (personal_plan.contains("vip")) {
-			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button";
+//			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button";
+			personal_plan = "//div[text()='VIP']//following::button[1]";
 		}
 
 		if (personal_plan.contains("essential")) {
-			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button";
+//			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button";
+			personal_plan = "//div[text()='Essential']//following::button[1]";
+			
 		}
 
 		if (personal_plan.contains("moneysaver")) {
-			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button";
+//			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button";
+			personal_plan = "//div[text()='Money Saver']//following::button[1]";
 		}
 		this.personal_plan = personal_plan;
 	}

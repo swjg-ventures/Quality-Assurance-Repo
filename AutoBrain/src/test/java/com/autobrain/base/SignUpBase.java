@@ -555,8 +555,13 @@ public class SignUpBase extends Base {
 		if (signupModel.getBluetooth_is().equals("free")) {
 			System.out.println("This is Bluetooth free device!");
 
+			// Click on pagination
+			VisibilityOfElementByXpath("//ol[@class='hooper-indicators']/li[5]/button/span", 10).click();
+			
 			// Choose free plan
-			VisibilityOfElementByXpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button", 10).click();
+//			VisibilityOfElementByXpath("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button", 10).click();
+			VisibilityOfElementByXpath("//div[text()='Free Forever']//following::button[1]", 10).click();
+			
 			
 			// Click on continue
 			VisibilityOfElementByXpath("//button[text()='Continue']", 10).click();
