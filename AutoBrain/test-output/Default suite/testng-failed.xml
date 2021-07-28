@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.autobrain.pages.SignUp">
+      <class name="Demo.tiers">
         <methods>
-          <include name="quit"/>
-          <include name="signupPersonalDeviceBoughtFromABWebsite"/>
-          <include name="CheckBrowsers"/>
+          <include name="hhee"/>
         </methods>
-      </class> <!-- com.autobrain.pages.SignUp -->
+      </class> <!-- Demo.tiers -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
