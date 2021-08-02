@@ -12,27 +12,21 @@
 		<parameter name="Headless" value="false" />
 
 		<classes>
-			
-			<class name="com.autobrain.pages.SignUp" />
-			
-			
+
+			<class name="com.autobrain.pages.SignUp">
+				<methods>
+					<include name="signupFreeBluetoothDevice" />
+				</methods>
+			</class>
+
 		</classes>
 	</test>
 
 
-<!--  	<test name="FireFox">
-		<parameter name="Browsers" value="firefox" />
-		<parameter name="Headless" value="false" />
-
-		<groups>
-			<run>
-				<include name="firefox"></include>
-			</run>
-		</groups>
-		<classes>
-			<class name="com.autobrain.pages.SignUp" />
-		</classes>
-	</test> -->
+	<!-- <test name="FireFox"> <parameter name="Browsers" value="firefox" /> 
+		<parameter name="Headless" value="false" /> <groups> <run> <include name="firefox"></include> 
+		</run> </groups> <classes> <class name="com.autobrain.pages.SignUp" /> </classes> 
+		</test> -->
 
 
 </suite> 

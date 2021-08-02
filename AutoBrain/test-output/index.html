@@ -151,7 +151,11 @@
     &lt;parameter name=&quot;Headless&quot; value=&quot;false&quot;/&gt;
     &lt;parameter name=&quot;Browsers&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.autobrain.pages.SignUp&quot;/&gt;
+      &lt;class name=&quot;com.autobrain.pages.SignUp&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;signupFreeBluetoothDevice&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- com.autobrain.pages.SignUp --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -195,12 +199,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'signupFreeBluetoothDevice')
 data.setCell(0, 2, 'com.autobrain.pages.SignUp')
-data.setCell(0, 3, 90402);
+data.setCell(0, 3, 128645);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -215,9 +219,24 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">5 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">com.autobrain.pages.SignUp</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">signupFreePlusPaidBluetoothDevice</span>
+                <br/>
+                <span class="ignored-method-name">signupPersonalDeviceBoughtFromABWebsite</span>
+                <br/>
+                <span class="ignored-method-name">signupBusinessDeviceBoughtFromABWebsite</span>
+                <br/>
+                <span class="ignored-method-name">signupPersonalRetailerDevice</span>
+                <br/>
+                <span class="ignored-method-name">signupBusinessRetailerDevice</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -233,11 +252,11 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">signupFreeBluetoothDevice</span>
-                <span class="method-start">6571 ms</span>
+                <span class="method-start">5750 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">quit</span>
-                <span class="method-start">96977 ms</span>
+                <span class="method-start">134398 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
