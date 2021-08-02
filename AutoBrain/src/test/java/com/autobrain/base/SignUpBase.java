@@ -518,7 +518,7 @@ public class SignUpBase extends Base {
 		}
 
 		// VALIDATE NEXT PAGE (ADD CREDIT CARD PAGE OPENED)
-		if (signupModel.getAccount_type().contains("personal") ||signupModel.getAccount_type().contains("bluetooth") ) {
+		if (signupModel.getAccount_type().contains("personal") || signupModel.getAccount_type().contains("bluetooth")) {
 			Assert.assertTrue(PresenceOfElementByXpath("//h4[contains(text(),'Choose Plan')]", 60).isDisplayed(),
 					"Billing interval page not found!");
 		}
@@ -1556,6 +1556,69 @@ public class SignUpBase extends Base {
 		String email = "testuser" + signupModel.getRandom_int() + "@mailcatch.com";
 		SignupModel.setL_name("" + signupModel.getRandom_int());
 		return email;
+	}
+
+	public void upgradeRequest() {
+
+		// Click on the navigation menu
+		VisibilityOfElementByXpath("//div[@class='ellipsis-opener']", 10).click();
+
+		// Click on choose plan
+		VisibilityOfElementByXpath("//a[normalize-space()='Change Plan']", 10).click();
+
+		// Validate change plan page opened
+		Assert.assertTrue(VisibilityOfElementByXpath("//h4[normalize-space()='Change Plan']", 10).isDisplayed());
+
+		// Click on choose plan button
+		VisibilityOfElementByXpath("//div[text()='VIP']//following::button[1]", 10).click();
+
+		// Choose billing interval
+		VisibilityOfElementByXpath("//div[@class='TpDbnpVtZG__uMj7UUtnd_0']/div[1]//button", 10).click();
+
+		// Click on change plan button
+		VisibilityOfElementByXpath("//button[normalize-space()='Change Plan']", 5).click();
+
+		// Validate add shipping address page opened
+		Assert.assertTrue(
+				VisibilityOfElementByXpath("//h4[normalize-space()='Add Shipping Address']", 10).isDisplayed());
+
+		// Add shipping address details
+		// Enter first name
+		VisibilityOfElementByXpath("//input[@name='fname']", 15).sendKeys(SignupModel.getF_name());
+		
+		// Convert integer to string
+		String l_name = String.valueOf(signupModel.getRandom_int());
+			
+		// Enter last name
+		VisibilityOfElementByXpath("//input[@name='lname']", 15).sendKeys(l_name);
+
+		// Enter email address
+		VisibilityOfElementByXpath("//input[@name='email']", 15).sendKeys(signupModel.getOwner_email());
+
+		// Enter street address
+		VisibilityOfElementByXpath("//input[@name='address']", 15).sendKeys(SignupModel.getStreet());
+
+		// Enter city
+		VisibilityOfElementByXpath("//input[@name='city']", 15).sendKeys(SignupModel.getCity());
+
+		// Select state
+		Select state = new Select(VisibilityOfElementByXpath("//select[@placeholder='State']", 15));
+		state.selectByVisibleText(SignupModel.getState());
+
+		// Enter zip code
+		VisibilityOfElementByXpath("//input[@name='shipping zip']", 15).sendKeys(SignupModel.getZip());
+
+		// Check terms and conditions check-box
+		VisibilityOfElementByXpath("//div[@class='same-shipping']//span", 10).click();
+
+		// Submit
+		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
+
+		// Validate upgrade request successfully
+		VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
+
+		// Check order received in worker panel for and upgrade unit
+
 	}
 
 }

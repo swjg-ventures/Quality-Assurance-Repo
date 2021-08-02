@@ -43,6 +43,7 @@
 			</div>
 			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+					<li class='analysis waves-effect'><a href='#!' class='exceptions-view' onclick="_updateCurrentStage(2)"><i class='mdi-action-bug-report'></i>Exceptions</a></li>
 				<li class='analysis waves-effect'>
 					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
 				</li>
@@ -53,7 +54,7 @@
 					<i class='mdi-hardware-desktop-windows'></i>
 				</li>
 				<li>
-					<span class='suite-started-time'>2021-08-02 10:31:17</span>
+					<span class='suite-started-time'>2021-08-02 12:54:17</span>
 				</li>
 				<li>
 					<span>v2.41.1</span>
@@ -83,25 +84,25 @@
 					<div class='col l2 m4 s12'>
 						<div class='card suite-total-time-current'> 
 							<span class='panel-name'>Total Time Taken (Current Run)</span> 
-							<span class='suite-total-time-current-value panel-lead'>0h 4m 12s+852ms</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 3m 0s+478ms</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s12'>
 						<div class='card suite-total-time-overall'> 
 							<span class='panel-name'>Total Time Taken (Overall)</span> 
-							<span class='suite-total-time-overall-value panel-lead'>0h 4m 12s+852ms</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 3m 0s+478ms</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s6 suite-start-time'>
 						<div class='card accent green-accent'> 
 							<span class='panel-name'>Start</span> 
-							<span class='panel-lead suite-started-time'>2021-08-02 10:27:05</span> 
+							<span class='panel-lead suite-started-time'>2021-08-02 12:51:16</span> 
 						</div> 
 					</div>
 					<div class='col l2 m4 s6 suite-end-time'>
 						<div class='card accent pink-accent'> 
 							<span class='panel-name'>End</span> 
-							<span class='panel-lead suite-ended-time'>2021-08-02 10:31:17</span> 
+							<span class='panel-lead suite-ended-time'>2021-08-02 12:54:17</span> 
 						</div> 
 					</div>
 				</div>
@@ -237,17 +238,17 @@
 						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
 							<div class='wrapper'>
 								<ul id='test-collection' class='test-collection'>
-										<li class='collection-item test displayed active pass ' extentid='14731381-edef-45b3-a062-f61f39de0c60'>
+										<li class='collection-item test displayed active fail ' extentid='f8024018-4439-4bb7-8329-c8ec466f8b8c'>
 											<div class='test-head'>
 												<span class='test-name'>signupBluetoothDeviceBoughtFromABWebsite </span>
-												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='test-status label right outline capitalize fail'>fail</span>
 												<span class='category-assigned hide '></span>
 											</div>
 											<div class='test-body'>
 												<div class='test-info'>
-													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2021-08-02 10:27:05</span>
-													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2021-08-02 10:31:17</span>
-													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 4m 12s+97ms</span>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2021-08-02 12:51:16</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2021-08-02 12:54:12</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 2m 55s+664ms</span>
 												</div>
 												<div class='test-desc'></div>
 												<div class='test-attributes'>
@@ -263,9 +264,35 @@
 														</thead>
 														<tbody>
 																<tr>
-																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
-																	<td class='timestamp'>10:31:17</td>
-																	<td class='step-details'>Test passed</td>
+																	<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+																	<td class='timestamp'>12:54:12</td>
+																	<td class='step-details'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //input[@placeholder='First Name'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-TTV29U0', ip: '192.168.100.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51311}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 67527d71acabfc306213afd122fd176a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.autobrain.base.Base.VisibilityOfElementByXpath(Base.java:184)
+	at com.autobrain.base.SignUpBase.upgradeRequest(SignUpBase.java:1587)
+	at com.autobrain.pages.SignUp.signupBluetoothDeviceBoughtFromABWebsite(SignUp.java:34)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+</pre></td>
 																</tr>
 														</tbody>
 													</table>
@@ -305,6 +332,94 @@
 			<!-- /categories -->
 			
 			<!-- exceptions -->
+				<div id='exceptions-view' class='row _addedTable hide'>
+					<div class='col _addedCell1'>
+						<div class='contents'>
+							<div class='card-panel heading'>
+								<h5>Defects</h5>
+							</div>
+							<div class='card-panel filters'>
+								<div class='search' alt='Search tests' title='Search tests'>
+									<div class='input-field left'>
+										<input id='searchTests' type='text' class='validate' placeholder='Search tests...'>
+									</div>
+									<a href="#" class='btn-floating btn-small waves-effect waves-light blue lighten-1'>
+										<i class='mdi-action-search'></i>
+									</a>
+								</div>
+							</div>
+							<div class='card-panel no-padding-h no-padding-v'>
+								<div class='wrapper'>
+									<ul id='exception-collection' class='exception-collection'>
+											<li class='exception-item displayed'>
+												<div class='exception-head'>
+													<span class='exception-name'>org.openqa.selenium.TimeoutException</span>
+												</div>
+												<div class='exception-test-count'>
+													<span class='fail label'>1</span>
+												</div>
+												<div class='exception-body'>
+													<div class='exception-tests'>
+														<table class='bordered'>
+															<thead>
+																<tr>
+																	<th>RunDate</th>
+																	<th>Test Name</th>
+																	<th>Exception</th>
+																</tr>
+															</thead>
+															<tbody>
+                                                                   <tr class='fail'>
+                                                                       <td>2021-08-02 12:51:16</td>
+                                                                       <td><span class='exception-link linked' extentid='f8024018-4439-4bb7-8329-c8ec466f8b8c'>signupBluetoothDeviceBoughtFromABWebsite</span></td>
+                                                                       <td><pre class='exception-message'>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //input[@placeholder='First Name'] (tried for 15 second(s) with 500 milliseconds interval)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-TTV29U0', ip: '192.168.100.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51311}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 67527d71acabfc306213afd122fd176a
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.autobrain.base.Base.VisibilityOfElementByXpath(Base.java:184)
+	at com.autobrain.base.SignUpBase.upgradeRequest(SignUpBase.java:1587)
+	at com.autobrain.pages.SignUp.signupBluetoothDeviceBoughtFromABWebsite(SignUp.java:34)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+</pre></td>
+                                                                   </tr>
+                                                            </tbody>
+														</table>
+													</div>
+												</div> 
+											</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='exception-details-wrapper' class='col _addedCell2'>
+						<div class='contents'>
+							<div class='card-panel details-view'>
+								<h5 class='exception-name'></h5>
+								<div class='exception-container'>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			<!-- /exceptions -->
 			
 			<!-- testrunner logs -->
