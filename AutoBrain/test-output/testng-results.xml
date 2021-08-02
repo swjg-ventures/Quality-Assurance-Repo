@@ -2,12 +2,12 @@
 <testng-results ignored="6" total="7" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-08-02T12:51:09 IST" name="Suite" finished-at="2021-08-02T12:54:16 IST" duration-ms="186541">
+  <suite started-at="2021-08-02T21:55:25 IST" name="Suite" finished-at="2021-08-02T21:58:39 IST" duration-ms="193999">
     <groups>
     </groups>
-    <test started-at="2021-08-02T12:51:09 IST" name="Chrome" finished-at="2021-08-02T12:54:16 IST" duration-ms="186541">
+    <test started-at="2021-08-02T21:55:25 IST" name="Chrome" finished-at="2021-08-02T21:58:39 IST" duration-ms="193999">
       <class name="com.autobrain.pages.SignUp">
-        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T12:51:09 IST" name="CheckBrowsers" finished-at="2021-08-02T12:51:16 IST" duration-ms="6755" status="PASS">
+        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-02T21:55:25 IST" name="CheckBrowsers" finished-at="2021-08-02T21:55:32 IST" duration-ms="6424" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,27 +23,39 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method signature="signupBluetoothDeviceBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T12:51:16 IST" name="signupBluetoothDeviceBoughtFromABWebsite" finished-at="2021-08-02T12:54:12 IST" duration-ms="175664" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="signupBluetoothDeviceBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-02T21:55:32 IST" name="signupBluetoothDeviceBoughtFromABWebsite" finished-at="2021-08-02T21:58:35 IST" duration-ms="183070" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //input[@placeholder='First Name'] (tried for 15 second(s) with 500 milliseconds interval)
+              <![CDATA[element click intercepted: Element is not clickable at point (31, 702)
+  (Session info: chrome=92.0.4515.107)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'DESKTOP-TTV29U0', ip: '192.168.100.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51311}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 67527d71acabfc306213afd122fd176a]]>
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61780}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d91eefaeb33551d39efc86dde805c3f8]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //input[@placeholder='First Name'] (tried for 15 second(s) with 500 milliseconds interval)
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (31, 702)
+  (Session info: chrome=92.0.4515.107)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'DESKTOP-TTV29U0', ip: '192.168.100.7', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '16.0.1'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51311}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: 67527d71acabfc306213afd122fd176a
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
-at com.autobrain.base.Base.VisibilityOfElementByXpath(Base.java:184)
-at com.autobrain.base.SignUpBase.upgradeRequest(SignUpBase.java:1587)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.107, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\rishi\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:61780}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: d91eefaeb33551d39efc86dde805c3f8
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+at com.autobrain.base.SignUpBase.upgradeRequest(SignUpBase.java:1613)
 at com.autobrain.pages.SignUp.signupBluetoothDeviceBoughtFromABWebsite(SignUp.java:34)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
@@ -62,11 +74,11 @@ at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecut
 at java.base/java.lang.Thread.run(Thread.java:831)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- signupBluetoothDeviceBoughtFromABWebsite -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T12:54:16 IST" name="quit" finished-at="2021-08-02T12:54:16 IST" duration-ms="337" status="PASS">
+        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-02T21:58:39 IST" name="quit" finished-at="2021-08-02T21:58:39 IST" duration-ms="426" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

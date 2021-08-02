@@ -559,7 +559,7 @@ public class SignUpBase extends Base {
 
 		if (signupModel.getBluetooth_is().equals("free")) {
 			System.out.println("This is Bluetooth free device!");
-
+			Thread.sleep(1000);
 			// Click on pagination
 			VisibilityOfElementByXpath("//ol[@class='hooper-indicators']/li[5]/button", 10).click();
 
@@ -1558,11 +1558,12 @@ public class SignUpBase extends Base {
 		return email;
 	}
 
-	public void upgradeRequest() {
+	public void upgradeRequest() throws Exception {
 
 		// Click on the navigation menu
 		VisibilityOfElementByXpath("//div[@class='ellipsis-opener']", 10).click();
-
+		Thread.sleep(1000);
+		
 		// Click on choose plan
 		VisibilityOfElementByXpath("//a[normalize-space()='Change Plan']", 10).click();
 
@@ -1607,7 +1608,8 @@ public class SignUpBase extends Base {
 
 		// Enter zip code
 		VisibilityOfElementByXpath("//input[@name='shipping zip']", 15).sendKeys(SignupModel.getZip());
-
+		
+		Thread.sleep(1000);
 		// Check terms and conditions check-box
 		VisibilityOfElementByXpath("//div[@class='same-shipping']//span", 10).click();
 
