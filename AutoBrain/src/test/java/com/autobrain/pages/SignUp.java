@@ -1,6 +1,5 @@
 package com.autobrain.pages;
 
-
 import org.testng.annotations.Test;
 import com.autobrain.base.Base;
 import com.autobrain.base.SignUpBase;
@@ -8,7 +7,34 @@ import com.autobrain.models.SignupModel;
 
 public class SignUp extends Base {
 
-	 @Test
+	@Test
+	public void signupBluetoothDeviceBoughtFromABWebsite() throws Exception {
+
+		SignupModel signupModel = new SignupModel();
+		signupModel.setAccount_type("bluetooth");
+		signupModel.setBluetooth_is("free");
+		signupModel.setPersonal_plan("vip");
+		signupModel.setChoose_personal_billing_interval("monthly");
+		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
+		signupModel.setSet_esf(false);
+
+		SignUpBase signUpBase = new SignUpBase(signupModel);
+
+		synchronized (signUpBase.LockObject) {
+
+			signUpBase.orderDeviceFromWebSite();
+		}
+		signUpBase.signup();
+
+		signUpBase.EsfExemptionsSetup();
+
+		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
+
+		signUpBase.choosePricingPlanAndAddCardDetails();
+
+	}
+
+	@Test
 	public void signupPersonalDeviceBoughtFromABWebsite() throws Exception {
 
 		SignupModel signupModel = new SignupModel();

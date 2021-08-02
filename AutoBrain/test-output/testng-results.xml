@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="5" total="6" passed="1" failed="0" skipped="0">
+<testng-results ignored="6" total="7" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-07-29T20:54:52 IST" name="Suite" finished-at="2021-07-29T20:57:07 IST" duration-ms="134790">
+  <suite started-at="2021-08-02T10:26:59 IST" name="Suite" finished-at="2021-08-02T10:31:17 IST" duration-ms="258406">
     <groups>
     </groups>
-    <test started-at="2021-07-29T20:54:52 IST" name="Chrome" finished-at="2021-07-29T20:57:07 IST" duration-ms="134790">
+    <test started-at="2021-08-02T10:26:59 IST" name="Chrome" finished-at="2021-08-02T10:31:17 IST" duration-ms="258406">
       <class name="com.autobrain.pages.SignUp">
-        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@47e2e487]" started-at="2021-07-29T20:54:52 IST" name="CheckBrowsers" finished-at="2021-07-29T20:54:58 IST" duration-ms="5749" status="PASS">
+        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T10:26:59 IST" name="CheckBrowsers" finished-at="2021-08-02T10:27:05 IST" duration-ms="5985" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,11 +23,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method signature="signupFreeBluetoothDevice()[pri:0, instance:com.autobrain.pages.SignUp@47e2e487]" started-at="2021-07-29T20:54:58 IST" name="signupFreeBluetoothDevice" finished-at="2021-07-29T20:57:07 IST" duration-ms="128645" status="PASS">
+        <test-method signature="signupBluetoothDeviceBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T10:27:05 IST" name="signupBluetoothDeviceBoughtFromABWebsite" finished-at="2021-08-02T10:31:17 IST" duration-ms="252097" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- signupFreeBluetoothDevice -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@47e2e487]" started-at="2021-07-29T20:57:07 IST" name="quit" finished-at="2021-07-29T20:57:07 IST" duration-ms="349" status="PASS">
+        </test-method> <!-- signupBluetoothDeviceBoughtFromABWebsite -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@61001b64]" started-at="2021-08-02T10:31:17 IST" name="quit" finished-at="2021-08-02T10:31:17 IST" duration-ms="271" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->
