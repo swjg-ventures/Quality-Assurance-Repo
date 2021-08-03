@@ -118,7 +118,7 @@ public class Base {
 
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);
+		getDriver().manage().timeouts().pageLoadTimeout(240, TimeUnit.SECONDS);
 		getDriver().get(url);
 
 		// Validate login page displayed
@@ -282,7 +282,7 @@ public class Base {
 
 	// SCROLL UNITL THE ELEMENT NOT FOUND
 	public void scroll_until_ele_not_found(List<WebElement> Element) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		int i = Element.size();
 		WebElement ele = Element.get(i - 1);
 		js.executeScript("arguments[0].scrollIntoView();", ele);

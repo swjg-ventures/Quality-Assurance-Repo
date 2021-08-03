@@ -465,8 +465,8 @@ public class SignUpBase extends Base {
 						.sendKeys(SignupModel.getVIN());
 
 		// Expanding Car Icon drop-down
-		VisibilityOfElementByXpath("//div[@class='select-dropdown']/div", 15).click();
-		Thread.sleep(3000);
+//		VisibilityOfElementByXpath("//div[@class='select-dropdown']/div", 15).click();
+//		Thread.sleep(3000);
 
 		// Selecting Car Icon from drop-down
 //		VisibilityOfElementByXpath(SignupModel.getCaricon(), 15).click();
@@ -1563,7 +1563,7 @@ public class SignUpBase extends Base {
 		// Click on the navigation menu
 		VisibilityOfElementByXpath("//div[@class='ellipsis-opener']", 10).click();
 		Thread.sleep(1000);
-		
+
 		// Click on choose plan
 		VisibilityOfElementByXpath("//a[normalize-space()='Change Plan']", 10).click();
 
@@ -1586,10 +1586,10 @@ public class SignUpBase extends Base {
 		// Add shipping address details
 		// Enter first name
 		VisibilityOfElementByXpath("//input[@name='fname']", 15).sendKeys(SignupModel.getF_name());
-		
+
 		// Convert integer to string
 		String l_name = String.valueOf(signupModel.getRandom_int());
-			
+
 		// Enter last name
 		VisibilityOfElementByXpath("//input[@name='lname']", 15).sendKeys(l_name);
 
@@ -1608,8 +1608,13 @@ public class SignUpBase extends Base {
 
 		// Enter zip code
 		VisibilityOfElementByXpath("//input[@name='shipping zip']", 15).sendKeys(SignupModel.getZip());
-		
-		Thread.sleep(1000);
+
+		// Scroll until the submit button and then click on it
+		List<WebElement> ele = getDriver().findElements(By.xpath("//button[contains(text(),'Submit')]"));
+		scroll_until_ele_not_found(ele);
+		Thread.sleep(1500);
+		ele.get(0).click();
+
 		// Check terms and conditions check-box
 		VisibilityOfElementByXpath("//div[@class='same-shipping']//span", 10).click();
 
@@ -1619,7 +1624,21 @@ public class SignUpBase extends Base {
 		// Validate upgrade request successfully
 		VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
 
-		// Check order received in worker panel for and upgrade unit
+		// Logout current user
+		login.logout();
+
+		// Login worker panel
+		login.login("john@example.com", "welcome");
+
+		// Navigate to order to ship page
+		getDriver().navigate().to("https://stg.autobrain.com/worker/online_fulfillment/invoices_to_ship#");
+
+		// Validate page loaded
+		Assert.assertTrue(VisibilityOfElementByXpath("//h3[normalize-space()='Orders to ship']", 10).isDisplayed());
+
+		// Validate order received
+		String last_name = VisibilityOfElementByXpath("//tr[1]/td[2]", 10).getText();
+		Assert.assertTrue(last_name.equals(l_name), "Order not received!");
 
 	}
 
