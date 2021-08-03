@@ -7,8 +7,9 @@ import com.autobrain.models.SignupModel;
 
 public class SignUp extends Base {
 
-	@Test
-	public void signupBluetoothDeviceBoughtFromABWebsite() throws Exception {
+	@Test(description = "Bought bluetooth unit from AB website and then signup with free tier fist and after that request for an upgrade"
+			+ "unit")
+	public void bluetoothSignupForFreePlanBoughtFromABWebsite() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
 		signupModel.setAccount_type("bluetooth");
@@ -32,6 +33,49 @@ public class SignUp extends Base {
 
 		signUpBase.choosePricingPlanAndAddCardDetails();
 		signUpBase.upgradeRequest();
+
+	}
+
+	@Test(description = "Bought bluetooth unit from AB website and then signup with paid tier fist and after that activated requested upgrade"
+			+ "unit")
+	public void bluetoothSignupForPaidPlanBoughtFromABWebsite() throws Exception {
+
+		SignupModel signupModel = new SignupModel();
+		signupModel.setAccount_type("bluetooth");
+		signupModel.setBluetooth_is("free_plus_paid");
+		signupModel.setPersonal_plan("vip");
+		signupModel.setChoose_personal_billing_interval("monthly");
+		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
+		signupModel.setSet_esf(false);
+
+		SignUpBase signUpBase = new SignUpBase(signupModel);
+
+		synchronized (signUpBase.LockObject) {
+
+			signUpBase.orderDeviceFromWebSite();
+		}
+		signUpBase.signup();
+
+		signUpBase.esfExemptionsSetup();
+
+		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
+
+		signUpBase.choosePricingPlanAndAddCardDetails();
+
+		// Logout current user
+		signUpBase.login.logout();
+
+		// Change blue-tooth type for upgraded device
+		signupModel.setBluetooth_is("upgraded_device");
+		// Order to ship upgraded device
+		signUpBase.orderToShip();
+
+		// Set blue-tooth type back to default
+		signupModel.setBluetooth_is("free_plus_paid");
+		// Login registered user
+		signUpBase.login.login(signupModel.getOwner_email(), "welcome");
+
+		signUpBase.activateNewDevice(signupModel.getAll_Devices_No().get(1));
 
 	}
 

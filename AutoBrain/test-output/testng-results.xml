@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="6" total="7" passed="0" failed="1" skipped="0">
+<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-08-03T11:32:30 IST" name="Suite" finished-at="2021-08-03T11:35:12 IST" duration-ms="161528">
+  <suite started-at="2021-08-03T22:16:18 IST" name="Suite" finished-at="2021-08-03T22:20:29 IST" duration-ms="251278">
     <groups>
     </groups>
-    <test started-at="2021-08-03T11:32:30 IST" name="Chrome" finished-at="2021-08-03T11:35:12 IST" duration-ms="161528">
+    <test started-at="2021-08-03T22:16:18 IST" name="Chrome" finished-at="2021-08-03T22:20:29 IST" duration-ms="251278">
       <class name="com.autobrain.pages.SignUp">
-        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-03T11:32:30 IST" name="CheckBrowsers" finished-at="2021-08-03T11:32:37 IST" duration-ms="6565" status="PASS">
+        <test-method is-config="true" signature="CheckBrowsers(java.lang.String,java.lang.String)[pri:0, instance:com.autobrain.pages.SignUp@4efac082]" started-at="2021-08-03T22:16:18 IST" name="CheckBrowsers" finished-at="2021-08-03T22:16:24 IST" duration-ms="5862" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -23,40 +23,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CheckBrowsers -->
-        <test-method signature="signupBluetoothDeviceBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-03T11:32:37 IST" name="signupBluetoothDeviceBoughtFromABWebsite" finished-at="2021-08-03T11:35:03 IST" duration-ms="145793" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[Order not received! expected [true] but found [false]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Order not received! expected [true] but found [false]
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.failNotEquals(Assert.java:1037)
-at org.testng.Assert.assertTrue(Assert.java:45)
-at com.autobrain.base.SignUpBase.upgradeRequest(SignUpBase.java:1641)
-at com.autobrain.pages.SignUp.signupBluetoothDeviceBoughtFromABWebsite(SignUp.java:34)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-at java.base/java.lang.Thread.run(Thread.java:831)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="bluetoothSignupForPaidPlanBoughtFromABWebsite()[pri:0, instance:com.autobrain.pages.SignUp@4efac082]" started-at="2021-08-03T22:16:24 IST" name="bluetoothSignupForPaidPlanBoughtFromABWebsite" description="Bought bluetooth unit from AB website and then signup with paid tier fist and after that activated requested upgradeunit" finished-at="2021-08-03T22:20:29 IST" duration-ms="244997" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- signupBluetoothDeviceBoughtFromABWebsite -->
-        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@201a4587]" started-at="2021-08-03T11:35:12 IST" name="quit" finished-at="2021-08-03T11:35:12 IST" duration-ms="326" status="PASS">
+        </test-method> <!-- bluetoothSignupForPaidPlanBoughtFromABWebsite -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:com.autobrain.pages.SignUp@4efac082]" started-at="2021-08-03T22:20:29 IST" name="quit" finished-at="2021-08-03T22:20:29 IST" duration-ms="378" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quit -->

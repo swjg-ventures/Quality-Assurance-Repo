@@ -16,7 +16,7 @@ public class DeviceReplacement extends Base {
 	String excel_file_path = "Files\\Device_replacement.xlsx";
 	SignupModel signupModel;
 	SignUpBase signUpBase;
-	public static boolean is_device_rep;
+	public static boolean is_device_rep=false;
 
 	@Test
 	public void deviceReplacement() throws Exception {

@@ -463,7 +463,7 @@ public class SignUpBase extends Base {
 		VisibilityOfElementByXpath(
 				"//label[contains(text(),'Create a Name for Your Car')]/following-sibling::div[4]/input", 15)
 						.sendKeys(SignupModel.getVIN());
-
+		Thread.sleep(1000);
 		// Expanding Car Icon drop-down
 //		VisibilityOfElementByXpath("//div[@class='select-dropdown']/div", 15).click();
 //		Thread.sleep(3000);
@@ -474,12 +474,12 @@ public class SignUpBase extends Base {
 		// Car Year
 		Select y = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][1]/div[2]/select")));
 		y.selectByVisibleText(SignupModel.getYear());
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 		// Car Make
 		Select m = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][2]/div[2]/select")));
 		m.selectByVisibleText(SignupModel.getMake());
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 
 		// Car Model
 		Select mo = new Select(getDriver().findElement(By.xpath("//div[@class='secondary-input'][3]/div[2]/select")));
@@ -535,7 +535,7 @@ public class SignUpBase extends Base {
 	public void choosePricingPlanAndAddCardDetails() throws Exception {
 
 		// FAMILY PLAN
-		if (signupModel.getAccount_type().contains("personal")) {
+		if (signupModel.getAccount_type().contains("personal") || signupModel.getAccount_type().contains("bluetooth")) {
 
 			// Choose Plan
 			WebElement choose_plan = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 15);
@@ -1012,7 +1012,7 @@ public class SignUpBase extends Base {
 			}
 
 			// FAMILY PLAN
-			if (signupModel.getAccount_type().contains("personal")) {
+			if (signupModel.getAccount_type().contains("personal") || signupModel.getAccount_type().contains("bluetooth")) {
 				int num = 5;
 
 				// Choose Plan
@@ -1578,6 +1578,18 @@ public class SignUpBase extends Base {
 
 		// Click on change plan button
 		VisibilityOfElementByXpath("//button[normalize-space()='Change Plan']", 5).click();
+
+		try {
+
+			// Validate add credit card form appear
+			Assert.assertTrue(VisibilityOfElementByXpath("//h4[text()='Add Credit Card ']", 3).isDisplayed());
+			// Add credit card info
+			addCreditCard();
+		}
+
+		catch (Exception e) {
+
+		}
 
 		// Validate add shipping address page opened
 		Assert.assertTrue(
