@@ -34,16 +34,16 @@ public class DeviceReplacement extends Base {
 		synchronized (signUpBase.LockObject) {
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 

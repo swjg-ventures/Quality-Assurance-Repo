@@ -37,7 +37,7 @@ public class SignUpBase extends Base {
 
 		// Check if the sign-up email is empty
 		if ((signupModel.getOwner_email() == null)) {
-			signupModel.setOwner_email(GenerateRandomEmail());
+			signupModel.setOwner_email(generateRandomEmail());
 		}
 
 		// Clicking on sign-up button
@@ -97,7 +97,7 @@ public class SignUpBase extends Base {
 			if (email_alert) {
 
 				VisibilityOfElementByID("user_email", 15).clear();
-				signupModel.setOwner_email(GenerateRandomEmail());
+				signupModel.setOwner_email(generateRandomEmail());
 				System.out.println("Email Already exist! New Email Is-->" + " " + signupModel.getOwner_email());
 				VisibilityOfElementByID("user_email", 15).sendKeys(signupModel.getOwner_email());
 
@@ -158,7 +158,7 @@ public class SignUpBase extends Base {
 
 		}
 		// Generating random email
-		signupModel.setOwner_email(GenerateRandomEmail());
+		signupModel.setOwner_email(generateRandomEmail());
 
 		getDriver().get("https://stg.autobrain.com/buy");
 
@@ -595,7 +595,7 @@ public class SignUpBase extends Base {
 			VisibilityOfElementByXpath("//button[text()='Continue']", 2).click();
 
 			// Add credit card
-			AddCreditCard();
+			addCreditCard();
 
 			// Same as billing check box
 			VisibilityOfElementByXpath("//div[contains(text(),'Same as Billing')]/div//span", 10).click();
@@ -629,7 +629,7 @@ public class SignUpBase extends Base {
 				System.out.println("Continue button not found!");
 			}
 
-			AddCreditCard();
+			addCreditCard();
 
 			// Validate next page (Step 2)
 			Assert.assertTrue(VisibilityOfElementByXpath("//h4[contains(text(),'Driver Setup')]", 20).isDisplayed(),
@@ -877,11 +877,11 @@ public class SignUpBase extends Base {
 		catch (Exception e) {
 			VisibilityOfElementByXpath("//a[contains(text(),'Save and Go To Next Step')]", 5).click();
 		}
-		Assert.assertTrue(Validate_HomePage_Landing(), "HomePage Landing failed! Not Found. Searching vehicle trip...");
+		Assert.assertTrue(validateHomepageLanding(), "HomePage Landing failed! Not Found. Searching vehicle trip...");
 
 	}
 
-	public boolean Validate_HomePage_Landing() {
+	public boolean validateHomepageLanding() {
 		// Verify user redirected to home page or not
 		Assert.assertTrue(
 				VisibilityOfElementByXpath("//li[contains(text(),'You are now ready to drive!')]", 60).isDisplayed(),
@@ -1088,7 +1088,7 @@ public class SignUpBase extends Base {
 
 	}
 
-	public void AddCreditCard() throws Exception {
+	public void addCreditCard() throws Exception {
 		// Enter First name
 		VisibilityOfElementByXpath("//input[@placeholder='First Name']", 15).sendKeys(SignupModel.getF_name());
 
@@ -1160,7 +1160,7 @@ public class SignUpBase extends Base {
 
 			// Enter phone number
 			VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15)
-					.sendKeys(GeneratePhoneNumber());
+					.sendKeys(generatePhoneNumber());
 
 			// Check-box - Phone number is not from United state or Canada
 			VisibilityOfElementByXpath("//input[@id='device_international_phone_number']", 15).click();
@@ -1187,7 +1187,7 @@ public class SignUpBase extends Base {
 
 			// Enter Device UID (ESN)
 			VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
-					.sendKeys(GenerateDeviceNumber());
+					.sendKeys(generateDeviceNumber());
 			device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 					.getAttribute("value");
 			// Select ESN Format
@@ -1214,7 +1214,7 @@ public class SignUpBase extends Base {
 						.size() == 1) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
-							.sendKeys(GenerateDeviceNumber());
+							.sendKeys(generateDeviceNumber());
 					device_num = VisibilityOfElementByXpath("//textarea[@placeholder='4541234567,4548901234']", 15)
 							.getAttribute("value");
 					// Click on create device button
@@ -1226,7 +1226,7 @@ public class SignUpBase extends Base {
 						.size() == 1 == true) {
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15).clear();
 					VisibilityOfElementByXpath("//textarea[@placeholder='2125550123,2125554567']", 15)
-							.sendKeys(GeneratePhoneNumber());
+							.sendKeys(generatePhoneNumber());
 
 					// Click on create device button
 					VisibilityOfElementByName("commit", 10).click();
@@ -1243,7 +1243,7 @@ public class SignUpBase extends Base {
 	}
 
 	// ESF_Exemptions Method
-	public void EsfExemptionsSetup() throws Exception {
+	public void esfExemptionsSetup() throws Exception {
 
 		if (signupModel.isSet_esf()) {
 			// Logout registered user
@@ -1344,7 +1344,7 @@ public class SignUpBase extends Base {
 
 	}
 
-	public void CreateInvoice() throws Exception {
+	public void createInvoice() throws Exception {
 
 		getDriver().get("https://stg.autobrain.com/worker/retail_fulfillment/new_invoice");
 
@@ -1393,7 +1393,7 @@ public class SignUpBase extends Base {
 
 	}
 
-	public void SubmitCsvFile() throws Exception {
+	public void submitCsvFile() throws Exception {
 
 		// Redirect to devices page in panel
 		getDriver().get("https://stg.autobrain.com/worker/retail_fulfillment/ready_for_distribution");
@@ -1405,7 +1405,7 @@ public class SignUpBase extends Base {
 		Thread.sleep(2000);
 	}
 
-	public void ChooseInvoicePricingPlanAndDistributionChannel() throws Exception {
+	public void chooseInvoicePricingPlanAndDistributionChannel() throws Exception {
 
 		// This will select the top invoice means the latest one
 		VisibilityOfElementByXpath("//select[@name='invoice']/option[2]", 15).click();
@@ -1448,7 +1448,7 @@ public class SignUpBase extends Base {
 	}
 
 	// Generate Random Device Number
-	public String GenerateDeviceNumber() {
+	public String generateDeviceNumber() {
 		String CHARS = "123456789";
 		StringBuilder salt = new StringBuilder();
 		Random rnd = new Random();
@@ -1461,7 +1461,7 @@ public class SignUpBase extends Base {
 	}
 
 	// Generate Random Phone Number
-	public String GeneratePhoneNumber() {
+	public String generatePhoneNumber() {
 		int num1, num2, num3; // 3 numbers in area code
 		int set2, set3; // sequence 2 and 3 of the phone number
 
@@ -1549,7 +1549,7 @@ public class SignUpBase extends Base {
 	}
 
 	// Generate random email
-	public String GenerateRandomEmail() {
+	public String generateRandomEmail() {
 		// Generating random email
 		Random randomGenerator = new Random();
 		signupModel.setRandom_int(randomGenerator.nextInt(10000));

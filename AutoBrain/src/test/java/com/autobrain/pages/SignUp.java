@@ -26,7 +26,7 @@ public class SignUp extends Base {
 		}
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -53,7 +53,7 @@ public class SignUp extends Base {
 
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -97,7 +97,7 @@ public class SignUp extends Base {
 
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -139,16 +139,16 @@ public class SignUp extends Base {
 		synchronized (signUpBase.LockObject) {
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -190,16 +190,16 @@ public class SignUp extends Base {
 		synchronized (signUpBase.LockObject) {
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -242,15 +242,15 @@ public class SignUp extends Base {
 
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -276,15 +276,15 @@ public class SignUp extends Base {
 
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
@@ -329,15 +329,15 @@ public class SignUp extends Base {
 
 			signUpBase.addDevicesInCsvFile();
 
-			signUpBase.CreateInvoice();
+			signUpBase.createInvoice();
 
-			signUpBase.SubmitCsvFile();
+			signUpBase.submitCsvFile();
 
-			signUpBase.ChooseInvoicePricingPlanAndDistributionChannel();
+			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
 		}
 		signUpBase.signup();
 
-		signUpBase.EsfExemptionsSetup();
+		signUpBase.esfExemptionsSetup();
 
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
