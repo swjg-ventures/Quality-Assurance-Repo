@@ -308,6 +308,11 @@ public class SignUpBase extends Base {
 		// Switch to Orders To Ship page
 		getDriver().navigate().to("https://stg.autobrain.com/worker/online_fulfillment/invoices_to_ship");
 
+		// Validate order received
+		String l_name = String.valueOf(signupModel.getRandom_int());
+		String last_name = VisibilityOfElementByXpath("//tr[1]/td[2]", 10).getText();
+		Assert.assertTrue(last_name.equals(l_name), "Order not received!");
+		
 		// Click on Add Device button to add the manually created device
 		pageObj.add_device_btn.get(0).click();
 
@@ -1012,7 +1017,8 @@ public class SignUpBase extends Base {
 			}
 
 			// FAMILY PLAN
-			if (signupModel.getAccount_type().contains("personal") || signupModel.getAccount_type().contains("bluetooth")) {
+			if (signupModel.getAccount_type().contains("personal")
+					|| signupModel.getAccount_type().contains("bluetooth")) {
 				int num = 5;
 
 				// Choose Plan

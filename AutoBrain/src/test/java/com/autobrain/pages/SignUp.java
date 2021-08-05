@@ -36,7 +36,7 @@ public class SignUp extends Base {
 
 	}
 
-	@Test(description = "Bought bluetooth unit from AB website and then signup with paid tier fist and after that activated requested upgrade"
+	@Test(description = "Bought bluetooth unit from AB website and then signup with paid tier fist and after that activate requested upgrade"
 			+ "unit")
 	public void bluetoothSignupForPaidPlanBoughtFromABWebsite() throws Exception {
 
