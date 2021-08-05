@@ -55,7 +55,8 @@ public class SignupModel {
 
 	// Others
 	private String account_type;
-	private String bluetooth_is = "false";
+	private String bluetooth_signup_tier="none";
+	private boolean bluetooth_upgraded=false;
 	private String owner_email;
 	private String device_no;
 	private int random_int;
@@ -67,12 +68,23 @@ public class SignupModel {
 	private boolean set_esf;
 	private boolean confirmation_email;
 
-	public String getBluetooth_is() {
-		return bluetooth_is;
+
+
+
+	public boolean isBluetooth_upgraded() {
+		return bluetooth_upgraded;
 	}
 
-	public void setBluetooth_is(String bluetooth_is) {
-		this.bluetooth_is = bluetooth_is;
+	public void setBluetooth_upgraded(boolean bluetooth_upgraded) {
+		this.bluetooth_upgraded = bluetooth_upgraded;
+	}
+
+	public String getBluetooth_signup_tier() {
+		return bluetooth_signup_tier;
+	}
+
+	public void setBluetooth_signup_tier(String bluetooth_signup_tier) {
+		this.bluetooth_signup_tier = bluetooth_signup_tier;
 	}
 
 	public String getPricing_plan() {

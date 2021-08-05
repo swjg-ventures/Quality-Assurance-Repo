@@ -9,11 +9,11 @@ public class SignUp extends Base {
 
 	@Test(description = "Bought bluetooth unit from AB website and then signup with free tier fist and after that request for an upgrade"
 			+ "unit")
-	public void bluetoothSignupForFreePlanBoughtFromABWebsite() throws Exception {
+	public void signupBluetoothUnitWithFreePlanAndActivateRequestedUpgradeUnit() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
 		signupModel.setAccount_type("bluetooth");
-		signupModel.setBluetooth_is("free");
+		signupModel.setBluetooth_signup_tier("free");
 		signupModel.setPersonal_plan("vip");
 		signupModel.setChoose_personal_billing_interval("monthly");
 		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
@@ -38,11 +38,11 @@ public class SignUp extends Base {
 
 	@Test(description = "Bought bluetooth unit from AB website and then signup with paid tier fist and after that activate requested upgrade"
 			+ "unit")
-	public void bluetoothSignupForPaidPlanBoughtFromABWebsite() throws Exception {
+	public void signupBluetoothUnitWithPaidPlanAndActivateRequestedUpgradeUnit() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
 		signupModel.setAccount_type("bluetooth");
-		signupModel.setBluetooth_is("free_plus_paid");
+		signupModel.setBluetooth_signup_tier("paid");
 		signupModel.setPersonal_plan("vip");
 		signupModel.setChoose_personal_billing_interval("monthly");
 		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
@@ -66,12 +66,11 @@ public class SignUp extends Base {
 		signUpBase.login.logout();
 
 		// Change blue-tooth type for upgraded device
-		signupModel.setBluetooth_is("upgraded_device");
+		signupModel.setBluetooth_upgraded(true);
+
 		// Order to ship upgraded device
 		signUpBase.orderToShip();
 
-		// Set blue-tooth type back to default
-		signupModel.setBluetooth_is("free_plus_paid");
 		// Login registered user
 		signUpBase.login.login(signupModel.getOwner_email(), "welcome");
 
@@ -269,12 +268,12 @@ public class SignUp extends Base {
 		softassert.assertAll();
 	}
 
-	@Test
-	public void signupFreeBluetoothDevice() throws Exception {
+	@Test(description = "Bought bluetooth unit from retailer and signup with free plan first and then requested for an upgrade unit")
+	public void signupRetailerBluetoothUnitWithFreePlanAndActivateRequestedUpgradeUnit() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
 		signupModel.setAccount_type("personal");
-		signupModel.setBluetooth_is("free");
+		signupModel.setBluetooth_signup_tier("free");
 		signupModel.setPersonal_plan("vip");
 		signupModel.setChoose_personal_billing_interval("monthly");
 		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
@@ -302,13 +301,13 @@ public class SignUp extends Base {
 
 	}
 
-	@Test
-	public void signupFreePlusPaidBluetoothDevice() throws Exception {
+	@Test(description = "Bought bluetooth unit from retailer and then signup with paid plan and then activated upgraded cellular unit")
+	public void signupRetailerBluetoothUnitWithPaidPlanAndActivateRequestedUpgradeUnit() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
 
 		signupModel.setAccount_type("personal");
-		signupModel.setBluetooth_is("free_plus_paid");
+		signupModel.setBluetooth_signup_tier("paid");
 		signupModel.setPersonal_plan("vip");
 		signupModel.setChoose_personal_billing_interval("monthly");
 		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
@@ -334,89 +333,19 @@ public class SignUp extends Base {
 
 		signUpBase.choosePricingPlanAndAddCardDetails();
 
-		// If more than one device then activate new device
-		if (signupModel.getBluetooth_is().equals("free_plus_paid")) {
-
-			// Logout current user
-			signUpBase.login.logout();
-
-			// Change blue-tooth type for upgraded device
-			signupModel.setBluetooth_is("upgraded_device");
-			// Order to ship upgraded device
-			signUpBase.orderToShip();
-
-			// Set blue-tooth type back to default
-			signupModel.setBluetooth_is("free_plus_paid");
-			// Login registered user
-			signUpBase.login.login(signupModel.getOwner_email(), "welcome");
-
-			signUpBase.activateNewDevice(signupModel.getAll_Devices_No().get(1));
-
-		}
-
-	}
-
-//	@Test
-	public void ActivateCellularDeviceWhichContainNoInvoiceUnderFreeBluetoothAccount() throws Exception {
-
-		SignupModel signupModel = new SignupModel();
-		signupModel.setAccount_type("personal");
-		signupModel.setBluetooth_is("free");
-		signupModel.setPersonal_plan("vip");
-		signupModel.setChoose_personal_billing_interval("monthly");
-		signupModel.setPricing_plan("Personal Tier Free, Price: $49.97, Monthly: $0.00, Free Days: 90");
-		signupModel.setSet_esf(false);
-
-		SignUpBase signUpBase = new SignUpBase(signupModel);
-
-		synchronized (signUpBase.LockObject) {
-
-			signUpBase.addDevicesInCsvFile();
-
-			signUpBase.createInvoice();
-
-			signUpBase.submitCsvFile();
-
-			signUpBase.chooseInvoicePricingPlanAndDistributionChannel();
-		}
-		signUpBase.signup();
-
-		signUpBase.esfExemptionsSetup();
-
-		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
-
-		signUpBase.choosePricingPlanAndAddCardDetails();
-
-		// Add device which having no pricing plan
-		signupModel.setBluetooth_is("Upgraded");
+		// Logout current user
 		signUpBase.login.logout();
-		signUpBase.login.login("john@example.com", "welcome");
-		signUpBase.createDeviceFromPanel();
-		VisibilityOfElementByXpath("//a[contains(text(),'Log Out')]", 15).click();
-		getDriver().navigate().to(url);
+
+		// Change blue-tooth type for upgraded device
+		signupModel.setBluetooth_upgraded(true);
+
+		// Order to ship upgraded device
+		signUpBase.orderToShip();
+
+		// Login registered user
 		signUpBase.login.login(signupModel.getOwner_email(), "welcome");
-		Thread.sleep(500);
+
 		signUpBase.activateNewDevice(signupModel.getAll_Devices_No().get(1));
-
-		// If more than one device then activate new device
-		if (signupModel.getBluetooth_is().equals("free_plus_paid")) {
-
-			// Logout current user
-			signUpBase.login.logout();
-
-			// Change blue-tooth type for upgraded device
-			signupModel.setBluetooth_is("upgraded_device");
-			// Order to ship upgraded device
-			signUpBase.orderToShip();
-
-			// Set blue-tooth type back to default
-			signupModel.setBluetooth_is("free_plus_paid");
-			// Login registered user
-			signUpBase.login.login(signupModel.getOwner_email(), "welcome");
-
-			signUpBase.activateNewDevice(signupModel.getAll_Devices_No().get(1));
-
-		}
 
 	}
 

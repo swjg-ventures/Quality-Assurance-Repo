@@ -312,7 +312,7 @@ public class SignUpBase extends Base {
 		String l_name = String.valueOf(signupModel.getRandom_int());
 		String last_name = VisibilityOfElementByXpath("//tr[1]/td[2]", 10).getText();
 		Assert.assertTrue(last_name.equals(l_name), "Order not received!");
-		
+
 		// Click on Add Device button to add the manually created device
 		pageObj.add_device_btn.get(0).click();
 
@@ -326,7 +326,7 @@ public class SignUpBase extends Base {
 		Thread.sleep(2500);
 
 		for (int i = 0; i < pageObj.no_of_input_devices.size(); i++) {
-			if (signupModel.getBluetooth_is().equals("upgraded_device")) {
+			if (signupModel.isBluetooth_upgraded()) {
 				TypeInFieldSlowly(pageObj.no_of_input_devices.get(i), signupModel.getAll_Devices_No().get(1));
 			}
 
@@ -359,7 +359,7 @@ public class SignUpBase extends Base {
 				// Enter the custom created device number
 				// Reset i to 0 and start entering the device ID from first index
 				i = 0;
-				if (signupModel.getBluetooth_is().equals("upgraded_device")) {
+				if (signupModel.isBluetooth_upgraded()) {
 					TypeInFieldSlowly(pageObj.no_of_input_devices.get(i), signupModel.getAll_Devices_No().get(1));
 				}
 
@@ -500,7 +500,8 @@ public class SignUpBase extends Base {
 		terms_conditions_btn.get(0).click();
 		Thread.sleep(2000);
 
-		if (!(signupModel.getBluetooth_is().contains("free"))) {
+		if (!((signupModel.getBluetooth_signup_tier().equals("free"))
+				|| (signupModel.getBluetooth_signup_tier().equals("paid")))) {
 			if (!(signupModel.isSet_esf())) {
 				terms_conditions_btn.get(1).click();
 			}
@@ -562,7 +563,7 @@ public class SignUpBase extends Base {
 			Thread.sleep(2000);
 		}
 
-		if (signupModel.getBluetooth_is().equals("free")) {
+		if (signupModel.getBluetooth_signup_tier().equals("free")) {
 			System.out.println("This is Bluetooth free device!");
 			Thread.sleep(1000);
 			// Click on pagination
@@ -593,9 +594,9 @@ public class SignUpBase extends Base {
 
 		}
 
-		if (signupModel.getBluetooth_is().equals("free_plus_paid")) {
+		if (signupModel.getBluetooth_signup_tier().equals("paid")) {
 
-			System.out.println("This is bluetooth free_plus_paid device!");
+			System.out.println("Signing up with paid tier");
 			// Click on continue button
 			VisibilityOfElementByXpath("//button[text()='Continue']", 2).click();
 
@@ -623,7 +624,8 @@ public class SignUpBase extends Base {
 
 		}
 
-		if (!(signupModel.getBluetooth_is().contains("free"))) {
+		if (!((signupModel.getBluetooth_signup_tier().equals("free")
+				|| (signupModel.getBluetooth_signup_tier().equals("paid"))))) {
 
 			try {
 				// Check continue button is available
@@ -1028,15 +1030,15 @@ public class SignUpBase extends Base {
 				Thread.sleep(2000);
 
 				if (signupModel.getPersonal_plan()
-						.contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[3]//button")) {
+						.contains("//div[text()='VIP']//following::button[1]")) {
 					num = 0;
 				}
 				if (signupModel.getPersonal_plan()
-						.contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button")) {
+						.contains("//div[text()='Essential']//following::button[1]")) {
 					num = 1;
 				}
 				if (signupModel.getPersonal_plan()
-						.contains("//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[1]//button")) {
+						.contains("//div[text()='Money Saver']//following::button[1]")) {
 					num = 2;
 				}
 
@@ -1088,7 +1090,7 @@ public class SignUpBase extends Base {
 		}
 		Assert.assertEquals(homepage_displayed, true, "Home page is not loaded!");
 
-		if (signupModel.getBluetooth_is().equals("free_plus_paid")) {
+		if (signupModel.getBluetooth_signup_tier().equals("paid")) {
 			VisibilityOfElementByXpath("//button[contains(text(),'GOT IT')]", 10).click();
 		}
 
@@ -1174,13 +1176,24 @@ public class SignUpBase extends Base {
 			// Select Model
 			Select sel = new Select(getDriver().findElement(By.name("device[model]")));
 
-			if (signupModel.getBluetooth_is().contains("free")) {
+			if (signupModel.getBluetooth_signup_tier().equals("free")
+					|| signupModel.getBluetooth_signup_tier().equals("paid")) {
 
-				// Enter cellular service type
-				VisibilityOfElementByName("device[cellular_service_type]", 10).sendKeys("FREE_1");
+				if (signupModel.isBluetooth_upgraded()) {
+					// Enter cellular service type
+					VisibilityOfElementByName("device[cellular_service_type]", 10).sendKeys("WYLESS");
 
-				// Select model
-				sel.selectByVisibleText("Autobrain_Bluetooth_1");
+					// Select model
+					sel.selectByVisibleText("Standard");
+				}
+
+				else {
+					// Enter cellular service type
+					VisibilityOfElementByName("device[cellular_service_type]", 10).sendKeys("FREE_1");
+
+					// Select model
+					sel.selectByVisibleText("Autobrain_Bluetooth_1");
+				}
 			}
 
 			else {
@@ -1656,7 +1669,7 @@ public class SignUpBase extends Base {
 
 		// Validate order received
 		String last_name = VisibilityOfElementByXpath("//tr[1]/td[2]", 10).getText();
-		Assert.assertTrue(last_name.equals(l_name), "Order not received!");
+		Assert.assertTrue(last_name.equals(l_name), "Request upgrade unit rrder not received!");
 
 	}
 

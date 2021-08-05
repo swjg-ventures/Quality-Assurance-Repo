@@ -15,7 +15,7 @@
 
 			<class name="com.autobrain.pages.SignUp">
 				<methods>
-					<include name="bluetoothSignupForPaidPlanBoughtFromABWebsite"></include>
+					<include name="signupFreePlusPaidBluetoothDevice"></include>
 				</methods>
 			</class>
 
