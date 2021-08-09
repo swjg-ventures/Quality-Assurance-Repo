@@ -819,43 +819,48 @@ public class SignUpBase extends Base {
 	}
 
 	public void step4Setup() throws Exception {
-		Thread.sleep(2000);
+
+		if (signupModel.getAccount_type().equals("business")) {
+			VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 5)
+					.click();
+
+		}
 
 		// TURN ON LOW FUEL NOTIFICATIONS ALERTS
-//			VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
-//					.click();
-//			Thread.sleep(2000);
-		//
-//			// Toggle status
-//			String fuel_noti_toggle_status = VisibilityOfElementByXpath(
-//					"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 15).getText();
-		//
-//			// Validate notification toggle has turned ON
-//			Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
-		//
-//			// Click on advance setting to set fuel percentage notification
-//			VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div//i", 10).click();
-		//
-//			// Validate low fuel notifications settings page opened
-//			boolean low_fuel_noti_settings_page_opened = VisibilityOfAllElementsByXpath(
-//					"//h4[text()='Low Fuel Notifications Settings']", 10).size() == 1;
-		//
-//			Assert.assertEquals(low_fuel_noti_settings_page_opened, true,
-//					"Low fuel notifications settings page not opened!");
-		//
-//			// Set fuel percentage to 50%
-//			VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 15).click();
-//			Thread.sleep(2000);
-		//
-//			// Validate percentage set to 50 or not
-//			boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
-//					"//span[contains(text(),'50%')]/following-sibling::div/div/span", 20).getText().contains("ON");
-		//
-//			Assert.assertEquals(is_percentage_set_to_50, true,
-//					"Unable to set fuel percentage to 50! Status not turned ON.");
-		//
-//			// Click on all alert settings button (Going back)
-//			VisibilityOfElementByXpath("//button[text()='All Alert Settings']", 10).click();
+		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
+				.click();
+		Thread.sleep(2000);
+
+		// Toggle status
+		String fuel_noti_toggle_status = VisibilityOfElementByXpath(
+				"//span[text()='Low Fuel Notifications']/following-sibling::div/div/div/span", 15).getText();
+
+		// Validate notification toggle has turned ON
+		Assert.assertEquals(fuel_noti_toggle_status, "ON", "Unable to turn ON fuel notification toggle!");
+
+		// Click on advance setting to set fuel percentage notification
+		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div//i", 10).click();
+
+		// Validate low fuel notifications settings page opened
+		boolean low_fuel_noti_settings_page_opened = VisibilityOfAllElementsByXpath(
+				"//h4[text()='Low Fuel Notifications Settings']", 10).size() == 1;
+
+		Assert.assertEquals(low_fuel_noti_settings_page_opened, true,
+				"Low fuel notifications settings page not opened!");
+
+		// Set fuel percentage to 50%
+		VisibilityOfElementByXpath("//span[contains(text(),'50%')]/following-sibling::div/div", 15).click();
+		Thread.sleep(2000);
+
+		// Validate percentage set to 50 or not
+		boolean is_percentage_set_to_50 = VisibilityOfElementByXpath(
+				"//span[contains(text(),'50%')]/following-sibling::div/div/span", 20).getText().contains("ON");
+
+		Assert.assertEquals(is_percentage_set_to_50, true,
+				"Unable to set fuel percentage to 50! Status not turned ON.");
+
+		// Click on all alert settings button (Going back)
+		VisibilityOfElementByXpath("//button[text()='All Alert Settings']", 10).click();
 
 		// Click on Next page button
 		try {
@@ -993,11 +998,6 @@ public class SignUpBase extends Base {
 		Thread.sleep(1500);
 		ele.click();
 
-		// Catch javascript error
-		if (extractJSLogsInfo("The server responded with a status of 500!")) {
-			Assert.assertFalse(true, "The server responded with a status of 500!");
-		}
-
 		if (!DeviceReplacement.is_device_rep) {
 
 			// VALIDATE CHOOSE PLAN PAGE
@@ -1029,16 +1029,13 @@ public class SignUpBase extends Base {
 
 				Thread.sleep(2000);
 
-				if (signupModel.getPersonal_plan()
-						.contains("//div[text()='VIP']//following::button[1]")) {
+				if (signupModel.getPersonal_plan().contains("//div[text()='VIP']//following::button[1]")) {
 					num = 0;
 				}
-				if (signupModel.getPersonal_plan()
-						.contains("//div[text()='Essential']//following::button[1]")) {
+				if (signupModel.getPersonal_plan().contains("//div[text()='Essential']//following::button[1]")) {
 					num = 1;
 				}
-				if (signupModel.getPersonal_plan()
-						.contains("//div[text()='Money Saver']//following::button[1]")) {
+				if (signupModel.getPersonal_plan().contains("//div[text()='Money Saver']//following::button[1]")) {
 					num = 2;
 				}
 
@@ -1512,36 +1509,6 @@ public class SignUpBase extends Base {
 	public String getConfirmationCode() throws Exception {
 		Thread.sleep(1500);
 
-//		// YOPMAIL.COM
-//		Thread.sleep(2000);
-//		getDriver().get("http://www.yopmail.com/en/");
-//		Thread.sleep(2000);
-//
-//		// Input email
-//		VisibilityOfElementByXpath("//input[@id='login']", 15).sendKeys(signupModel.getOwner_email());
-//		System.out.println("Owner email: " + signupModel.getOwner_email());
-//
-//		// Click on check for new email button
-//		VisibilityOfElementByXpath("//input[@class='sbut']", 15).click();
-//		Thread.sleep(1000);
-//
-//		// Switch to frame
-//		getDriver().switchTo().frame(getDriver().findElement(By.id("ifinbox")));
-//
-//		// Open confirmation email
-//		VisibilityOfElementByXpath("//span[contains(text(),'Autobrain account confirmation email')]", 10).click();
-//		Thread.sleep(1000);
-//
-//		// Back to parent frame
-//		getDriver().switchTo().parentFrame();
-//
-//		// Switch to frame
-//		getDriver().switchTo().frame(getDriver().findElement(By.id("ifmail")));
-//
-//		// Get confirmation code
-//		String confirmation_code = VisibilityOfElementByXpath("//td[contains(text(),'To get started')]/strong", 15)
-//				.getText();
-
 		getDriver().get("http://mailcatch.com");
 
 		// Input email
@@ -1669,7 +1636,7 @@ public class SignUpBase extends Base {
 
 		// Validate order received
 		String last_name = VisibilityOfElementByXpath("//tr[1]/td[2]", 10).getText();
-		Assert.assertTrue(last_name.equals(l_name), "Request upgrade unit rrder not received!");
+		Assert.assertTrue(last_name.equals(l_name), "Request for an upgrade unit order not received!");
 
 	}
 
