@@ -57,6 +57,7 @@ public class Login extends Base {
 		}
 	}
 
+	
 	public void logout() throws Exception {
 
 		VisibilityOfElementByClassName("hamburger-container", 10).click();

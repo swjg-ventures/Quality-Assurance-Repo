@@ -298,6 +298,8 @@ public class SignUp extends Base {
 		signUpBase.step1Setup(signupModel.getAll_Devices_No().get(0));
 
 		signUpBase.choosePricingPlanAndAddCardDetails();
+		
+		signUpBase.upgradeRequest();
 
 	}
 

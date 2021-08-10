@@ -5,6 +5,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +40,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -87,12 +91,12 @@ public class Base {
 			options.setExperimentalOption("prefs", prefs);
 
 			// Disable chrome is being controlled by automated software
-			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-			
+			options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+
 			// Headless browser run without UI
 			if (headless.equalsIgnoreCase("true")) {
 				options.addArguments("window-size=1920,1080");
-			//	options.addArguments("window-size=1366,768");
+				// options.addArguments("window-size=1366,768");
 				options.addArguments("headless");
 				System.out.println("Test will run in Headless Browser!");
 			}
@@ -154,23 +158,23 @@ public class Base {
 
 	}
 
-// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
-//	@BeforeClass
-//	public void deleteFailedTestScreenshots() throws IOException {
-//		File f = new File("Images\\");
-//		int count = 0;
-//		for (File file : f.listFiles()) {
-//			if (file.isFile() && file.getName().endsWith(".png")) {
-//				String file_name = file.getName();
-//				Files.deleteIfExists(Paths.get("Images\\" + file_name));
-//				count++;
-//			}
-//		}
-//
-//		if (count > 0) {
-//			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
-//		}
-//	}
+	// DELETE FAILED TEST SCREENSHOTS FROM IMAGES FOLDER BEFORE THE TEST START
+	@BeforeClass
+	public void deleteFailedTestScreenshots() throws IOException {
+		File f = new File("Images\\");
+		int count = 0;
+		for (File file : f.listFiles()) {
+			if (file.isFile() && file.getName().endsWith(".png")) {
+				String file_name = file.getName();
+				Files.deleteIfExists(Paths.get("Images\\" + file_name));
+				count++;
+			}
+		}
+
+		if (count > 0) {
+			System.out.println("Old tests screenshots deleted successfully before launching the new tests!");
+		}
+	}
 
 	// WAIT
 	public WebDriverWait wait(WebDriver driver, int time) {

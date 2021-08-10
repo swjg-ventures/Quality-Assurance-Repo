@@ -1130,7 +1130,13 @@ public class SignUpBase extends Base {
 		VisibilityOfElementByXpath("//input[@placeholder='Zip Code']", 15).sendKeys(SignupModel.getZip());
 
 		// Click on check-box (Make This Your Primary Card)
-		VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 15).click();
+		// Scroll until the submit button and then click on it
+		List<WebElement> checkbox = getDriver().findElements(By.xpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']"));
+		scroll_until_ele_not_found(checkbox);
+		Thread.sleep(1000);
+		checkbox.get(0).click();
+
+//		VisibilityOfElementByXpath("//span[@class='tjXd8Trvz_04Wlld4lvGW_0']", 15).click();
 
 		// Click on Save button
 		VisibilityOfElementByXpath("//button[contains(text(),'Save')]", 15).click();
@@ -1539,7 +1545,7 @@ public class SignUpBase extends Base {
 		// Generating random email
 		Random randomGenerator = new Random();
 		signupModel.setRandom_int(randomGenerator.nextInt(10000));
-		String email = "testuser" + signupModel.getRandom_int() + "@mailcatch.com";
+		String email = "user" + signupModel.getRandom_int() + "@mailcatch.com";
 		SignupModel.setL_name("" + signupModel.getRandom_int());
 		return email;
 	}
