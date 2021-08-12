@@ -11,10 +11,11 @@ import com.autobrain.pages.CustomerInfo;
 import com.autobrain.pages.CustomerService;
 import com.autobrain.pages.DownloadApp;
 import com.autobrain.pages.GetAnotherDeviceFromWeb;
+import com.autobrain.pages.Login;
 import com.autobrain.pages.RoadsideAssistance;
-import com.autobrain.pages.VehicleProfile;
+import com.autobrain.pages.UpdateVehicleProfile;
 
-public class MainTest extends VehicleProfile {
+public class MainTest extends Login {
 
 	// LOGIN
 	@Test(priority = 1)
@@ -93,7 +94,8 @@ public class MainTest extends VehicleProfile {
 	// MENU- VEHICLE PROFILE
 	@Test(priority = 13)
 	public void VerifyVehicleProfile() throws Exception {
-		VehicleProfileInfo();
+		UpdateVehicleProfile update = new UpdateVehicleProfile();
+		update.updateVehicleProfile();
 	}
 
 	// DOWNLOAD APP

@@ -8,14 +8,14 @@
     <parameter name="Headless" value="false"/>
     <parameter name="Browsers" value="chrome"/>
     <classes>
-      <class name="com.autobrain.pages.SignUp">
+      <class name="com.autobrain.pages.VehicleProfileUpdate">
         <methods>
-          <include name="signupRetailerBluetoothUnitWithFreePlanAndActivateRequestedUpgradeUnit"/>
           <include name="quit"/>
           <include name="deleteFailedTestScreenshots"/>
           <include name="CheckBrowsers"/>
+          <include name="VehicleProfileInfo"/>
         </methods>
-      </class> <!-- com.autobrain.pages.SignUp -->
+      </class> <!-- com.autobrain.pages.VehicleProfileUpdate -->
     </classes>
   </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

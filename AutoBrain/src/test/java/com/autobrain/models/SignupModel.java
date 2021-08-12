@@ -8,6 +8,8 @@ import java.util.Random;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.autobrain.base.Base;
+
 public class SignupModel {
 
 	// For properties
@@ -32,8 +34,10 @@ public class SignupModel {
 	private static String card_no = "4242424242424242";
 
 	// For vehicle info
-	private static String caricon1 = "//div[@class='grid']/div[1]";
-	private static String caricon2 = "//div[@class='grid']/div[10]";
+	public static String carname1 = "Testing car";
+	public static String carname2 = "Demo car";
+	public static String caricon1 = "//div[@class='grid']/div[1]";
+	public static String caricon2 = "//div[@class='grid']/div[10]";
 	private static String year1 = "2015";
 	private static String year2 = "2018";
 	private static String make1 = "SKODA";
@@ -55,21 +59,18 @@ public class SignupModel {
 
 	// Others
 	private String account_type;
-	private String bluetooth_signup_tier="none";
-	private boolean bluetooth_upgraded=false;
+	private String bluetooth_signup_tier = "none";
+	private boolean bluetooth_upgraded = false;
 	private String owner_email;
 	private String device_no;
 	private int random_int;
-	private int total_bought_devices=1;
+	private int total_bought_devices = 1;
 	private String personal_plan;
 	private String personal_billing_interval;
 	private String choose_business_billing_interval;
 	private String pricing_plan;
 	private boolean set_esf;
 	private boolean confirmation_email;
-
-
-
 
 	public boolean isBluetooth_upgraded() {
 		return bluetooth_upgraded;
@@ -148,7 +149,7 @@ public class SignupModel {
 		if (personal_plan.contains("essential")) {
 //			personal_plan = "//div[@class='_1nPLChEwNgDH5KMyzoXBEb_0']/div[2]//button";
 			personal_plan = "//div[text()='Essential']//following::button[1]";
-			
+
 		}
 
 		if (personal_plan.contains("moneysaver")) {
@@ -190,6 +191,11 @@ public class SignupModel {
 	}
 
 	// Shuffling vehicle info variables
+
+	// Car name
+	static String Scarname[] = { carname1, carname2 };
+	private static String carname = Scarname[new Random().nextInt(Scarname.length)];
+
 	// Car vin
 	static String Svin[] = { vin1, vin2 };
 	private static String vin = Svin[new Random().nextInt(Svin.length)];
@@ -318,6 +324,14 @@ public class SignupModel {
 		SignupModel.card_no = card_no;
 	}
 
+	public static String getCarname() {
+		return carname;
+	}
+
+	public static void setCarname(String carname) {
+		SignupModel.carname = carname;
+	}
+
 	public static String getVIN() {
 		return vin;
 	}
@@ -332,6 +346,18 @@ public class SignupModel {
 
 	public static void setCaricon(String caricon) {
 		SignupModel.caricon = caricon;
+	}
+
+	public static String getCar_hybrid_status() {
+		Base base = new Base();
+
+		if (base.VisibilityOfElementByXpath("//div[@class='_3fRlA9ofZ3wg1XWxsL0y2l_0']/parent::div/div/span", 5)
+				.getText().equals("ON")) {
+			return "ON";
+		} else {
+			return "OFF";
+		}
+
 	}
 
 	public static String getYear() {
@@ -429,6 +455,5 @@ public class SignupModel {
 	public static void setProp(Properties prop) {
 		SignupModel.prop = prop;
 	}
-
 
 }
