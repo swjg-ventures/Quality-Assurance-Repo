@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-import com.autobrain.pages.Login;
-
 public class ChangePassword extends Login {
 	boolean home_page_loaded, actresult;
 	String currentpass = null, newpass = null, confirmnewpass = null;

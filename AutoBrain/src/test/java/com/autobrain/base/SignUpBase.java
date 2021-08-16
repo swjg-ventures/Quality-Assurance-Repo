@@ -826,9 +826,12 @@ public class SignUpBase extends Base {
 
 		}
 
-		// TURN ON LOW FUEL NOTIFICATIONS ALERTS
-		VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
-				.click();
+		else {
+			// TURN ON LOW FUEL NOTIFICATIONS ALERTS
+			VisibilityOfElementByXpath("//span[text()='Low Fuel Notifications']/following-sibling::div/div/div", 15)
+					.click();
+		}
+
 		Thread.sleep(2000);
 
 		// Toggle status

@@ -66,7 +66,7 @@ public class UpdateVehicleProfile extends Base {
 		model_selected = mo.getFirstSelectedOption().getText().trim();
 
 		// Fill Up Insurance and Registration Forms
-		Ins_Reg_Forms();
+		insRegForm();
 
 		// Submit button
 		VisibilityOfElementByXpath("//button[contains(text(),'Submit')]", 10).click();
@@ -84,11 +84,11 @@ public class UpdateVehicleProfile extends Base {
 		Thread.sleep(1000);
 
 		// VALIDATING ALL DATA
-		validate_data();
+		validateVehicleProfileInfo();
 	}
 
 	// Insurance and Registration forms
-	public void Ins_Reg_Forms() throws Exception {
+	public void insRegForm() throws Exception {
 
 		// NEW FORM CAR INSURANCE (Click on Edit button)
 		VisibilityOfElementByXpath("//div[@class='car-insurance-header']/div[2]/span", 5).click();
@@ -169,7 +169,7 @@ public class UpdateVehicleProfile extends Base {
 	}
 
 	// VALIDATE INSERTED DATA
-	public void validate_data() throws Exception {
+	public void validateVehicleProfileInfo() throws Exception {
 
 		// VALIDATE CAR NAME
 		String cName = VisibilityOfElementByXpath("//div[@class='new-device-form']/div[1]/input", 5)

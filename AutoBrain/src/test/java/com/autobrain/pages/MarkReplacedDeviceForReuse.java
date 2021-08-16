@@ -39,6 +39,7 @@ public class MarkReplacedDeviceForReuse extends Login {
 
 			// CSV file to add devices
 			File csvFile = new File(mark_device_for_reuse);
+		
 			Writer file = new FileWriter(csvFile);
 			CSVWriter writer = new CSVWriter(file);
 

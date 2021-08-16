@@ -50,6 +50,7 @@ public class CSV {
 	
 	public static void write_csv() throws Exception 
 	{
+		
 		Writer file = new FileWriter("C:\\Users\\Rajesh\\Downloads\\mark.csv");
 		 CSVWriter writer = new CSVWriter(file);
 		
