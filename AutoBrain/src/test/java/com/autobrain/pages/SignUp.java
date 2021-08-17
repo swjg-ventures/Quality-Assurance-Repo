@@ -170,7 +170,7 @@ public class SignUp extends Base {
 	public void signupPersonalRetailerDevice() throws Exception {
 
 		SignupModel signupModel = new SignupModel();
-		signupModel.setTotal_bought_devices(2);
+		signupModel.setTotal_bought_devices(1);
 		signupModel.setAccount_type("personal");
 		signupModel.setPersonal_plan("moneysaver");
 		signupModel.setChoose_personal_billing_interval("monthly");

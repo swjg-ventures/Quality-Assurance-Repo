@@ -544,8 +544,21 @@ public class SignUpBase extends Base {
 		if (signupModel.getAccount_type().contains("personal") || signupModel.getAccount_type().contains("bluetooth")) {
 
 			// Choose Plan
-			WebElement choose_plan = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 15);
-			choose_plan.click();
+//			WebElement choose_plan = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 15);
+//			choose_plan.click();
+			
+			List<WebElement> nav_btn = VisibilityOfAllElementsByXpath("//ol[@class='hooper-indicators']/li/button", 5);
+			
+			for(int i=0; i<nav_btn.size(); i++) {
+				try {
+					WebElement choose_plan1 = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 2);
+					choose_plan1.click();
+					break;
+				}
+				catch(Exception e) {
+					nav_btn.get(i).click();
+				}
+			}
 
 			// Choose Billing Interval
 			WebElement duration = VisibilityOfElementByXpath(signupModel.getPersonal_billing_interval(), 15);
@@ -1033,32 +1046,32 @@ public class SignUpBase extends Base {
 				Thread.sleep(2000);
 
 				if (signupModel.getPersonal_plan().contains("//div[text()='VIP']//following::button[1]")) {
-					num = 0;
-				}
-				if (signupModel.getPersonal_plan().contains("//div[text()='Essential']//following::button[1]")) {
 					num = 1;
 				}
-				if (signupModel.getPersonal_plan().contains("//div[text()='Money Saver']//following::button[1]")) {
+				if (signupModel.getPersonal_plan().contains("//div[text()='Essential']//following::button[1]")) {
 					num = 2;
+				}
+				if (signupModel.getPersonal_plan().contains("//div[text()='Money Saver']//following::button[1]")) {
+					num = 3;
 				}
 
 				switch (num)
 
 				{
-				case 0: // VIP Plan
-					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[1]/button", 15).click();
-					Thread.sleep(1500);
-					choose_plan.get(num).click();
-					break;
-
-				case 1: // ESSENTIAL Plan
+				case 1: // VIP Plan
 					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[2]/button", 15).click();
 					Thread.sleep(1500);
 					choose_plan.get(num).click();
 					break;
 
-				case 2: // MONEY SAVER Plan
+				case 2: // ESSENTIAL Plan
 					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[3]/button", 15).click();
+					Thread.sleep(1500);
+					choose_plan.get(num).click();
+					break;
+
+				case 3: // MONEY SAVER Plan
+					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[4]/button", 15).click();
 					Thread.sleep(1500);
 					choose_plan.get(num).click();
 					break;

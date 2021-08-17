@@ -13,7 +13,7 @@
           <include name="quit"/>
           <include name="deleteFailedTestScreenshots"/>
           <include name="CheckBrowsers"/>
-          <include name="signupBusinessRetailerDevice"/>
+          <include name="signupPersonalRetailerDevice"/>
         </methods>
       </class> <!-- com.autobrain.pages.SignUp -->
     </classes>
