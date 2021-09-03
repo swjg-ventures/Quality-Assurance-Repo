@@ -546,16 +546,15 @@ public class SignUpBase extends Base {
 			// Choose Plan
 //			WebElement choose_plan = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 15);
 //			choose_plan.click();
-			
+
 			List<WebElement> nav_btn = VisibilityOfAllElementsByXpath("//ol[@class='hooper-indicators']/li/button", 5);
-			
-			for(int i=0; i<nav_btn.size(); i++) {
+
+			for (int i = 0; i < nav_btn.size(); i++) {
 				try {
 					WebElement choose_plan1 = VisibilityOfElementByXpath(signupModel.getPersonal_plan(), 2);
 					choose_plan1.click();
 					break;
-				}
-				catch(Exception e) {
+				} catch (Exception e) {
 					nav_btn.get(i).click();
 				}
 			}
@@ -1045,12 +1044,19 @@ public class SignUpBase extends Base {
 
 				Thread.sleep(2000);
 
+				if (signupModel.getPersonal_plan()
+						.contains("//div[text()='Shell® | Fuel Rewards®']//following::button[1]")) {
+					num = 0;
+				}
+
 				if (signupModel.getPersonal_plan().contains("//div[text()='VIP']//following::button[1]")) {
 					num = 1;
 				}
+
 				if (signupModel.getPersonal_plan().contains("//div[text()='Essential']//following::button[1]")) {
 					num = 2;
 				}
+
 				if (signupModel.getPersonal_plan().contains("//div[text()='Money Saver']//following::button[1]")) {
 					num = 3;
 				}
@@ -1058,19 +1064,26 @@ public class SignUpBase extends Base {
 				switch (num)
 
 				{
-				case 1: // VIP Plan
+
+				case 1: // Shell Plan
+					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[1]/button", 15).click();
+					Thread.sleep(1500);
+					choose_plan.get(num).click();
+					break;
+
+				case 2: // VIP Plan
 					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[2]/button", 15).click();
 					Thread.sleep(1500);
 					choose_plan.get(num).click();
 					break;
 
-				case 2: // ESSENTIAL Plan
+				case 3: // ESSENTIAL Plan
 					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[3]/button", 15).click();
 					Thread.sleep(1500);
 					choose_plan.get(num).click();
 					break;
 
-				case 3: // MONEY SAVER Plan
+				case 4: // MONEY SAVER Plan
 					VisibilityOfElementByXpath("//div[@class='hooper-pagination']//li[4]/button", 15).click();
 					Thread.sleep(1500);
 					choose_plan.get(num).click();
