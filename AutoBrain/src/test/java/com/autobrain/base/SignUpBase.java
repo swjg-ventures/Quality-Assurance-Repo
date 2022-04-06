@@ -193,7 +193,7 @@ public class SignUpBase extends Base {
 
 		// Enter email address
 		VisibilityOfElementByXpath("//input[@placeholder='Email Address']", 15).sendKeys(signupModel.getOwner_email());
-		System.out.println("Entered Email During Bought The Product " + "--> " + signupModel.getOwner_email());
+		System.out.println("Bought product with this email " + "--> " + signupModel.getOwner_email());
 
 		// Enter street address
 		VisibilityOfElementByXpath("//input[@placeholder='Street Address']", 15).sendKeys(SignupModel.getStreet());
@@ -1574,7 +1574,7 @@ public class SignUpBase extends Base {
 		// Generating random email
 		Random randomGenerator = new Random();
 		signupModel.setRandom_int(randomGenerator.nextInt(10000));
-		String email = "user" + signupModel.getRandom_int() + "@mailcatch.com";
+		String email = "cst" + signupModel.getRandom_int() + "@mailcatch.com";
 		SignupModel.setL_name("" + signupModel.getRandom_int());
 		return email;
 	}
